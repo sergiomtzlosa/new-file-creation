@@ -1,0 +1,14 @@
+#!/bin/bash
+
+PWD="$(pwd)"
+
+FILES="$(find "$PWD" -name *.h -print0 | xargs -0 wc -l | grep total | awk '{print $1}')"
+FILES2="$(find "$PWD" -name *.m -print0 | xargs -0 wc -l | grep total | awk '{print $1}')"
+FILES3="$(find "$PWD" -name *.swift -print0 | xargs -0 wc -l | grep total | awk '{print $1}')"
+
+echo "Objective-C Total lines: " $(($FILES + $FILES2))
+echo "Swift Total lines: " $FILES3
+echo "------------------------------"
+echo "Total: " $(($FILES + $FILES2 + $FILES3))
+
+exit 0

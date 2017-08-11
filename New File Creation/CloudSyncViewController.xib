@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CloudSyncViewController" customModule="New_File_Creation" customModuleProvider="target">
+            <connections>
+                <outlet property="downloadTemplatesButton" destination="dZN-b4-4mp" id="vZL-B1-orZ"/>
+                <outlet property="helpTipLabel" destination="NzE-7Y-qgS" id="Oj4-TO-n1x"/>
+                <outlet property="uploadTemplatesButton" destination="vLn-ND-Xen" id="g2E-PM-Ng4"/>
+                <outlet property="view" destination="c22-O7-iKe" id="bvz-fY-hQh"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="497" height="279"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dZN-b4-4mp">
+                    <rect key="frame" x="60" y="63" width="377" height="32"/>
+                    <buttonCell key="cell" type="push" title="Download templates &amp; configuration from iCloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3TF-v8-o2V">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="downloadFromCloud:" target="-2" id="Omx-Lo-Buc"/>
+                    </connections>
+                </button>
+                <imageView autoresizesSubviews="NO" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EpH-gu-dGw">
+                    <rect key="frame" x="81" y="185" width="48" height="48"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icloud" id="t0J-Rv-96F"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJv-t3-sTn">
+                    <rect key="frame" x="139" y="185" width="273" height="41"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="iCloud template sync" id="Q5C-qs-IwP">
+                        <font key="font" metaFont="system" size="28"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="lfP-Jh-aBk">
+                    <rect key="frame" x="44" y="158" width="392" height="5"/>
+                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <font key="titleFont" metaFont="system"/>
+                </box>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NzE-7Y-qgS">
+                    <rect key="frame" x="47" y="5" width="437" height="34"/>
+                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="If you cannot connect to iCloud do login in iCloud via System Preferences -&gt; iCloud then enable &quot;iCloud Drive&quot;" id="a8C-Ef-8WT">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6KR-Mj-Tlg">
+                    <rect key="frame" x="13" y="14" width="25" height="25"/>
+                    <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PRr-oc-G3f">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showHelpCloud:" target="-2" id="Jf1-Iu-Ys4"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vLn-ND-Xen">
+                    <rect key="frame" x="60" y="112" width="377" height="32"/>
+                    <buttonCell key="cell" type="push" title="Upload templates &amp; configuration to iCloud" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WGv-ib-rsR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="uploadToCloud:" target="-2" id="xwg-Qj-NQu"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="424.5" y="270.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="icloud" width="512" height="512"/>
+    </resources>
+</document>

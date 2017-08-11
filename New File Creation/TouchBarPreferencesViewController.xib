@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TouchBarPreferencesViewController" customModule="New_File_Creation" customModuleProvider="target">
+            <connections>
+                <outlet property="extersionFileOption" destination="j3O-3r-4Ee" id="jbK-Q5-79p"/>
+                <outlet property="fadeEffectOption" destination="oe4-Ow-Pnu" id="gqp-ZT-mdm"/>
+                <outlet property="view" destination="c22-O7-iKe" id="iIx-73-gzs"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" userLabel="View">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe4-Ow-Pnu">
+                    <rect key="frame" x="32" y="67" width="430" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Enable fade effect on Touch Bar" bezelStyle="regularSquare" imagePosition="left" inset="2" id="hF4-Bf-vP6">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="fadeEffectTouchBarAction:" target="-2" id="NnS-jd-3Vl"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3O-3r-4Ee">
+                    <rect key="frame" x="32" y="39" width="430" height="18"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="check" title="Show file extension on Touch Bar buttons" bezelStyle="regularSquare" imagePosition="left" inset="2" id="DTO-f4-dcv">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="extensionFileTouchBarAction:" target="-2" id="4SO-kO-yzK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="140" y="94"/>
+        </customView>
+    </objects>
+</document>

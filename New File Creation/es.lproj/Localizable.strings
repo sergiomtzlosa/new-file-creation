@@ -1,0 +1,88 @@
+
+"saveNewFileAs" = "Guardar nuevo archivo como...";
+
+"exitApp" = "Salir";
+
+"settings" = "Preferencias";
+
+"launchLogin" = "Ejecutar al inicio de la sesión";
+
+"dragAndDropItems" = "Arrastra y suelta una fila de la tabla hasta la ruta de destino para crear un nuevo archivo.\nPuedes crear tantos archivos como quieras.";
+
+"newFileMask" = "Nuevo archivo .%@ - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Activa \"New File Creation extension\" en Preferencias del sistema -> Extensiones -> Finder";
+
+"selectFileTemplate" = "Selecciona tu plantilla";
+
+"warning" = "Advertencia";
+
+"templateExists" = "Esta plantilla ya existe. Por favor selecciona una platilla diferente.";
+
+"advanced" = "Avanzado";
+
+"openSystemPreferences" = "Abrir preferencias del sistema";
+
+"help" = "Ayuda";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Reproducir sonido al crear archivo";
+
+"openWhenCreate" = "Abrir al crear el archivo";
+
+"revealCreationFile" = "Mostrar en el Finder al crear archivo";
+
+"enableDoubleClick" = "Activar doble-click en menu emergente para crear archivo";
+
+"hidePopUp" = "Ocultar ventana emergente al crear archivo";
+
+"tipCustomTemplates" = "Añade tus propias plantillas a New File Creation";
+
+"resetDefaultsTemplate" = "Reestablecer valores";
+
+"titleFilesLabel" = "Oculta, muestra, añade o reordena tus platillas:";
+
+"enable" = "Activar";
+
+"icon" = "Icono";
+
+"template" = "Plantilla";
+
+"cancel" = "Cancelar";
+
+"showIcloudPreferences" = "Mostrar preferencias de iCloud";
+
+"icloudNotFetch" = "No se puede conectar con iCloud, haz login en iCloud desde las preferencias del sistema y activa \"iCloud Drive\".";
+
+"syncCloudTip" = "Sincroniza tus plantillas con iCloud. Puedes subir/bajar tus plantillas personalizadas y tu configuración para poder usarlo en todos tus Macs.";
+
+"tipHelpCloud" = "Si no puedes conectar a iCloud, haz login en iCloud via Preferencias del sistema -> iCloud luego activa \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Subir plantillas & configuración a iCloud";
+
+"downloadButtonTitle" = "Descargar plantillas & configuración desde iCloud";
+
+"uploading" = "Subiendo a iCloud...";
+
+"downloading" = "Descargando de iCloud...";
+
+"positiveUploaded" = "¡Subido a iCloud!";
+
+"notUploaded" = "¡Error al subir a iCloud";
+
+"positiveDownload" = "¡Descargado de iCloud!";
+
+"errorDownload" = "¡Error al descargar de iCloud!";
+
+"selectFile" = "Selecciona archivo";
+
+"fadeButtonTitle" = "Activar efecto desvanecimiento en Touch Bar";
+
+"textButtonTitle" = "Mostrar extensión del archivo en los botones del Touch Bar";
+
+"syncButtonTitle" = "Sincronizar las plantillas con Touch Bar";
