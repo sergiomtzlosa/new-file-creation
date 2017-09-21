@@ -1,4 +1,3 @@
-
 //
 //  GeneralPreferences.swift
 //  New File Creation
@@ -24,27 +23,27 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         
         openSystemPreferencesButton.title = SMLocalizedString("openSystemPreferences")
         
-        cautionImage.image = NSImage(named: NSImageNameCaution)
+        cautionImage.image = NSImage(named: NSImage.Name.caution)
         
         playSoundButton.title = SMLocalizedString("playSoundPreference")
-        playSoundButton.state = Preferences.loadActiveSound() ? NSOnState : NSOffState
+        playSoundButton.state = Preferences.loadActiveSound() ? .on : .off
         
         openFileButton.title = SMLocalizedString("openWhenCreate")
-        openFileButton.state = Preferences.loadOpenFileOnCreation() ? NSOnState : NSOffState
+        openFileButton.state = Preferences.loadOpenFileOnCreation() ? .on : .off
         
         revealFinderButton.title = SMLocalizedString("revealCreationFile")
-        revealFinderButton.state = Preferences.loadRevealInFinder() ? NSOnState : NSOffState
+        revealFinderButton.state = Preferences.loadRevealInFinder() ? .on : .off
         
         doubleClickButton.title = SMLocalizedString("enableDoubleClick")
-        doubleClickButton.state = Preferences.loadDoubleClick() ? NSOnState : NSOffState
+        doubleClickButton.state = Preferences.loadDoubleClick() ? .on : .off
         
         hidePopupButton.title = SMLocalizedString("hidePopUp")
-        hidePopupButton.state = Preferences.loadHidePopup() ? NSOnState : NSOffState
+        hidePopupButton.state = Preferences.loadHidePopup() ? .on : .off
             
         systemPrefesLabel.font = NSFont(name: "Helvetica", size: 11)
         systemPrefesLabel.textColor = NSColor.black
         systemPrefesLabel.alignment = NSTextAlignment.left
-        systemPrefesLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
+        systemPrefesLabel.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
         systemPrefesLabel.usesSingleLineMode = false
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
@@ -61,38 +60,38 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.activeDoubleClick(button.state == NSOffState ? false : true)
+        _ = Preferences.activeDoubleClick(button.state == .off ? false : true)
     }
     
     @IBAction func hidePopUpAction(_ sender: AnyObject) {
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.activeHidePopup(button.state == NSOffState ? false : true)
+        _ = Preferences.activeHidePopup(button.state == .off ? false : true)
     }
     
     @IBAction func revealFinderAction(_ sender: AnyObject) {
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.useRevealInFinder(button.state == NSOffState ? false : true)
+        _ = Preferences.useRevealInFinder(button.state == .off ? false : true)
     }
     
     @IBAction func openFileAction(_ sender: AnyObject) {
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.openFileOnCreation(button.state == NSOffState ? false : true)
+        _ = Preferences.openFileOnCreation(button.state == .off ? false : true)
     }
     
     @IBAction func playSoundAction(_ sender: AnyObject) {
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.activeSound(button.state == NSOffState ? false : true)
+        _ = Preferences.activeSound(button.state == .off ? false : true)
     }
     
-    override init?(nibName nibNameString: String?, bundle bundleItem: Bundle?)
+    override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?)
     {
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
@@ -104,10 +103,9 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
     // MARK: - MASPreferencesViewController
     
-    override var identifier: String?
-    {
+    override var identifier: NSUserInterfaceItemIdentifier?    {
         get {
-            return SMLocalizedString("general")
+            return NSUserInterfaceItemIdentifier(rawValue: SMLocalizedString("general"))
         }
         
         set {
@@ -117,7 +115,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImageNamePreferencesGeneral)!
+        return NSImage(named:NSImage.Name.preferencesGeneral)!
     }
     
     var toolbarItemLabel: String

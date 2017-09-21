@@ -12,7 +12,7 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
 {
     @IBOutlet var textViewHelp: NSTextView!
     
-    override init?(nibName nibNameString: String?, bundle bundleItem: Bundle?) {
+    override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
     
@@ -40,10 +40,11 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
     
     // MARK: - MASPreferencesViewController
     
-    override var identifier: String? {
+    override var identifier: NSUserInterfaceItemIdentifier?
+    {
         
         get {
-            return SMLocalizedString("help")
+            return NSUserInterfaceItemIdentifier(SMLocalizedString("help"))
         }
         
         set {
@@ -53,7 +54,7 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImageNameInfo)!
+        return NSImage(named:NSImage.Name.info)!
     }
     
     var toolbarItemLabel: String

@@ -22,10 +22,10 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
     override func awakeFromNib() {
 
         fadeEffectOption.title = SMLocalizedString("fadeButtonTitle")
-        fadeEffectOption.state = Preferences.fadeTouchbar() ? NSOnState : NSOffState
+        fadeEffectOption.state = Preferences.fadeTouchbar() ? .on : .off
         
         extersionFileOption.title = SMLocalizedString("textButtonTitle")
-        extersionFileOption.state = Preferences.showTitleTouchBarButtons() ? NSOnState : NSOffState
+        extersionFileOption.state = Preferences.showTitleTouchBarButtons() ? .on : .off
         
 //        syncTemplatesOption.title = SMLocalizedString("syncButtonTitle")
 //        syncTemplatesOption.state = Preferences.updateTouchBarButtons() ? NSOnState : NSOffState
@@ -40,7 +40,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
         super.viewDidLoad()
     }
     
-    override init?(nibName nibNameString: String?, bundle bundleItem: Bundle?) {
+    override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
         
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
@@ -49,7 +49,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.setFadeTouchBarButtons(button.state == NSOffState ? false : true)
+        _ = Preferences.setFadeTouchBarButtons(button.state == .off ? false : true)
         
         SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
     }
@@ -58,7 +58,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
         
         let button : NSButton = sender as! NSButton
         
-        _ = Preferences.setShowTitleTouchBarButtons(button.state == NSOffState ? false : true)
+        _ = Preferences.setShowTitleTouchBarButtons(button.state == .off ? false : true)
         
         SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
     }
@@ -74,10 +74,10 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
     
     // MARK: - MASPreferencesViewController
     
-    override var identifier: String?
+    override var identifier: NSUserInterfaceItemIdentifier?
     {
         get {
-            return "touchbar-preferences"
+            return NSUserInterfaceItemIdentifier("touchbar-preferences")
         }
         
         set {
@@ -87,7 +87,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImageNameMultipleDocuments)!
+        return NSImage(named:NSImage.Name.multipleDocuments)!
     }
     
     var toolbarItemLabel: String

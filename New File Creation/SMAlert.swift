@@ -41,7 +41,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     
         let titleAttr : NSMutableAttributedString = NSMutableAttributedString(string: title as String)
     
-        titleAttr.addAttribute(NSFontAttributeName, value: NSFont.boldSystemFont(ofSize: 13), range: NSMakeRange(0, titleAttr.length))
+        titleAttr.addAttribute(NSAttributedStringKey.font, value: NSFont.boldSystemFont(ofSize: 13), range: NSMakeRange(0, titleAttr.length))
     
         let titleText : NSTextField = NSTextField(frame: NSMakeRect(141, 77, 211, 26))
         
@@ -65,7 +65,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     
         let msgAttr : NSMutableAttributedString = NSMutableAttributedString(string: message as String!)
     
-        msgAttr.addAttribute(NSFontAttributeName, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, msgAttr.length))
+        msgAttr.addAttribute(NSAttributedStringKey.font, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, msgAttr.length))
         
         textAlert.textStorage!.append(msgAttr)
     
@@ -73,8 +73,8 @@ class SMAlert: NSWindow, NSWindowDelegate
     
         let buttonDismiss : NSButton = NSButton(frame: NSMakeRect(316, 4, 94, 32))
     
-        buttonDismiss.setButtonType(NSButtonType.momentaryPushIn)
-        buttonDismiss.bezelStyle = NSBezelStyle.rounded
+        buttonDismiss.setButtonType(NSButton.ButtonType.momentaryPushIn)
+        buttonDismiss.bezelStyle = NSButton.BezelStyle.rounded
         buttonDismiss.title = "OK"
         buttonDismiss.target = window
         buttonDismiss.action = #selector(SMAlert.dismissModalWindow(_:))
@@ -120,7 +120,7 @@ class SMAlert: NSWindow, NSWindowDelegate
 //        self.beginSheet(win, completionHandler: nil)
     }
     
-    func dismissModalWindow(_ sender : AnyObject)
+    @objc func dismissModalWindow(_ sender : AnyObject)
     {
         NSApp.endSheet(self)
 //        self.endSheet(self)

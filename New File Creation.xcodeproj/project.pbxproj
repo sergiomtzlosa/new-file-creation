@@ -67,7 +67,7 @@
 		1F9853A61BA202F5000B8593 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853A51BA202F5000B8593 /* ZipArchive.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		1F9853B11BA20318000B8593 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853A91BA20318000B8593 /* ioapi.c */; };
 		1F9853B21BA20318000B8593 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AB1BA20318000B8593 /* mztools.c */; };
-		1F9853B31BA20318000B8593 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AD1BA20318000B8593 /* unzip.c */; };
+		1F9853B31BA20318000B8593 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AD1BA20318000B8593 /* unzip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		1F9853B41BA20318000B8593 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AF1BA20318000B8593 /* zip.c */; };
 		1FA507141B79271C004C2994 /* icon-menulet-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA507131B79271C004C2994 /* icon-menulet-white.png */; };
 		1FBD3CF31B8238D500BF935F /* Volumes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD3CF21B8238D500BF935F /* Volumes.m */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -97,9 +97,9 @@
 		1FF956DA1B712C5B007283E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF956D81B712C5B007283E5 /* MainMenu.xib */; };
 		1FF956F21B713B32007283E5 /* SMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F11B713B32007283E5 /* SMLog.swift */; };
 		1FF956F51B713B66007283E5 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F41B713B66007283E5 /* Macros.swift */; };
-		1FF956F81B713E05007283E5 /* SMSheetWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F71B713E05007283E5 /* SMSheetWindow.swift */; settings = {COMPILER_FLAGS = "-w"; }; };
+		1FF956F81B713E05007283E5 /* SMSheetWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F71B713E05007283E5 /* SMSheetWindow.swift */; settings = {COMPILER_FLAGS = "-Wnodeprecated-declarations"; }; };
 		1FF956FA1B714087007283E5 /* SMObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F91B714087007283E5 /* SMObject.swift */; settings = {COMPILER_FLAGS = "-w"; }; };
-		1FF956FC1B714D39007283E5 /* SMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956FB1B714D39007283E5 /* SMAlert.swift */; };
+		1FF956FC1B714D39007283E5 /* SMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956FB1B714D39007283E5 /* SMAlert.swift */; settings = {COMPILER_FLAGS = "-Wnodeprecated-declarations"; }; };
 		1FF956FE1B714E1A007283E5 /* New File Creation Helper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1FF956D01B712C5A007283E5 /* New File Creation Helper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -651,13 +651,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = com.sergiomtzlosa.filecreation;
 				TargetAttributes = {
 					1F7FC1ED1B76B02600F53433 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 9Z3J82KRJR;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -667,7 +667,7 @@
 					1FF956961B712B7E007283E5 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 9Z3J82KRJR;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.Mac = {
 								enabled = 1;
@@ -683,7 +683,7 @@
 					1FF956CF1B712C5A007283E5 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 9Z3J82KRJR;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -893,7 +893,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Extension/New File Creation Extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -912,7 +913,8 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Extension/New File Creation Extension-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -931,7 +933,8 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Extension/New File Creation Extension-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = MacAppStore;
 		};
@@ -944,14 +947,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -993,14 +1002,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1053,7 +1068,8 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1083,7 +1099,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1096,14 +1113,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1148,7 +1171,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = MacAppStore;
 		};
@@ -1171,7 +1195,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1190,7 +1215,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -1209,7 +1235,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = MacAppStore;
 		};

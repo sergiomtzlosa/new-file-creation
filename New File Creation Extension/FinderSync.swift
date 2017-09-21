@@ -192,7 +192,7 @@ class FinderSync: FIFinderSync
             self.savePanel.canCreateDirectories = true
             self.savePanel.accessoryView = self.customView
             self.savePanel.becomeMain()
-            self.savePanel.level = 0//CGWindowLevelKey.ModalPanelWindowLevelKey
+            self.savePanel.level = NSWindow.Level(rawValue: 0)//CGWindowLevelKey.ModalPanelWindowLevelKey
             self.savePanel.showsResizeIndicator = false
             self.savePanel.disableSnapshotRestoration()
             self.savePanel.isExtensionHidden = false
@@ -228,9 +228,14 @@ class FinderSync: FIFinderSync
                 return
             }
             
-            self.savePanel.begin { ( result :Int) in
+            
+//            self.savePanel.beginSheet(NSWindow, completionHandler: { ((NSApplication.ModalResponse) -> Void)? = nil) in
+            
+         
+            self.savePanel.begin { ( result :NSApplication.ModalResponse) in
                 
-                if result == NSFileHandlingPanelCancelButton
+//                if result == NSFileHandlingPanelCancelButton
+                if result == .stop
                 {
                     let rows : [String] = self.createRows() as! [String]
                     
@@ -241,7 +246,8 @@ class FinderSync: FIFinderSync
                     self.isShowing = false
                 }
                 
-                if result == NSFileHandlingPanelOKButton
+//                if result == NSFileHandlingPanelOKButton
+                if result == .continue
                 {
                     let valueFile : String = self.templates[self.popupButton.indexOfSelectedItem] as! String
                     //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
@@ -277,7 +283,7 @@ class FinderSync: FIFinderSync
                         
                         if (soundEnabled == 1)
                         {
-                            NSSound(named: "dropped")?.play()
+                            NSSound.init(named: NSSound.Name("dropped"))?.play()
                         }
                         
                         let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
@@ -393,7 +399,7 @@ class FinderSync: FIFinderSync
         return rowFiles
     }
     
-    func changeValuePopUpButton(_ sender: AnyObject)
+    @objc func changeValuePopUpButton(_ sender: AnyObject)
     {
         if let pub = sender as? NSPopUpButton
         {

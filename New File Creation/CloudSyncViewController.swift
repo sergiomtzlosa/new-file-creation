@@ -47,7 +47,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
         self.metadataQuery.start()
     }
     
-    func queryDidReceiveNotification(_ notification : Notification)
+    @objc func queryDidReceiveNotification(_ notification : Notification)
     {
 //        metadataQuery.disableUpdates()
         
@@ -69,7 +69,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
 //        metadataQuery.enableUpdates()
     }
     
-    override init?(nibName nibNameString: String?, bundle bundleItem: Bundle?)
+    override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?)
     {
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
@@ -106,7 +106,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
             attachedWindowHelp.setArrowHeight(15.0)
             
             attachedWindowHelp.alphaValue = 0.0
-            AppDelegate.preferencesWindow().addChildWindow(attachedWindowHelp!, ordered:NSWindowOrderingMode.above)
+            AppDelegate.preferencesWindow().addChildWindow(attachedWindowHelp!, ordered:NSWindow.OrderingMode.above)
             attachedWindowHelp.animator().alphaValue = 1.0
         }
         else
@@ -133,14 +133,14 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
         
         textView.maxSize = NSMakeSize(CGFloat.greatestFiniteMagnitude, CGFloat.greatestFiniteMagnitude)
         textView.isVerticallyResizable = true
-        textView.autoresizingMask = NSAutoresizingMaskOptions.viewWidthSizable
+        textView.autoresizingMask = NSView.AutoresizingMask.width
         textView.textContainer?.widthTracksTextView = true
         textView.string = SMLocalizedString("syncCloudTip")
         textView.backgroundColor = NSColor.clear
         textView.textColor = NSColor.white
         textView.isHorizontallyResizable = true
         
-        let size : NSRect = SMObject.calculateSizeForText(textView.string! as NSString, textView: textView)
+        let size : NSRect = SMObject.calculateSizeForText(textView.string as NSString, textView: textView)
         
         textView.frame = size
         
@@ -149,7 +149,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     @IBAction func downloadFromCloud(_ sender: AnyObject) {
         
-        let modalWindow = SMSheetWindow(windowNibName: "SMSheetWindow")
+        let modalWindow = SMSheetWindow(windowNibName: NSNib.Name(rawValue: "SMSheetWindow"))
         modalWindow.uploading = false
         modalWindow.beginSheet(AppDelegate.preferencesWindow())
         
@@ -197,7 +197,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     @IBAction func uploadToCloud(_ sender: AnyObject) {
         
-        let modalWindow = SMSheetWindow(windowNibName: "SMSheetWindow")
+        let modalWindow = SMSheetWindow(windowNibName: NSNib.Name(rawValue: "SMSheetWindow"))
         modalWindow.uploading = true
         modalWindow.beginSheet(AppDelegate.preferencesWindow())
         
@@ -247,13 +247,13 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
         
         alertDialog.messageText = title
         alertDialog.informativeText = message
-        alertDialog.alertStyle = NSAlertStyle.warning
+        alertDialog.alertStyle = NSAlert.Style.warning
         
         alertDialog.addButton(withTitle: SMLocalizedString("OK"))
   
         let result = alertDialog.runModal()
         
-        if result == NSAlertFirstButtonReturn
+        if result == NSApplication.ModalResponse.alertFirstButtonReturn
         {
             return true
         }
@@ -268,14 +268,14 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
         
         alertDialog.messageText = title
         alertDialog.informativeText = message
-        alertDialog.alertStyle = NSAlertStyle.warning
+        alertDialog.alertStyle = NSAlert.Style.warning
         
         alertDialog.addButton(withTitle: SMLocalizedString("showIcloudPreferences"))
         alertDialog.addButton(withTitle: SMLocalizedString("cancel"))
         
         let result = alertDialog.runModal()
         
-        if result == NSAlertFirstButtonReturn
+        if result == NSApplication.ModalResponse.alertFirstButtonReturn
         {
             Utils.openCloudPreferences()
             return true
@@ -305,10 +305,10 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     // MARK: - MASPreferencesViewController
     
-    override var identifier: String?
+    override var identifier: NSUserInterfaceItemIdentifier?
     {
         get {
-            return SMLocalizedString("icloud")
+            return NSUserInterfaceItemIdentifier(SMLocalizedString("icloud"))
         }
         
         set {
@@ -318,7 +318,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImageNameNetwork)!
+        return NSImage(named:NSImage.Name.network)!
     }
     
     var toolbarItemLabel: String

@@ -19,17 +19,17 @@ let kLoginHelperDekstopBundleIdentifier = "com.sergiomtzlosa.filecreationhelper"
 let kFocusedAdvancedControlIndex = "FocusedAdvancedControlIndex"
 
 @available(OSX 10.12.2, *)
-fileprivate extension NSTouchBarItemIdentifier {
+fileprivate extension NSTouchBarItem.Identifier {
     
-    static let customViewIdentifier = NSTouchBarItemIdentifier("com.sergiomtzlosa.filecreation.touchbar.items.customView")
+    static let customViewIdentifier = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.items.customView")
     
-    static let identifierCustom = NSTouchBarItemIdentifier("com.sergiomtzlosa.filecreation.touchbar.customTouchBar")
+    static let identifierCustom = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.customTouchBar")
 }
 
 @available(OSX 10.12.2, *)
-fileprivate extension NSTouchBarCustomizationIdentifier {
+fileprivate extension NSTouchBar.CustomizationIdentifier {
     
-    static let mainTouchBarIdentifier = NSTouchBarCustomizationIdentifier("com.sergiomtzlosa.filecreation.touchbar.main.touchbar")
+    static let mainTouchBarIdentifier = NSTouchBar.CustomizationIdentifier("com.sergiomtzlosa.filecreation.touchbar.main.touchbar")
 }
 
 @NSApplicationMain
@@ -70,7 +70,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     override class func sharedInstance() -> AppDelegate
     {
-        return NSApplication.shared().delegate as! AppDelegate
+        return NSApplication.shared.delegate as! AppDelegate
     }
     
     class func isDarkMode() -> Bool
@@ -130,12 +130,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
         
-        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifySuspend(_:)), name: NSNotification.Name.NSWindowDidResignKey.rawValue)
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifySuspend(_:)), name: NSWindow.didResignKeyNotification.rawValue)
 
         super.awakeFromNib()
     }
     
-    func changeValuePopUpButton(_ sender: AnyObject)
+    @objc func changeValuePopUpButton(_ sender: AnyObject)
     {
         if let pub = sender as? NSPopUpButton
         {
@@ -192,7 +192,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         return finalArray
     }
     
-    func doubleClick(_ object : AnyObject) {
+    @objc func doubleClick(_ object : AnyObject) {
     
         if (!Preferences.loadDoubleClick())
         {
@@ -250,7 +250,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.savePanel.showsToolbarButton = true
         self.savePanel.canCreateDirectories = true
         self.savePanel.becomeMain()
-        self.savePanel.level = 0//Int(CGWindowLevelKey(key: CGWindowLevelKey.ModalPanelWindowLevelKey)?.rawValue)
+        self.savePanel.level = NSWindow.Level(rawValue: 0)//Int(CGWindowLevelKey(key: CGWindowLevelKey.ModalPanelWindowLevelKey)?.rawValue)
         self.savePanel.showsResizeIndicator = false
         self.savePanel.disableSnapshotRestoration()
         self.savePanel.isExtensionHidden = false
@@ -275,15 +275,21 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             return
         }
+//        NSApplication.ModalResponse.continue
         
-        self.savePanel.begin { ( result :Int) in
+        self.savePanel.begin { (result : NSApplication.ModalResponse) in
             
-            if (result == NSFileHandlingPanelCancelButton)
+//        }
+//        self.savePanel.begin { ( result :Int) in
+            
+//            if (result == NSFileHandlingPanelCancelButton)
+            if (result == .stop)
             {
                 self.isShowing = false
             }
             
-            if (result == NSFileHandlingPanelOKButton)
+//            if (result == NSFileHandlingPanelOKButton)
+            if (result == .continue)
             {
                 let valueFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
                 //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
@@ -320,7 +326,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                     
                     if (soundEnabled == 1)
                     {
-                        NSSound(named: "dropped")?.play()
+                        NSSound.init(named: NSSound.Name("dropped"))?.play()
                     }
                     
                     let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
@@ -391,19 +397,19 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     func lightVibrantWindow(_ window: NSWindow)
     {
-        window.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+        window.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
         
         let visualEffectView = NSVisualEffectView(frame: NSMakeRect(0, 0, window.frame.width, window.frame.height))
-        visualEffectView.material = NSVisualEffectMaterial.light
-        visualEffectView.blendingMode = NSVisualEffectBlendingMode.behindWindow
-        visualEffectView.state = NSVisualEffectState.active
+        visualEffectView.material = NSVisualEffectView.Material.light
+        visualEffectView.blendingMode = NSVisualEffectView.BlendingMode.behindWindow
+        visualEffectView.state = NSVisualEffectView.State.active
         
-        window.styleMask = NSWindowStyleMask.fullSizeContentView
+        window.styleMask = NSWindow.StyleMask.fullSizeContentView
         window.titlebarAppearsTransparent = true
 
-        window.contentView!.addSubview(visualEffectView, positioned: NSWindowOrderingMode.below, relativeTo: nil)
-        window.contentView!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[visualEffectView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["visualEffectView":visualEffectView]))
-        window.contentView!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[visualEffectView]-0-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["visualEffectView":visualEffectView]))
+        window.contentView!.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
+        window.contentView!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[visualEffectView]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["visualEffectView":visualEffectView]))
+        window.contentView!.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[visualEffectView]-0-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["visualEffectView":visualEffectView]))
     }
     
     func launchOnLogin() -> Bool
@@ -411,11 +417,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         return AgentController.checkLogin(forIdentifier: kLoginHelperDekstopBundleIdentifier)
     }
     
-    func checkBoxAction(_ 😎 : AnyObject)
+    @objc func checkBoxAction(_ 😎 : AnyObject)
     {
         let checkButton : NSButton = 😎 as! NSButton
         
-        if (checkButton.state == NSOnState)
+        if (checkButton.state == .on)
         {
             SMLog("on")
         }
@@ -424,7 +430,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             SMLog("off")
         }
         
-        if (checkButton.state == NSOnState)
+        if (checkButton.state == .on)
         {
             _ = Preferences.wantsLaunchAtLogin(true)
         }
@@ -433,7 +439,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             _ = Preferences.wantsLaunchAtLogin(false)
         }
     
-        if (checkButton.state == NSOnState)
+        if (checkButton.state == .on)
         {
             // ON
             // Turn on launch at login
@@ -443,7 +449,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             }
         }
         
-        if (checkButton.state == NSOffState)
+        if (checkButton.state == .off)
         {
             // OFF
             // Turn off launch at login
@@ -454,37 +460,37 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
     }
     
-    func closeApplication(_ sender: AnyObject)
+    @objc func closeApplication(_ sender: AnyObject)
     {
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
     
     func createPreferencesWindowController()
     {
         if (preferencesWindowController == nil)
         {
-            let generalViewController : NSViewController = GeneralPreferencesViewController(nibName: "GeneralPreferencesView", bundle: nil)!
+            let generalViewController : NSViewController = GeneralPreferencesViewController(nibName: NSNib.Name(rawValue: "GeneralPreferencesView"), bundle: nil)
 
-            let advancedViewController : NSViewController = FilesPreferencesViewController(nibName: "FilesPreferencesViewController", bundle: nil)!
+            let advancedViewController : NSViewController = FilesPreferencesViewController(nibName: NSNib.Name(rawValue:"FilesPreferencesViewController"), bundle: nil)
             
             REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateSettingsCloud:")), name: kUpdateSettingCloud)
             
-            let cloudViewController : NSViewController = CloudSyncViewController(nibName: "CloudSyncViewController", bundle: nil)!
+            let cloudViewController : NSViewController = CloudSyncViewController(nibName: NSNib.Name(rawValue:"CloudSyncViewController"), bundle: nil)
             
-            let helpViewController : NSViewController = HelpPreferencesViewController(nibName: "HelpPreferencesViewController", bundle: nil)!
+            let helpViewController : NSViewController = HelpPreferencesViewController(nibName: NSNib.Name(rawValue:"HelpPreferencesViewController"), bundle: nil)
             
             var controllers : NSArray? = NSArray(objects: generalViewController, advancedViewController, cloudViewController, helpViewController)
             
             if #available(OSX 10.12.2, *) {
                 
-                let touchBarViewController : NSViewController = TouchBarPreferencesViewController(nibName: "TouchBarPreferencesViewController", bundle: nil)!
+                let touchBarViewController : NSViewController = TouchBarPreferencesViewController(nibName: NSNib.Name(rawValue:"TouchBarPreferencesViewController"), bundle: nil)
                 
                 controllers = NSArray(objects: generalViewController, advancedViewController, cloudViewController, touchBarViewController, helpViewController)
             }
          
             preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers! as [AnyObject] , title:SMLocalizedString("settings"))
             
-            let button = preferencesWindowController.window!.standardWindowButton(NSWindowButton.zoomButton)
+            let button = preferencesWindowController.window!.standardWindowButton(NSWindow.ButtonType.zoomButton)
             button?.isEnabled = false
         }
     }
@@ -501,7 +507,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         preferencesWindowController.showWindow(nil)
     }
     
-    func showPreferences(_ sender: AnyObject)
+    @objc func showPreferences(_ sender: AnyObject)
     {
         closePopUpController()
         
@@ -520,13 +526,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     func createCustomView() -> NSView
     {
         let customView : NSView = NSView(frame: NSMakeRect(0, 0, 364, 425))
-        customView.appearance = NSAppearance(named: NSAppearanceNameAqua)
+        customView.appearance = NSAppearance(named: NSAppearance.Name.aqua)
 
         let buttonClose : NSButton = NSButton(frame: NSMakeRect(27, 350, 150, 40))
         
         buttonClose.title = SMLocalizedString("exitApp")
-        buttonClose.setButtonType(NSButtonType.momentaryPushIn)
-        buttonClose.bezelStyle = NSBezelStyle.rounded
+        buttonClose.setButtonType(NSButton.ButtonType.momentaryPushIn)
+        buttonClose.bezelStyle = NSButton.BezelStyle.rounded
         buttonClose.target = self
         buttonClose.action = #selector(AppDelegate.closeApplication(_:))
         
@@ -535,8 +541,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         let buttonPreferences : NSButton = NSButton(frame: NSMakeRect(188, 350, 150, 40))
         
         buttonPreferences.title = SMLocalizedString("settings")
-        buttonPreferences.setButtonType(NSButtonType.momentaryPushIn)
-        buttonPreferences.bezelStyle = NSBezelStyle.rounded
+        buttonPreferences.setButtonType(NSButton.ButtonType.momentaryPushIn)
+        buttonPreferences.bezelStyle = NSButton.BezelStyle.rounded
         buttonPreferences.target = self
         buttonPreferences.action = #selector(AppDelegate.showPreferences(_:))
         
@@ -546,8 +552,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         checkBox.target = self
         checkBox.action = #selector(AppDelegate.checkBoxAction(_:))
-        checkBox.setButtonType(NSButtonType.switch)
-        checkBox.state = (Preferences.isLaunchedAtLogin() ? NSOnState : NSOffState)
+        checkBox.setButtonType(NSButton.ButtonType.switch)
+        checkBox.state = (Preferences.isLaunchedAtLogin() ? .on : .off)
         checkBox.setNeedsDisplay()
         checkBox.attributedTitle = createAttributeStringForButton(SMLocalizedString("launchLogin"))
         customView.addSubview(checkBox)
@@ -556,7 +562,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         helpButton.title = ""
         helpButton.frame = CGRect(x: 325, y: 388, width: 40, height: 40)
-        helpButton.bezelStyle = NSBezelStyle.helpButton;
+        helpButton.bezelStyle = NSButton.BezelStyle.helpButton;
         helpButton.target = self;
         helpButton.action = #selector(AppDelegate.showHelpAttached(_:))
         
@@ -568,11 +574,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         overlayScrollView.verticalPageScroll = 1.0
         overlayScrollView.hasVerticalScroller = true
         overlayScrollView.backgroundColor = NSColor.clear
-        overlayScrollView.scrollerStyle = NSScrollerStyle.overlay
+        overlayScrollView.scrollerStyle = NSScroller.Style.overlay
         overlayScrollView.hasHorizontalScroller = false
         overlayScrollView.drawsBackground = false
         overlayScrollView.pageScroll = overlayScrollView.contentSize.height
-        overlayScrollView.scrollerKnobStyle = NSScrollerKnobStyle.dark
+        overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollView.wantsLayer = true
         
         table = NSTableView(frame: NSMakeRect(-1, 0, overlayScrollView.frame.size.width + 1, overlayScrollView.frame.height))
@@ -580,7 +586,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         table.target = self;
         table.doubleAction = #selector(AppDelegate.doubleClick(_:));
 
-        table.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.none
+        table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         table.layer?.cornerRadius = 0
         table.layer?.borderColor = NSColor.clear.cgColor
         table.headerView = nil
@@ -590,23 +596,27 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         table.backgroundColor = NSColor.clear
         
         //Registering dragged Types
-        table.register(forDraggedTypes: [NSFilenamesPboardType])
+      
+        let NSFilenamesPboardTypeTemp = NSPasteboard.PasteboardType("NSFilenamesPboardType")
+
+//        NSFilenamesPboardType
+        table.registerForDraggedTypes([NSFilenamesPboardTypeTemp])
         
         //To support across application passing NO
         table.setDraggingSourceOperationMask(NSDragOperation.copy, forLocal: false)
        
-        let column1 : NSTableColumn = NSTableColumn(identifier: "column1")
+        let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
         
         column1.width = customView.frame.size.width - 2
-        column1.resizingMask = NSTableColumnResizingOptions.autoresizingMask
+        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         
         table.addTableColumn(column1)
    
         overlayScrollView.documentView = table
         customView.addSubview(overlayScrollView)
         
-        table.columnAutoresizingStyle = NSTableViewColumnAutoresizingStyle.uniformColumnAutoresizingStyle
-        column1.resizingMask = NSTableColumnResizingOptions.autoresizingMask
+        table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
+        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
         
         table.reloadData()
@@ -614,7 +624,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         return customView
     }
     
-    func showHelpAttached(_ sender: AnyObject)
+    @objc func showHelpAttached(_ sender: AnyObject)
     {
         showWindowPreferences()
         preferencesWindowController.selectedViewController = preferencesWindowController.viewController(forIdentifier: SMLocalizedString("help"))
@@ -627,13 +637,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         textView.maxSize = NSMakeSize(CGFloat.greatestFiniteMagnitude, CGFloat.greatestFiniteMagnitude)
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = true
-        textView.autoresizingMask = NSAutoresizingMaskOptions.viewWidthSizable
+        textView.autoresizingMask = NSView.AutoresizingMask.width
         textView.textContainer?.widthTracksTextView = true
         textView.string = SMLocalizedString("dragAndDropItems")
         textView.backgroundColor = NSColor.clear
         textView.textColor = NSColor.white
         
-        let size : NSRect  = SMObject.calculateSizeForText(textView.string! as NSString, textView: textView)
+        let size : NSRect  = SMObject.calculateSizeForText(textView.string as NSString, textView: textView)
         
         textView.frame = size
         
@@ -646,8 +656,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         let attrTitle = NSMutableAttributedString(string: title)
         
-        attrTitle.addAttribute(NSFontAttributeName, value: NSFont(name: "Helvetica", size: 13.0)!, range: NSMakeRange(0, attrTitle.length))
-        attrTitle.addAttribute(NSForegroundColorAttributeName, value: color, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedStringKey.font, value: NSFont(name: "Helvetica", size: 13.0)!, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
 
         return attrTitle
     }
@@ -666,11 +676,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        if tableColumn!.identifier == "column1"
+        if tableColumn!.identifier.rawValue == "column1"
         {
             let
             cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
-            cellView.identifier = "row" + String(row)
+            cellView.identifier = NSUserInterfaceItemIdentifier(rawValue: "row" + String(row))
             
             let value : String = self.dataFiles.object(at: row) as! String
             SMLog("value " + value)
@@ -688,7 +698,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
             var components : [String] = value.components(separatedBy: ".") as [String]
             
-            let image : NSImage = NSWorkspace.shared().icon(forFileType: components[1])
+            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
           
             let imageView : NSImageView = NSImageView(frame: NSMakeRect(10, 0, 50, 50))
             imageView.image = image
@@ -711,7 +721,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             textField.backgroundColor = NSColor.clear
             textField.wantsLayer = true
             textField.layer?.backgroundColor = NSColor.clear.cgColor
-            textField.lineBreakMode = NSLineBreakMode.byWordWrapping
+            textField.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
             textField.usesSingleLineMode = true
             
             cellView.addSubview(textField)
@@ -732,7 +742,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool
     {
         // set the pasteboard for HFS promises only
-        pboard.declareTypes(NSArray(object: NSFilesPromisePboardType) as! [String], owner:self)
+        pboard.declareTypes([NSPasteboard.PasteboardType.filePromise], owner:self)
         
         // the pasteboard must know the type of files being promised
         let filenameExtensions : NSMutableArray = NSMutableArray()
@@ -753,7 +763,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
         
         // give the pasteboard the file extensions
-        pboard.setPropertyList(filenameExtensions, forType: NSFilesPromisePboardType)
+        pboard.setPropertyList(filenameExtensions, forType: NSPasteboard.PasteboardType.filePromise)
         
         return true
     }
@@ -799,7 +809,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             if (Preferences.loadActiveSound())
             {
-                NSSound(named: "dropped")?.play()
+                NSSound(named: NSSound.Name(rawValue: "dropped"))?.play()
             }
         }
         
@@ -828,7 +838,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     //MARK: - NSNotification methods
     
-    func eventUpdateTableFromPreferences(_ notification : Notification)
+    @objc func eventUpdateTableFromPreferences(_ notification : Notification)
     {
         DispatchQueue.main.async(execute: {
             
@@ -849,12 +859,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         })
     }
     
-    func eventFinderSync(_ notification : Notification)
+    @objc func eventFinderSync(_ notification : Notification)
     {
         SMLog("llega eventFinderSync")
     }
     
-    func eventLoadPopUp(_ notification : Notification)
+    @objc func eventLoadPopUp(_ notification : Notification)
     {
         //var controller : WOMPopoverController = notification.object as! WOMPopoverController
         
@@ -865,7 +875,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         SMLog("llega final")
     }
     
-    func eventNotifyDarkModeChanged(_ notification : Notification)
+    @objc func eventNotifyDarkModeChanged(_ notification : Notification)
     {
 //        SMLog("notification: %@", notification.object)
 
@@ -878,14 +888,14 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         {
             if controller != nil
             {
-                controller.viewController.popover.appearance = NSAppearance(named: NSAppearanceNameVibrantDark)
+                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
             }
         }
         else
         {
             if controller != nil
             {
-                controller.viewController.popover.appearance = NSAppearance(named: NSAppearanceNameVibrantLight)
+                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
             }
         }
 
@@ -930,7 +940,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         if #available(OSX 10.12.2, *) {
             
-            NSApplication.shared().isAutomaticCustomizeTouchBarMenuItemEnabled = true
+            NSApplication.shared.isAutomaticCustomizeTouchBarMenuItemEnabled = true
             
             reloadTouchBar()
         }
@@ -946,14 +956,14 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
     }
     
-    func eventNotifySuspend(_ notification: Notification) {
+    @objc func eventNotifySuspend(_ notification: Notification) {
         
         SMLog("llega")
     }
     
     //MARK: - NSTouchBarDelegate methods
     @available(OSX 10.12.2, *)
-    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItemIdentifier) -> NSTouchBarItem? {
+    func touchBar(_ touchBar: NSTouchBar, makeItemForIdentifier identifier: NSTouchBarItem.Identifier) -> NSTouchBarItem? {
         
         SMLog("touch bar identifier: \(identifier.rawValue)")
         
@@ -987,7 +997,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         scrollView.borderType = .noBorder
         scrollView.hasVerticalScroller = false
         scrollView.hasHorizontalScroller = true
-        scrollView.autoresizingMask = .viewWidthSizable
+        scrollView.autoresizingMask = NSView.AutoresizingMask.width
 
         let separator : CGFloat = 16
         var offset : CGFloat = 0
@@ -999,7 +1009,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             let extensionItem: String = components[1]
 
-            var image : NSImage = NSWorkspace.shared().icon(forFileType: extensionItem)
+            var image : NSImage = NSWorkspace.shared.icon(forFileType: extensionItem)
             image = Utils.resize(image: image, w: 20, h: 20)
             
             let button : NSButton = makeButtonWithIdentifier(title: extensionItem.uppercased(), image: image)
@@ -1057,7 +1067,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         return button
     }
     
-    func createNewFile(sender: NSButton) {
+    @objc func createNewFile(sender: NSButton) {
         
         SMLog("click touch bar entra: \(sender.title)")
         SMLog("click touch bar entra: \(sender.tag)")
@@ -1122,7 +1132,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.savePanel.canCreateDirectories = true
         self.savePanel.accessoryView = self.customViewTouchbar
         self.savePanel.becomeMain()
-        self.savePanel.level = 0//CGWindowLevelKey.ModalPanelWindowLevelKey
+        self.savePanel.level = NSWindow.Level(rawValue: 0)//CGWindowLevelKey.ModalPanelWindowLevelKey
         self.savePanel.showsResizeIndicator = false
         self.savePanel.disableSnapshotRestoration()
         self.savePanel.isExtensionHidden = false
@@ -1136,11 +1146,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.savePanel.directoryURL = destination
         self.savePanel.isAutodisplay = true
         
-        self.savePanel.begin { ( result :Int) in
+        self.savePanel.begin { ( result :NSApplication.ModalResponse) in
             
             var error : NSError?
             
-            if result == NSFileHandlingPanelCancelButton {
+            if result == .stop {
                 
                 let rows : [String] = self.createRows() as! [String]
                 
@@ -1151,7 +1161,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 self.isShowing = false
             }
             
-            if result == NSFileHandlingPanelOKButton {
+            if result == .continue {
                 
                 let valueFile : String = self.templates[self.popupButton.indexOfSelectedItem] as! String
                 //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
@@ -1188,7 +1198,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                     
                     if (soundEnabled == 1)
                     {
-                        NSSound(named: "dropped")?.play()
+                        NSSound(named: NSSound.Name("dropped"))?.play()
                     }
                     
                     let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int

@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
     {
         // Check if main app is already running, if yes, do nothing and terminate helper app
         var alreadyRunning : Bool = false
-        let running : NSArray = NSWorkspace.shared().runningApplications as NSArray
+        let running : NSArray = NSWorkspace.shared.runningApplications as NSArray
         
         for app in running as! [NSRunningApplication]
         {
@@ -49,10 +49,10 @@ class AppDelegate: NSObject, NSApplicationDelegate
             
             SMLog("newPath: \(newPath as String)")
             
-            NSWorkspace.shared().launchApplication(newPath as String)
+            NSWorkspace.shared.launchApplication(newPath as String)
         }
         
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
     }
 }
 

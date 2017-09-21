@@ -13,22 +13,22 @@ class Utils
 {
     class func revealInFinder(_ path : String!)
     {
-        NSWorkspace.shared().activateFileViewerSelecting([URL(fileURLWithPath: path)])
+        NSWorkspace.shared.activateFileViewerSelecting([URL(fileURLWithPath: path)])
     }
     
     class func openFile(_ path : String)
     {
-        NSWorkspace.shared().openFile(path)
+        NSWorkspace.shared.openFile(path)
     }
     
     class func openExtensionPreferences()
     {
-        NSWorkspace.shared().open(URL(fileURLWithPath: "/System/Library/PreferencePanes/Extensions.prefPane"))
+        NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Library/PreferencePanes/Extensions.prefPane"))
     }
     
     class func openCloudPreferences()
     {
-        NSWorkspace.shared().open(URL(fileURLWithPath: "/System/Library/PreferencePanes/iCloudPref.prefPane"))
+        NSWorkspace.shared.open(URL(fileURLWithPath: "/System/Library/PreferencePanes/iCloudPref.prefPane"))
     }
 
     class func resize(image: NSImage, w: Int, h: Int) -> NSImage {

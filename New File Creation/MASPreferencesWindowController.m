@@ -12,8 +12,10 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 
 @interface MASPreferencesWindowController () // Private
 
-@property (readonly) NSArray *toolbarItemIdentifiers;
+@property (readonly) NSArray *toolbarItemIdentifiersWindow;
 //@property (nonatomic, retain) NSViewController <MASPreferencesViewController> *selectedViewController;
+
+- (void)toolbarItemDidClick:(id)sender;
 
 @end
 
@@ -123,14 +125,18 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 #pragma mark -
 #pragma mark Accessors
 
-- (NSArray *)toolbarItemIdentifiers
+- (NSArray *)toolbarItemIdentifiersWindow
 {
     NSMutableArray *identifiers = [NSMutableArray arrayWithCapacity:_viewControllers.count];
+
     for (id viewController in _viewControllers)
+    {
         if (viewController == [NSNull null])
             [identifiers addObject:NSToolbarFlexibleSpaceItemIdentifier];
         else
             [identifiers addObject:[viewController identifier]];
+    }
+    
     return identifiers;
 }
 
@@ -138,7 +144,7 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 
 - (NSUInteger)indexOfSelectedController
 {
-    NSUInteger index = [self.toolbarItemIdentifiers indexOfObject:self.selectedViewController.identifier];
+    NSUInteger index = [self.toolbarItemIdentifiersWindow indexOfObject:self.selectedViewController.identifier];
     return index;
 }
 
@@ -147,26 +153,26 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 
 - (NSArray *)toolbarAllowedItemIdentifiers:(NSToolbar *)toolbar
 {
-    NSArray *identifiers = self.toolbarItemIdentifiers;
+    NSArray *identifiers = self.toolbarItemIdentifiersWindow;
     return identifiers;
 }                   
                    
 - (NSArray *)toolbarDefaultItemIdentifiers:(NSToolbar *)toolbar
 {
-    NSArray *identifiers = self.toolbarItemIdentifiers;
+    NSArray *identifiers = self.toolbarItemIdentifiersWindow;
     return identifiers;
 }
 
 - (NSArray *)toolbarSelectableItemIdentifiers:(NSToolbar *)toolbar
 {
-    NSArray *identifiers = self.toolbarItemIdentifiers;
+    NSArray *identifiers = self.toolbarItemIdentifiersWindow;
     return identifiers;
 }
 
 - (NSToolbarItem *)toolbar:(NSToolbar *)toolbar itemForItemIdentifier:(NSString *)itemIdentifier willBeInsertedIntoToolbar:(BOOL)flag
 {
     NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier:itemIdentifier];
-    NSArray *identifiers = self.toolbarItemIdentifiers;
+    NSArray *identifiers = self.toolbarItemIdentifiersWindow;
     NSUInteger controllerIndex = [identifiers indexOfObject:itemIdentifier];
     if (controllerIndex != NSNotFound)
     {
@@ -372,3 +378,4 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 }
 
 @end
+

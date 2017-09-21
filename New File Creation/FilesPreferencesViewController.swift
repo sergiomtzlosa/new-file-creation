@@ -19,7 +19,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     
     var dataArray : NSMutableArray!
     
-    override init?(nibName nibNameString: String?, bundle bundleItem: Bundle?) {
+    override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
     
@@ -47,13 +47,13 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         
         table.dataSource = self
         table.delegate = self
-        table.selectionHighlightStyle = NSTableViewSelectionHighlightStyle.regular
+        table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
         
         table.reloadData()
-        table.register(forDraggedTypes: ["public.data"])
+        table.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "public.data")])
 
-        addTemplateButton.image = NSImage(named: NSImageNameAddTemplate)
-        removeTemplateButton.image = NSImage(named: NSImageNameRemoveTemplate)
+        addTemplateButton.image = NSImage(named: NSImage.Name.addTemplate)
+        removeTemplateButton.image = NSImage(named: NSImage.Name.removeTemplate)
         
         super.awakeFromNib()
     }
@@ -168,7 +168,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             panel.canChooseDirectories = false
             panel.title = "Saving as..."
             panel.showsToolbarButton = true
-            panel.level = Int(CGShieldingWindowLevel())
+            panel.level = NSWindow.Level(rawValue: Int(CGShieldingWindowLevel()))
             panel.showsResizeIndicator = false
             panel.isAutodisplay = true
             panel.disableSnapshotRestoration()
@@ -177,14 +177,16 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             
             panel.directoryURL = URL(fileURLWithPath:desktopPath)
             
-            panel.begin { (result : Int) -> Void in
+            panel.begin { (result : NSApplication.ModalResponse) -> Void in
                 
-                if result == NSFileHandlingPanelCancelButton
+//                if result == NSFileHandlingPanelCancelButton
+                if result == .stop
                 {
                 
                 }
                 
-                if (result == NSFileHandlingPanelOKButton)
+//                if (result == NSFileHandlingPanelOKButton)
+                if (result == .continue)
                 {
                     let choosenFile : URL! = (panel.url! as NSURL).filePathURL!
                     
@@ -253,12 +255,12 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting?
     {
         let item = NSPasteboardItem()
-        item.setString(String(row), forType: "public.data")
+        item.setString(String(row), forType: NSPasteboard.PasteboardType(rawValue: "public.data"))
         
         return item
     }
     
-    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableViewDropOperation) -> NSDragOperation
+    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation
     {
         if dropOperation == .above
         {
@@ -268,17 +270,24 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         return NSDragOperation()
     }
     
-    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableViewDropOperation) -> Bool
+    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool
     {
         var oldIndexes = [Int]()
         
-        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) {
+        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) { ( draggingItem: NSDraggingItem, idx: Int, stop: UnsafeMutablePointer<ObjCBool>) in
             
-            if let index = Int((($0.0.item as! NSPasteboardItem).string(forType: "public.data"))!)
+            if let index = Int(((draggingItem.item as! NSPasteboardItem).string(forType: NSPasteboard.PasteboardType(rawValue: "public.data")))!)
             {
                 oldIndexes.append(index)
             }
         }
+//        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) {
+//
+//            if let index = Int((($0.0.item as! NSPasteboardItem).string(forType: "public.data"))!)
+//            {
+//                oldIndexes.append(index)
+//            }
+//        }
         
         var oldIndexOffset = 0
         var newIndexOffset = 0
@@ -359,13 +368,13 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     {
         let object = dataArray[row] as! NSMutableDictionary
         
-        if ((tableColumn!.identifier) == "enableColumn")
+        if ((tableColumn!.identifier).rawValue == "enableColumn")
         {
             let status : Bool = object[tableColumn!.identifier] as! Bool
             
             return status
         }
-        else if ((tableColumn!.identifier) == "templateColumn")
+        else if ((tableColumn!.identifier).rawValue == "templateColumn")
         {
             return object[tableColumn!.identifier] as? String!
         }
@@ -376,7 +385,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             let value : String = dict.object(forKey: "templateColumn") as! String
             var components : [String] = value.components(separatedBy: ".") as [String]
             
-            let image : NSImage = NSWorkspace.shared().icon(forFileType: components[1])
+            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
             
             return image
         }
@@ -384,7 +393,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     
     func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int)
     {
-        if (tableColumn?.identifier == "enableColumn")
+        if (tableColumn?.identifier.rawValue == "enableColumn")
         {
             //let objectReplace : NSMutableDictionary = dataArray[row] as! NSMutableDictionary
             let temp : Any? = dataArray.object(at: row)
@@ -441,10 +450,10 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     
     // MARK: - MASPreferencesViewController
     
-    override var identifier: String? {
+    override var identifier: NSUserInterfaceItemIdentifier? {
         
         get {
-            return SMLocalizedString("advanced")
+            return NSUserInterfaceItemIdentifier(SMLocalizedString("advanced"))
         }
         
         set {
@@ -453,7 +462,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     }
     
     var toolbarItemImage: NSImage {
-        return NSImage(named:NSImageNameAdvanced)!
+        return NSImage(named:NSImage.Name.advanced)!
     }
     
     var toolbarItemLabel: String {
