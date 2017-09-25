@@ -235,7 +235,7 @@ class FinderSync: FIFinderSync
             self.savePanel.begin { ( result :NSApplication.ModalResponse) in
                 
 //                if result == NSFileHandlingPanelCancelButton
-                if result == .stop
+                if (result == NSApplication.ModalResponse.cancel)
                 {
                     let rows : [String] = self.createRows() as! [String]
                     
@@ -247,7 +247,7 @@ class FinderSync: FIFinderSync
                 }
                 
 //                if result == NSFileHandlingPanelOKButton
-                if result == .continue
+                if (result == NSApplication.ModalResponse.OK)
                 {
                     let valueFile : String = self.templates[self.popupButton.indexOfSelectedItem] as! String
                     //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]

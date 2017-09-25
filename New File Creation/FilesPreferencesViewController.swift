@@ -50,7 +50,9 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.regular
         
         table.reloadData()
-        table.registerForDraggedTypes([NSPasteboard.PasteboardType(rawValue: "public.data")])
+     
+        //NSPasteboard.PasteboardType("public.file-url")
+        table.registerForDraggedTypes([NSPasteboard.PasteboardType("public.data"), NSPasteboard.PasteboardType("public.file-url")])
 
         addTemplateButton.image = NSImage(named: NSImage.Name.addTemplate)
         removeTemplateButton.image = NSImage(named: NSImage.Name.removeTemplate)
@@ -172,6 +174,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             panel.showsResizeIndicator = false
             panel.isAutodisplay = true
             panel.disableSnapshotRestoration()
+            panel.allowsMultipleSelection = true
             
             let desktopPath : String = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true)[0] 
             
@@ -180,78 +183,92 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             panel.begin { (result : NSApplication.ModalResponse) -> Void in
                 
 //                if result == NSFileHandlingPanelCancelButton
-                if result == .stop
+                if result == NSApplication.ModalResponse.cancel
                 {
                 
                 }
                 
 //                if (result == NSFileHandlingPanelOKButton)
-                if (result == .continue)
+                if (result == NSApplication.ModalResponse.OK)
                 {
-                    let choosenFile : URL! = (panel.url! as NSURL).filePathURL!
+                    let urls : [URL] = panel.urls
                     
-                    let pathString : String = choosenFile.resolvingSymlinksInPath().path
-
-//                    let fileManager : NSFileManager = NSFileManager()
-                    let finalPath : String = FileManager.applicationDirectory().appendingPathComponent(choosenFile.lastPathComponent)
-                    
-                    var exists : Bool = false
-                    
-                    for item in FileManager.listTemplates()
-                    {
-                        let itemStr : String = item as! String
+                    for urlItem in urls {
                         
-                        if (NSURL(fileURLWithPath: itemStr).lastPathComponent!.lowercased() == NSURL(fileURLWithPath: finalPath).lastPathComponent!.lowercased())
-                        {
-                            exists = true
-                            break
+                        let urlObject : NSURL = NSURL(fileURLWithPath: urlItem.path)
+                        
+                        if (!self.isDirectory(pathURL: urlObject)) {
+                            self.addURLFile(fileURLItem: urlItem)
                         }
-                    }
-                    
-                    if exists
-                    {
-                        SMLog("plantilla ya existe")
-                        
-                        SMObject.showModalAlert(SMLocalizedString("warning"), message: SMLocalizedString("templateExists"))
-                    }
-                    else
-                    {
-                        _ = FileManager.copyNewTemplateFileToApplicationSupport(pathString)
-                        
-                        SMLog("path: " + pathString)
-                        
-                        let dict : NSMutableDictionary = NSMutableDictionary()
-                        
-                        dict.setObject(1, forKey: "enableColumn" as NSCopying)
-                        dict.setObject(1, forKey: "active" as NSCopying)
-                        
-                        let tempURL : URL = URL(fileURLWithPath: pathString)
-                        dict.setObject(tempURL.lastPathComponent, forKey: "templateColumn" as NSCopying)
-                        
-                        let templatesArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
-                        
-                        templatesArray.add(dict)
-                        
-                        _ = Preferences.setTemplatesTablePreferences(templatesArray);
-                        
-                        self.dataArray = NSMutableArray(array: self.obtainRows())
-                        
-                        self.table.reloadData()
-                        
-                        if (self.dataArray.count > 0)
-                        {
-                            self.table.scrollRowToVisible(self.dataArray.count - 1)
-                        }
-                        
-                        SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
                     }
                 }
             }
         })
     }
     
-    // MARK: - NSTableViewDataSource & NSTableViewDelegate methods
+    func addURLFile(fileURLItem: URL) {
     
+        let choosenFile : URL! = (fileURLItem as NSURL).filePathURL!
+        
+        let pathString : String = choosenFile.resolvingSymlinksInPath().path
+        
+        //                    let fileManager : NSFileManager = NSFileManager()
+        let finalPath : String = FileManager.applicationDirectory().appendingPathComponent(choosenFile.lastPathComponent)
+        
+        var exists : Bool = false
+        
+        for item in FileManager.listTemplates()
+        {
+            let itemStr : String = item as! String
+            
+            if (NSURL(fileURLWithPath: itemStr).lastPathComponent!.lowercased() == NSURL(fileURLWithPath: finalPath).lastPathComponent!.lowercased())
+            {
+                exists = true
+                break
+            }
+        }
+        
+        if exists
+        {
+            SMLog("plantilla ya existe")
+            
+            SMObject.showModalAlert(SMLocalizedString("warning"), message: SMLocalizedString("templateExists"))
+        }
+        else
+        {
+            _ = FileManager.copyNewTemplateFileToApplicationSupport(pathString)
+            
+            SMLog("path: " + pathString)
+            
+            let dict : NSMutableDictionary = NSMutableDictionary()
+            
+            dict.setObject(1, forKey: "enableColumn" as NSCopying)
+            dict.setObject(1, forKey: "active" as NSCopying)
+            
+            let tempURL : URL = URL(fileURLWithPath: pathString)
+            dict.setObject(tempURL.lastPathComponent, forKey: "templateColumn" as NSCopying)
+            
+            let templatesArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+            
+            templatesArray.add(dict)
+            
+            _ = Preferences.setTemplatesTablePreferences(templatesArray);
+            
+            self.dataArray = NSMutableArray(array: self.obtainRows())
+            
+            self.table.reloadData()
+            
+            if (self.dataArray.count > 0)
+            {
+                self.table.scrollRowToVisible(self.dataArray.count - 1)
+            }
+            
+            SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
+        }
+    }
+    
+    // MARK: - NSTableViewDataSource & NSTableViewDelegate methods
+
     func tableView(_ tableView: NSTableView, pasteboardWriterForRow row: Int) -> NSPasteboardWriting?
     {
         let item = NSPasteboardItem()
@@ -275,11 +292,38 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         var oldIndexes = [Int]()
         
         info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) { ( draggingItem: NSDraggingItem, idx: Int, stop: UnsafeMutablePointer<ObjCBool>) in
-            
-            if let index = Int(((draggingItem.item as! NSPasteboardItem).string(forType: NSPasteboard.PasteboardType(rawValue: "public.data")))!)
+     
+            let pasteItem : NSPasteboardItem = (draggingItem.item as! NSPasteboardItem)
+            let strIndex: String? = pasteItem.string(forType: NSPasteboard.PasteboardType(rawValue: "public.data"))
+
+            if (strIndex != nil)
             {
-                oldIndexes.append(index)
+                if let index = Int(strIndex!)
+                {
+                    oldIndexes.append(index)
+                }
             }
+//            else
+//            {
+//                let path = pasteItem.string(forType: NSPasteboard.PasteboardType(rawValue: "public.file-url"))
+                //            let url : NSURL = NSURL(fileURLWithPath: path!)
+                //            print("\(url.absoluteString!)")
+                
+//                let pb: NSPasteboard = info.draggingPasteboard()
+                
+                //list the file type UTIs we want to accept
+//                NSArray* acceptedTypes = [NSArray arrayWithObject:"public.file-url"];
+                
+//                let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:"public.file-url"]
+//
+//                let arrayURLs: NSArray = pb.readObjects(forClasses: [NSURL.self], options: filteringOptions)! as NSArray
+//                print("cocunt urls: \(arrayURLs.count)")
+//                NSArray* urls = [pb readObjectsForClasses:[NSArray arrayWithObject:[NSURL class]]
+//                    options:[NSDictionary dictionaryWithObjectsAndKeys:
+//                    [NSNumber numberWithBool:YES],NSPasteboardURLReadingFileURLsOnlyKey,
+//                    acceptedTypes, NSPasteboardURLReadingContentsConformToTypesKey,
+//                    nil]];
+//            }
         }
 //        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) {
 //
@@ -289,74 +333,126 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
 //            }
 //        }
         
-        var oldIndexOffset = 0
-        var newIndexOffset = 0
-        
-        // For simplicity, the code below uses `tableView.moveRowAtIndex` to move rows around directly.
-        // You may want to move rows in your content array and then call `tableView.reloadData()` instead.
-        tableView.beginUpdates()
-        
-        for oldIndex in oldIndexes
+        if (oldIndexes.count == 0)
         {
-            if oldIndex < row
-            {
-                let finalOldIndex : Int = oldIndex + oldIndexOffset
-                let finalNewIndex : Int = row - 1
+            let pb: NSPasteboard = info.draggingPasteboard()
+
+            let filteringOptions : [NSPasteboard.ReadingOptionKey : Any] = [NSPasteboard.ReadingOptionKey.urlReadingFileURLsOnly : NSNumber.init(booleanLiteral: true)]
+            
+            let arrayURLs: NSArray = pb.readObjects(forClasses: [NSURL.self as AnyClass], options: filteringOptions)! as NSArray
+            SMLog("count urls: \(arrayURLs.count)")
+            
+            for itemURL in arrayURLs {
                 
-                tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
-                oldIndexOffset -= 1
+                let url: NSURL = itemURL as! NSURL
                 
-                SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
+                if (!self.isDirectory(pathURL: url)) {
+                    
+                    self.addURLFile(fileURLItem: URL(fileURLWithPath: url.path!))
+                }
                 
-                let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
-                
-                let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
-                
-                let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
-                let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
-                
-                tempArray.removeObject(at: originalOldIndex)
-                tempArray.insert(object, at: originalNewIndex)
-                
-                _ = Preferences.setTemplatesTablePreferences(tempArray)
-    
-                dataArray.removeObject(at: finalOldIndex)
-                dataArray.insert(object, at: finalNewIndex)
-            }
-            else
-            {
-                let finalOldIndex : Int = oldIndex
-                let finalNewIndex : Int = row + newIndexOffset
-                
-                tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
-                 newIndexOffset += 1
-                SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
-                
-                let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
-                
-                let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
-                
-                let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
-                let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
-                
-                tempArray.removeObject(at: originalOldIndex)
-                tempArray.insert(object, at: originalNewIndex)
-                
-                _ = Preferences.setTemplatesTablePreferences(tempArray)
-        
-                dataArray.removeObject(at: finalOldIndex)
-                dataArray.insert(object, at: finalNewIndex)
+                SMLog("url path: \(String(describing: url.path))")
             }
         }
+        else
+        {
+            var oldIndexOffset = 0
+            var newIndexOffset = 0
+            
+            // For simplicity, the code below uses `tableView.moveRowAtIndex` to move rows around directly.
+            // You may want to move rows in your content array and then call `tableView.reloadData()` instead.
+            tableView.beginUpdates()
+            
+            for oldIndex in oldIndexes
+            {
+                if oldIndex < row
+                {
+                    let finalOldIndex : Int = oldIndex + oldIndexOffset
+                    let finalNewIndex : Int = row - 1
+                    
+                    tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
+                    oldIndexOffset -= 1
+                    
+                    SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
+                    
+                    let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
+                    
+                    let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+                    
+                    let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
+                    let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
+                    
+                    tempArray.removeObject(at: originalOldIndex)
+                    tempArray.insert(object, at: originalNewIndex)
+                    
+                    _ = Preferences.setTemplatesTablePreferences(tempArray)
+                    
+                    dataArray.removeObject(at: finalOldIndex)
+                    dataArray.insert(object, at: finalNewIndex)
+                }
+                else
+                {
+                    let finalOldIndex : Int = oldIndex
+                    let finalNewIndex : Int = row + newIndexOffset
+                    
+                    tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
+                    newIndexOffset += 1
+                    SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
+                    
+                    let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
+                    
+                    let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+                    
+                    let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
+                    let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
+                    
+                    tempArray.removeObject(at: originalOldIndex)
+                    tempArray.insert(object, at: originalNewIndex)
+                    
+                    _ = Preferences.setTemplatesTablePreferences(tempArray)
+                    
+                    dataArray.removeObject(at: finalOldIndex)
+                    dataArray.insert(object, at: finalNewIndex)
+                }
+            }
+            
+            tableView.endUpdates()
+        }
         
-        tableView.endUpdates()
-
         tableView.reloadData()
 
         SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
         
         return true
     }
+    
+    func isDirectory(pathURL: NSURL) -> Bool {
+        
+        var isDirectory : ObjCBool = false
+        let fileExistsAtPath : Bool  = Foundation.FileManager.default.fileExists(atPath: pathURL.path!, isDirectory: &isDirectory)
+        
+        if (fileExistsAtPath)
+        {
+            if isDirectory.boolValue
+            {
+                // It's a Directory.
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+//    func performDragOperation(_ sender: NSDraggingInfo) -> Bool
+//    {
+//        let board: NSArray = (sender.draggingPasteboard().propertyList(forType: NSPasteboard.PasteboardType(rawValue: "public.file-url")) as? NSArray)!
+//
+//        if (board.count > 0)
+//        {
+//            return true
+//        }
+//        return false
+//    }
     
     func numberOfRows(in aTableView: NSTableView) -> Int
     {

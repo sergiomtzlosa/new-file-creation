@@ -283,13 +283,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 //        self.savePanel.begin { ( result :Int) in
             
 //            if (result == NSFileHandlingPanelCancelButton)
-            if (result == .stop)
+            if (result == NSApplication.ModalResponse.cancel)
             {
                 self.isShowing = false
             }
             
 //            if (result == NSFileHandlingPanelOKButton)
-            if (result == .continue)
+            if (result == NSApplication.ModalResponse.OK)
             {
                 let valueFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
                 //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
@@ -1150,7 +1150,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             var error : NSError?
             
-            if result == .stop {
+            if result == NSApplication.ModalResponse.cancel {
                 
                 let rows : [String] = self.createRows() as! [String]
                 
@@ -1161,8 +1161,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 self.isShowing = false
             }
             
-            if result == .continue {
-                
+            if (result == NSApplication.ModalResponse.OK)
+            {
                 let valueFile : String = self.templates[self.popupButton.indexOfSelectedItem] as! String
                 //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
                 
