@@ -23,7 +23,7 @@ fileprivate extension NSTouchBarItem.Identifier {
     
     static let customViewIdentifier = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.items.customView")
     
-    static let identifierCustom = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.customTouchBar")
+//    static let identifierCustom = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.customTouchBar")
 }
 
 @available(OSX 10.12.2, *)
@@ -404,7 +404,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         visualEffectView.blendingMode = NSVisualEffectView.BlendingMode.behindWindow
         visualEffectView.state = NSVisualEffectView.State.active
         
-        window.styleMask = NSWindow.StyleMask.fullSizeContentView
+//        window.styleMask = NSWindow.StyleMask.fullSizeContentView
         window.titlebarAppearsTransparent = true
 
         window.contentView!.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
@@ -980,7 +980,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     @available(OSX 10.12.2, *)
     func createScrollView() -> NSCustomTouchBarItem {
         
-        let files : NSArray = NSArray(array: extractFiles())
+        let files : NSArray = NSArray(array : extractFiles())
         
         let widthButton = CGFloat(144)
         let heightButton = CGFloat(30)
@@ -1045,7 +1045,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         scrollView.contentView.setBoundsSize(rect.size)
         scrollView.contentView.setFrameSize(rect.size)
 
-        let customItem : NSCustomTouchBarItem = NSCustomTouchBarItem.init(identifier: .identifierCustom)
+        let customItem : NSCustomTouchBarItem = NSCustomTouchBarItem.init(identifier: .customViewIdentifier)
         
         customItem.view = scrollView
         
