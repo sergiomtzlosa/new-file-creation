@@ -22,8 +22,6 @@ let kFocusedAdvancedControlIndex = "FocusedAdvancedControlIndex"
 fileprivate extension NSTouchBarItem.Identifier {
     
     static let customViewIdentifier = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.items.customView")
-    
-//    static let identifierCustom = NSTouchBarItem.Identifier("com.sergiomtzlosa.filecreation.touchbar.customTouchBar")
 }
 
 @available(OSX 10.12.2, *)
