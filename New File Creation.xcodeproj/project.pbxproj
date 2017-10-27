@@ -88,6 +88,7 @@
 		1FBE2C571FA3919100E4E3CF /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2C4C1FA38DAA00E4E3CF /* RFOverlayScrollView.m */; };
 		1FBE2C591FA3919100E4E3CF /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */; };
 		1FBE2C5A1FA391C700E4E3CF /* SMScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CB48F1B763DFE00CC6AF4 /* SMScrollView.swift */; };
+		1FBE2C5B1FA392C100E4E3CF /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA1C8A1B7BCFE000E97BF8 /* Utils.swift */; };
 		1FC221D71E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC221D61E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib */; };
 		1FC221D91E7C585900B37AE0 /* TouchBarPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC221D81E7C585900B37AE0 /* TouchBarPreferencesViewController.swift */; };
 		1FC7ADE51B80677F00015E97 /* application_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC7ADE41B80677F00015E97 /* application_prefs.plist */; };
@@ -860,6 +861,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FBE2C5B1FA392C100E4E3CF /* Utils.swift in Sources */,
 				1FBE2C5A1FA391C700E4E3CF /* SMScrollView.swift in Sources */,
 				1FBE2C571FA3919100E4E3CF /* RFOverlayScrollView.m in Sources */,
 				1FBE2C591FA3919100E4E3CF /* RFOverlayScroller.m in Sources */,
