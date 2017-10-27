@@ -263,7 +263,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         self.savePanel.directoryURL = destination
         self.savePanel.isAutodisplay = true
-//        let result : NSInteger = self.savePanel.runModal()
+        let result : NSApplication.ModalResponse = self.savePanel.runModal()
         var error : NSError?
         
         if (error != nil)
@@ -277,8 +277,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
 //        NSApplication.ModalResponse.continue
         
-        self.savePanel.begin { (result : NSApplication.ModalResponse) in
-            
+//        self.savePanel.begin { (result : NSApplication.ModalResponse) in
+        
 //        }
 //        self.savePanel.begin { ( result :Int) in
             
@@ -349,7 +349,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 
                 self.isShowing = false
             }
-        }
+//        }
     }
     
     func extractFiles() -> NSArray

@@ -20,17 +20,55 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     var table : NSTableView!
     var savePanel : NSSavePanel!
     var dataFiles : NSArray = []
-
-//    override var nibName: NSNib.Name? {
-//
-//        return NSNib.Name("TodayViewController")
-//    }
+    var overlayScrollView : SMScrollView!
     
-    override func viewWillTransition(to newSize: NSSize) {
-
-        presetMainView()
+    var widgetAllowsEditing: Bool {
+        return false
     }
     
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+    }
+
+    override func viewWillAppear() {
+        
+        presetMainView()
+        
+        if (table == nil) {
+            
+            createTable()
+        }
+        
+        updatePreferredContentSize()
+
+        super.viewWillAppear()
+    }
+    
+    func updatePreferredContentSize() {
+        
+        table.needsLayout = true
+        table.layoutSubtreeIfNeeded()
+        
+        let height = TABLE_HEIGHT
+        let width: CGFloat = 320
+        
+        preferredContentSize = CGSize(width: width, height: height)
+    }
+    
+    override var nibName: NSNib.Name? {
+
+        return NSNib.Name("TodayViewController")
+    }
+    
+    override func present(inWidget viewController: NSViewController) {
+
+    }
+
+    override func viewWillTransition(to newSize: NSSize) {
+       
+    }
+
     func presetMainView() {
         
         self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
@@ -39,47 +77,34 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         if table != nil {
             table.reloadData()
         }
-        
-        self.preferredContentSize = NSMakeSize(50, TABLE_HEIGHT)
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
 
-        if (table == nil) {
-            
-            createTable();
-        }
-        
-        table.isHidden = true
-        
-        presetMainView()
-//        table.reloadData()
         completionHandler(.newData)
-        
-        table.isHidden = false
     }
 
     func createTable() {
         
         let customView : NSView = self.view
-        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(-10, 0, customView.frame.width, TABLE_HEIGHT))
+        overlayScrollView = SMScrollView(frame: NSMakeRect(0, 0, customView.frame.width, TABLE_HEIGHT))
         
         overlayScrollView.verticalLineScroll = 1.0
         overlayScrollView.verticalPageScroll = 1.0
         overlayScrollView.hasVerticalScroller = true
-        overlayScrollView.backgroundColor = NSColor.red
+        overlayScrollView.backgroundColor = NSColor.clear
         overlayScrollView.scrollerStyle = NSScroller.Style.overlay
         overlayScrollView.hasHorizontalScroller = false
         overlayScrollView.drawsBackground = false
         overlayScrollView.pageScroll = overlayScrollView.contentSize.height
         overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollView.wantsLayer = true
+        overlayScrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        table = NSTableView(frame: NSMakeRect(-1, 0, overlayScrollView.frame.size.width + 1, overlayScrollView.frame.height))
+        table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
         
         table.target = self;
         table.doubleAction = #selector(TodayViewController.doubleClick(_:));
-        
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         table.layer?.cornerRadius = 0
         table.layer?.borderColor = NSColor.clear.cgColor
@@ -88,6 +113,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         table.delegate = self
         table.dataSource = self
         table.backgroundColor = NSColor.clear
+        table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
         
         //Registering dragged Types
         
@@ -112,8 +138,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
-        
-//        table.reloadData()
     }
     
     @objc func doubleClick(_ object : AnyObject) {
@@ -132,7 +156,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             let sourcePathFile : String = FileManager.resolvePathForFile(item)
  
             DispatchQueue.main.async(execute: {
-                
+            
                 self.launchSavePanel(sourcePathFile)
             })
         }
@@ -154,8 +178,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     {
         if tableColumn!.identifier.rawValue == "column1"
         {
-            let
-            cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
+            let cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
             cellView.identifier = NSUserInterfaceItemIdentifier(rawValue: "row" + String(row))
             
             let value : String = self.dataFiles.object(at: row) as! String
@@ -338,12 +361,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         self.savePanel.becomeFirstResponder()
         
         NSApp.mainWindow?.makeKeyAndOrderFront(self.savePanel)
-        
+//        self.savePanel.runModal()
         let destination : URL = target
         
         self.savePanel.directoryURL = destination
         self.savePanel.isAutodisplay = true
-//        let result : NSInteger = self.savePanel.runModal()
+        let result : NSApplication.ModalResponse = self.savePanel.runModal()
         var error : NSError?
         
         if (error != nil)
@@ -357,8 +380,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         }
 //        NSApplication.ModalResponse.continue
         
-        self.savePanel.begin { (result : NSApplication.ModalResponse) in
-            
+//        self.savePanel.begin { (result : NSApplication.ModalResponse) in
+        
 //        }
 //        self.savePanel.begin { ( result :Int) in
             
@@ -429,7 +452,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
                 
                 self.isShowing = false
             }
-        }
+//        }
+    }
+    
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
+        
+        return NSEdgeInsetsZero
     }
     
 //    @objc func eventTodayExtension(_ notification : Notification)
