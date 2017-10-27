@@ -32,23 +32,25 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     }
 
     override func viewWillAppear() {
-        
+
         presetMainView()
+        updatePreferredContentSize()
         
         if (table == nil) {
             
             createTable()
         }
-        
-        updatePreferredContentSize()
 
         super.viewWillAppear()
     }
     
     func updatePreferredContentSize() {
         
-        table.needsLayout = true
-        table.layoutSubtreeIfNeeded()
+        if (table != nil) {
+            
+            table.needsLayout = true
+            table.layoutSubtreeIfNeeded()
+        }
         
         let height = TABLE_HEIGHT
         let width: CGFloat = 320
@@ -75,13 +77,21 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         self.appSettings = Preferences.readPlistApplicationPreferences()
         
         if table != nil {
+            
             table.reloadData()
         }
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
 
-        completionHandler(.newData)
+        if (table != nil) 
+        {
+            completionHandler(.newData)
+        }
+        else
+        {
+            completionHandler(.noData)
+        }
     }
 
     func createTable() {
@@ -99,10 +109,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         overlayScrollView.pageScroll = overlayScrollView.contentSize.height
         overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollView.wantsLayer = true
-        overlayScrollView.translatesAutoresizingMaskIntoConstraints = false
+        overlayScrollView.translatesAutoresizingMaskIntoConstraints = true
         
         table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
         
+        table.translatesAutoresizingMaskIntoConstraints = true
         table.target = self;
         table.doubleAction = #selector(TodayViewController.doubleClick(_:));
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
@@ -127,7 +138,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
         
-        column1.width = customView.frame.size.width - 2
+        column1.width = customView.frame.size.width
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         
         table.addTableColumn(column1)
@@ -138,6 +149,12 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
+        
+//        let topViews : [String : Any] = ["overlayScrollView" : overlayScrollView]
+//
+//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[overlayScrollView]|", options: .alignAllLastBaseline, metrics: nil, views: topViews))
+//
+//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[overlayScrollView]|", options: .alignAllLastBaseline, metrics:nil, views:topViews))
     }
     
     @objc func doubleClick(_ object : AnyObject) {
@@ -210,7 +227,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             let extensionFile : String = components[1].uppercased()
             
-            SMLog("text cell: \(extensionFile)")
+//            SMLog("text cell: \(extensionFile)")
             let strText : String = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
 
             if strText == "newFileMask"
