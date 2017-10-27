@@ -10,34 +10,64 @@ import Cocoa
 import NotificationCenter
 
 let CELL_HEIGHT : CGFloat = 50
+let TABLE_HEIGHT : CGFloat = 400
+let kFileName = "NewFile"
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataSource, NSTableViewDelegate {
 
+    var appSettings : NSDictionary!
+    var isShowing : Bool?
     var table : NSTableView!
+    var savePanel : NSSavePanel!
     var dataFiles : NSArray = []
-    
-    override var nibName: NSNib.Name? {
-        
-        return NSNib.Name("TodayViewController")
-    }
 
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+//    override var nibName: NSNib.Name? {
+//
+//        return NSNib.Name("TodayViewController")
+//    }
+    
+    override func viewWillTransition(to newSize: NSSize) {
+
+        presetMainView()
+    }
+    
+    func presetMainView() {
         
-        // Update your data and prepare for a snapshot. Call completion handler when you are done
-        // with NoData if nothing has changed or NewData if there is new data since the last
-        // time we called you
-        completionHandler(.noData)
+        self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
+        self.appSettings = Preferences.readPlistApplicationPreferences()
+        
+        if table != nil {
+            table.reloadData()
+        }
+        
+        self.preferredContentSize = NSMakeSize(50, TABLE_HEIGHT)
+    }
+    
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+
+        if (table == nil) {
+            
+            createTable();
+        }
+        
+        table.isHidden = true
+        
+        presetMainView()
+//        table.reloadData()
+        completionHandler(.newData)
+        
+        table.isHidden = false
     }
 
     func createTable() {
         
         let customView : NSView = self.view
-        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(0, 0, customView.frame.width, 350))
+        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(-10, 0, customView.frame.width, TABLE_HEIGHT))
         
         overlayScrollView.verticalLineScroll = 1.0
         overlayScrollView.verticalPageScroll = 1.0
         overlayScrollView.hasVerticalScroller = true
-        overlayScrollView.backgroundColor = NSColor.clear
+        overlayScrollView.backgroundColor = NSColor.red
         overlayScrollView.scrollerStyle = NSScroller.Style.overlay
         overlayScrollView.hasHorizontalScroller = false
         overlayScrollView.drawsBackground = false
@@ -83,7 +113,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
         
-        table.reloadData()
+//        table.reloadData()
     }
     
     @objc func doubleClick(_ object : AnyObject) {
@@ -92,21 +122,20 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
 //        {
 //            return
 //        }
-//        
-//        let rowNumber : NSInteger = table.clickedRow
-//        
-//        if (dataFiles.count > 0)
-//        {
-//            let item : String = dataFiles[rowNumber] as! String
-//            
-//            let sourcePathFile : String = FileManager.resolvePathForFile(item)
-//            
-//      
-//            DispatchQueue.main.async(execute: {
-//                
-//                self.launchSavePanel(sourcePathFile)
-//            })
-//        }
+        
+        let rowNumber : NSInteger = table.clickedRow
+        
+        if (dataFiles.count > 0)
+        {
+            let item : String = dataFiles[rowNumber] as! String
+            
+            let sourcePathFile : String = FileManager.resolvePathForFile(item)
+ 
+            DispatchQueue.main.async(execute: {
+                
+                self.launchSavePanel(sourcePathFile)
+            })
+        }
     }
     
     // MARK: - NSTableViewDatasource & NSTableViewDelegate methods
@@ -158,7 +187,18 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             let extensionFile : String = components[1].uppercased()
             
-            textField.stringValue = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
+            SMLog("text cell: \(extensionFile)")
+            let strText : String = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
+
+            if strText == "newFileMask"
+            {
+                textField.stringValue = ""
+            }
+            else
+            {
+                textField.stringValue = strText
+            }
+
             textField.alignment = NSTextAlignment.left;
             textField.font = NSFont.systemFont(ofSize: 12)
             textField.isBezeled = false
@@ -257,4 +297,145 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         return draggedFilenames as NSArray as! [String]
     }
+    
+    func launchSavePanel(_ sourceFile : String)
+    {
+        table.resignFirstResponder()
+        
+        NSApp.activate(ignoringOtherApps: true)
+        
+        if isShowing == true
+        {
+            return
+        }
+        
+        self.isShowing = true
+        
+        let desktopPath : String = (NSSearchPathForDirectoriesInDomains(Foundation.FileManager.SearchPathDirectory.desktopDirectory, Foundation.FileManager.SearchPathDomainMask.userDomainMask, true) as NSArray).object(at: 0) as! String
+        
+        let target = URL(fileURLWithPath: desktopPath)
+        
+        self.savePanel = NSSavePanel()
+        
+        let templateFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
+        var split : [String] = templateFile.components(separatedBy: ".")
+        let extensionString : String = split[1]
+        
+        self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
+        self.savePanel.becomeFirstResponder()
+        self.savePanel.title = SMLocalizedString("saveNewFileAs")
+        self.savePanel.showsTagField = false
+        self.savePanel.showsHiddenFiles = false
+        self.savePanel.showsToolbarButton = true
+        self.savePanel.canCreateDirectories = true
+        self.savePanel.becomeMain()
+        self.savePanel.level = NSWindow.Level(rawValue: 0)//Int(CGWindowLevelKey(key: CGWindowLevelKey.ModalPanelWindowLevelKey)?.rawValue)
+        self.savePanel.showsResizeIndicator = false
+        self.savePanel.disableSnapshotRestoration()
+        self.savePanel.isExtensionHidden = false
+        self.savePanel.allowedFileTypes = nil
+        self.savePanel.center()
+        self.savePanel.becomeFirstResponder()
+        
+        NSApp.mainWindow?.makeKeyAndOrderFront(self.savePanel)
+        
+        let destination : URL = target
+        
+        self.savePanel.directoryURL = destination
+        self.savePanel.isAutodisplay = true
+//        let result : NSInteger = self.savePanel.runModal()
+        var error : NSError?
+        
+        if (error != nil)
+        {
+            SMLog(error!.localizedDescription)
+            NSApp.presentError(error!)
+            
+            self.isShowing = false
+            
+            return
+        }
+//        NSApplication.ModalResponse.continue
+        
+        self.savePanel.begin { (result : NSApplication.ModalResponse) in
+            
+//        }
+//        self.savePanel.begin { ( result :Int) in
+            
+//            if (result == NSFileHandlingPanelCancelButton)
+            if (result == NSApplication.ModalResponse.cancel)
+            {
+                self.isShowing = false
+            }
+            
+//            if (result == NSFileHandlingPanelOKButton)
+            if (result == NSApplication.ModalResponse.OK)
+            {
+                let valueFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
+                //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
+                
+                //var extensionFile : String = components[1].lowercaseString
+                
+                let source : String = FileManager.resolvePathForFile(valueFile)
+                let destination : String = (self.savePanel.url! as NSURL).filePathURL!.resolvingSymlinksInPath().path
+                
+                self.savePanel.directoryURL = URL(fileURLWithPath: destination)
+                
+                let fileManager = Foundation.FileManager.default
+                
+                if fileManager.fileExists(atPath: destination) {
+                    
+                    SMLog("archivo existe: \(destination)")
+                    
+                    do {
+                        try fileManager.removeItem(at: URL(fileURLWithPath: destination))
+                    } catch let error1 as NSError {
+                        error = error1
+                        SMLog("error: \(error!.localizedDescription)")
+                    } catch {
+                        SMLog("error")
+                   
+                    }
+                }
+                
+                do {
+                    try Foundation.FileManager.default.copyItem(atPath: source, toPath: destination)
+                    SMLog("copied")
+                    
+                    let soundEnabled : Int = self.appSettings.object(forKey: "soundEnabled") as! Int
+                    
+                    if (soundEnabled == 1)
+                    {
+                        NSSound.init(named: NSSound.Name("dropped"))?.play()
+                    }
+                    
+                    let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
+                    
+                    if (openOncreation == 1)
+                    {
+                        Utils.openFile(destination)
+                    }
+                    
+                    let revealOnCreation : Int = self.appSettings.object(forKey: "revealOnCreation") as! Int
+                    
+                    if (revealOnCreation == 1)
+                    {
+                        Utils.revealInFinder(destination)
+                    }
+                } catch let error1 as NSError {
+                    error = error1
+                    SMLog("error: " + error!.localizedDescription)
+                }
+                
+                self.isShowing = false
+            }
+        }
+    }
+    
+//    @objc func eventTodayExtension(_ notification : Notification)
+//    {
+//        SMLog("llega extensiomn eventTodayExtension")
+//
+//        presetMainView()
+//    }
 }

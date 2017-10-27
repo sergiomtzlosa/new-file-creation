@@ -120,7 +120,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventLoadPopUp(_:)), name: kPopOverDidLoad)
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventFinderSync(_:)), name: kFinderSyncOption)
-
+        REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventTodayExtension(_:)), name: kTodayExtensionOption)
+        REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventTodayExtension(_:)), name: kTodayExtensionOption)
+        
         self.dataFiles = NSArray(array:extractFiles())
         
         let 👿 : Bool = self.launchOnLogin()
@@ -849,6 +851,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             self.table.reloadData()
             SMLog("pasa eventUpdateTableFromPreferences4")
             
+            // Update Today Extension
+            SCHEDULE_POSTNOTIFICATION(kTodayExtensionOption, object: nil)
+            
             if #available(OSX 10.12.2, *) {
 
                 SMLog("refresca");
@@ -862,6 +867,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         SMLog("llega eventFinderSync")
     }
     
+    @objc func eventTodayExtension(_ notification : Notification)
+    {
+        SMLog("llega eventTodayExtension")
+    }
+
     @objc func eventLoadPopUp(_ notification : Notification)
     {
         //var controller : WOMPopoverController = notification.object as! WOMPopoverController

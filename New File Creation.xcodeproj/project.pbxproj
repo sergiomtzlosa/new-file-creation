@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F011F191FA3A8C00065FC4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F80E6741BA1C358002B33CD /* Localizable.strings */; };
 		1F067ACC1B7510DF00DB6A6F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACB1B7510DF00DB6A6F /* Cocoa.framework */; };
 		1F067ACE1B7510E300DB6A6F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACD1B7510E300DB6A6F /* Foundation.framework */; };
 		1F067ACF1B7510E700DB6A6F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACB1B7510DF00DB6A6F /* Cocoa.framework */; };
@@ -74,6 +75,11 @@
 		1F9853B31BA20318000B8593 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AD1BA20318000B8593 /* unzip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		1F9853B41BA20318000B8593 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AF1BA20318000B8593 /* zip.c */; };
 		1FA507141B79271C004C2994 /* icon-menulet-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA507131B79271C004C2994 /* icon-menulet-white.png */; };
+		1FBC44E11FA3A2500001F828 /* UtilsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC44E01FA3A2500001F828 /* UtilsExtension.swift */; };
+		1FBC44E31FA3A33C0001F828 /* templates_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F70576A1B7FA7AA0081852B /* templates_prefs.plist */; };
+		1FBC44E41FA3A33C0001F828 /* application_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC7ADE41B80677F00015E97 /* application_prefs.plist */; };
+		1FBC44E81FA3A5120001F828 /* dropped.aif in Resources */ = {isa = PBXBuildFile; fileRef = 1F6CB4911B76523700CC6AF4 /* dropped.aif */; };
+		1FBC452C1FA3A64D0001F828 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 1F2960721B7734790020D030 /* Templates */; };
 		1FBD3CF31B8238D500BF935F /* Volumes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD3CF21B8238D500BF935F /* Volumes.m */; settings = {COMPILER_FLAGS = "-w -analyzer-disable-all-checks"; }; };
 		1FBD3CF51B823AE400BF935F /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBD3CF41B823AE400BF935F /* DiskArbitration.framework */; };
 		1FBD3CF71B823AF000BF935F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBD3CF61B823AF000BF935F /* CoreFoundation.framework */; };
@@ -233,6 +239,8 @@
 		1F9853AF1BA20318000B8593 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		1F9853B01BA20318000B8593 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
 		1FA507131B79271C004C2994 /* icon-menulet-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menulet-white.png"; sourceTree = "<group>"; };
+		1FBC44E01FA3A2500001F828 /* UtilsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsExtension.swift; sourceTree = "<group>"; };
+		1FBC44E51FA3A3810001F828 /* New File Creation Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "New File Creation Today.entitlements"; sourceTree = "<group>"; };
 		1FBD3CF11B8238D500BF935F /* Volumes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Volumes.h; sourceTree = "<group>"; };
 		1FBD3CF21B8238D500BF935F /* Volumes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Volumes.m; sourceTree = "<group>"; };
 		1FBD3CF41B823AE400BF935F /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
@@ -375,6 +383,8 @@
 		1F2DF0061FA386EB003154DC /* New File Creation Today */ = {
 			isa = PBXGroup;
 			children = (
+				1FBC44E51FA3A3810001F828 /* New File Creation Today.entitlements */,
+				1FBC44E21FA3A25C0001F828 /* UtilsExtension */,
 				1F2DF0071FA386EB003154DC /* TodayViewController.swift */,
 				1F2DF0091FA386EB003154DC /* TodayViewController.xib */,
 				1F2DF00C1FA386EB003154DC /* Info.plist */,
@@ -496,6 +506,14 @@
 				1F9853B01BA20318000B8593 /* zip.h */,
 			);
 			name = minizip;
+			sourceTree = "<group>";
+		};
+		1FBC44E21FA3A25C0001F828 /* UtilsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				1FBC44E01FA3A2500001F828 /* UtilsExtension.swift */,
+			);
+			path = UtilsExtension;
 			sourceTree = "<group>";
 		};
 		1FBD3CFB1B823C0200BF935F /* Volumes */ = {
@@ -731,6 +749,11 @@
 						DevelopmentTeam = 9Z3J82KRJR;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 1;
+							};
+						};
 					};
 					1F7FC1ED1B76B02600F53433 = {
 						CreatedOnToolsVersion = 6.4;
@@ -797,6 +820,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F011F191FA3A8C00065FC4F /* Localizable.strings in Resources */,
+				1FBC452C1FA3A64D0001F828 /* Templates in Resources */,
+				1FBC44E81FA3A5120001F828 /* dropped.aif in Resources */,
+				1FBC44E31FA3A33C0001F828 /* templates_prefs.plist in Resources */,
+				1FBC44E41FA3A33C0001F828 /* application_prefs.plist in Resources */,
 				1F2DF00B1FA386EB003154DC /* TodayViewController.xib in Resources */,
 				1F2DF00F1FA386EB003154DC /* InfoPlist.strings in Resources */,
 			);
@@ -869,6 +897,7 @@
 				1FBE2C541FA3912F00E4E3CF /* FileManager.swift in Sources */,
 				1FBE2C531FA3911B00E4E3CF /* Macros.swift in Sources */,
 				1FBE2C521FA390F300E4E3CF /* SMLog.swift in Sources */,
+				1FBC44E11FA3A2500001F828 /* UtilsExtension.swift in Sources */,
 				1FBE2C511FA390BB00E4E3CF /* Preferences.swift in Sources */,
 				1F2DF0081FA386EB003154DC /* TodayViewController.swift in Sources */,
 			);
@@ -1008,7 +1037,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New File Creation Today.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1037,13 +1066,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New File Creation Today.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9Z3J82KRJR;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = "DEVELOPMENT=1";
 				INFOPLIST_FILE = "New File Creation Today/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1064,7 +1094,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New File Creation Today.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;

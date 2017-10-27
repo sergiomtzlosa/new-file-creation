@@ -1,4 +1,4 @@
 /* Display name and description for this extension. */
 "CFBundleDisplayName" = "New File Creation Today";
 
-//"com.apple.notificationcenter.widget.description" = "Sample description";
+"com.apple.notificationcenter.widget.description" = "New File Creation Today";

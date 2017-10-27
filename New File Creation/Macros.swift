@@ -10,6 +10,7 @@ import Foundation
 
 let kPopOverDidLoad = "popover-did-load"
 let kFinderSyncOption = "findersync-menulet"
+let kTodayExtensionOption = "today-extension-item"
 let kChangeInterfaceNotification = "AppleInterfaceThemeChangedNotification"
 let kUpdateTableFromPreferences = "update-table-from-preferences"
 let kUpdateSettingCloud = "update-settings-icloud"
