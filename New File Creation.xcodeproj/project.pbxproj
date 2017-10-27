@@ -24,6 +24,11 @@
 		1F2960701B7734450020D030 /* SMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F11B713B32007283E5 /* SMLog.swift */; };
 		1F2960711B7734450020D030 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB72051B75FC1000467785 /* FileManager.swift */; };
 		1F2960731B7734790020D030 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 1F2960721B7734790020D030 /* Templates */; };
+		1F2DF0051FA386EB003154DC /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2DF0041FA386EB003154DC /* NotificationCenter.framework */; };
+		1F2DF0081FA386EB003154DC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2DF0071FA386EB003154DC /* TodayViewController.swift */; };
+		1F2DF00B1FA386EB003154DC /* TodayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2DF0091FA386EB003154DC /* TodayViewController.xib */; };
+		1F2DF00F1FA386EB003154DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F2DF00D1FA386EB003154DC /* InfoPlist.strings */; };
+		1F2DF0131FA386EB003154DC /* New File Creation Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F2DF0031FA386EB003154DC /* New File Creation Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1F2F85771B77474900BF4C4C /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F41B713B66007283E5 /* Macros.swift */; };
 		1F2F85841B776D5500BF4C4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F85831B776D5500BF4C4C /* AppKit.framework */; };
 		1F2F85851B776D5800BF4C4C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACB1B7510DF00DB6A6F /* Cocoa.framework */; };
@@ -49,7 +54,6 @@
 		1F6CB49D1B766B7300CC6AF4 /* SMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F11B713B32007283E5 /* SMLog.swift */; };
 		1F70576B1B7FA7AA0081852B /* templates_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F70576A1B7FA7AA0081852B /* templates_prefs.plist */; };
 		1F7798C11B79527400E25FA1 /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */; };
-		1F7798C41B7952E400E25FA1 /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7798C31B7952E400E25FA1 /* RFOverlayScrollView.m */; };
 		1F7C18DC1B7D110F00C1A671 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA1C8A1B7BCFE000E97BF8 /* Utils.swift */; };
 		1F7FC1F41B76B02600F53433 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FC1F31B76B02600F53433 /* FinderSync.swift */; };
 		1F7FC1F71B76B02600F53433 /* New File Creation Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F7FC1EE1B76B02600F53433 /* New File Creation Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -75,6 +79,15 @@
 		1FBD3CF71B823AF000BF935F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBD3CF61B823AF000BF935F /* CoreFoundation.framework */; };
 		1FBD3CF91B823AFE00BF935F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FBD3CF81B823AFE00BF935F /* IOKit.framework */; };
 		1FBD3CFA1B823BDB00BF935F /* Volumes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBD3CF21B8238D500BF935F /* Volumes.m */; settings = {COMPILER_FLAGS = " -w -analyzer-disable-all-checks"; }; };
+		1FBE2C4D1FA38DAA00E4E3CF /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2C4C1FA38DAA00E4E3CF /* RFOverlayScrollView.m */; };
+		1FBE2C511FA390BB00E4E3CF /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCD5BF1B7522E1007C8397 /* Preferences.swift */; };
+		1FBE2C521FA390F300E4E3CF /* SMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F11B713B32007283E5 /* SMLog.swift */; };
+		1FBE2C531FA3911B00E4E3CF /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F41B713B66007283E5 /* Macros.swift */; };
+		1FBE2C541FA3912F00E4E3CF /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB72051B75FC1000467785 /* FileManager.swift */; };
+		1FBE2C551FA3914B00E4E3CF /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CB4971B7659B600CC6AF4 /* String+Contains.swift */; };
+		1FBE2C571FA3919100E4E3CF /* RFOverlayScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FBE2C4C1FA38DAA00E4E3CF /* RFOverlayScrollView.m */; };
+		1FBE2C591FA3919100E4E3CF /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */; };
+		1FBE2C5A1FA391C700E4E3CF /* SMScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CB48F1B763DFE00CC6AF4 /* SMScrollView.swift */; };
 		1FC221D71E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC221D61E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib */; };
 		1FC221D91E7C585900B37AE0 /* TouchBarPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC221D81E7C585900B37AE0 /* TouchBarPreferencesViewController.swift */; };
 		1FC7ADE51B80677F00015E97 /* application_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FC7ADE41B80677F00015E97 /* application_prefs.plist */; };
@@ -104,6 +117,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1F2DF0111FA386EB003154DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1FF9568F1B712B7E007283E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F2DF0021FA386EB003154DC;
+			remoteInfo = "New File Creation Today";
+		};
 		1F7FC1F51B76B02600F53433 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1FF9568F1B712B7E007283E5 /* Project object */;
@@ -121,6 +141,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				1F7FC1F71B76B02600F53433 /* New File Creation Extension.appex in Embed App Extensions */,
+				1F2DF0131FA386EB003154DC /* New File Creation Today.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +175,13 @@
 		1F0A25041B7F2CDE008D394B /* settings-extension.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-extension.png"; sourceTree = "<group>"; };
 		1F0A25071B7F3433008D394B /* help.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help.rtfd; sourceTree = "<group>"; };
 		1F2960721B7734790020D030 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = "<group>"; };
+		1F2DF0031FA386EB003154DC /* New File Creation Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "New File Creation Today.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F2DF0041FA386EB003154DC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		1F2DF0071FA386EB003154DC /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		1F2DF00A1FA386EB003154DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TodayViewController.xib; sourceTree = "<group>"; };
+		1F2DF00C1FA386EB003154DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F2DF00E1FA386EB003154DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F2DF0101FA386EB003154DC /* New_File_Creation_Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = New_File_Creation_Today.entitlements; sourceTree = "<group>"; };
 		1F2F85831B776D5500BF4C4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1F5A06FC1B7D230B00B9F621 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		1F5A06FD1B7D230B00B9F621 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
@@ -175,8 +203,6 @@
 		1F70576A1B7FA7AA0081852B /* templates_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = templates_prefs.plist; sourceTree = "<group>"; };
 		1F7798BF1B79527400E25FA1 /* RFOverlayScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFOverlayScroller.h; sourceTree = "<group>"; };
 		1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFOverlayScroller.m; sourceTree = "<group>"; };
-		1F7798C21B7952E400E25FA1 /* RFOverlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFOverlayScrollView.h; sourceTree = "<group>"; };
-		1F7798C31B7952E400E25FA1 /* RFOverlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFOverlayScrollView.m; sourceTree = "<group>"; };
 		1F7FC1EE1B76B02600F53433 /* New File Creation Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "New File Creation Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7FC1F11B76B02600F53433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F7FC1F21B76B02600F53433 /* New_File_Creation_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = New_File_Creation_Extension.entitlements; sourceTree = "<group>"; };
@@ -212,6 +238,9 @@
 		1FBD3CF61B823AF000BF935F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		1FBD3CF81B823AFE00BF935F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		1FBD3D061B823EBF00BF935F /* New File Creation Extension-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "New File Creation Extension-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FBE2C461FA38C3200E4E3CF /* New File Creation Today-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "New File Creation Today-Bridging-Header.h"; sourceTree = "<group>"; };
+		1FBE2C4B1FA38DAA00E4E3CF /* RFOverlayScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFOverlayScrollView.h; sourceTree = "<group>"; };
+		1FBE2C4C1FA38DAA00E4E3CF /* RFOverlayScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFOverlayScrollView.m; sourceTree = "<group>"; };
 		1FC221D61E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TouchBarPreferencesViewController.xib; sourceTree = "<group>"; };
 		1FC221D81E7C585900B37AE0 /* TouchBarPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchBarPreferencesViewController.swift; sourceTree = "<group>"; };
 		1FC7ADE41B80677F00015E97 /* application_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = application_prefs.plist; sourceTree = "<group>"; };
@@ -248,6 +277,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1F2DF0001FA386EB003154DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2DF0051FA386EB003154DC /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F7FC1EB1B76B02600F53433 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +355,7 @@
 				1F067ADE1B75116400DB6A6F /* ServiceManagement.framework */,
 				1F067ACD1B7510E300DB6A6F /* Foundation.framework */,
 				1F067ACB1B7510DF00DB6A6F /* Cocoa.framework */,
+				1F2DF0041FA386EB003154DC /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -331,6 +369,19 @@
 				1FA507131B79271C004C2994 /* icon-menulet-white.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		1F2DF0061FA386EB003154DC /* New File Creation Today */ = {
+			isa = PBXGroup;
+			children = (
+				1F2DF0071FA386EB003154DC /* TodayViewController.swift */,
+				1F2DF0091FA386EB003154DC /* TodayViewController.xib */,
+				1F2DF00C1FA386EB003154DC /* Info.plist */,
+				1F2DF00D1FA386EB003154DC /* InfoPlist.strings */,
+				1F2DF0101FA386EB003154DC /* New_File_Creation_Today.entitlements */,
+				1FBE2C461FA38C3200E4E3CF /* New File Creation Today-Bridging-Header.h */,
+			);
+			path = "New File Creation Today";
 			sourceTree = "<group>";
 		};
 		1F5A06FB1B7D22FD00B9F621 /* MASPreferences */ = {
@@ -364,8 +415,8 @@
 		1F7798C51B7954E600E25FA1 /* Scrollers */ = {
 			isa = PBXGroup;
 			children = (
-				1F7798C21B7952E400E25FA1 /* RFOverlayScrollView.h */,
-				1F7798C31B7952E400E25FA1 /* RFOverlayScrollView.m */,
+				1FBE2C4B1FA38DAA00E4E3CF /* RFOverlayScrollView.h */,
+				1FBE2C4C1FA38DAA00E4E3CF /* RFOverlayScrollView.m */,
 				1F7798BF1B79527400E25FA1 /* RFOverlayScroller.h */,
 				1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */,
 			);
@@ -490,6 +541,7 @@
 				1FF956991B712B7E007283E5 /* New File Creation */,
 				1FF956D11B712C5A007283E5 /* New File Creation Helper */,
 				1F7FC1EF1B76B02600F53433 /* New File Creation Extension */,
+				1F2DF0061FA386EB003154DC /* New File Creation Today */,
 				1F067AE21B75117700DB6A6F /* Frameworks */,
 				1FF956981B712B7E007283E5 /* Products */,
 			);
@@ -501,6 +553,7 @@
 				1FF956971B712B7E007283E5 /* New File Creation.app */,
 				1FF956D01B712C5A007283E5 /* New File Creation Helper.app */,
 				1F7FC1EE1B76B02600F53433 /* New File Creation Extension.appex */,
+				1F2DF0031FA386EB003154DC /* New File Creation Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -589,6 +642,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		1F2DF0021FA386EB003154DC /* New File Creation Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F2DF0171FA386EB003154DC /* Build configuration list for PBXNativeTarget "New File Creation Today" */;
+			buildPhases = (
+				1F2DEFFF1FA386EB003154DC /* Sources */,
+				1F2DF0001FA386EB003154DC /* Frameworks */,
+				1F2DF0011FA386EB003154DC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "New File Creation Today";
+			productName = "New File Creation Today";
+			productReference = 1F2DF0031FA386EB003154DC /* New File Creation Today.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		1F7FC1ED1B76B02600F53433 /* New File Creation Extension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F7FC1F81B76B02600F53433 /* Build configuration list for PBXNativeTarget "New File Creation Extension" */;
@@ -620,6 +690,7 @@
 			);
 			dependencies = (
 				1F7FC1F61B76B02600F53433 /* PBXTargetDependency */,
+				1F2DF0121FA386EB003154DC /* PBXTargetDependency */,
 			);
 			name = "New File Creation";
 			productName = "New File Creation";
@@ -650,10 +721,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = com.sergiomtzlosa.filecreation;
 				TargetAttributes = {
+					1F2DF0021FA386EB003154DC = {
+						CreatedOnToolsVersion = 9.0.1;
+						DevelopmentTeam = 9Z3J82KRJR;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
 					1F7FC1ED1B76B02600F53433 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 9Z3J82KRJR;
@@ -709,11 +786,21 @@
 				1FF956961B712B7E007283E5 /* New File Creation */,
 				1FF956CF1B712C5A007283E5 /* New File Creation Helper */,
 				1F7FC1ED1B76B02600F53433 /* New File Creation Extension */,
+				1F2DF0021FA386EB003154DC /* New File Creation Today */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1F2DF0011FA386EB003154DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F2DF00B1FA386EB003154DC /* TodayViewController.xib in Resources */,
+				1F2DF00F1FA386EB003154DC /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F7FC1EC1B76B02600F53433 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -769,6 +856,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1F2DEFFF1FA386EB003154DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FBE2C5A1FA391C700E4E3CF /* SMScrollView.swift in Sources */,
+				1FBE2C571FA3919100E4E3CF /* RFOverlayScrollView.m in Sources */,
+				1FBE2C591FA3919100E4E3CF /* RFOverlayScroller.m in Sources */,
+				1FBE2C551FA3914B00E4E3CF /* String+Contains.swift in Sources */,
+				1FBE2C541FA3912F00E4E3CF /* FileManager.swift in Sources */,
+				1FBE2C531FA3911B00E4E3CF /* Macros.swift in Sources */,
+				1FBE2C521FA390F300E4E3CF /* SMLog.swift in Sources */,
+				1FBE2C511FA390BB00E4E3CF /* Preferences.swift in Sources */,
+				1F2DF0081FA386EB003154DC /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1F7FC1EA1B76B02600F53433 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,10 +897,10 @@
 				1FF956F51B713B66007283E5 /* Macros.swift in Sources */,
 				1F7798C11B79527400E25FA1 /* RFOverlayScroller.m in Sources */,
 				1FC221D91E7C585900B37AE0 /* TouchBarPreferencesViewController.swift in Sources */,
+				1FBE2C4D1FA38DAA00E4E3CF /* RFOverlayScrollView.m in Sources */,
 				1FCCD5BC1B751F34007C8397 /* SMLog.m in Sources */,
 				1F8AA2711B9B43EF00CF6894 /* String+Base64.swift in Sources */,
 				1F8AA26D1B9B2E6700CF6894 /* MAAttachedWindow.m in Sources */,
-				1F7798C41B7952E400E25FA1 /* RFOverlayScrollView.m in Sources */,
 				1F64DEAA1B7E52CA000B00CB /* GeneralPreferencesViewController.swift in Sources */,
 				1FEB72061B75FC1000467785 /* FileManager.swift in Sources */,
 				1F64DEB01B7E6A3A000B00CB /* HelpPreferencesViewController.swift in Sources */,
@@ -837,6 +940,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1F2DF0121FA386EB003154DC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F2DF0021FA386EB003154DC /* New File Creation Today */;
+			targetProxy = 1F2DF0111FA386EB003154DC /* PBXContainerItemProxy */;
+		};
 		1F7FC1F61B76B02600F53433 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1F7FC1ED1B76B02600F53433 /* New File Creation Extension */;
@@ -845,6 +953,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1F2DF0091FA386EB003154DC /* TodayViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F2DF00A1FA386EB003154DC /* Base */,
+			);
+			name = TodayViewController.xib;
+			sourceTree = "<group>";
+		};
+		1F2DF00D1FA386EB003154DC /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F2DF00E1FA386EB003154DC /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		1F80E6741BA1C358002B33CD /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -873,6 +997,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1F2DF0141FA386EB003154DC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9Z3J82KRJR;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "New File Creation Today/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergiomtzlosa.filecreation.todayextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Today/New File Creation Today-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		1F2DF0151FA386EB003154DC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9Z3J82KRJR;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "New File Creation Today/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergiomtzlosa.filecreation.todayextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Today/New File Creation Today-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		1F2DF0161FA386EB003154DC /* MacAppStore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "New File Creation Today/New_File_Creation_Today.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9Z3J82KRJR;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "New File Creation Today/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergiomtzlosa.filecreation.todayextension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation Today/New File Creation Today-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+			};
+			name = MacAppStore;
+		};
 		1F7FC1F91B76B02600F53433 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1043,6 +1250,7 @@
 		1FF956B21B712B7E007283E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
@@ -1076,6 +1284,7 @@
 		1FF956B31B712B7E007283E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
@@ -1152,6 +1361,7 @@
 		1FF956B81B712B9C007283E5 /* MacAppStore */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = NO;
@@ -1243,6 +1453,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1F2DF0171FA386EB003154DC /* Build configuration list for PBXNativeTarget "New File Creation Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F2DF0141FA386EB003154DC /* Debug */,
+				1F2DF0151FA386EB003154DC /* Release */,
+				1F2DF0161FA386EB003154DC /* MacAppStore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1F7FC1F81B76B02600F53433 /* Build configuration list for PBXNativeTarget "New File Creation Extension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
