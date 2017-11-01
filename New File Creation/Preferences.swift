@@ -11,9 +11,12 @@ import AppKit
 
 class Preferences : NSObject
 {
-    private static var __once: () = {
+    private static var __once: UserDefaults = {
+        
         let shared : UserDefaults = UserDefaults(suiteName: kGroupPreference)!
-        }()
+        
+        return shared
+    }()
     
     class func wantsLaunchAtLogin(_ launch : Bool) -> Bool
     {
@@ -262,10 +265,8 @@ class Preferences : NSObject
     }
     
     class func sharedUserDefaults() -> UserDefaults {
-        
-        let shared : UserDefaults = UserDefaults(suiteName: kGroupPreference)!
-        
-        return shared
+
+        return __once
     }
     
     class func setDefaultValues()
