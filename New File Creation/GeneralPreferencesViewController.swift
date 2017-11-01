@@ -80,11 +80,11 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     }
     
 //    @objc func sliderDocChanged(_ sender: NSSlider) {
-//        
+//
 //        let docRows: Int = Int(sliderDocumentsToday.intValue)
-//        
+//
 //        labelDocumentsToday.stringValue = SMLocalizedString("labelDocsToday") + " " + String(docRows) + " " + SMLocalizedString("documents")
-//        
+//
 //        _ = Preferences.setNumberOfRowsInTodayExtension(rows: docRows)
 //    }
     
