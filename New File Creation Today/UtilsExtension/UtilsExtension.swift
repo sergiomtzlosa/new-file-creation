@@ -49,7 +49,7 @@ class UtilsExtension {
         
         SMLog("aqui fin")
         
-        let finalArray :NSArray = NSArray(array: items)
+        let finalArray : NSArray = NSArray(array: items)
         return finalArray
     }
 }

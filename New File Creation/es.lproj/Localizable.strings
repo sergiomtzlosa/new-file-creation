@@ -86,3 +86,7 @@
 "textButtonTitle" = "Mostrar extensión del archivo en los botones del Touch Bar";
 
 "syncButtonTitle" = "Sincronizar las plantillas con Touch Bar";
+
+"labelDocsToday" = "Número de documentos en Today Widget:";
+
+"documents" = "documentos";

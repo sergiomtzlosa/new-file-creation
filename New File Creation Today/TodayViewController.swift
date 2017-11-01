@@ -9,8 +9,8 @@
 import Cocoa
 import NotificationCenter
 
-let CELL_HEIGHT : CGFloat = 50
-let TABLE_HEIGHT : CGFloat = 400
+let CELL_HEIGHT : CGFloat = 50.0
+
 let kFileName = "NewFile"
 
 class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataSource, NSTableViewDelegate {
@@ -20,9 +20,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     var table : NSTableView!
     var savePanel : NSSavePanel!
     var dataFiles : NSArray = []
-    var overlayScrollView : SMScrollView!
+    var timer : Timer!
+    var numOfRows : Int!
     
     var widgetAllowsEditing: Bool {
+        
         return false
     }
     
@@ -34,8 +36,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     override func viewWillAppear() {
 
         presetMainView()
-        updatePreferredContentSize()
-        
+
         if (table == nil) {
             
             createTable()
@@ -43,21 +44,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
 
         super.viewWillAppear()
     }
-    
-    func updatePreferredContentSize() {
-        
-        if (table != nil) {
-            
-            table.needsLayout = true
-            table.layoutSubtreeIfNeeded()
-        }
-        
-        let height = TABLE_HEIGHT
-        let width: CGFloat = 320
-        
-        preferredContentSize = CGSize(width: width, height: height)
-    }
-    
+
     override var nibName: NSNib.Name? {
 
         return NSNib.Name("TodayViewController")
@@ -75,6 +62,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
         self.appSettings = Preferences.readPlistApplicationPreferences()
+//        self.numOfRows = calculateRows()
         
         if table != nil {
             
@@ -94,26 +82,45 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         }
     }
 
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
+
+        var edges: NSEdgeInsets = defaultMarginInset
+        
+        edges.top = 0
+        edges.bottom = 0
+        edges.left = 0
+        edges.right = 0
+        
+        return edges
+    }
+    
+    func calculateHeighWidget() -> CGSize  {
+    
+        if (table == nil)
+        {
+            return CGSize.zero
+        }
+
+//        var heightTable : CGFloat = CGFloat(Float(calculateRows()) * Float(CELL_HEIGHT))
+        var heightTable : CGFloat = CGFloat(10 * Float(CELL_HEIGHT))
+        
+        heightTable += 13
+        
+        return CGSize(width: table.frame.size.width, height: heightTable)
+    }
+    
+    // MARK: NSTableView methods
     func createTable() {
         
         let customView : NSView = self.view
-        overlayScrollView = SMScrollView(frame: NSMakeRect(0, 0, customView.frame.width, TABLE_HEIGHT))
         
-        overlayScrollView.verticalLineScroll = 1.0
-        overlayScrollView.verticalPageScroll = 1.0
-        overlayScrollView.hasVerticalScroller = true
-        overlayScrollView.backgroundColor = NSColor.clear
-        overlayScrollView.scrollerStyle = NSScroller.Style.overlay
-        overlayScrollView.hasHorizontalScroller = false
-        overlayScrollView.drawsBackground = false
-        overlayScrollView.pageScroll = overlayScrollView.contentSize.height
-        overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
-        overlayScrollView.wantsLayer = true
-        overlayScrollView.translatesAutoresizingMaskIntoConstraints = true
-        
-        table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
-        
-        table.translatesAutoresizingMaskIntoConstraints = true
+        let heightTable : CGFloat = CGFloat(10 * Float(CELL_HEIGHT))
+
+        self.table = NSTableView(frame: NSMakeRect(0, 0, customView.frame.width, heightTable))
+
+        self.preferredContentSize = calculateHeighWidget()
+ 
+        table.translatesAutoresizingMaskIntoConstraints = false
         table.target = self;
         table.doubleAction = #selector(TodayViewController.doubleClick(_:));
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
@@ -126,14 +133,11 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         table.backgroundColor = NSColor.clear
         table.columnAutoresizingStyle = .uniformColumnAutoresizingStyle
         
-        //Registering dragged Types
-        
+        // Registering dragged Types
         let NSFilenamesPboardTypeTemp = NSPasteboard.PasteboardType("NSFilenamesPboardType")
-        
-        //        NSFilenamesPboardType
         table.registerForDraggedTypes([NSFilenamesPboardTypeTemp])
         
-        //To support across application passing NO
+        // To support across application passing NO
         table.setDraggingSourceOperationMask(NSDragOperation.copy, forLocal: false)
         
         let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
@@ -142,32 +146,44 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         
         table.addTableColumn(column1)
-        
-        overlayScrollView.documentView = table
-        customView.addSubview(overlayScrollView)
+        customView.addSubview(table)
         
         table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
+
+        if (timer != nil) {
+            
+            timer.invalidate()
+            timer = nil
+        }
         
-//        let topViews : [String : Any] = ["overlayScrollView" : overlayScrollView]
-//
-//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[overlayScrollView]|", options: .alignAllLastBaseline, metrics: nil, views: topViews))
-//
-//        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[overlayScrollView]|", options: .alignAllLastBaseline, metrics:nil, views:topViews))
+         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.reloadTimerTable), userInfo: nil, repeats: true)
+
+        timer.fire()
+    }
+    
+    @objc func reloadTimerTable() {
+        
+        if (table != nil) {
+            
+            self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
+//            numOfRows = calculateRows()
+            table.reloadData()
+        }
     }
     
     @objc func doubleClick(_ object : AnyObject) {
         
-//        if (!Preferences.loadDoubleClick())
-//        {
-//            return
-//        }
+        if (Preferences.loadDoubleClick() == false)
+        {
+            return
+        }
         
         let rowNumber : NSInteger = table.clickedRow
         
-        if (dataFiles.count > 0)
-        {
+//        if (calculateRows() > 0)
+//        {
             let item : String = dataFiles[rowNumber] as! String
             
             let sourcePathFile : String = FileManager.resolvePathForFile(item)
@@ -176,14 +192,13 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
                 self.launchSavePanel(sourcePathFile)
             })
-        }
+//        }
     }
     
     // MARK: - NSTableViewDatasource & NSTableViewDelegate methods
-    
     func numberOfRows(in tableView: NSTableView) -> Int
     {
-        return self.dataFiles.count
+        return 10 //numOfRows
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat
@@ -263,7 +278,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
     
     func tableViewSelectionDidChange(_ notification: Notification)
     {
-        //        self.table.deselectRow(self.table.selectedRow)
+//        self.table.deselectRow(self.table.selectedRow)
     }
     
     func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool
@@ -310,7 +325,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             let source : String = FileManager.resolvePathForFile(file)
             
             var destination : String = dropDestination.appendingPathComponent(file, isDirectory: false).path
-            //            var destination : String = dropDestination.path!.stringByAppendingPathComponent(file)
+//            var destination : String = dropDestination.path!.stringByAppendingPathComponent(file)
             
             SMLog("destPath " + destination)
             
@@ -395,92 +410,97 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             return
         }
-//        NSApplication.ModalResponse.continue
+
+        if (result == NSApplication.ModalResponse.cancel)
+        {
+            self.isShowing = false
+        }
         
-//        self.savePanel.begin { (result : NSApplication.ModalResponse) in
-        
-//        }
-//        self.savePanel.begin { ( result :Int) in
+        if (result == NSApplication.ModalResponse.OK)
+        {
+            let valueFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
+            //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
             
-//            if (result == NSFileHandlingPanelCancelButton)
-            if (result == NSApplication.ModalResponse.cancel)
-            {
-                self.isShowing = false
-            }
+            //var extensionFile : String = components[1].lowercaseString
             
-//            if (result == NSFileHandlingPanelOKButton)
-            if (result == NSApplication.ModalResponse.OK)
-            {
-                let valueFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
-                //var components : [String] = valueFile.componentsSeparatedByString(".") as [String]
+            let source : String = FileManager.resolvePathForFile(valueFile)
+            let destination : String = (self.savePanel.url! as NSURL).filePathURL!.resolvingSymlinksInPath().path
+            
+            self.savePanel.directoryURL = URL(fileURLWithPath: destination)
+            
+            let fileManager = Foundation.FileManager.default
+            
+            if fileManager.fileExists(atPath: destination) {
                 
-                //var extensionFile : String = components[1].lowercaseString
-                
-                let source : String = FileManager.resolvePathForFile(valueFile)
-                let destination : String = (self.savePanel.url! as NSURL).filePathURL!.resolvingSymlinksInPath().path
-                
-                self.savePanel.directoryURL = URL(fileURLWithPath: destination)
-                
-                let fileManager = Foundation.FileManager.default
-                
-                if fileManager.fileExists(atPath: destination) {
-                    
-                    SMLog("archivo existe: \(destination)")
-                    
-                    do {
-                        try fileManager.removeItem(at: URL(fileURLWithPath: destination))
-                    } catch let error1 as NSError {
-                        error = error1
-                        SMLog("error: \(error!.localizedDescription)")
-                    } catch {
-                        SMLog("error")
-                   
-                    }
-                }
+                SMLog("archivo existe: \(destination)")
                 
                 do {
-                    try Foundation.FileManager.default.copyItem(atPath: source, toPath: destination)
-                    SMLog("copied")
-                    
-                    let soundEnabled : Int = self.appSettings.object(forKey: "soundEnabled") as! Int
-                    
-                    if (soundEnabled == 1)
-                    {
-                        NSSound.init(named: NSSound.Name("dropped"))?.play()
-                    }
-                    
-                    let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
-                    
-                    if (openOncreation == 1)
-                    {
-                        Utils.openFile(destination)
-                    }
-                    
-                    let revealOnCreation : Int = self.appSettings.object(forKey: "revealOnCreation") as! Int
-                    
-                    if (revealOnCreation == 1)
-                    {
-                        Utils.revealInFinder(destination)
-                    }
+                    try fileManager.removeItem(at: URL(fileURLWithPath: destination))
                 } catch let error1 as NSError {
                     error = error1
-                    SMLog("error: " + error!.localizedDescription)
+                    SMLog("error: \(error!.localizedDescription)")
+                } catch {
+                    SMLog("error")
+                    
+                }
+            }
+            
+            do {
+                try Foundation.FileManager.default.copyItem(atPath: source, toPath: destination)
+                SMLog("copied")
+                
+                let soundEnabled : Int = self.appSettings.object(forKey: "soundEnabled") as! Int
+                
+                if (soundEnabled == 1)
+                {
+                    NSSound.init(named: NSSound.Name("dropped"))?.play()
                 }
                 
-                self.isShowing = false
+                let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
+                
+                if (openOncreation == 1)
+                {
+                    Utils.openFile(destination)
+                }
+                
+                let revealOnCreation : Int = self.appSettings.object(forKey: "revealOnCreation") as! Int
+                
+                if (revealOnCreation == 1)
+                {
+                    Utils.revealInFinder(destination)
+                }
+            } catch let error1 as NSError {
+                error = error1
+                SMLog("error: " + error!.localizedDescription)
             }
-//        }
+            
+            self.isShowing = false
+        }
     }
     
-    func widgetMarginInsets(forProposedMarginInsets defaultMarginInset: NSEdgeInsets) -> NSEdgeInsets {
-        
-        return NSEdgeInsetsZero
-    }
-    
-//    @objc func eventTodayExtension(_ notification : Notification)
-//    {
-//        SMLog("llega extensiomn eventTodayExtension")
+//    func calculateRows() -> Int {
 //
-//        presetMainView()
+//        if (self.dataFiles.count >= 5)
+//        {
+//            let numberRows : NSNumber = Preferences.numberOfRowsInTodayExtension()
+//            var rows : Int = numberRows.intValue
+//
+//            print("rows items before: \(rows)")
+//
+//            if (rows > 10)
+//            {
+//                rows = 10
+//            }
+//
+//            if (rows < 5)
+//            {
+//                rows = 5
+//            }
+//
+//            print("rows items: \(rows)")
+//            return rows;
+//        }
+//
+//        return 0;
 //    }
 }

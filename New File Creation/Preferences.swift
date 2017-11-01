@@ -12,12 +12,12 @@ import AppKit
 class Preferences : NSObject
 {
     private static var __once: () = {
-            let shared = UserDefaults(suiteName: kGroupPreference)!
+        let shared : UserDefaults = UserDefaults(suiteName: kGroupPreference)!
         }()
     
     class func wantsLaunchAtLogin(_ launch : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(launch, forKey: "loginFilesCreation")
         
@@ -26,14 +26,14 @@ class Preferences : NSObject
     
     class func isLaunchedAtLogin() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "loginFilesCreation")
+        return Preferences.sharedUserDefaults().bool(forKey: "loginFilesCreation")
     }
     
     // MARK: - Application settings
     
     class func activeSound(_ active : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(active, forKey: "activeSound")
         
@@ -46,12 +46,12 @@ class Preferences : NSObject
     
     class func loadActiveSound() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "activeSound")
+        return Preferences.sharedUserDefaults().bool(forKey: "activeSound")
     }
 
     class func activeDoubleClick(_ active : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(active, forKey: "enableDoubleClick")
         
@@ -64,12 +64,12 @@ class Preferences : NSObject
     
     class func loadDoubleClick() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "enableDoubleClick")
+        return Preferences.sharedUserDefaults().bool(forKey: "enableDoubleClick")
     }
     
     class func activeHidePopup(_ active : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(active, forKey: "enableHidePopup")
         
@@ -82,12 +82,12 @@ class Preferences : NSObject
     
     class func loadHidePopup() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "enableHidePopup")
+        return Preferences.sharedUserDefaults().bool(forKey: "enableHidePopup")
     }
     
     class func useRevealInFinder(_ reveal : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(reveal, forKey: "reavealInFinder")
         
@@ -100,12 +100,12 @@ class Preferences : NSObject
     
     class func loadRevealInFinder() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "reavealInFinder")
+        return Preferences.sharedUserDefaults().bool(forKey: "reavealInFinder")
     }
     
     class func openFileOnCreation(_ openFile : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(openFile, forKey: "openFileWhenCreated")
         
@@ -118,12 +118,12 @@ class Preferences : NSObject
     
     class func loadOpenFileOnCreation() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "openFileWhenCreated")
+        return Preferences.sharedUserDefaults().bool(forKey: "openFileWhenCreated")
     }
     
     class func setFirstBoot(_ openFile : Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(openFile, forKey: "firstBootNewFileCreation")
         
@@ -132,18 +132,18 @@ class Preferences : NSObject
     
     class func loadFirstBoot() -> Bool
     {
-        return UserDefaults.standard.bool(forKey: "firstBootNewFileCreation")
+        return Preferences.sharedUserDefaults().bool(forKey: "firstBootNewFileCreation")
     }
     
     class func loadTemplatesTablePreferences() -> NSArray
     {
         SMLog("metodo loadTemplatesTablePreferences")
         
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         defaults.set(Preferences.readPlistTemplatePreferences(), forKey: "templatesTablePreferences")
         defaults.synchronize()
         
-        let array : NSArray = UserDefaults.standard.object(forKey: "templatesTablePreferences") as! NSArray
+        let array : NSArray = Preferences.sharedUserDefaults().object(forKey: "templatesTablePreferences") as! NSArray
         
         SMLog("metodo loadTemplatesTablePreference2")
         
@@ -152,7 +152,7 @@ class Preferences : NSObject
     
     class func setTemplatesTablePreferences(_ templates: NSMutableArray) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(templates, forKey: "templatesTablePreferences")
         
@@ -263,16 +263,9 @@ class Preferences : NSObject
     
     class func sharedUserDefaults() -> UserDefaults {
         
-        //var shared : NSUserDefaults?
+        let shared : UserDefaults = UserDefaults(suiteName: kGroupPreference)!
         
-        struct Static {
-            static var onceToken: Int = 0
-            static var shared : UserDefaults? = nil
-        }
-        
-        _ = Preferences.__once
-        
-        return Static.shared!
+        return shared
     }
     
     class func setDefaultValues()
@@ -308,7 +301,7 @@ class Preferences : NSObject
     
     class func defaultsContainsKey(_ key : String) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         let dict : NSDictionary = defaults.dictionaryRepresentation() as NSDictionary
         let arrayKeys : NSArray = dict.allKeys as NSArray
@@ -327,7 +320,7 @@ class Preferences : NSObject
     // MARK: NSTouchbar preferences
     class func setFadeTouchBarButtons(_  fadeTouchbar: Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(fadeTouchbar, forKey: "fadeTouchBar")
         
@@ -343,12 +336,12 @@ class Preferences : NSObject
             return true
         }
         
-        return UserDefaults.standard.bool(forKey: key)
+        return Preferences.sharedUserDefaults().bool(forKey: key)
     }
     
     class func setShowTitleTouchBarButtons(_  showTitle: Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(showTitle, forKey: "showTitleButtonsTouchBar")
         
@@ -364,12 +357,12 @@ class Preferences : NSObject
             return true
         }
         
-        return UserDefaults.standard.bool(forKey: key)
+        return Preferences.sharedUserDefaults().bool(forKey: key)
     }
     
     class func setUpdateTouchBarButtons(_  showTitle: Bool) -> Bool
     {
-        let defaults : UserDefaults = UserDefaults.standard
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
         
         defaults.set(showTitle, forKey: "updateButtonsTouchbar")
         
@@ -385,11 +378,49 @@ class Preferences : NSObject
             return true
         }
         
-        return UserDefaults.standard.bool(forKey: key)
+        return Preferences.sharedUserDefaults().bool(forKey: key)
     }
 
     class func isKeyPresentInUserDefaults(key: String) -> Bool
     {
-        return UserDefaults.standard.object(forKey: key) != nil
+        return Preferences.sharedUserDefaults().object(forKey: key) != nil
+    }
+    
+    class func isKeyPresentInSharedUserDefaults(key: String) -> Bool
+    {
+        return Preferences.sharedUserDefaults().object(forKey: key) != nil
+    }
+    
+    class func numberOfRowsInTodayExtension() -> NSNumber
+    {
+        let key = "rowsTodayExtension"
+        
+        if (!isKeyPresentInSharedUserDefaults(key: key)) {
+            
+            return NSNumber(value: 5)
+        }
+
+        return Preferences.sharedUserDefaults().object(forKey: key) as! NSNumber
+    }
+    
+    class func setNumberOfRowsInTodayExtension(rows: Int) -> Bool
+    {
+        var itemsRow :Int = rows
+        
+        if (itemsRow < 5)
+        {
+            itemsRow = 5
+        }
+        
+        if (itemsRow > 10)
+        {
+            itemsRow = 10
+        }
+        
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
+        
+        defaults.set(NSNumber(value: itemsRow), forKey: "rowsTodayExtension")
+        
+        return defaults.synchronize()
     }
 }
