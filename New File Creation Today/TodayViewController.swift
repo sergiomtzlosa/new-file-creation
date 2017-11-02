@@ -9,6 +9,8 @@
 import Cocoa
 import NotificationCenter
 
+let numRows : Int = 10
+
 let CELL_HEIGHT : CGFloat = 50.0
 
 let kFileName = "NewFile"
@@ -64,7 +66,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
         self.appSettings = Preferences.readPlistApplicationPreferences()
-//        self.numOfRows = calculateRows()
         
         if table != nil {
             
@@ -103,8 +104,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             return CGSize.zero
         }
 
-//        var heightTable : CGFloat = CGFloat(Float(calculateRows()) * Float(CELL_HEIGHT))
-        var heightTable : CGFloat = CGFloat(10 * Float(CELL_HEIGHT))
+        var heightTable : CGFloat = CGFloat(Float(numRows) * Float(CELL_HEIGHT))
         
         heightTable += 20
         
@@ -153,16 +153,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
-
-//        if (timer != nil) {
-//            
-//            timer.invalidate()
-//            timer = nil
-//        }
-//        
-//         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.reloadTimerTable), userInfo: nil, repeats: true)
-//
-//        timer.fire()
     }
     
     @objc func reloadTimerTable() {
@@ -170,7 +160,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         if (table != nil) {
             
             self.dataFiles = NSArray(array:UtilsExtension.extractFilesExtension())
-//            numOfRows = calculateRows()
             table.reloadData()
         }
     }
@@ -184,23 +173,20 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         let rowNumber : NSInteger = table.clickedRow
         
-//        if (calculateRows() > 0)
-//        {
-            let item : String = dataFiles[rowNumber] as! String
+        let item : String = dataFiles[rowNumber] as! String
+        
+        let sourcePathFile : String = FileManager.resolvePathForFile(item)
+        
+        DispatchQueue.main.async(execute: {
             
-            let sourcePathFile : String = FileManager.resolvePathForFile(item)
- 
-            DispatchQueue.main.async(execute: {
-            
-                self.launchSavePanel(sourcePathFile)
-            })
-//        }
+            self.launchSavePanel(sourcePathFile)
+        })
     }
     
     // MARK: - NSTableViewDatasource & NSTableViewDelegate methods
     func numberOfRows(in tableView: NSTableView) -> Int
     {
-        return 10 //numOfRows
+        return numRows
     }
     
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat
@@ -244,7 +230,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             let extensionFile : String = components[1].uppercased()
             
-//            SMLog("text cell: \(extensionFile)")
             let strText : String = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
 
             if strText == "newFileMask"
@@ -479,30 +464,4 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             self.isShowing = false
         }
     }
-    
-//    func calculateRows() -> Int {
-//
-//        if (self.dataFiles.count >= 5)
-//        {
-//            let numberRows : NSNumber = Preferences.numberOfRowsInTodayExtension()
-//            var rows : Int = numberRows.intValue
-//
-//            print("rows items before: \(rows)")
-//
-//            if (rows > 10)
-//            {
-//                rows = 10
-//            }
-//
-//            if (rows < 5)
-//            {
-//                rows = 5
-//            }
-//
-//            print("rows items: \(rows)")
-//            return rows;
-//        }
-//
-//        return 0;
-//    }
 }
