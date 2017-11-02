@@ -853,6 +853,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             // Update Today Extension
             SCHEDULE_POSTNOTIFICATION(kTodayExtensionOption, object: nil)
+            SCHEDULE_DISTRIBUTED_NOTIFICATION(name: kUpdateTodayExtension)
             
             if #available(OSX 10.12.2, *) {
 

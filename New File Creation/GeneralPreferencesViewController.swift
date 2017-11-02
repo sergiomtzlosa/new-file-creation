@@ -10,8 +10,6 @@ import Foundation
 
 class GeneralPreferencesViewController : NSViewController, MASPreferencesViewController
 {
-    @IBOutlet var sliderDocumentsToday: NSSlider!
-    @IBOutlet var labelDocumentsToday: NSTextField!
     @IBOutlet var cautionImage: NSImageView!
     @IBOutlet var playSoundButton: NSButton!
     @IBOutlet var openFileButton: NSButton!
@@ -50,43 +48,8 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
         
-//        let numberRows : NSNumber = Preferences.numberOfRowsInTodayExtension()
-//        var docRows : Int = numberRows.intValue
-//
-//        if (docRows > 10) {
-//
-//            docRows = 10
-//            _ = Preferences.setNumberOfRowsInTodayExtension(rows: docRows)
-//        }
-//
-//        if (docRows < 5) {
-//
-//            docRows = 5
-//            _ = Preferences.setNumberOfRowsInTodayExtension(rows: docRows)
-//        }
-//
-//        labelDocumentsToday.font = NSFont(name: "Helvetica", size: 13)
-//        labelDocumentsToday.textColor = NSColor.black
-//        labelDocumentsToday.alignment = NSTextAlignment.center
-//        labelDocumentsToday.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
-//        labelDocumentsToday.usesSingleLineMode = false
-//        labelDocumentsToday.stringValue = SMLocalizedString("labelDocsToday") + " " + String(docRows) + " " + SMLocalizedString("documents")
-//
-//        sliderDocumentsToday.intValue = Int32(docRows)
-//        sliderDocumentsToday.target = self
-//        sliderDocumentsToday.action = #selector(sliderDocChanged(_:))
-        
         super.awakeFromNib()
     }
-    
-//    @objc func sliderDocChanged(_ sender: NSSlider) {
-//
-//        let docRows: Int = Int(sliderDocumentsToday.intValue)
-//
-//        labelDocumentsToday.stringValue = SMLocalizedString("labelDocsToday") + " " + String(docRows) + " " + SMLocalizedString("documents")
-//
-//        _ = Preferences.setNumberOfRowsInTodayExtension(rows: docRows)
-//    }
     
     @IBAction func openSystemPreferencesAction(_ sender: AnyObject) {
         

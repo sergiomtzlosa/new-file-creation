@@ -42,6 +42,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             createTable()
         }
 
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(TodayViewController.reloadTimerTable), name: kUpdateTodayExtension)
+        
         super.viewWillAppear()
     }
 
@@ -104,7 +106,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
 //        var heightTable : CGFloat = CGFloat(Float(calculateRows()) * Float(CELL_HEIGHT))
         var heightTable : CGFloat = CGFloat(10 * Float(CELL_HEIGHT))
         
-        heightTable += 13
+        heightTable += 20
         
         return CGSize(width: table.frame.size.width, height: heightTable)
     }
@@ -152,15 +154,15 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
 
-        if (timer != nil) {
-            
-            timer.invalidate()
-            timer = nil
-        }
-        
-         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.reloadTimerTable), userInfo: nil, repeats: true)
-
-        timer.fire()
+//        if (timer != nil) {
+//            
+//            timer.invalidate()
+//            timer = nil
+//        }
+//        
+//         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(TodayViewController.reloadTimerTable), userInfo: nil, repeats: true)
+//
+//        timer.fire()
     }
     
     @objc func reloadTimerTable() {

@@ -786,6 +786,9 @@
 						DevelopmentTeam = 9Z3J82KRJR;
 						LastSwiftMigration = 0900;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.Mac = {
+								enabled = 0;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};

@@ -8,6 +8,7 @@
 
 import Foundation
 
+let kUpdateTodayExtension = "update-today-widget"
 let kPopOverDidLoad = "popover-did-load"
 let kFinderSyncOption = "findersync-menulet"
 let kTodayExtensionOption = "today-extension-item"
@@ -78,6 +79,10 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
     }
 }
 
+func SCHEDULE_DISTRIBUTED_NOTIFICATION(name : String)
+{
+    DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: name), object: name)
+}
 
 func REMOVE_NOTIFICATION(_ className: AnyObject)
 {
