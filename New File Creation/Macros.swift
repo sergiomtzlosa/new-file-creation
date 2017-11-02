@@ -70,7 +70,10 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
 {
     if (className.responds(to: selector))
     {
+        REMOVE_DISTRIBUTED_NOTIFICATION(className, selector: selector, name: name)
+        
         SMLog("registra a la notificacion")
+        
         DistributedNotificationCenter.default().addObserver(className, selector: selector, name: name.map { NSNotification.Name(rawValue: $0) }, object: nil)
     }
     else
@@ -82,6 +85,11 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
 func SCHEDULE_DISTRIBUTED_NOTIFICATION(name : String)
 {
     DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: name), object: name)
+}
+
+func REMOVE_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String?)
+{
+    DistributedNotificationCenter.default().removeObserver(selector, name: name.map { NSNotification.Name(rawValue: $0) }, object: nil)
 }
 
 func REMOVE_NOTIFICATION(_ className: AnyObject)
