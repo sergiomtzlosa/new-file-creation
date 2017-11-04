@@ -17,6 +17,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     @IBOutlet var resetDefaultsButton: NSButton!
     @IBOutlet var titleFilesLabel: NSTextField!
     
+    var attachedWindowHelp : MAAttachedWindow!
     var dataArray : NSMutableArray!
     
     override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
@@ -81,6 +82,67 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         return tempArray
     }
     
+    @IBAction func helpEnoughtTemplates(_ sender: Any) {
+        
+        if (attachedWindowHelp == nil)
+        {
+            let helpButton : NSButton = sender as! NSButton
+            
+            let buttonPoint : NSPoint  = NSMakePoint(helpButton.frame.origin.x + 4, helpButton.frame.origin.y + 15);
+            
+            attachedWindowHelp = MAAttachedWindow(view: createHelpView(), attachedTo: buttonPoint, in: helpButton.window, onSide: MAPositionRight, atDistance: 25.0)
+            
+            attachedWindowHelp.setBorderColor(NSColor.white)
+            attachedWindowHelp.setBackgroundColor(NSColor.black)
+            attachedWindowHelp.setViewMargin(10.0)
+            attachedWindowHelp.setBorderWidth(1.0)
+            attachedWindowHelp.setCornerRadius(8.0)
+            attachedWindowHelp.setHasArrow(1.0)
+            attachedWindowHelp.setArrowBaseWidth(35.0)
+            attachedWindowHelp.setArrowHeight(15.0)
+            
+            attachedWindowHelp.alphaValue = 0.0
+            AppDelegate.preferencesWindow().addChildWindow(attachedWindowHelp!, ordered:NSWindow.OrderingMode.above)
+            attachedWindowHelp.animator().alphaValue = 1.0
+        }
+        else
+        {
+            removeHelpWindow()
+        }
+    }
+    
+    func removeHelpWindow()
+    {
+        if (attachedWindowHelp != nil)
+        {
+            attachedWindowHelp.alphaValue = 1.0
+            AppDelegate.preferencesWindow().removeChildWindow(attachedWindowHelp!)
+            attachedWindowHelp.animator().alphaValue = 0.0
+            attachedWindowHelp.orderOut(self)
+            attachedWindowHelp = nil;
+        }
+    }
+    
+    func createHelpView() -> NSTextView
+    {
+        let textView : NSTextView = NSTextView(frame: CGRect.zero)
+        
+        textView.maxSize = NSMakeSize(CGFloat.greatestFiniteMagnitude, CGFloat.greatestFiniteMagnitude)
+        textView.isVerticallyResizable = true
+        textView.autoresizingMask = NSView.AutoresizingMask.width
+        textView.textContainer?.widthTracksTextView = true
+        textView.string = SMLocalizedString("minimunTemplatesShow")
+        textView.backgroundColor = NSColor.clear
+        textView.textColor = NSColor.white
+        textView.isHorizontallyResizable = true
+        
+        let size : NSRect = SMObject.calculateSizeForText(textView.string as NSString, textView: textView)
+        
+        textView.frame = size
+        
+        return textView
+    }
+    
     @IBAction func resetDefaults(_ sender: AnyObject) {
         
         Preferences.setDefaultValues()
@@ -100,6 +162,12 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         let selectedRow : Int = table.selectedRow
         
         let tempDict : NSDictionary = dataArray[selectedRow] as! NSDictionary
+        let enableColumn : Bool = (tempDict as AnyObject).object(forKey: "enableColumn") as! Bool
+        
+        if (!hasEnoughtRows() && enableColumn == true)
+        {
+            return
+        }
         
         let originalData : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
         let originalIndex : Int = originalData.index(of: tempDict)
@@ -207,7 +275,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     }
     
     func addURLFile(fileURLItem: URL) {
-    
+
         let choosenFile : URL! = (fileURLItem as NSURL).filePathURL!
         
         let pathString : String = choosenFile.resolvingSymlinksInPath().path
@@ -491,6 +559,13 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     {
         if (tableColumn?.identifier.rawValue == "enableColumn")
         {
+            let status : Bool = object as! Bool
+            
+            if (!hasEnoughtRows() && status == false)
+            {
+                return
+            }
+            
             //let objectReplace : NSMutableDictionary = dataArray[row] as! NSMutableDictionary
             let temp : Any? = dataArray.object(at: row)
  
@@ -513,9 +588,11 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         
             let objectItem : NSMutableDictionary = NSMutableDictionary(dictionary: objectReplace)
             
-            let status : Bool = object as! Bool
+            
    
             objectItem.setObject(status, forKey: (tableColumn?.identifier)! as NSCopying)
+            
+            print("object status: \(objectItem)")
             
             dataArray.replaceObject(at: row, with: objectItem)
             
@@ -527,6 +604,35 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             
             SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
         }
+    }
+    
+    func hasEnoughtRows() -> Bool
+    {
+        let rows : NSArray = obtainRows()
+  
+        if (rows.count <= 10)
+        {
+            return false;
+        }
+        
+        let tempArray : NSMutableArray = NSMutableArray()
+        
+        for item in rows
+        {
+            let enableColumn : Bool = (item as AnyObject).object(forKey: "enableColumn") as! Bool
+            
+            if (enableColumn == true)
+            {
+                tempArray.add(item)
+            }
+        }
+        
+        if (tempArray.count <= 10)
+        {
+            return false
+        }
+        
+        return true
     }
     
     //MARK: - NSNotification methods

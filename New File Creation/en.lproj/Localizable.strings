@@ -90,3 +90,5 @@
 "labelDocsToday" = "Number of documents in Today Widget:";
 
 "documents" = "documents";
+
+"minimunTemplatesShow" = "Set a minimum number of 10 templates for a better experience";

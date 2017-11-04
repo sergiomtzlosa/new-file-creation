@@ -90,3 +90,6 @@
 "labelDocsToday" = "Número de documentos en Today Widget:";
 
 "documents" = "documentos";
+
+"minimunTemplatesShow" = "Activa un mínimo de 10 plantillas para una mejor experiencia";
+
