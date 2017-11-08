@@ -197,6 +197,7 @@
 		1F5A9CE41B75EAD800827FB1 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		1F5A9CE81B75EAE700827FB1 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		1F5AD98C1BA3633600533641 /* SMSheetWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SMSheetWindow.xib; sourceTree = "<group>"; };
+		1F64B9711FB3735300985088 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F64DEA91B7E52CA000B00CB /* GeneralPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesViewController.swift; sourceTree = "<group>"; };
 		1F64DEAD1B7E6777000B00CB /* GeneralPreferencesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPreferencesView.xib; sourceTree = "<group>"; };
 		1F64DEAF1B7E6A3A000B00CB /* HelpPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpPreferencesViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +256,7 @@
 		1FC7ADE41B80677F00015E97 /* application_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = application_prefs.plist; sourceTree = "<group>"; };
 		1FC7ADE61B80707700015E97 /* templates_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = templates_prefs.plist; sourceTree = "<group>"; };
 		1FC7ADE81B80708800015E97 /* application_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = application_prefs.plist; sourceTree = "<group>"; };
+		1FC980CF1FB389260051BF09 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1FC9AD271B80D8A700D152AF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1FCA1C8A1B7BCFE000E97BF8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1FCCD5B81B751E91007C8397 /* Macros-objc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Macros-objc.h"; sourceTree = "<group>"; };
@@ -804,6 +806,8 @@
 				en,
 				Base,
 				es,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 1FF9568E1B712B7E007283E5;
 			productRefGroup = 1FF956981B712B7E007283E5 /* Products */;
@@ -1008,6 +1012,8 @@
 			children = (
 				1F80E6731BA1C358002B33CD /* en */,
 				1F80E6751BA1C366002B33CD /* es */,
+				1F64B9711FB3735300985088 /* zh-Hans */,
+				1FC980CF1FB389260051BF09 /* zh-Hant */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

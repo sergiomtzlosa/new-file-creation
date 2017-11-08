@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "另存新檔...";
+
+"exitApp" = "取消";
+
+"settings" = "設定";
+
+"launchLogin" = "登入時啟動";
+
+"dragAndDropItems" = "從表中拖曳一行到您想要的目的地，以建立一個新文件。\n您可以根據需要，建立多個文件。";
+
+"newFileMask" = "新 .%@ 文件 - %@";
+
+"general" = "一般";
+
+"enableExtensionTip" = "E在系統偏好中啟用 \"新文件建立附檔名\"  -> 附檔名 -> Finder";
+
+"selectFileTemplate" = "選擇您的文件樣板";
+
+"warning" = "警告";
+
+"templateExists" = "這個樣板已經存在。請選擇一個不同的樣板。";
+
+"advanced" = "進階";
+
+"openSystemPreferences" = "開啟系統偏好";
+
+"help" = "幫助";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "文件建立時播放聲音";
+
+"openWhenCreate" = "建立新文件後開啟文件";
+
+"revealCreationFile" = "建立文件後，在 Finder 中顯示。";
+
+"enableDoubleClick" = "啟用雙點擊彈出選單建立文件";
+
+"hidePopUp" = "啟用在文件建立時隱藏彈出視窗";
+
+"tipCustomTemplates" = "將您的自訂樣板新增到新文件建立";
+
+"resetDefaultsTemplate" = "重設為預設值";
+
+"titleFilesLabel" = "隱藏、顯示、新增或重新排序您的樣板:";
+
+"enable" = "啟用";
+
+"icon" = "圖示";
+
+"template" = "樣板";
+
+"cancel" = "取消";
+
+"showIcloudPreferences" = "顯示 iCloud 偏好";
+
+"icloudNotFetch" = "無法連上 iCloud，從系統偏好登入 iCloud 並啟用 \"iCloud Drive\".";
+
+"syncCloudTip" = "將您的樣板同步到 iCloud。您可以上傳/下載您的自訂樣板和配置，並在您所有的 Mac 電腦中使用它們。";
+
+"tipHelpCloud" = "如果您無法連結到 iCloud，請透過系統偏好登入 iCloud -> 登入 iCloud 然後啟用 \"iCloud Drive\"";
+
+"uploadButtonTitle" = "上傳樣板 & 配置到 iCloud";
+
+"downloadButtonTitle" = "從 iCloud 下載模板 & 配置";
+
+"uploading" = "正在上傳到 iCloud...";
+
+"downloading" = "正在從 iCloud 下載...";
+
+"positiveUploaded" = "已上傳到 iCloud!";
+
+"notUploaded" = "上傳到 iCloud 時發生錯誤";
+
+"positiveDownload" = "已從 iCloud 下載!";
+
+"errorDownload" = "從 iCloud 下載時發生錯誤!";
+
+"selectFile" = "選擇檔案";
+
+"fadeButtonTitle" = "在 Touch Bar 上啟用淡入淡出效果";
+
+"textButtonTitle" = "在 Touch Bar 按鈕上顯示文件附檔名";
+
+"syncButtonTitle" = "將彈出樣板同步到 Touch Bar";
+
+"labelDocsToday" = "今日小工具中的文件數量:";
+
+"documents" = "文件";
+
+"minimunTemplatesShow" = "設置至少 10 個樣板以獲得更好的體驗";

@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "将新文件另存为...";
+
+"exitApp" = "放弃";
+
+"settings" = "设置";
+
+"launchLogin" = "登录时启动";
+
+"dragAndDropItems" = "从表中拖放一行到所需的目的地以创建一个新的文件。\n您可以创建任意多的文件。";
+
+"newFileMask" = "新的 .%@ 文件 - %@";
+
+"general" = "一般";
+
+"enableExtensionTip" = "在系统偏好设置 -> 扩展 - >Finder 中启用\"新文件创建扩展\"";
+
+"selectFileTemplate" = "选择你的文件模板";
+
+"warning" = "警告";
+
+"templateExists" = "这个模板已经存在，请选择一个不同的模板。";
+
+"advanced" = "高级";
+
+"openSystemPreferences" = "开放系统偏好";
+
+"help" = "帮助";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "文件创建时播放声音";
+
+"openWhenCreate" = "创建新文件时打开";
+
+"revealCreationFile" = "在 Finder 中显示文件创建";
+
+"enableDoubleClick" = "启用双击弹出菜单以创建文件";
+
+"hidePopUp" = "启用文件创建时隐藏弹出窗口";
+
+"tipCustomTemplates" = "将您的自定义模板添加到新文件创建";
+
+"resetDefaultsTemplate" = "重置为默认";
+
+"titleFilesLabel" = "隐藏、显示、添加或重新排序您的模板：";
+
+"enable" = "启用";
+
+"icon" = "图标";
+
+"template" = "模板";
+
+"cancel" = "取消";
+
+"showIcloudPreferences" = "显示 iCloud 偏好";
+
+"icloudNotFetch" = "无法获取 iCloud，请从系统偏好设置登录到 iCloud 并启用\"iCloud Drive\"。";
+
+"syncCloudTip" = "将您的模板同步到 iCloud。您可以上传/下载您的自定义模板和配置，并将其用于您所有的 Mac。";
+
+"tipHelpCloud" = "如果无法连接到 iCloud，请通过系统偏好设置 - > iCloud 登录到 iCloud，然后启用 \"iCloud Drive\"。";
+
+"uploadButtonTitle" = "上传模板和配置到 iCloud";
+
+"downloadButtonTitle" = "从 iCloud 下载模板和配置";
+
+"uploading" = "正上传到 iCloud ...";
+
+"downloading" = "正从 iCloud 下载...";
+
+"positiveUploaded" = "已上传到 iCloud！";
+
+"notUploaded" = "上传到 iCloud 时发生错误";
+
+"positiveDownload" = "已从 iCloud 下载！";
+
+"errorDownload" = "从 iCloud 下载时发生错误！";
+
+"selectFile" = "选择文件";
+
+"fadeButtonTitle" = "在 Touch Bar 上启用淡入淡出效果";
+
+"textButtonTitle" = "在 Touch Bar 按钮上显示文件扩展名";
+
+"syncButtonTitle" = "用 Touch Bar 同步弹出模板";
+
+"labelDocsToday" = "Today Widget 中的文件数量：";
+
+"documents" = "文件";
+
+"minimunTemplatesShow" = "设置最少 10 个模板以获得更好的体验";
