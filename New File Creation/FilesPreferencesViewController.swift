@@ -8,6 +8,8 @@
 
 import Foundation
 
+let kRowsMinimun : Int = 10
+
 class FilesPreferencesViewController : NSViewController, MASPreferencesViewController, NSTableViewDataSource, NSTableViewDelegate
 {
     @IBOutlet var removeTemplateButton: NSButton!
@@ -610,7 +612,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     {
         let rows : NSArray = obtainRows()
   
-        if (rows.count <= 10)
+        if (rows.count <= kRowsMinimun)
         {
             return false;
         }
@@ -627,7 +629,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             }
         }
         
-        if (tempArray.count <= 10)
+        if (tempArray.count <= kRowsMinimun)
         {
             return false
         }
