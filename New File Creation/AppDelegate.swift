@@ -139,7 +139,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     {
         if let pub = sender as? NSPopUpButton
         {
-            SMLog(pub.titleOfSelectedItem as String!)
+            SMLog(pub.titleOfSelectedItem as Any)
             SMLog(pub.indexOfSelectedItem)
             
             let templateFile : String = self.templates[pub.indexOfSelectedItem] as! String

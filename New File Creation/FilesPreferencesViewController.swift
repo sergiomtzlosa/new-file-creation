@@ -542,7 +542,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         }
         else if ((tableColumn!.identifier).rawValue == "templateColumn")
         {
-            return object[tableColumn!.identifier] as? String!
+            return object[tableColumn!.identifier] as! String?
         }
         else
         {

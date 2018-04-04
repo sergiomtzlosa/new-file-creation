@@ -63,7 +63,7 @@ class SMAlert: NSWindow, NSWindowDelegate
         textAlert.isSelectable = false
         textAlert.backgroundColor = NSColor.clear
     
-        let msgAttr : NSMutableAttributedString = NSMutableAttributedString(string: message as String!)
+        let msgAttr : NSMutableAttributedString = NSMutableAttributedString(string: message as String)
     
         msgAttr.addAttribute(NSAttributedStringKey.font, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, msgAttr.length))
         

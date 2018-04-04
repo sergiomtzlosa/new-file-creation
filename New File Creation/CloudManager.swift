@@ -265,7 +265,7 @@ class CloudManager
 
             CloudManager.cloudPath = CloudManager.isCloudAvailable()
             
-            SMLog(CloudManager.cloudPath?.absoluteString as String!)
+            SMLog(CloudManager.cloudPath?.absoluteString as Any)
             
             let isAvailable : Bool = (CloudManager.cloudPath != nil) ? true : false
             
@@ -304,7 +304,7 @@ class CloudManager
     {
         let ubiquityURL : URL? = Foundation.FileManager.default.url(forUbiquityContainerIdentifier: nil)
         
-        SMLog(ubiquityURL?.absoluteString as String!)
+        SMLog(ubiquityURL?.absoluteString as Any)
         
         return ubiquityURL;
     }

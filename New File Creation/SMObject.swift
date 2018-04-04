@@ -52,8 +52,8 @@ class SMObject: NSObject
     
     class func applicationName() -> String
     {
-        var dict : Dictionary = Bundle.main.infoDictionary as Dictionary!
-        return (dict["CFBundleExecutable"] as? String)!
+        var dict : Dictionary? = (Bundle.main.infoDictionary as Dictionary?)
+        return (dict!["CFBundleExecutable"] as? String)!
     }
     
     class func showModalAlert(_ title: String, message : String)
