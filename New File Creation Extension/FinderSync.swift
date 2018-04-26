@@ -108,13 +108,13 @@ class FinderSync: FIFinderSync
     {
         // The user is now seeing the container's contents.
         // If they see it in more than one view at a time, we're only told once.
-//        SMLog("beginObservingDirectoryAtURL: %@", url.filePathURL!)
+//        SMLog("beginObservingDirectoryAtURL: %@", url.path)
     }
 
     override func endObservingDirectory(at url: URL)
     {
         // The user is no longer seeing the container's contents.
-//        SMLog("endObservingDirectoryAtURL: %@", url.filePathURL!)
+//        SMLog("endObservingDirectoryAtURL: %@", url.path)
     }
 
     override func requestBadgeIdentifier(for url: URL)

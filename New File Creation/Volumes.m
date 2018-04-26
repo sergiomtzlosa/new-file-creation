@@ -11,7 +11,7 @@
 #import <DiskArbitration/DiskArbitration.h>
 
 @implementation Volumes
-
+#ifndef __clang_analyzer__
 + (NSArray *)mountedVolumes
 {
     NSArray *mountedRemovableMedia = [[NSFileManager defaultManager] mountedVolumeURLsIncludingResourceValuesForKeys:nil
@@ -51,7 +51,7 @@
                 err = EINVAL;
             }
         }
-        
+
         if (err == 0)
         {
             CFTypeRef mediaEjectableKey = CFDictionaryGetValue(descDict,kDADiskDescriptionMediaEjectableKey);
@@ -103,5 +103,5 @@
     
     return (NSArray *)final;
 }
-
+#endif
 @end

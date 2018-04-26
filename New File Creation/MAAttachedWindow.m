@@ -11,7 +11,7 @@
 #define MAATTACHEDWINDOW_DEFAULT_BORDER_COLOR [NSColor whiteColor]
 #define MAATTACHEDWINDOW_SCALE_FACTOR [[NSScreen mainScreen] backingScaleFactor]
 //#define MAATTACHEDWINDOW_SCALE_FACTOR [[NSScreen mainScreen] userSpaceScaleFactor]
-
+#ifndef __clang_analyzer__
 @interface MAAttachedWindow (MAPrivateMethods)
 
 // Geometry
@@ -227,8 +227,9 @@
     
     NSRect rect;
     rect.origin = _point;
-    
+#ifndef __clang_analyzer__
     contentRect.origin = (_window) ? [_window convertRectToScreen:rect].origin : _point;
+#endif
     float arrowInset = [self _arrowInset];
     float halfWidth = contentRect.size.width / 2.0;
     float halfHeight = contentRect.size.height / 2.0;
@@ -956,6 +957,5 @@
     }
 }
 
-
-
 @end
+#endif

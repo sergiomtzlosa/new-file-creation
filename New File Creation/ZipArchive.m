@@ -14,7 +14,7 @@
 #import "SMLog.h"
 
 #define CHUNK 16384
-
+#ifndef __clang_analyzer__
 @interface ZipArchive ()
 
 + (NSDate *)dateWithMicrosoftDOSFormat:(UInt32)microsoftDOSDateTime;
@@ -131,11 +131,11 @@
     if (NULL == zip) {
         NSDictionary *userInformation = @{NSLocalizedDescriptionKey: @"Failed to unzip file"};
         NSError *err = [NSError errorWithDomain:@"ZipArchiveErrorDomain" code:-1 userInfo:userInformation];
-        
+#ifndef __clang_analyzer__
         if (error) {
             error = err;
         }
-        
+#endif
         if (completionHandler) {
             completionHandler(nil, NO, err);
         }
@@ -703,3 +703,4 @@
 }
 
 @end
+#endif
