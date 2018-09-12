@@ -146,7 +146,8 @@ class FinderSync: FIFinderSync
         {
             let menu = NSMenu(title: "")
             menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
-            
+            let item: NSMenuItem = menu.items[0]
+            item.image = NSImage(named: NSImage.Name(rawValue: "Icon"))
             return menu
         }
         
