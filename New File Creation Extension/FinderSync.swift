@@ -33,7 +33,9 @@ class FinderSync: FIFinderSync
 
         // Set up the directory we are syncing.
         
-        arrayPaths.insert(URL(fileURLWithPath: "/") as NSObject)
+        let usernamePath = "/Users/" + NSUserName()
+        
+        arrayPaths.insert(URL(fileURLWithPath: usernamePath) as NSObject)
         var itemsURL : NSArray? = Volumes.mountedVolumes() as NSArray?
         
         if itemsURL != nil
