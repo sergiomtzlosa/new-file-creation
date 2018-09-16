@@ -1324,8 +1324,10 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				WARNING_CFLAGS = "";
 			};
 			name = Debug;
 		};
@@ -1356,8 +1358,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
+				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				WARNING_CFLAGS = "";
 			};
 			name = Release;
 		};
@@ -1431,8 +1435,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "New File Creation/New File Creation-Bridging-Header.h";
+				SWIFT_SUPPRESS_WARNINGS = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				WARNING_CFLAGS = "";
 			};
 			name = MacAppStore;
 		};
