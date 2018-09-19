@@ -36,6 +36,7 @@
 		1F2F85861B776D5C00BF4C4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACD1B7510E300DB6A6F /* Foundation.framework */; };
 		1F2F85871B776D6B00BF4C4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F85831B776D5500BF4C4C /* AppKit.framework */; };
 		1F2F85881B776D7B00BF4C4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F85831B776D5500BF4C4C /* AppKit.framework */; };
+		1F47AF9E214FE593001CF1BC /* VolumeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AF9D214FE593001CF1BC /* VolumeManager.swift */; };
 		1F5A07001B7D230B00B9F621 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A06FC1B7D230B00B9F621 /* MASPreferencesWindow.xib */; };
 		1F5A07011B7D230B00B9F621 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A06FF1B7D230B00B9F621 /* MASPreferencesWindowController.m */; };
 		1F5A9CE51B75EAD800827FB1 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A9CE41B75EAD800827FB1 /* Icon.icns */; };
@@ -190,6 +191,7 @@
 		1F2DF00E1FA386EB003154DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F2DF0101FA386EB003154DC /* New_File_Creation_Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = New_File_Creation_Today.entitlements; sourceTree = "<group>"; };
 		1F2F85831B776D5500BF4C4C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1F47AF9D214FE593001CF1BC /* VolumeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeManager.swift; sourceTree = "<group>"; };
 		1F5A06FC1B7D230B00B9F621 /* MASPreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MASPreferencesWindow.xib; sourceTree = "<group>"; };
 		1F5A06FD1B7D230B00B9F621 /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		1F5A06FE1B7D230B00B9F621 /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 				1FBD3D061B823EBF00BF935F /* New File Creation Extension-Bridging-Header.h */,
 				1FBD3CFB1B823C0200BF935F /* Volumes */,
 				1F7FC1F31B76B02600F53433 /* FinderSync.swift */,
+				1F47AF9D214FE593001CF1BC /* VolumeManager.swift */,
 				1F7FC1F01B76B02600F53433 /* Supporting Files */,
 			);
 			path = "New File Creation Extension";
@@ -922,6 +925,7 @@
 				1F2960701B7734450020D030 /* SMLog.swift in Sources */,
 				1F2960711B7734450020D030 /* FileManager.swift in Sources */,
 				1F7FC1F41B76B02600F53433 /* FinderSync.swift in Sources */,
+				1F47AF9E214FE593001CF1BC /* VolumeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

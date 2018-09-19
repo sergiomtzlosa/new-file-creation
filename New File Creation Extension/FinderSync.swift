@@ -13,6 +13,8 @@ let kFileName = "NewFile"
 
 class FinderSync: FIFinderSync
 {
+    let finderController = FIFinderSyncController.default()
+    
     var isShowing : Bool?
     var templates : NSArray!
     var popupButton : NSPopUpButton!
@@ -20,6 +22,7 @@ class FinderSync: FIFinderSync
     var customView : NSView!
     var appSettings : NSDictionary!
     var arrayPaths : Set<NSObject>! = []
+    var usernamePath : String!
     
     override init()
     {
@@ -29,13 +32,34 @@ class FinderSync: FIFinderSync
         self.templates = obtainRows()
         customView = newAccessoryView()
 
+        _ = VolumeManager.shared
+        
         SMLog("FinderSync() launched from %@", Bundle.main.bundlePath)
 
         // Set up the directory we are syncing.
         
-        let usernamePath = "/Users/" + NSUserName()
+        self.usernamePath = "/Users/" + NSUserName()
         
+        finderController.directoryURLs = getExtensionURLFinder()
+
+        NotificationCenter.default.addObserver(forName:VolumeManager.VolumesDidChangeNotification, object:nil, queue:OperationQueue.current!) { (notification) in
+
+            var urls = Set(notification.object as! [URL])
+            
+            urls.insert(URL(fileURLWithPath: self.usernamePath))
+            urls = urls.union(Set(urls))
+            urls = urls.union(self.getExtensionURLFinder())
+            
+            SMLog("items urls notification: \(urls)")
+            
+            self.finderController.directoryURLs = urls
+        }
+    }
+    
+    func getExtensionURLFinder() -> Set<URL>
+    {
         arrayPaths.insert(URL(fileURLWithPath: usernamePath) as NSObject)
+        
         var itemsURL : NSArray? = Volumes.mountedVolumes() as NSArray?
         
         if itemsURL != nil
@@ -45,7 +69,7 @@ class FinderSync: FIFinderSync
             for item in array
             {
                 let url : URL = item as! URL
-
+                
                 arrayPaths.insert(url as NSObject)
             }
         }
@@ -64,7 +88,7 @@ class FinderSync: FIFinderSync
             }
         }
         
-        FIFinderSyncController.default().directoryURLs = arrayPaths as! Set<URL>
+        return arrayPaths as! Set<URL>
     }
     
     func obtainRows() -> NSArray
@@ -176,7 +200,7 @@ class FinderSync: FIFinderSync
         
         self.isShowing = true
  
-        let target = FIFinderSyncController.default().targetedURL()
+        let target = self.finderController.targetedURL()
         
         DispatchQueue.main.async(execute: {
             
