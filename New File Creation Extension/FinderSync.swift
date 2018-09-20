@@ -45,7 +45,7 @@ class FinderSync: FIFinderSync
         NotificationCenter.default.addObserver(forName:VolumeManager.VolumesDidChangeNotification, object:nil, queue:OperationQueue.current!) { (notification) in
 
             var urls = Set(notification.object as! [URL])
-            
+      
             urls.insert(URL(fileURLWithPath: self.usernamePath))
             urls = urls.union(Set(urls))
             urls = urls.union(self.getExtensionURLFinder())
