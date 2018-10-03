@@ -15,6 +15,7 @@ let kTodayExtensionOption = "today-extension-item"
 let kChangeInterfaceNotification = "AppleInterfaceThemeChangedNotification"
 let kUpdateTableFromPreferences = "update-table-from-preferences"
 let kUpdateSettingCloud = "update-settings-icloud"
+let kEventUpdateRowsNow = "update-rows-settings-now"
 
 let kGroupPreference = "9Z3J82KRJR.com.sergiomtzlosa.filecreation"
 

@@ -18,11 +18,12 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     @IBOutlet var tipCustomTemplates: NSTextField!
     @IBOutlet var resetDefaultsButton: NSButton!
     @IBOutlet var titleFilesLabel: NSTextField!
-    
+
     var attachedWindowHelp : MAAttachedWindow!
     var dataArray : NSMutableArray!
     
     override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
+        
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
     
@@ -589,9 +590,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             let originalIndex : Int = originalData.index(of: objectReplace)
         
             let objectItem : NSMutableDictionary = NSMutableDictionary(dictionary: objectReplace)
-            
-            
-   
+
             objectItem.setObject(status, forKey: (tableColumn?.identifier)! as NSCopying)
             
             print("object status: \(objectItem)")
@@ -650,6 +649,30 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         
         self.table.reloadData()
         SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
+    }
+    
+    public func reloadTableFunction()
+    {
+        if (self.table == nil)
+        {
+            return
+        }
+        
+        self.dataArray = NSMutableArray(array: self.obtainRows())
+        
+        self.table.reloadData()
+    }
+    
+    func eventUpdateTableRows(_ notification : Notification)
+    {
+        if (self.table == nil)
+        {
+            return
+        }
+        
+        self.dataArray = NSMutableArray(array: self.obtainRows())
+        
+        self.table.reloadData()
     }
     
     // MARK: - MASPreferencesViewController
