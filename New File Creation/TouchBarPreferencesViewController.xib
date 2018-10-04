@@ -19,10 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="124"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe4-Ow-Pnu">
+                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oe4-Ow-Pnu">
                     <rect key="frame" x="32" y="67" width="430" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Enable fade effect on Touch Bar" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="hF4-Bf-vP6">
+                    <buttonCell key="cell" type="check" title="Enable fade effect on Touch Bar" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" focusRingType="none" inset="2" id="hF4-Bf-vP6">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -30,10 +30,10 @@
                         <action selector="fadeEffectTouchBarAction:" target="-2" id="NnS-jd-3Vl"/>
                     </connections>
                 </button>
-                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3O-3r-4Ee">
+                <button focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j3O-3r-4Ee">
                     <rect key="frame" x="32" y="39" width="430" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="check" title="Show file extension on Touch Bar buttons" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" inset="2" id="DTO-f4-dcv">
+                    <buttonCell key="cell" type="check" title="Show file extension on Touch Bar buttons" bezelStyle="regularSquare" imagePosition="left" refusesFirstResponder="YES" focusRingType="none" inset="2" id="DTO-f4-dcv">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

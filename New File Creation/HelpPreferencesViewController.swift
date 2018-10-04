@@ -35,6 +35,7 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
         textViewHelp.frame = NSMakeRect(0, 0, 588, textViewHelp.frame.size.height)
         textViewHelp.scrollRangeToVisible(NSMakeRange(0, 0))
         
+        self.resignFirstResponder()
         super.awakeFromNib()
     }
     

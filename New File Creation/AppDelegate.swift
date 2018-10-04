@@ -583,7 +583,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         customView.addSubview(helpButton)
         
-        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(0, 0, customView.frame.width, 350))
+        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(-2, 0, customView.frame.width + 4, 350))
 
         overlayScrollView.verticalLineScroll = 1.0
         overlayScrollView.verticalPageScroll = 1.0
@@ -596,7 +596,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollView.wantsLayer = true
         
-        table = NSTableView(frame: NSMakeRect(-1, 0, overlayScrollView.frame.size.width + 1, overlayScrollView.frame.height))
+        table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
         
         table.target = self;
         table.doubleAction = #selector(AppDelegate.doubleClick(_:));

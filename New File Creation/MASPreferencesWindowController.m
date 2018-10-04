@@ -45,10 +45,14 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 #endif
         _minimumViewRects = [[NSMutableDictionary alloc] init];
         _title = [title copy];
-        
-        
     }
     return self;
+}
+
+- (void)awakeFromNib
+{
+    [self.window makeFirstResponder:nil];
+    [super awakeFromNib];
 }
 
 - (void)dealloc
@@ -60,6 +64,7 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
         item.action = nil;
     }
     self.toolbar.delegate = nil;
+    
 #if !__has_feature(objc_arc)
     [_viewControllers release];
     [_selectedViewController release];
@@ -319,12 +324,13 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
     
     [self.window setContentView:controllerView];
     [self.window recalculateKeyViewLoop];
-    if ([self.window firstResponder] == self.window) {
-        if ([controller respondsToSelector:@selector(initialKeyView)])
-            [self.window makeFirstResponder:[controller initialKeyView]];
-        else
-            [self.window selectKeyViewFollowingView:controllerView];
-    }
+    
+//    if ([self.window firstResponder] == self.window) {
+//        if ([controller respondsToSelector:@selector(initialKeyView)])
+//            [self.window makeFirstResponder:[controller initialKeyView]];
+//        else
+//            [self.window selectKeyViewFollowingView:controllerView];
+//    }
     
     // Insert view controller into responder chain
     [self patchResponderChain];

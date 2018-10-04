@@ -47,7 +47,8 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         systemPrefesLabel.usesSingleLineMode = false
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
-        
+
+        self.resignFirstResponder()
         super.awakeFromNib()
     }
     
@@ -121,5 +122,10 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     var toolbarItemLabel: String
     {
         return SMLocalizedString("general")
+    }
+    
+    override var acceptsFirstResponder: Bool
+    {
+        return false
     }
 }
