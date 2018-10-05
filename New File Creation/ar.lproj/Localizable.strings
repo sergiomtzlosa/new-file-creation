@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "حفظ الملف الجديد باسم...";
+
+"exitApp" = "المغادرة";
+
+"settings" = "الإعدادات";
+
+"launchLogin" = "بدء التشغيل عند تسجيل الدخول";
+
+"dragAndDropItems" = "قم بسحب وإفلات صف من الجدول في وجهتك المطلوبة لإنشاء ملف جديد.\nيمكنك إنشاء العديد من الملفات كما تريد.";
+
+"newFileMask" = "ملف.%@ جديد - %@";
+
+"general" = "عام";
+
+"enableExtensionTip" =  "قم بتمكين ملحق إنشاء الملف الجديد في تفضيلات النظام -> الملحقات -> Finder";
+
+"selectFileTemplate" = "حدد قالب الملف الخاص بك";
+
+"warning" = "تحذير";
+
+"templateExists" = "هذا القالب موجود بالفعل. يرجى اختيار قالب مختلف.";
+
+"advanced" = "متقدم";
+
+"openSystemPreferences" = "فتح تفضيلات النظام";
+
+"help" = "المساعدة";
+
+"icloud" = "iCloud";
+
+"touchbar" = "شريط اللمس";
+
+"playSoundPreference" = "تشغيل الصوت عند إنشاء الملف";
+
+"openWhenCreate" = "فتح عند إنشاء ملف جديد";
+
+"revealCreationFile" = "الكشف في Finder عن إنشاء الملف";
+
+"enableDoubleClick" = "تمكين النقر المزدوج على القائمة المنبثقة لإنشاء ملف";
+
+"hidePopUp" = "تمكين إخفاء النافذة المنبثقة عند إنشاء الملف";
+
+"tipCustomTemplates" = "إضافة القوالب المخصصة الخاصة بك إلى إنشاء الملف الجديد";
+
+"resetDefaultsTemplate" = "إعادة التعيين إلى الإعدادات الافتراضية";
+
+"titleFilesLabel" = "إخفاء وعرض وإضافة أو إعادة ترتيب القوالب الخاصة بك:";
+
+"enable" = "تمكين";
+
+"icon" = "أيقونة";
+
+"template" = "القالب";
+
+"cancel" = "إلغاء";
+
+"showIcloudPreferences" = "عرض تفضيلات iCloud";
+
+"icloudNotFetch" = "لا يمكن جلب iCloud، قم بتسجيل الدخول إلى iCloud من تفضيلات النظام وقم بتمكين \"iCloud Drive\".";
+
+"syncCloudTip" = "قم بمزامنة القوالب الخاصة بك مع iCloud. يمكنك تحميل/تنزيل القوالب المخصصة والتهيئة الخاصة بك واستخدامها في جميع أجهزة Mac الخاصة بك.";
+
+"tipHelpCloud" = "إذا لم تتمكن من الاتصال بـ iCloud، قم بتسجيل الدخول إلى iCloud عبر تفضيلات النظام -> iCloud ثم قم بتمكين \"iCloud Drive\"";
+
+"uploadButtonTitle" = "تحميل القوالب والتهيئة إلى iCloud";
+
+"downloadButtonTitle" = "تنزيل القوالب والتهيئة من iCloud";
+
+"uploading" = "جارٍ التحميل إلى iCloud ...";
+
+"downloading" = "جارٍ التنزيل من iCloud ...";
+
+"positiveUploaded" = "تم التحميل إلى iCloud!";
+
+"notUploaded" = "حدث خطأ أثناء التحميل إلى iCloud";
+
+"positiveDownload" = "تم التنزيل من iCloud!";
+
+"errorDownload" = "حدث خطأ أثناء التنزيل من iCloud!";
+
+"selectFile" = "اختر ملف";
+
+"fadeButtonTitle" = "تمكين تأثير التلاشي على شريط اللمس";
+
+"textButtonTitle" = "عرض ملحق الملف على أزرار شريط اللمس";
+
+"syncButtonTitle" = "مزامنة القوالب المنبثقة مع شريط اللمس";
+
+"labelDocsToday" = "عدد المستندات الموجودة في Today Widget:";
+
+"documents" = "المستندات";
+
+"minimunTemplatesShow" = "قم بتعيين عدد 10 قوالب كحدٍ أدنى للتمتع بتجربة أفضل";

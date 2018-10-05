@@ -61,7 +61,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         addTemplateButton.image = NSImage(named: NSImage.Name.addTemplate)
         removeTemplateButton.image = NSImage(named: NSImage.Name.removeTemplate)
         
-        self.resignFirstResponder()
+//        self.resignFirstResponder()
         super.awakeFromNib()
     }
     

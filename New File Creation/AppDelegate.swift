@@ -31,7 +31,7 @@ fileprivate extension NSTouchBar.CustomizationIdentifier {
 }
 
 @NSApplicationMain
-class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, WOMMenuletDelegateImages, NSTouchBarDelegate, NSOpenSavePanelDelegate
+class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, NSPopoverDelegate /*WOMMenuletDelegateImages*/, NSTouchBarDelegate, NSOpenSavePanelDelegate
 {
 //    @IBOutlet weak var window: NSWindow!
 
@@ -46,7 +46,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     var isShowing : Bool?
     var savePanel : NSSavePanel!
     var table : NSTableView!
-    var controller : WOMController!
+    var controller : NSPopover! //WOMController!
+    var statusItem : NSStatusItem!
     var dataFiles : NSMutableArray = []
     var checkBox : NSButton!
     var darkModeOn : Bool!
@@ -94,7 +95,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             _ = Preferences.activeSound(true)
             _ = Preferences.useRevealInFinder(false)
             _ = Preferences.openFileOnCreation(false)
-            _ = Preferences.setFirstBoot(true);
+            _ = Preferences.setFirstBoot(true)
             
             Preferences.setDefaultValues()
         }
@@ -117,8 +118,22 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         createPreferencesWindowController()
         _ = observerDarkMode()
         
-        self.controller = WOMController()
-        self.controller.menulet.imagesDelegate = self
+        self.controller = NSPopover()//WOMController()
+//        self.controller.menulet.imagesDelegate = self
+
+        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        statusItem.title = ""
+        statusItem.isEnabled = true
+        statusItem.highlightMode = true
+        statusItem.target = self
+        statusItem.action = #selector(AppDelegate.togglePopover(_:))
+        
+        let image : NSImage! = NSImage(named: NSImage.Name(rawValue: "icon-menulet"))
+        image.isTemplate = true
+        
+        statusItem.image = image
+        statusItem.highlightMode = false
+        statusItem.image = image
 
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventLoadPopUp(_:)), name: kPopOverDidLoad)
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventFinderSync(_:)), name: kFinderSyncOption)
@@ -134,7 +149,38 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifySuspend(_:)), name: NSWindow.didResignKeyNotification.rawValue)
 
+        let customViewPopOver : NSView = createCustomView()
+        
+        let viewController : NSViewController = NSViewController()
+        viewController.view = customViewPopOver
+        
+        self.controller.delegate = self
+        self.controller.contentViewController = viewController
+        self.controller.behavior = .transient
+        
         super.awakeFromNib()
+    }
+    
+    @objc func togglePopover(_ sender: AnyObject) {
+        
+        if controller.isShown
+        {
+            closePopover(sender)
+        }
+        else
+        {
+            showPopover(sender)
+        }
+    }
+    
+    func closePopover(_ sender: AnyObject) {
+
+        controller.performClose(sender)
+    }
+    
+    func showPopover(_ sender: AnyObject) {
+
+        controller.show(relativeTo: NSMakeRect(0, 0, 50, 50), of: sender as! NSView, preferredEdge: NSRectEdge.minY)
     }
     
     @objc func changeValuePopUpButton(_ sender: AnyObject)
@@ -473,10 +519,10 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         {
             let generalViewController : NSViewController = GeneralPreferencesViewController(nibName: NSNib.Name(rawValue: "GeneralPreferencesView"), bundle: nil)
 
-            generalViewController.resignFirstResponder()
+//            generalViewController.resignFirstResponder()
             
             advancedViewController = FilesPreferencesViewController(nibName: NSNib.Name(rawValue:"FilesPreferencesViewController"), bundle: nil)
-            advancedViewController.resignFirstResponder()
+//            advancedViewController.resignFirstResponder()
             
             REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateSettingsCloud:")), name: kUpdateSettingCloud)
             
@@ -484,11 +530,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             let cloudViewController : NSViewController = CloudSyncViewController(nibName: NSNib.Name(rawValue:"CloudSyncViewController"), bundle: nil)
             
-            cloudViewController.resignFirstResponder()
+//            cloudViewController.resignFirstResponder()
             
             let helpViewController : NSViewController = HelpPreferencesViewController(nibName: NSNib.Name(rawValue:"HelpPreferencesViewController"), bundle: nil)
             
-            helpViewController.resignFirstResponder()
+//            helpViewController.resignFirstResponder()
             
             var controllers : NSArray? = NSArray(objects: generalViewController, advancedViewController, cloudViewController, helpViewController)
             
@@ -496,14 +542,14 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 
                 let touchBarViewController : NSViewController = TouchBarPreferencesViewController(nibName: NSNib.Name(rawValue:"TouchBarPreferencesViewController"), bundle: nil)
                 
-                touchBarViewController.resignFirstResponder()
+//                touchBarViewController.resignFirstResponder()
                 
                 controllers = NSArray(objects: generalViewController, advancedViewController, cloudViewController, touchBarViewController, helpViewController)
             }
          
             preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers! as [AnyObject] , title:SMLocalizedString("settings"))
             
-            preferencesWindowController.resignFirstResponder()
+//            preferencesWindowController.resignFirstResponder()
             
             let button = preferencesWindowController.window!.standardWindowButton(NSWindow.ButtonType.zoomButton)
             button?.isEnabled = false
@@ -514,7 +560,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     {
         if (controller != nil)
         {
-            controller.closePopover()
+//            controller.closePopover()
+            controller.close()
         }
         
         createPreferencesWindowController()
@@ -526,15 +573,21 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     {
         closePopUpController()
         
+        NSApp.activate(ignoringOtherApps: false)
+        NSApp.activate(ignoringOtherApps: true)
         showWindowPreferences()
         preferencesWindowController.selectedViewController = preferencesWindowController.viewController(forIdentifier: SMLocalizedString("general"))
+        
+        AppDelegate.preferencesWindow().makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     func closePopUpController()
     {
         if (controller != nil)
         {
-            controller.closePopover()
+//            controller.closePopover()
+            controller.close()
         }
     }
     
@@ -550,6 +603,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         buttonClose.bezelStyle = NSButton.BezelStyle.rounded
         buttonClose.target = self
         buttonClose.action = #selector(AppDelegate.closeApplication(_:))
+        buttonClose.focusRingType = .none
         
         customView.addSubview(buttonClose)
         
@@ -560,6 +614,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         buttonPreferences.bezelStyle = NSButton.BezelStyle.rounded
         buttonPreferences.target = self
         buttonPreferences.action = #selector(AppDelegate.showPreferences(_:))
+        buttonPreferences.focusRingType = .none
         
         customView.addSubview(buttonPreferences)
         
@@ -571,16 +626,20 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         checkBox.state = (Preferences.isLaunchedAtLogin() ? .on : .off)
         checkBox.setNeedsDisplay()
         checkBox.attributedTitle = createAttributeStringForButton(SMLocalizedString("launchLogin"))
+        checkBox.focusRingType = .none
         customView.addSubview(checkBox)
         
         let helpButton : NSButton = NSButton()
         
         helpButton.title = ""
         helpButton.frame = CGRect(x: 325, y: 388, width: 40, height: 40)
-        helpButton.bezelStyle = NSButton.BezelStyle.helpButton;
-        helpButton.target = self;
+        helpButton.bezelStyle = NSButton.BezelStyle.helpButton
+        helpButton.target = self
         helpButton.action = #selector(AppDelegate.showHelpAttached(_:))
-        
+        helpButton.focusRingType = .none
+        helpButton.alignment = .natural
+        helpButton.baseWritingDirection = .natural
+
         customView.addSubview(helpButton)
         
         let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(-2, 0, customView.frame.width + 4, 350))
@@ -596,10 +655,10 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollView.wantsLayer = true
         
-        table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
+        self.table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
         
-        table.target = self;
-        table.doubleAction = #selector(AppDelegate.doubleClick(_:));
+        table.target = self
+        table.doubleAction = #selector(AppDelegate.doubleClick(_:))
 
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         table.layer?.cornerRadius = 0
@@ -641,8 +700,15 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     @objc func showHelpAttached(_ sender: AnyObject)
     {
+        NSApp.activate(ignoringOtherApps: false)
+        NSApp.activate(ignoringOtherApps: true)
+        
         showWindowPreferences()
         preferencesWindowController.selectedViewController = preferencesWindowController.viewController(forIdentifier: SMLocalizedString("help"))
+
+        AppDelegate.preferencesWindow().makeKeyAndOrderFront(nil)
+        
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     func createHelpView() -> NSTextView
@@ -727,7 +793,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             let extensionFile : String = components[1].uppercased()
             
             textField.stringValue = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
-            textField.alignment = NSTextAlignment.left;
+            textField.alignment = NSTextAlignment.left
             textField.font = NSFont.systemFont(ofSize: 12)
             textField.isBezeled = false
             textField.drawsBackground = false
@@ -857,7 +923,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             templatesArray.add(dict)
             
-            _ = Preferences.setTemplatesTablePreferences(templatesArray);
+            _ = Preferences.setTemplatesTablePreferences(templatesArray)
             
             self.dataFiles = NSMutableArray(array: self.obtainRows())
             
@@ -1069,11 +1135,11 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         if darkModeOn == false
         {
-            SMLog("dark mode");
+            SMLog("dark mode")
         }
         else
         {
-            SMLog("light mode");
+            SMLog("light mode")
         }
 
         return darkModeOn
@@ -1106,7 +1172,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             if #available(OSX 10.12.2, *) {
 
-                SMLog("refresca");
+                SMLog("refresca")
                 self.reloadTouchBar()
             }
         })
@@ -1128,8 +1194,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         let customViewPopOver : NSView = createCustomView()
         
-        self.controller.viewController.view.addSubview(customViewPopOver)
-
+//        self.controller.viewController.view.addSubview(customViewPopOver)
+        let viewController : NSViewController = NSViewController()
+        viewController.view = customViewPopOver
+        
+        self.controller.contentViewController = viewController
+        self.controller.behavior = .transient
+        
         SMLog("llega final")
     }
     
@@ -1137,7 +1208,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     {
 //        SMLog("notification: %@", notification.object)
 
-        if (!self.controller.isActive)
+//        if (!self.controller.isActive)
+        if (!self.controller.isShown)
         {
             return
         }
@@ -1146,14 +1218,16 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         {
             if controller != nil
             {
-                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+//                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+                controller.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
             }
         }
         else
         {
             if controller != nil
             {
-                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+//                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+                controller.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
             }
         }
 
@@ -1163,26 +1237,32 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
     }
     
-    //MARK: - WOMMenuletDelegateImages delegate methods
+    //WOMMenuletDelegateImages delegate methods
     
-    func activeImageName() -> String!
-    {
-        if (observerDarkMode())
-        {
-            return "icon-menulet-white"
-        }
-        
-        return "icon-menulet"
-    }
+//    func activeImageName() -> String!
+//    {
+//        if (observerDarkMode())
+//        {
+//            return "icon-menulet-white"
+//        }
+//
+//        return "icon-menulet"
+//    }
+//
+//    func inactiveImageName() -> String!
+//    {
+//        if (observerDarkMode())
+//        {
+//            return "icon-menulet-white"
+//        }
+//
+//        return "icon-menulet"
+//    }
     
-    func inactiveImageName() -> String!
-    {
-        if (observerDarkMode())
-        {
-            return "icon-menulet-white"
-        }
+    //MARK: - NSPopoverDelegate delegate methods
+    func popoverDidShow(_ notification: Notification) {
         
-        return "icon-menulet"
+        controller.behavior = .transient
     }
     
     @IBAction func openSystemPreferences(_ sender: AnyObject) {
@@ -1317,7 +1397,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         if (Preferences.showTitleTouchBarButtons() == false)
         {
-            tempTitle = "";
+            tempTitle = ""
         }
         
         let button : NSButton = NSButton(title: tempTitle, image: image, target: self, action: #selector(createNewFile(sender:)))

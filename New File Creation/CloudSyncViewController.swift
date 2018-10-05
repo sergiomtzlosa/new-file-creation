@@ -23,7 +23,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
         uploadTemplatesButton.title = SMLocalizedString("uploadButtonTitle")
         downloadTemplatesButton.title = SMLocalizedString("downloadButtonTitle")
         
-        self.resignFirstResponder()
+//        self.resignFirstResponder()
         super.awakeFromNib()
     }
     

@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "名前をつけて保存";
+
+"exitApp" = "閉じる";
+
+"settings" = "設定";
+
+"launchLogin" = "ログイン時に起動";
+
+"dragAndDropItems" = "表の列をお好きな場所にドラッグアンドドロップして、新しいファイルを作成してください。\nファイルはいくつでも作成することができます。";
+
+"newFileMask" = "新規 .%@ file - %@";
+
+"general" = "一般";
+
+"enableExtensionTip" = "システム設定->拡張機能->Finderから、\"新規ファイル作成拡張機能\"を有効化してください。";
+
+"selectFileTemplate" = "ファイルテンプレートを選択してください。";
+
+"warning" = "警告";
+
+"templateExists" = "このテンプレートはすでに存在します。";"別のテンプレートを選択してください。";
+
+"advanced" = "アドバンス";
+
+"openSystemPreferences" = "オープンシステム設定";
+
+"help" = "ヘルプ";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "ファイル作成時にサウンドを再生";
+
+"openWhenCreate" = "新規ファイル作成時にオープン";
+
+"revealCreationFile" = "ファイル作成時にFinderに表示";
+
+"enableDoubleClick" = "ポップアップメニューのダブルクリックによるファイル作成を有効化";
+
+"hidePopUp" = "ファイル作成時にポップアップを隠す機能を有効化";
+
+"tipCustomTemplates" = "カスタムテンプレートを新規ファイル作成に追加";
+
+"resetDefaultsTemplate" = "リセットして初期設定に戻す";
+
+"titleFilesLabel" = "テンプレートを隠す、表示、並び替え";
+
+"enable" = "有効化";
+
+"icon" = "アイコン";
+
+"template" = "テンプレート";
+
+"cancel" = "キャンセル";
+
+"showIcloudPreferences" = "iCloud設定を表示";
+
+"icloudNotFetch" = "iCloudから取得できません。システム設定からiCloudにログインし、\"iCloud Drive\"を有効化してください。";
+
+"syncCloudTip" = "テンプレートをiCloudと同期";"お使いのすべてのMacでカスタムテンプレートと設定のアップロードとダウンロード、および使用が可能です。";
+
+"tipHelpCloud" = "iCloudに接続できない場合は、システム設定->iCloudからiCloudにログインし、\"iCloud Drive\"を有効化してください。";
+
+"uploadButtonTitle" = "テンプレート、設定をiCloudにアップロード";
+
+"downloadButtonTitle" = "テンプレート、設定をiCloudからダウンロード";
+
+"uploading" = "iCloudにアップロード中";
+
+"downloading" = "iCloudからダウンロード中";
+
+"positiveUploaded" = "iCloudにアップロードしました。";
+
+"notUploaded" = "iCloudへのアップロード中にエラーが発生しました。";
+
+"positiveDownload" = "iCloudからダウンロードしました。";
+
+"errorDownload" = "iCloudからのダウンロード中にエラーが発生しました。";
+
+"selectFile" = "ファイルを選択";
+
+"fadeButtonTitle" = "Touch Barでフェード効果を有効化";
+
+"textButtonTitle" = "Touch Barボタンでファイル拡張機能を表示";
+
+"syncButtonTitle" = "Touch Barを使用してポップアップテンプレートを同期";
+
+"labelDocsToday" = "Todayウィジェットに文書数を表示";
+
+"documents" = "文書";
+
+"minimunTemplatesShow" = "ユーザー経験向上のため、テンプレート数は10以上に設定してください。";

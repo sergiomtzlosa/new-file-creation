@@ -48,7 +48,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
 
-        self.resignFirstResponder()
+//        self.resignFirstResponder()
         super.awakeFromNib()
     }
     

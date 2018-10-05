@@ -32,7 +32,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
 //        
 //        syncTemplatesOption.hidden = true
         
-        self.resignFirstResponder()
+//        self.resignFirstResponder()
         super.awakeFromNib()
     }
     

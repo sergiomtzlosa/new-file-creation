@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "नई फाइल को इस रूप में सहेजें ...";
+
+"exitApp" = "छोड़ें";
+
+"settings" = "सेटिंग्स";
+
+"launchLogin" = "लॉगिन पर लॉन्च करें";
+
+"dragAndDropItems" = "एक नई फाइल बनाने के लिए टेबल से आप मनचाही जगह पर एक पंक्ति खींचें और छोड़ें.\n आप जितनी चाहें उतनी फाइलें बना सकते हैं.";
+
+"newFileMask" = "नई .%@ फ़ाइल - %@";
+
+"general" = "सामान्य";
+
+"enableExtensionTip" = "सिस्टम प्राथमिकताओं में \"नई फ़ाइल निर्माण एक्सटेंशन\" सक्षम करें -> एक्सटेंशन -> Finder";
+
+"selectFileTemplate" = "अपना फाइल टेम्पलेट चुनें";
+
+"warning" = "चेतावनी";
+
+"templateExists" = "यह टेम्पलेट पहले से मौजूद है। कृपया एक अलग टेम्पलेट चुनें। ";
+
+"advanced" = "उन्नत";
+
+"openSystemPreferences" = "ओपन सिस्टम प्राथमिकताएं";
+
+"help" = "सहायता";
+
+"icloud" = "iCloud";
+
+"touchbar" = "टच बार";
+
+"playSoundPreference" = "फाइल निर्माण पर ध्वनि बजाएँ";
+
+"openWhenCreate" = "नई फाइल बनाते समय खोलें";
+
+"revealCreationFile" = "फ़ाइल निर्माण पर Finder में दिखाएँ";
+
+"enableDoubleClick" = "फ़ाइल बनाने के लिए पॉपअप मेनू पर डबल-क्लिक सक्षम करें";
+
+"hidePopUp" = "फ़ाइल निर्माण पर छुपा पॉपअप सक्षम करें";
+
+"tipCustomTemplates" = "नई फाइल निर्माण में अपने कस्टम टेम्पलेट्स जोड़ें";
+
+"resetDefaultsTemplate" = "डिफ़ॉल्ट पर फिर से सेट करें";
+
+"titleFilesLabel" = "अपने टेम्पलेट्स को छुपाएं, दिखाएं, जोड़ें या पुन: व्यवस्थित करें:";
+
+"enable" = "सक्षम करें";
+
+"icon" = "आइकन";
+
+"template" = "टेम्पलेट";
+
+"cancel" = "रद्द करें";
+
+"showIcloudPreferences" = "ICloud प्राथमिकताएं दिखाएं";
+
+"icloudNotFetch" = "ICloud नहीं मिल सका, सिस्टम प्राथमिकताओं से iCloud में लॉगिन करें और \"iCloud Drive\" सक्षम करें";
+
+"syncCloudTip" = "ICloud के साथ अपने टेम्पलेट्स सिंक करें. आप अपने कस्टम टेम्पलेट्स और कॉन्फ़िगरेशन को अपलोड/डाउनलोड कर सकते हैं और अपने सभी Macs में उनका उपयोग कर सकते हैं.";
+
+"tipHelpCloud" = "यदि आप iCloud से कनेक्ट नहीं कर पा रहे  हैं तो ICloud में सिस्टम प्राथमिकताओं के माध्यम से लॉगिन करें -> iCloud फिर \" iCloud ड्राइव \" सक्षम करें";
+
+"uploadButtonTitle" = "ICloud पर टेम्पलेट्स और कॉन्फ़िगरेशन अपलोड करें";
+
+"downloadButtonTitle" = "ICloud से टेम्पलेट्स और कॉन्फ़िगरेशन डाउनलोड करें";
+
+"uploading" = "ICloud पर अपलोड हो रहा है ...";
+
+"downloading" = "ICloud से डाउनलोड हो रहा है ...";
+
+"positiveUploaded" = "ICloud पर अपलोड किया गया!";
+
+"notUploaded" = "ICloud पर अपलोड करने में गड़बड़ी हुई";
+
+"positiveDownload" = "ICloud से डाउनलोड किया गया!";
+
+"errorDownload" = "ICloud से डाउनलोड करने में त्रुटि!";
+
+"selectFile" = "फ़ाइल का चयन करें";
+
+"fadeButtonTitle" = "टच बार पर धुँधला प्रभाव सक्षम करें";
+
+"textButtonTitle" = "टच बार बटन पर फ़ाइल एक्सटेंशन दिखाएं";
+
+"syncButtonTitle" = "टच बार के साथ पॉप-अप टेम्पलेट सिंक्रनाइज़ करें";
+
+"labelDocsToday" = "आज विजेट में दस्तावेजों की संख्या:";
+
+"documents" = "दस्तावेज़";
+
+"minimunTemplatesShow" = "बेहतर अनुभव के लिए कम से कम 10 टेम्पलेट्स सेट करें";

@@ -1,0 +1,93 @@
+ "Save new file as...";
+
+ "Quit";
+
+ "Settings";
+
+ "Launch at login";
+
+ "Drag and drop a row from table to your desired destination to create a new file.\nYou can create many files as you want.";
+
+ "New .%@ file - %@";
+
+ "General";
+
+ "Enable \"New File Creation extension\" in System Preferences -> Extensions -> Finder";
+
+ "Select your file template";
+
+ "Warning";
+
+ "This template already exits. Please choose a different template.";
+
+ "Advanced";
+
+ "Open system preferences";
+
+ "Help";
+
+ "iCloud";
+
+ "Touch Bar";
+
+ "Play sound on file creation";
+
+ "Open when create new file";
+
+ "Reveal in Finder on file creation";
+
+ "Enable double-click on popup menu to create file";
+
+ "Enable hide popup on file creation";
+
+ "Add your custom templates to New File Creation";
+
+ "Reset to defaults";
+
+ "Hide, show, add or reorder your templates:";
+
+ "Enable";
+
+ "Icon";
+
+ "Template";
+
+ "Cancel";
+
+ "Show iCloud Preferences";
+
+ "Cannot fetch iCloud, login into iCloud from system preferences and enable \"iCloud Drive\".";
+
+ "Sync your templates with iCloud. You can upload/download your custom templates and configuration and use them in all your Macs.";
+
+ "If you cannot connect to iCloud do login in iCloud via System Preferences -> iCloud then enable \"iCloud Drive\"";
+
+ "Upload templates & configuration to iCloud";
+
+ "Download templates & configuration from iCloud";
+
+ "Uploading to iCloud...";
+
+ "Downloading from iCloud...";
+
+ "Uploaded to iCloud!";
+
+ "Error uploading to iCloud";
+
+ "Downloaded from iCloud!";
+
+ "Error downloading from iCloud!";
+
+ "Choose file";
+
+ "Enable fade effect on Touch Bar";
+
+ "Show file extension on Touch Bar buttons";
+
+ "Synchronize pop-up templates with Touch bar";
+
+ "Number of documents in Today Widget:";
+
+ "documents";
+
+ "Set a minimum number of 10 templates for a better experience";

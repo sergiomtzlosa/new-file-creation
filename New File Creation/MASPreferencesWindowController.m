@@ -52,6 +52,7 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
 - (void)awakeFromNib
 {
     [self.window makeFirstResponder:nil];
+   
     [super awakeFromNib];
 }
 
@@ -325,12 +326,15 @@ static NSString *const PreferencesKeyForViewBounds (NSString *identifier)
     [self.window setContentView:controllerView];
     [self.window recalculateKeyViewLoop];
     
-//    if ([self.window firstResponder] == self.window) {
-//        if ([controller respondsToSelector:@selector(initialKeyView)])
-//            [self.window makeFirstResponder:[controller initialKeyView]];
-//        else
-//            [self.window selectKeyViewFollowingView:controllerView];
-//    }
+    if ([self.window firstResponder] == self.window) {
+        if ([controller respondsToSelector:@selector(initialKeyView)])
+            [self.window makeFirstResponder:[controller initialKeyView]];
+        else
+        {
+            [self.window selectKeyViewFollowingView:controllerView];
+            [self.window makeFirstResponder:controllerView];
+        }
+    }
     
     // Insert view controller into responder chain
     [self patchResponderChain];
