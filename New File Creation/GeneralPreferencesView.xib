@@ -84,7 +84,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="188">
-                    <rect key="frame" x="49" y="75" width="363" height="30"/>
+                    <rect key="frame" x="49" y="75" width="583" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" truncatesLastVisibleLine="YES" sendsActionOnEndEditing="YES" id="189">
                         <font key="font" metaFont="system"/>

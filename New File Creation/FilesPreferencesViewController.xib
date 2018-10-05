@@ -118,7 +118,7 @@
                         <action selector="removeTemplateAction:" target="-2" id="CaU-07-mUw"/>
                     </connections>
                 </button>
-                <button focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" id="hY9-hd-Ms4">
+                <button focusRingType="none" horizontalHuggingPriority="750" verticalHuggingPriority="750" mirrorLayoutDirectionWhenInternationalizing="always" id="hY9-hd-Ms4">
                     <rect key="frame" x="10" y="7" width="25" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="SUa-zr-dxn">
