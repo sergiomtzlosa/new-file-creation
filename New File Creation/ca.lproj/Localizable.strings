@@ -1,0 +1,94 @@
+
+"saveNewFileAs" = "Guardar nou arxiu com...";
+
+"exitApp" = "Sortir";
+
+"settings" = "Preferències";
+
+"launchLogin" = "Executar l'inici de la sessió";
+
+"dragAndDropItems" = "Arrossega i deixa anar una fila de la taula fins a la ruta de destinació per crear un nou arxiu.\nPots crear tants arxius com vulguis.";
+
+"newFileMask" = "Nou arxiu .%@ - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Activa \"New File Creation Extension\" a Preferències del sistema -> Extensions -> Finder";
+
+"selectFileTemplate" = "Selecciona el teu plantilla";
+
+"warning" = "Notes";
+
+"templateExists" = "Aquesta plantilla ja existeix. Si us plau selecciona una plantilla diferent.";
+
+"advanced" = "Avançat";
+
+"openSystemPreferences" = "Obrir preferències del sistema";
+
+"help" = "Ajuda";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Reproduir so en crear arxiu";
+
+"openWhenCreate" = "Obrir en crear el fitxer";
+
+"revealCreationFile" = "Mostra en el Finder en crear arxiu";
+
+"enableDoubleClick" = "Activa doble-clic en menu emergent per crear arxiu";
+
+"hidePopUp" = "Amaga finestra emergent en crear arxiu";
+
+"tipCustomTemplates" = "Afegeix les teves pròpies plantilles a New File Creation";
+
+"resetDefaultsTemplate" = "Restablir valors";
+
+"titleFilesLabel" = "Oculta, mostra, afegeix o ordena les teves plantilles:";
+
+"enable" = "Activa";
+
+"icon" = "Icona";
+
+"template" = "Plantilla";
+
+"cancel" = "Cancel";
+
+"showIcloudPreferences" = "Mostra preferències d'iCloud";
+
+"icloudNotFetch" = "No es pot connectar amb iCloud, fes login a iCloud des de les preferències del sistema i activa \"iCloud Drive\".";
+
+"syncCloudTip" = "Sincronitza les teves plantilles amb iCloud. Pots pujar/baixar les teves plantilles personalitzades i la configuració per poder usar-lo en tots els teus Macs.";
+
+"tipHelpCloud" = "Si no pots connectar a iCloud, fes login a iCloud via Preferències del sistema -> iCloud després activa \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Pujar plantilles & configuració a iCloud";
+
+"downloadButtonTitle" = "Descarregar plantilles & configuració des iCloud";
+
+"uploading" = "Pujant a iCloud...";
+
+"downloading" = "Descarregant d'iCloud...";
+
+"positiveUploaded" = "¡Pujat a iCloud!";
+
+"notUploaded" = "¡Error en pujar a iCloud!";
+
+"positiveDownload" = "¡Descarregat d'iCloud!";
+
+"errorDownload" = "¡Error al descarregar d'iCloud!";
+
+"selectFile" = "Selecciona arxiu";
+
+"fadeButtonTitle" = "Activa efecte esvaïment a Touch Bar";
+
+"textButtonTitle" = "Mostra extensió de l'arxiu en els botons del Touch Bar";
+
+"syncButtonTitle" = "Sincronitzar les plantilles amb Touch Bar";
+
+"labelDocsToday" = "Nombre de documents en Today Widget:";
+
+"documents" = "documents";
+
+"minimunTemplatesShow" = "Activa un mínim de 10 plantilles per a una millor experiència";

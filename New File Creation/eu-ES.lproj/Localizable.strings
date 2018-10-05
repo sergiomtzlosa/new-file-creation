@@ -1,0 +1,95 @@
+
+"saveNewFileAs" = "Gorde fitxategia berria gisa...";
+
+"exitApp" = "Irteera";
+
+"settings" = "Lehentasunak";
+
+"launchLogin" = "Exekutatu saioaren hasieran";
+
+"dragAndDropItems" = "Taulako errenkadak eraman eta jaregin fitxategi berri bat sortzeko helmugara.\nNahi dituzun fitxategiak sor ditzakezu.";
+
+"newFileMask" = "Fitxategi berria .%@ - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Gaitu \"New File Creation extension\" Sistema Hobespenak -> Luzapenak -> Finder";
+
+"selectFileTemplate" = "Aukeratu zure txantiloia";
+
+"warning" = "Abisua";
+
+"templateExists" = "Txantiloia dagoeneko badago. Aukeratu beste txantiloi bat.";
+
+"advanced" = "Aurreratu";
+
+"openSystemPreferences" = "Ireki sistemaren hobespenak";
+
+"help" = "Lagundu";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Erreproduzitu soinua fitxategia sortzean";
+
+"openWhenCreate" = "Ireki fitxategia sortzean";
+
+"revealCreationFile" = "Erakutsi fitxategian fitxategia aurkitzeko";
+
+"enableDoubleClick" = "Aktibatu egin klik bikoitza pop-up menuan fitxategi sortzeko";
+
+"hidePopUp" = "Ezkutatu laster-leihoaren fitxategia fitxategia sortzean";
+
+"tipCustomTemplates" = "Gehitu zure txantiloiak New File Creation fitxategian";
+
+"resetDefaultsTemplate" = "Berrezarri balioak";
+
+"titleFilesLabel" = "Ezkutatu, erakutsi, gehitu edo berrantolatu zure txantiloiak:";
+
+"enable" = "Aktibatu";
+
+"icon" = "Ikonoa";
+
+"template" = "Plantilla";
+
+"cancel" = "Bertan behera";
+
+"showIcloudPreferences" = "Erakutsi iCloud hobespenak";
+
+"icloudNotFetch" = "Ezin da iCloud-ekin konektatu, sistemaren hobespenetan iCloud saioa hasi eta \"iCloud Drive\" aktibatzen du..";
+
+"syncCloudTip" = "Sinkronizatu zure txantiloiak iCloud-rekin. Zure txantiloiak eta ezarpenak pertsonalizatu/deskargatu ditzakezu zure Mac guztietan erabiltzeko.";
+
+"tipHelpCloud" = "Ezin baduzu iCloud-era konektatu, saioa hasi iCloud sistemaren hobespenen bidez -> iCloud eta aktibatu \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Kargatu txantiloiak eta konfigurazioa iCloud-era";
+
+"downloadButtonTitle" = "Deskargatu txantiloiak eta ezarpenak icloud-tik";
+
+"uploading" = "iCloud-ra igotzea...";
+
+"downloading" = "iCloudetik deskargatzea...";
+
+"positiveUploaded" = "¡iCloud-era igo da!";
+
+"notUploaded" = "¡Errorea iCloud-era kargatzean!";
+
+"positiveDownload" = "¡iCloud deskargatuta!";
+
+"errorDownload" = "¡Errorea iCloudetik deskargatzean!";
+
+"selectFile" = "Hautatu fitxategia";
+
+"fadeButtonTitle" = "Ukipen-efektua aktibatu Touch Bar aplikazioan";
+
+"textButtonTitle" = "Erakutsi fitxategiaren luzapena Touch Bar-en botoietan";
+
+"syncButtonTitle" = "Sinkronizatu txantiloiak Touch Barrekin";
+
+"labelDocsToday" = "Today Widget-en dokumentu kopurua:";
+
+"documents" = "dokumentuak";
+
+"minimunTemplatesShow" = "Aktibatu gutxienez 10 txantiloiak esperientzia hobea izateko";
+

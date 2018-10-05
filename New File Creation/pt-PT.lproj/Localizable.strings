@@ -1,0 +1,95 @@
+
+"saveNewFileAs" = "Salvar novo arquivo como...";
+
+"exitApp" = "Sair";
+
+"settings" = "Preferências";
+
+"launchLogin" = "Corra no começo da sessão";
+
+"dragAndDropItems" = "Arraste e solte uma linha da tabela no caminho de destino para criar um novo arquivo.\nVocê pode criar quantos arquivos desejar.";
+
+"newFileMask" = "Novo arquivo .%@ - %@";
+
+"general" = "Geral";
+
+"enableExtensionTip" = "Ativar \"Nova extensão de criação de arquivo\" em Preferências do Sistema -> Extensões -> Finder";
+
+"selectFileTemplate" = "Selecione seu modelo";
+
+"warning" = "Aviso";
+
+"templateExists" = "Este modelo já existe. Por favor, selecione um modelo diferente.";
+
+"advanced" = "Avançado";
+
+"openSystemPreferences" = "Preferências de sistema aberto";
+
+"help" = "Ajuda";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Tocar som ao criar arquivo";
+
+"openWhenCreate" = "Abra ao criar o arquivo";
+
+"revealCreationFile" = "Mostrar no Finder ao criar um arquivo";
+
+"enableDoubleClick" = "Ativar clique duplo no menu pop-up para criar o arquivo";
+
+"hidePopUp" = "Ocultar janela pop-up ao criar arquivo";
+
+"tipCustomTemplates" = "Adicione seus próprios modelos à New File Creation";
+
+"resetDefaultsTemplate" = "Redefinir valores";
+
+"titleFilesLabel" = "Ocultar, mostrar, adicionar ou reorganizar seus modelos:";
+
+"enable" = "Ativar";
+
+"icon" = "Ícone";
+
+"template" = "Modelo";
+
+"cancel" = "Cancelar";
+
+"showIcloudPreferences" = "Mostrar preferências do iCloud";
+
+"icloudNotFetch" = "Você não pode se conectar com o iCloud, faça o login no iCloud a partir das preferências do sistema e ative o \"iCloud Drive\".";
+
+"syncCloudTip" = "Sincronize seus modelos com o iCloud. Você pode fazer o upload / download de seus modelos personalizados e suas configurações para usá-lo em todos os seus Macs.";
+
+"tipHelpCloud" = "Se você não consegue se conectar ao iCloud, faça o login no iCloud através das Preferências do Sistema -> iCloud e então ative \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Carregar modelos e configurações para o iCloud";
+
+"downloadButtonTitle" = "Baixe modelos e configurações do iCloud";
+
+"uploading" = "Upload para o iCloud...";
+
+"downloading" = "Download do iCloud...";
+
+"positiveUploaded" = "¡Enviado para o iCloud!";
+
+"notUploaded" = "¡Erro ao fazer o upload para o iCloud!";
+
+"positiveDownload" = "¡Transferido do iCloud!";
+
+"errorDownload" = "¡Erro ao baixar do iCloud!";
+
+"selectFile" = "Selecione o arquivo";
+
+"fadeButtonTitle" = "Ativar efeito de desvanecimento na barra de toque";
+
+"textButtonTitle" = "Mostrar extensão de arquivo nos botões da barra de toque";
+
+"syncButtonTitle" = "Sincronizar modelos com a barra de toque";
+
+"labelDocsToday" = "Número de documentos no Today Widget:";
+
+"documents" = "documentos";
+
+"minimunTemplatesShow" = "Ative no mínimo 10 modelos para uma melhor experiência";
+

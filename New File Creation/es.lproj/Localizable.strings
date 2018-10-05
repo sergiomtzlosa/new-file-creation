@@ -19,7 +19,7 @@
 
 "warning" = "Advertencia";
 
-"templateExists" = "Esta plantilla ya existe. Por favor selecciona una platilla diferente.";
+"templateExists" = "Esta plantilla ya existe. Por favor selecciona una plantilla diferente.";
 
 "advanced" = "Avanzado";
 
@@ -43,9 +43,9 @@
 
 "tipCustomTemplates" = "Añade tus propias plantillas a New File Creation";
 
-"resetDefaultsTemplate" = "Reestablecer valores";
+"resetDefaultsTemplate" = "Restablecer valores";
 
-"titleFilesLabel" = "Oculta, muestra, añade o reordena tus platillas:";
+"titleFilesLabel" = "Oculta, muestra, añade o reordena tus plantillas:";
 
 "enable" = "Activar";
 
@@ -73,7 +73,7 @@
 
 "positiveUploaded" = "¡Subido a iCloud!";
 
-"notUploaded" = "¡Error al subir a iCloud";
+"notUploaded" = "¡Error al subir a iCloud!";
 
 "positiveDownload" = "¡Descargado de iCloud!";
 
