@@ -32,6 +32,8 @@ class FinderSync: FIFinderSync
         self.templates = obtainRows()
         customView = newAccessoryView()
 
+        self.arrayPaths = Set()
+        
         _ = VolumeManager.shared
         
         SMLog("FinderSync() launched from %@", Bundle.main.bundlePath)
@@ -39,20 +41,46 @@ class FinderSync: FIFinderSync
         // Set up the directory we are syncing.
         
         self.usernamePath = "/Users/" + NSUserName()
+       
+        self.finderController.directoryURLs = self.getExtensionURLFinder()
+        SMLog("%@", self.getExtensionURLFinder())
         
-        finderController.directoryURLs = getExtensionURLFinder()
-
         NotificationCenter.default.addObserver(forName:VolumeManager.VolumesDidChangeNotification, object:nil, queue:OperationQueue.current!) { (notification) in
 
-            var urls = Set(notification.object as! [URL])
+//            var urls = Set(notification.object as! [URL])
+//
+//            urls.insert(URL(fileURLWithPath: self.usernamePath))
+//            urls = urls.union(Set(urls))
+//            urls = urls.union(self.getExtensionURLFinder())
+//
+//            SMLog("items urls notification: \(urls)")
+//
+//            self.finderController.directoryURLs = urls
+            
+            let notifObject : NSArray! = notification.object as? NSArray
+          
+            let urls : NSMutableArray = NSMutableArray()
       
-            urls.insert(URL(fileURLWithPath: self.usernamePath))
-            urls = urls.union(Set(urls))
-            urls = urls.union(self.getExtensionURLFinder())
+            if ((notifObject) != nil)
+            {
+                urls.addObjects(from: notifObject as! [Any])
+            }
+        
+            urls.add(NSURL(fileURLWithPath: self.usernamePath))
+           
+            SMLog("urls: \(urls)")
+          
+            let finalSet : NSMutableSet = NSMutableSet()
+          
+            finalSet.addObjects(from: urls as! [Any])
+  
+            let externalDisk = self.getExtensionURLFinder()
+           
+            finalSet.union(externalDisk)
+        
+            self.finderController.directoryURLs = finalSet as? Set<URL>
             
-            SMLog("items urls notification: \(urls)")
-            
-            self.finderController.directoryURLs = urls
+            SMLog("notification: %@", finalSet)
         }
     }
     

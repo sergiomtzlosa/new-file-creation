@@ -74,7 +74,7 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
         REMOVE_DISTRIBUTED_NOTIFICATION(className, selector: selector, name: name)
         
         SMLog("registra a la notificacion")
-        
+//        print("Notification \(name) registered")
         DistributedNotificationCenter.default().addObserver(className, selector: selector, name: name.map { NSNotification.Name(rawValue: $0) }, object: nil)
     }
     else
