@@ -1097,6 +1097,12 @@
 				DEVELOPMENT_TEAM = 9Z3J82KRJR;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"PRINTLOG=1",
+					"DEVELOPMENT=1",
+				);
 				INFOPLIST_FILE = "New File Creation Today/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1127,7 +1133,10 @@
 				DEVELOPMENT_TEAM = 9Z3J82KRJR;
 				ENABLE_HARDENED_RUNTIME = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_PREPROCESSOR_DEFINITIONS = "DEVELOPMENT=1";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVELOPMENT=1",
+					"PRINTLOG=1",
+				);
 				INFOPLIST_FILE = "New File Creation Today/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1180,6 +1189,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"DEVELOPMENT=1",
+					"PRINTLOG=1",
 				);
 				INFOPLIST_FILE = "New File Creation Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
@@ -1205,6 +1216,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9Z3J82KRJR;
 				ENABLE_HARDENED_RUNTIME = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"PRINTLOG=1",
+					"DEVELOPMENT=1",
+				);
 				INFOPLIST_FILE = "New File Creation Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -1509,6 +1524,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					"DEVELOPMENT=1",
+					"PRINTLOG=1",
 				);
 				INFOPLIST_FILE = "New File Creation Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -1531,6 +1548,10 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9Z3J82KRJR;
 				ENABLE_HARDENED_RUNTIME = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEVELOPMENT=1",
+					"PRINTLOG=1",
+				);
 				INFOPLIST_FILE = "New File Creation Helper/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
