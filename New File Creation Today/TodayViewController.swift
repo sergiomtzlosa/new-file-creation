@@ -217,7 +217,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             var components : [String] = value.components(separatedBy: ".") as [String]
             
-            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
+            var image : NSImage = NSWorkspace.shared.icon(forFileType: "sh")
+            
+            if (components.count > 1)
+            {
+                image = NSWorkspace.shared.icon(forFileType: components[1])
+            }
+            
+//            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
             
             let imageView : NSImageView = NSImageView(frame: NSMakeRect(10, 0, 50, 50))
             imageView.image = image
@@ -228,7 +235,14 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             textField.textColor = NSColor.black
             
-            let extensionFile : String = components[1].uppercased()
+            var extensionFile : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionFile = components[1].uppercased() as String
+            }
+            
+//            let extensionFile : String = components[1].uppercased()
             
             let strText : String = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
 
@@ -283,7 +297,15 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         for file in selectedObjects as! [String]
         {
             var components : [String] = file.components(separatedBy: ".")
-            let extensionFile : String = components[1] as String
+            
+            var extensionFile : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionFile = components[1].uppercased() as String
+            }
+            
+//            let extensionFile : String = components[1] as String
             
             if (extensionFile != "")
             {
@@ -428,7 +450,6 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
                     SMLog("error: \(error!.localizedDescription)")
                 } catch {
                     SMLog("error")
-                    
                 }
             }
             

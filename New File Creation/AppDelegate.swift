@@ -779,10 +779,15 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 cellView.layer?.backgroundColor = NSColor.white.cgColor
             }
 
-            var components : [String] = value.components(separatedBy: ".") as [String]
+            var components : [String]? = value.components(separatedBy: ".") as [String]?
             
-            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
-          
+            var image : NSImage = NSWorkspace.shared.icon(forFileType:"sh")
+            
+            if (components != nil)
+            {
+                image = (components!.count > 1) ? NSWorkspace.shared.icon(forFileType: components![1]) : NSWorkspace.shared.icon(forFileType:"svg")
+            }
+            
             let imageView : NSImageView = NSImageView(frame: NSMakeRect(10, 0, 50, 50))
             imageView.image = image
             
@@ -792,7 +797,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
             textField.textColor = NSColor.black
             
-            let extensionFile : String = components[1].uppercased()
+            var extensionFile : String = "sh"
+            
+            if (components != nil)
+            {
+                extensionFile  = (components!.count > 1) ? components![1].uppercased() : extensionFile
+            }
             
             textField.stringValue = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
             textField.alignment = NSTextAlignment.left
@@ -838,8 +848,14 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         for file in selectedObjects as! [String]
         {
             var components : [String] = file.components(separatedBy: ".")
-            let extensionFile : String = components[1] as String
             
+            var extensionFile : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionFile = components[1] as String
+            }
+
             if (extensionFile != "")
             {
                 filenameExtensions.add(extensionFile)
@@ -869,6 +885,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         if (fileExistsAtPath)
         {
+            if (pathURL.pathExtension?.lowercased() == "rtfd")
+            {
+                // rtfd is a file
+                return false
+            }
+            
             if isDirectory.boolValue
             {
                 // It's a Directory.
@@ -1279,7 +1301,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     //MARK: - NSPopoverDelegate delegate methods
     func popoverDidShow(_ notification: Notification) {
         
-        controller.behavior = .transient
+        controller.behavior = .semitransient
     }
     
     @IBAction func openSystemPreferences(_ sender: AnyObject) {
@@ -1362,7 +1384,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             var components : [String] = (item as AnyObject).components(separatedBy: ".") as [String]
             
-            let extensionItem: String = components[1]
+            var extensionItem : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionItem = components[1] as String
+            }
 
             var image : NSImage = NSWorkspace.shared.icon(forFileType: extensionItem)
             image = Utils.resize(image: image, w: 20, h: 20)
@@ -1732,8 +1759,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         {
             var components : [String] = (file as AnyObject).components(separatedBy: ".")
             
-            let extensionFile : String = components[1].uppercased()
+            var extensionFile : String = "sh"
             
+            if (components.count > 1)
+            {
+                extensionFile = components[1].uppercased() as String
+            }
+
             var str : NSString = NSString(format: "New .%@ file - %@", extensionFile, file as! NSString)
             
             if (currentLanguage() == "es" || currentLanguage() == "es-es")

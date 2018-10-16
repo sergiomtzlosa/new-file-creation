@@ -419,8 +419,13 @@ class FinderSync: FIFinderSync
         {
             var components : [String] = (file as AnyObject).components(separatedBy: ".") 
             
-            let extensionFile : String = components[1].uppercased()
-   
+            var extensionFile : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionFile = components[1].uppercased() as String
+            }
+         
             extensionsArray.add(extensionFile)
         }
         
@@ -437,7 +442,14 @@ class FinderSync: FIFinderSync
         {
             var components : [String] = (file as AnyObject).components(separatedBy: ".") 
             
-            let extensionFile : String = components[1].uppercased()
+            var extensionFile : String = "sh"
+            
+            if (components.count > 1)
+            {
+                extensionFile = components[1].uppercased() as String
+            }
+            
+//            let extensionFile : String = components[1].uppercased()
             
             var str : NSString = NSString(format: "New .%@ file - %@", extensionFile, file as! NSString)
                 

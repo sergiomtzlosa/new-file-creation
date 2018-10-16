@@ -553,7 +553,12 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             let value : String = dict.object(forKey: "templateColumn") as! String
             var components : [String] = value.components(separatedBy: ".") as [String]
             
-            let image : NSImage = NSWorkspace.shared.icon(forFileType: components[1])
+            var image : NSImage = NSWorkspace.shared.icon(forFileType:"sh")
+            
+            if (components.count > 1)
+            {
+                image = NSWorkspace.shared.icon(forFileType: components[1])
+            }
             
             return image
         }
