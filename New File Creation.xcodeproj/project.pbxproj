@@ -38,6 +38,9 @@
 		1F2F85881B776D7B00BF4C4C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F85831B776D5500BF4C4C /* AppKit.framework */; };
 		1F47AF9E214FE593001CF1BC /* VolumeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F47AF9D214FE593001CF1BC /* VolumeManager.swift */; };
 		1F553122216555D20060DEAB /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A9CE41B75EAD800827FB1 /* Icon.icns */; };
+		1F567841217695310024659C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACB1B7510DF00DB6A6F /* Cocoa.framework */; };
+		1F567842217695350024659C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F067ACD1B7510E300DB6A6F /* Foundation.framework */; };
+		1F567843217695390024659C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F2F85831B776D5500BF4C4C /* AppKit.framework */; };
 		1F5A07001B7D230B00B9F621 /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A06FC1B7D230B00B9F621 /* MASPreferencesWindow.xib */; };
 		1F5A07011B7D230B00B9F621 /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A06FF1B7D230B00B9F621 /* MASPreferencesWindowController.m */; };
 		1F5A9CE51B75EAD800827FB1 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1F5A9CE41B75EAD800827FB1 /* Icon.icns */; };
@@ -309,6 +312,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F567843217695390024659C /* AppKit.framework in Frameworks */,
+				1F567842217695350024659C /* Foundation.framework in Frameworks */,
+				1F567841217695310024659C /* Cocoa.framework in Frameworks */,
 				1F2DF0051FA386EB003154DC /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
