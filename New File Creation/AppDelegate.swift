@@ -158,6 +158,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.controller.contentViewController = viewController
         self.controller.behavior = .transient
         
+        SCHEDULE_POSTNOTIFICATION(kChangeInterfaceNotification, object: nil)
+        
         super.awakeFromNib()
     }
     
@@ -1224,10 +1226,10 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 //        SMLog("notification: %@", notification.object)
 
 //        if (!self.controller.isActive)
-        if (!self.controller.isShown)
-        {
-            return
-        }
+//        if (!self.controller.isShown)
+//        {
+//            return
+//        }
         
         if (observerDarkMode())
         {
