@@ -594,7 +594,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
 
             objectItem.setObject(status, forKey: (tableColumn?.identifier)! as NSCopying)
             
-            print("object status: \(objectItem)")
+            //print("object status: \(objectItem)")
             
             dataArray.replaceObject(at: row, with: objectItem)
             

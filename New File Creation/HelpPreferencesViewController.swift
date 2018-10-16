@@ -12,11 +12,15 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
 {
     @IBOutlet var textViewHelp: NSTextView!
     
+    var darkModeOn : Bool!
+    
     override init(nibName nibNameString: NSNib.Name?, bundle bundleItem: Bundle?) {
+        
         super.init(nibName: nibNameString, bundle: bundleItem)
     }
     
     required init?(coder aDecoder: NSCoder) {
+        
         fatalError("NSCoding not supported")
     }
     
@@ -26,10 +30,22 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
         super.viewWillAppear()
     }
     
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
+        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        darkModeOn = (appearance.lowercased() == "dark") ? true : false
         
-        let path : String = Bundle.main.path(forResource: currentLanguage() == "es" ? "help_es" : "help", ofType: "rtfd")!
-    
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(GeneralPreferencesViewController.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
+        
+        var fileHelpName : String = (currentLanguage() == "es" || currentLanguage() == "es-es")  ? "help_es" : "help"
+        
+        if darkModeOn
+        {
+            fileHelpName = fileHelpName + "_dark"
+        }
+     
+        let path : String = Bundle.main.path(forResource: fileHelpName, ofType: "rtfd")!
+        
         textViewHelp.readRTFD(fromFile: path)
 
         textViewHelp.frame = NSMakeRect(0, 0, 588, textViewHelp.frame.size.height)
@@ -61,5 +77,22 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
     var toolbarItemLabel: String
     {
         return SMLocalizedString("help")
+    }
+    
+    @objc func eventNotifyDarkModeChanged(_ notification : Notification)
+    {
+        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        
+        var fileHelpName : String = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "help_es" : "help"
+       
+        if darkModeOn
+        {
+            fileHelpName = fileHelpName + "_dark"
+        }
+        
+        let path : String = Bundle.main.path(forResource: fileHelpName, ofType: "rtfd")!
+        
+        textViewHelp.readRTFD(fromFile: path)
     }
 }

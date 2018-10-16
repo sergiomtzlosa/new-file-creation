@@ -77,6 +77,8 @@
 		1F9853B21BA20318000B8593 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AB1BA20318000B8593 /* mztools.c */; };
 		1F9853B31BA20318000B8593 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AD1BA20318000B8593 /* unzip.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		1F9853B41BA20318000B8593 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 1F9853AF1BA20318000B8593 /* zip.c */; };
+		1FA1AA4721768273004EA44F /* help_dark.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1AA4521768273004EA44F /* help_dark.rtfd */; };
+		1FA1AA4821768273004EA44F /* help_es_dark.rtfd in Resources */ = {isa = PBXBuildFile; fileRef = 1FA1AA4621768273004EA44F /* help_es_dark.rtfd */; };
 		1FA507141B79271C004C2994 /* icon-menulet-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FA507131B79271C004C2994 /* icon-menulet-white.png */; };
 		1FBC44E11FA3A2500001F828 /* UtilsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBC44E01FA3A2500001F828 /* UtilsExtension.swift */; };
 		1FBC44E31FA3A33C0001F828 /* templates_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F70576A1B7FA7AA0081852B /* templates_prefs.plist */; };
@@ -250,6 +252,8 @@
 		1F9853AE1BA20318000B8593 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		1F9853AF1BA20318000B8593 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
 		1F9853B01BA20318000B8593 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		1FA1AA4521768273004EA44F /* help_dark.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help_dark.rtfd; sourceTree = "<group>"; };
+		1FA1AA4621768273004EA44F /* help_es_dark.rtfd */ = {isa = PBXFileReference; lastKnownFileType = wrapper.rtfd; path = help_es_dark.rtfd; sourceTree = "<group>"; };
 		1FA507131B79271C004C2994 /* icon-menulet-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menulet-white.png"; sourceTree = "<group>"; };
 		1FBC44E01FA3A2500001F828 /* UtilsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsExtension.swift; sourceTree = "<group>"; };
 		1FBC44E51FA3A3810001F828 /* New File Creation Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "New File Creation Today.entitlements"; sourceTree = "<group>"; };
@@ -612,6 +616,8 @@
 				1F8AA2681B9B2BEF00CF6894 /* icloud.png */,
 				1F80E67C1BA1DB70002B33CD /* help_es.rtfd */,
 				1F0A25071B7F3433008D394B /* help.rtfd */,
+				1FA1AA4521768273004EA44F /* help_dark.rtfd */,
+				1FA1AA4621768273004EA44F /* help_es_dark.rtfd */,
 				1F0A25021B7F2CC6008D394B /* Images */,
 				1F6CB4911B76523700CC6AF4 /* dropped.aif */,
 				1F5A9CE41B75EAD800827FB1 /* Icon.icns */,
@@ -884,6 +890,7 @@
 				1F64DEAE1B7E6777000B00CB /* GeneralPreferencesView.xib in Resources */,
 				1FF9569F1B712B7E007283E5 /* Images.xcassets in Resources */,
 				1F80E6721BA1C358002B33CD /* Localizable.strings in Resources */,
+				1FA1AA4821768273004EA44F /* help_es_dark.rtfd in Resources */,
 				1F5A9CE51B75EAD800827FB1 /* Icon.icns in Resources */,
 				1FF956A21B712B7E007283E5 /* MainMenu.xib in Resources */,
 				1F64DEB41B7E6BAD000B00CB /* FilesPreferencesViewController.xib in Resources */,
@@ -900,6 +907,7 @@
 				1FC7ADE51B80677F00015E97 /* application_prefs.plist in Resources */,
 				1F80E67D1BA1DB70002B33CD /* help_es.rtfd in Resources */,
 				1FC221D71E7C581D00B37AE0 /* TouchBarPreferencesViewController.xib in Resources */,
+				1FA1AA4721768273004EA44F /* help_dark.rtfd in Resources */,
 				1F5AD98D1BA3633600533641 /* SMSheetWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

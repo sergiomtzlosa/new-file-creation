@@ -19,7 +19,14 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     @IBOutlet var hidePopupButton: NSButton!
     @IBOutlet var openSystemPreferencesButton: NSButton!
     
+    var darkModeOn : Bool!
+    
     override func awakeFromNib() {
+        
+        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(GeneralPreferencesViewController.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
         
         openSystemPreferencesButton.title = SMLocalizedString("openSystemPreferences")
         
@@ -47,7 +54,9 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         systemPrefesLabel.usesSingleLineMode = false
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
-
+        
+        systemPrefesLabel.attributedStringValue = createAttributeStringForButton(SMLocalizedString("enableExtensionTip"))
+        
 //        self.resignFirstResponder()
         super.awakeFromNib()
     }
@@ -127,5 +136,25 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     override var acceptsFirstResponder: Bool
     {
         return false
+    }
+    
+    @objc func eventNotifyDarkModeChanged(_ notification : Notification)
+    {
+        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        
+        systemPrefesLabel.attributedStringValue = createAttributeStringForButton(SMLocalizedString("enableExtensionTip"))
+    }
+    
+    func createAttributeStringForButton(_ title : String) -> NSAttributedString
+    {
+        let color : NSColor = (darkModeOn!) ? NSColor.white : NSColor.black
+        
+        let attrTitle = NSMutableAttributedString(string: title)
+        
+        attrTitle.addAttribute(NSAttributedStringKey.font, value: NSFont(name: "Helvetica", size: 11.0)!, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
+        
+        return attrTitle
     }
 }

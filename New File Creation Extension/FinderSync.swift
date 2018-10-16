@@ -240,7 +240,7 @@ class FinderSync: FIFinderSync
             
             self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
             self.savePanel.becomeFirstResponder()
-            self.savePanel.title = (currentLanguage() == "es") ? "Guardar nuevo archivo como..." : "Save new file as..."
+            self.savePanel.title = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Guardar nuevo archivo como..." : "Save new file as..."
             self.savePanel.showsTagField = false
             self.savePanel.showsHiddenFiles = false
             self.savePanel.showsToolbarButton = true
@@ -383,7 +383,7 @@ class FinderSync: FIFinderSync
         let labelField : NSTextField = NSTextField(frame: NSMakeRect(8, 16, 150, 19))
         
         labelField.textColor = NSColor.black
-        labelField.stringValue = (currentLanguage() == "es") ? "Selecciona un tipo:" : "Select a file type:"
+        labelField.stringValue = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Selecciona un tipo:" : "Select a file type:"
         labelField.alignment = NSTextAlignment.left
         labelField.font = NSFont.systemFont(ofSize: 13)
         labelField.isBezeled = false
@@ -441,7 +441,7 @@ class FinderSync: FIFinderSync
             
             var str : NSString = NSString(format: "New .%@ file - %@", extensionFile, file as! NSString)
                 
-            if (currentLanguage() == "es")
+            if (currentLanguage() == "es" || currentLanguage() == "es-es")
             {
                 str = NSString(format: "Nuevo archivo .%@ - %@", extensionFile, file as! NSString)
             }

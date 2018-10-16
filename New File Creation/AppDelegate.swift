@@ -1133,12 +1133,27 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
         darkModeOn = (appearance.lowercased() == "dark") ? true : false
         
+//        var color : NSColor = NSColor.white
+//        let colorTitle : NSMutableAttributedString = NSMutableAttributedString(attributedString: checkBox.attributedTitle)
+//        let titleRange : NSRange = NSMakeRange(0, colorTitle.length)
+        
         if darkModeOn == false
         {
             SMLog("dark mode")
+
+            checkBox?.attributedTitle = createAttributeStringForButton(SMLocalizedString("launchLogin"))
+            
+//            colorTitle.addAttributes([NSAttributedStringKey.foregroundColor : color], range: titleRange)
+//            checkBox.attributedTitle = colorTitle
         }
         else
         {
+            checkBox?.attributedTitle = createAttributeStringForButton(SMLocalizedString("launchLogin"))
+//            color = NSColor.black
+//
+//            colorTitle.addAttributes([NSAttributedStringKey.foregroundColor : color], range: titleRange)
+//            checkBox.attributedTitle = colorTitle
+            
             SMLog("light mode")
         }
 
@@ -1463,7 +1478,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
         self.savePanel.becomeFirstResponder()
-        self.savePanel.title = (currentLanguage() == "es") ? "Guardar nuevo archivo como..." : "Save new file as..."
+        self.savePanel.title = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Guardar nuevo archivo como..." : "Save new file as..."
         self.savePanel.showsTagField = false
         self.savePanel.showsHiddenFiles = false
         self.savePanel.showsToolbarButton = true
@@ -1679,7 +1694,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         let labelField : NSTextField = NSTextField(frame: NSMakeRect(8, 16, 150, 19))
         
         labelField.textColor = NSColor.black
-        labelField.stringValue = (currentLanguage() == "es") ? "Selecciona un tipo:" : "Select a file type:"
+        labelField.stringValue = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Selecciona un tipo:" : "Select a file type:"
         labelField.alignment = NSTextAlignment.left
         labelField.font = NSFont.systemFont(ofSize: 13)
         labelField.isBezeled = false
@@ -1719,7 +1734,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             var str : NSString = NSString(format: "New .%@ file - %@", extensionFile, file as! NSString)
             
-            if (currentLanguage() == "es")
+            if (currentLanguage() == "es" || currentLanguage() == "es-es")
             {
                 str = NSString(format: "Nuevo archivo .%@ - %@", extensionFile, file as! NSString)
             }
