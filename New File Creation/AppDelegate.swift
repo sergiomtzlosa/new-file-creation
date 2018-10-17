@@ -1305,10 +1305,10 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         var behave : NSPopover.Behavior = .transient
         
-        if (option == SMPopUpState.transient.rawValue) {
-            
-            behave = .transient
-        }
+//        if (option == SMPopUpState.transient.rawValue) {
+//            
+//            behave = .transient
+//        }
         
         if (option == SMPopUpState.semiTransient.rawValue) {
             
