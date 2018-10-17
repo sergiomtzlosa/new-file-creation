@@ -8,6 +8,13 @@
 
 import Foundation
 
+enum SMPopUpState: Int {
+    
+    case transient = 0
+    case semiTransient = 1
+    case applicationDefined = 2
+}
+
 let kUpdateTodayExtension = "update-today-widget"
 let kPopOverDidLoad = "popover-did-load"
 let kFinderSyncOption = "findersync-menulet"

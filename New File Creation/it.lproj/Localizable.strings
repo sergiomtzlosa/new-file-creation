@@ -92,3 +92,11 @@
 "documents" = "documenti";
 
 "minimunTemplatesShow" = "Imposta un numero minimo di 10 modelli per un'esperienza migliore";
+
+"popup_behaviour" = "Comportamento popup";
+
+"transient" = "Transitorio";
+
+"semitransient" = "Mezza transitoria";
+
+"application_defined" = "Applicazione definita";

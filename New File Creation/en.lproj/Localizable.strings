@@ -92,3 +92,11 @@
 "documents" = "documents";
 
 "minimunTemplatesShow" = "Set a minimum number of 10 templates for a better experience";
+
+"popup_behaviour" = "Pop-up behaviour";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Application defined";

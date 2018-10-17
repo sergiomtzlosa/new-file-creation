@@ -92,3 +92,11 @@
 "documents" = "文件";
 
 "minimunTemplatesShow" = "设置最少 10 个模板以获得更好的体验";
+
+"popup_behaviour" = "弹出行为";
+
+"transient" = "短暂的";
+
+"semitransient" = "半瞬时";
+
+"application_defined" = "应用定义";

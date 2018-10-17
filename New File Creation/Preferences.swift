@@ -424,4 +424,27 @@ class Preferences : NSObject
         
         return defaults.synchronize()
     }
+    
+    class func setPopUpBehaviour(option: Int) -> Bool
+    {
+        let key = "pop-up-behaviour"
+        
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
+        
+        defaults.set(option, forKey: key)
+        
+        return defaults.synchronize()
+    }
+    
+    class func popUpBehaviour() -> Int
+    {
+        let key = "pop-up-behaviour"
+        
+        if (!isKeyPresentInUserDefaults(key: key))
+        {
+            return 0
+        }
+        
+        return Preferences.sharedUserDefaults().integer(forKey: key)
+    }
 }

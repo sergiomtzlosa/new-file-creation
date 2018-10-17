@@ -92,3 +92,12 @@
 "documents" = "documents";
 
 "minimunTemplatesShow" = "Activa un mínim de 10 plantilles per a una millor experiència";
+
+"popup_behaviour" = "Comportament emergent";
+
+"transient" = "Transitori";
+
+"semitransient" = "Mig transitori";
+
+"application_defined" = "Aplicació definida";
+

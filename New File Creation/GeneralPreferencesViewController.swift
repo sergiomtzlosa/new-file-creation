@@ -19,10 +19,47 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     @IBOutlet var hidePopupButton: NSButton!
     @IBOutlet var openSystemPreferencesButton: NSButton!
     
+    @IBOutlet var transientOption: NSButton!
+    @IBOutlet var semitransientOption: NSButton!
+    @IBOutlet var applicationDefinedOption: NSButton!
+    @IBOutlet var labelRadioPopUp: NSTextField!
+    
     var darkModeOn : Bool!
     
     override func awakeFromNib() {
         
+        labelRadioPopUp.stringValue = SMLocalizedString("popup_behaviour")
+        
+        transientOption.title = SMLocalizedString("transient")
+        transientOption.tag = SMPopUpState.transient.rawValue
+        
+        semitransientOption.title = SMLocalizedString("semitransient")
+        semitransientOption.tag = SMPopUpState.semiTransient.rawValue
+        
+        applicationDefinedOption.title = SMLocalizedString("application_defined")
+        applicationDefinedOption.tag = SMPopUpState.applicationDefined.rawValue
+        
+        transientOption.state = .off
+        semitransientOption.state = .off
+        applicationDefinedOption.state = .off
+        
+        let option : Int = Preferences.popUpBehaviour()
+        
+        if (option == SMPopUpState.transient.rawValue)
+        {
+            transientOption.state = .on
+        }
+        
+        if (option == SMPopUpState.semiTransient.rawValue)
+        {
+            semitransientOption.state = .on
+        }
+        
+        if (option == SMPopUpState.applicationDefined.rawValue)
+        {
+            applicationDefinedOption.state = .on
+        }
+
         let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
         darkModeOn = (appearance.lowercased() == "dark") ? true : false
         
@@ -58,6 +95,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         systemPrefesLabel.attributedStringValue = createAttributeStringForButton(SMLocalizedString("enableExtensionTip"))
         
 //        self.resignFirstResponder()
+        
         super.awakeFromNib()
     }
     
@@ -144,6 +182,35 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         darkModeOn = (appearance.lowercased() == "dark") ? true : false
         
         systemPrefesLabel.attributedStringValue = createAttributeStringForButton(SMLocalizedString("enableExtensionTip"))
+    }
+    
+    @IBAction func popOverSelection(_ sender: AnyObject) {
+        
+        let buttonOption : NSButton = sender as! NSButton
+        
+        let option : Int = buttonOption.tag
+        
+        _ = Preferences.setPopUpBehaviour(option: option)
+        
+        buttonOption.state = .off
+        transientOption.state = .off
+        semitransientOption.state = .off
+        applicationDefinedOption.state = .off
+        
+        if (option == SMPopUpState.transient.rawValue)
+        {
+            transientOption.state = .on
+        }
+        
+        if (option == SMPopUpState.semiTransient.rawValue)
+        {
+            semitransientOption.state = .on
+        }
+        
+        if (option == SMPopUpState.applicationDefined.rawValue)
+        {
+            applicationDefinedOption.state = .on
+        }
     }
     
     func createAttributeStringForButton(_ title : String) -> NSAttributedString

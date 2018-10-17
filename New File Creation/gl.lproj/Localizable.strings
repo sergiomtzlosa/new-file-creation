@@ -93,3 +93,10 @@
 
 "minimunTemplatesShow" = "Activa un mínimo de 10 modelos para unha mellor experiencia";
 
+"popup_behaviour" = "Comportamento pop-up";
+
+"transient" = "Transitorio";
+
+"semitransient" = "Semitransitorio";
+
+"application_defined" = "Aplicación definida";

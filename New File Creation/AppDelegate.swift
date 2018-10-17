@@ -1301,7 +1301,26 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     //MARK: - NSPopoverDelegate delegate methods
     func popoverDidShow(_ notification: Notification) {
         
-        controller.behavior = .semitransient
+        let option = Preferences.popUpBehaviour()
+        
+        var behave : NSPopover.Behavior = .transient
+        
+        if (option == SMPopUpState.transient.rawValue) {
+            
+            behave = .transient
+        }
+        
+        if (option == SMPopUpState.semiTransient.rawValue) {
+            
+            behave = .semitransient
+        }
+        
+        if (option == SMPopUpState.applicationDefined.rawValue) {
+            
+            behave = .applicationDefined
+        }
+        
+        controller.behavior = behave
     }
     
     @IBAction func openSystemPreferences(_ sender: AnyObject) {

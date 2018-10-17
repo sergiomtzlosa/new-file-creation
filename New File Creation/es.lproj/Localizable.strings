@@ -93,3 +93,10 @@
 
 "minimunTemplatesShow" = "Activa un mínimo de 10 plantillas para una mejor experiencia";
 
+"popup_behaviour" = "Comportamiento del Pop-up";
+
+"transient" = "Transitorio";
+
+"semitransient" = "Semitransitorio";
+
+"application_defined" = "Definido por la aplicación";

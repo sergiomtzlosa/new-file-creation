@@ -92,3 +92,11 @@
 "documents" = "المستندات";
 
 "minimunTemplatesShow" = "قم بتعيين عدد 10 قوالب كحدٍ أدنى للتمتع بتجربة أفضل";
+
+"popup_behaviour" = "سلوك منبثق";
+
+"transient" = "عابر";
+
+"semitransient" = "نصف عابرة";
+
+"application_defined" = "تطبيق محدد";

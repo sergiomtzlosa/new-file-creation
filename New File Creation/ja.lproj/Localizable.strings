@@ -92,3 +92,11 @@
 "documents" = "文書";
 
 "minimunTemplatesShow" = "ユーザー経験向上のため、テンプレート数は10以上に設定してください。";
+
+"popup_behaviour" = "ポップアップ動作";
+
+"transient" = "トランジェント";
+
+"semitransient" = "半トランジェント";
+
+"application_defined" = "アプリケーション定義";
