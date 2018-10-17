@@ -60,8 +60,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
             applicationDefinedOption.state = .on
         }
 
-        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        darkModeOn = isDarkModeEnabled()
         
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(GeneralPreferencesViewController.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
         
@@ -178,8 +177,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
     @objc func eventNotifyDarkModeChanged(_ notification : Notification)
     {
-        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        darkModeOn = isDarkModeEnabled()
         
         systemPrefesLabel.attributedStringValue = createAttributeStringForButton(SMLocalizedString("enableExtensionTip"))
     }

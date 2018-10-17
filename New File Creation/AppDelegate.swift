@@ -1154,8 +1154,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 //        let dict : NSDictionary = NSUserDefaults.standardUserDefaults().persistentDomainForName(NSGlobalDomain)!
 //        var style : AnyObject? = dict.objectForKey("AppleInterfaceStyle")
         
-        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        darkModeOn = isDarkModeEnabled()
         
 //        var color : NSColor = NSColor.white
 //        let colorTitle : NSMutableAttributedString = NSMutableAttributedString(attributedString: checkBox.attributedTitle)
@@ -1741,8 +1740,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         let labelField : NSTextField = NSTextField(frame: NSMakeRect(8, 16, 150, 19))
         
-        labelField.textColor = NSColor.black
         labelField.stringValue = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Selecciona un tipo:" : "Select a file type:"
+        
+        labelField.textColor = (isDarkModeEnabled()) ? NSColor.white : NSColor.black
         labelField.alignment = NSTextAlignment.left
         labelField.font = NSFont.systemFont(ofSize: 13)
         labelField.isBezeled = false

@@ -123,8 +123,8 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         self.preferredContentSize = calculateHeighWidget()
  
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.target = self;
-        table.doubleAction = #selector(TodayViewController.doubleClick(_:));
+//        table.target = self;
+//        table.doubleAction = #selector(TodayViewController.doubleClickToday(_:));
         table.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
         table.layer?.cornerRadius = 0
         table.layer?.borderColor = NSColor.clear.cgColor
@@ -164,24 +164,22 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         }
     }
     
-    @objc func doubleClick(_ object : AnyObject) {
-        
-        if (Preferences.loadDoubleClick() == false)
-        {
-            return
-        }
-        
-        let rowNumber : NSInteger = table.clickedRow
-        
-        let item : String = dataFiles[rowNumber] as! String
-        
-        let sourcePathFile : String = FileManager.resolvePathForFile(item)
-        
-        DispatchQueue.main.async(execute: {
-            
-            self.launchSavePanel(sourcePathFile)
-        })
-    }
+//    @objc func doubleClickToday(_ object : AnyObject) {
+//        
+//        if (Preferences.loadDoubleClick())
+//        {
+//            let rowNumber : NSInteger = table.clickedRow
+//            
+//            let item : String = dataFiles[rowNumber] as! String
+//            
+//            let sourcePathFile : String = FileManager.resolvePathForFile(item)
+//            
+//            DispatchQueue.main.async(execute: {
+//                
+//                self.launchSavePanel(sourcePathFile)
+//            })
+//        }
+//    }
     
     // MARK: - NSTableViewDatasource & NSTableViewDelegate methods
     func numberOfRows(in tableView: NSTableView) -> Int

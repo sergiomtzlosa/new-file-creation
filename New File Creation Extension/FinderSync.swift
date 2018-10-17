@@ -29,7 +29,7 @@ class FinderSync: FIFinderSync
         super.init()
   
         self.isShowing = false
-        self.templates = obtainRows()
+        self.templates = self.obtainRows()
         customView = newAccessoryView()
 
         self.arrayPaths = Set()
@@ -382,7 +382,7 @@ class FinderSync: FIFinderSync
         
         let labelField : NSTextField = NSTextField(frame: NSMakeRect(8, 16, 150, 19))
         
-        labelField.textColor = NSColor.black
+        labelField.textColor = (isDarkModeEnabled()) ? NSColor.white : NSColor.black
         labelField.stringValue = (currentLanguage() == "es" || currentLanguage() == "es-es") ? "Selecciona un tipo:" : "Select a file type:"
         labelField.alignment = NSTextAlignment.left
         labelField.font = NSFont.systemFont(ofSize: 13)

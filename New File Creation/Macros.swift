@@ -109,3 +109,11 @@ func REMOVE_NOTIFICATION_FLAG(_ className: AnyObject, name: String?, object: Any
 {
     NotificationCenter.default.removeObserver(className, name: name.map { NSNotification.Name(rawValue: $0) }, object: object)
 }
+
+func isDarkModeEnabled() -> Bool
+{
+    let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+    let darkModeOn : Bool = (appearance.lowercased() == "dark") ? true : false
+    
+    return darkModeOn
+}

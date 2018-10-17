@@ -32,8 +32,8 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
     
     override func awakeFromNib()
     {
-        let appearance : String = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-        darkModeOn = (appearance.lowercased() == "dark") ? true : false
+        
+        darkModeOn = isDarkModeEnabled()
         
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(GeneralPreferencesViewController.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
         
