@@ -91,3 +91,10 @@
  "documents";
 
  "Set a minimum number of 10 templates for a better experience";
+
+ "Transient";
+
+ "Semitransient";
+
+ "Application defined";
+
