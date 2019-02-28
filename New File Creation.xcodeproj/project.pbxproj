@@ -61,6 +61,10 @@
 		1F6CB49D1B766B7300CC6AF4 /* SMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF956F11B713B32007283E5 /* SMLog.swift */; };
 		1F70576B1B7FA7AA0081852B /* templates_prefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F70576A1B7FA7AA0081852B /* templates_prefs.plist */; };
 		1F7798C11B79527400E25FA1 /* RFOverlayScroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */; };
+		1F796E8A2227268C004836DF /* UtilsFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F796E892227268C004836DF /* UtilsFiles.swift */; };
+		1F796E8B2227268C004836DF /* UtilsFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F796E892227268C004836DF /* UtilsFiles.swift */; };
+		1F796E8C2227268C004836DF /* UtilsFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F796E892227268C004836DF /* UtilsFiles.swift */; };
+		1F796E8D2227268D004836DF /* UtilsFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F796E892227268C004836DF /* UtilsFiles.swift */; };
 		1F7C18DC1B7D110F00C1A671 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCA1C8A1B7BCFE000E97BF8 /* Utils.swift */; };
 		1F7FC1F41B76B02600F53433 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FC1F31B76B02600F53433 /* FinderSync.swift */; };
 		1F7FC1F71B76B02600F53433 /* New File Creation Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 1F7FC1EE1B76B02600F53433 /* New File Creation Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -117,6 +121,10 @@
 		1FCCD5C71B75269E007C8397 /* NSUserDefaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCCD5C61B75269E007C8397 /* NSUserDefaults+Keys.swift */; };
 		1FEB72061B75FC1000467785 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEB72051B75FC1000467785 /* FileManager.swift */; };
 		1FEB72501B75FEC400467785 /* Templates in Resources */ = {isa = PBXBuildFile; fileRef = 1FEB724F1B75FEC400467785 /* Templates */; };
+		1FF01A322227452600C6DD32 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF01A312227452600C6DD32 /* URL+Extension.swift */; };
+		1FF01A332227452600C6DD32 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF01A312227452600C6DD32 /* URL+Extension.swift */; };
+		1FF01A342227452600C6DD32 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF01A312227452600C6DD32 /* URL+Extension.swift */; };
+		1FF01A352227452600C6DD32 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF01A312227452600C6DD32 /* URL+Extension.swift */; };
 		1FF9569D1B712B7E007283E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9569C1B712B7E007283E5 /* AppDelegate.swift */; };
 		1FF9569F1B712B7E007283E5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9569E1B712B7E007283E5 /* Images.xcassets */; };
 		1FF956A21B712B7E007283E5 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF956A01B712B7E007283E5 /* MainMenu.xib */; };
@@ -222,6 +230,7 @@
 		1F70576A1B7FA7AA0081852B /* templates_prefs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = templates_prefs.plist; sourceTree = "<group>"; };
 		1F7798BF1B79527400E25FA1 /* RFOverlayScroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFOverlayScroller.h; sourceTree = "<group>"; };
 		1F7798C01B79527400E25FA1 /* RFOverlayScroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFOverlayScroller.m; sourceTree = "<group>"; };
+		1F796E892227268C004836DF /* UtilsFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsFiles.swift; sourceTree = "<group>"; };
 		1F7FC1EE1B76B02600F53433 /* New File Creation Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "New File Creation Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7FC1F11B76B02600F53433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F7FC1F21B76B02600F53433 /* New_File_Creation_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = New_File_Creation_Extension.entitlements; sourceTree = "<group>"; };
@@ -288,6 +297,7 @@
 		1FDC84AD2167A074002F9CB4 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1FEB72051B75FC1000467785 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		1FEB724F1B75FEC400467785 /* Templates */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Templates; sourceTree = SOURCE_ROOT; };
+		1FF01A312227452600C6DD32 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
 		1FF956971B712B7E007283E5 /* New File Creation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "New File Creation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF9569B1B712B7E007283E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF9569C1B712B7E007283E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -466,6 +476,7 @@
 				1FBD3CFB1B823C0200BF935F /* Volumes */,
 				1F7FC1F31B76B02600F53433 /* FinderSync.swift */,
 				1F47AF9D214FE593001CF1BC /* VolumeManager.swift */,
+				1F796E892227268C004836DF /* UtilsFiles.swift */,
 				1F7FC1F01B76B02600F53433 /* Supporting Files */,
 			);
 			path = "New File Creation Extension";
@@ -576,6 +587,7 @@
 				1FCCD5C61B75269E007C8397 /* NSUserDefaults+Keys.swift */,
 				1F6CB4971B7659B600CC6AF4 /* String+Contains.swift */,
 				1F8AA2701B9B43EF00CF6894 /* String+Base64.swift */,
+				1FF01A312227452600C6DD32 /* URL+Extension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -938,10 +950,12 @@
 				1FBE2C5B1FA392C100E4E3CF /* Utils.swift in Sources */,
 				1FBE2C5A1FA391C700E4E3CF /* SMScrollView.swift in Sources */,
 				1FBE2C571FA3919100E4E3CF /* RFOverlayScrollView.m in Sources */,
+				1F796E8D2227268D004836DF /* UtilsFiles.swift in Sources */,
 				1FBE2C591FA3919100E4E3CF /* RFOverlayScroller.m in Sources */,
 				1FBE2C551FA3914B00E4E3CF /* String+Contains.swift in Sources */,
 				1FBE2C541FA3912F00E4E3CF /* FileManager.swift in Sources */,
 				1FBE2C531FA3911B00E4E3CF /* Macros.swift in Sources */,
+				1FF01A352227452600C6DD32 /* URL+Extension.swift in Sources */,
 				1FBE2C521FA390F300E4E3CF /* SMLog.swift in Sources */,
 				1FBC44E11FA3A2500001F828 /* UtilsExtension.swift in Sources */,
 				1FBE2C511FA390BB00E4E3CF /* Preferences.swift in Sources */,
@@ -954,7 +968,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FBD3CFA1B823BDB00BF935F /* Volumes.m in Sources */,
+				1F796E8C2227268C004836DF /* UtilsFiles.swift in Sources */,
 				1F64DEB71B7E6E64000B00CB /* Preferences.swift in Sources */,
+				1FF01A342227452600C6DD32 /* URL+Extension.swift in Sources */,
 				1F7C18DC1B7D110F00C1A671 /* Utils.swift in Sources */,
 				1F2F85771B77474900BF4C4C /* Macros.swift in Sources */,
 				1F29606F1B7734450020D030 /* String+Contains.swift in Sources */,
@@ -974,6 +990,7 @@
 				1FF956FC1B714D39007283E5 /* SMAlert.swift in Sources */,
 				1FF956F51B713B66007283E5 /* Macros.swift in Sources */,
 				1F7798C11B79527400E25FA1 /* RFOverlayScroller.m in Sources */,
+				1FF01A322227452600C6DD32 /* URL+Extension.swift in Sources */,
 				1FC221D91E7C585900B37AE0 /* TouchBarPreferencesViewController.swift in Sources */,
 				1FBE2C4D1FA38DAA00E4E3CF /* RFOverlayScrollView.m in Sources */,
 				1FCCD5BC1B751F34007C8397 /* SMLog.m in Sources */,
@@ -1000,6 +1017,7 @@
 				1FCCD5C41B752478007C8397 /* AgentController.m in Sources */,
 				1F64DEB61B7E6BBF000B00CB /* FilesPreferencesViewController.swift in Sources */,
 				1FCA1C8B1B7BCFE000E97BF8 /* Utils.swift in Sources */,
+				1F796E8A2227268C004836DF /* UtilsFiles.swift in Sources */,
 				1F6CB4901B763DFE00CC6AF4 /* SMScrollView.swift in Sources */,
 				1FBD3CF31B8238D500BF935F /* Volumes.m in Sources */,
 				1F9853B21BA20318000B8593 /* mztools.c in Sources */,
@@ -1010,6 +1028,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F796E8B2227268C004836DF /* UtilsFiles.swift in Sources */,
+				1FF01A332227452600C6DD32 /* URL+Extension.swift in Sources */,
 				1F6CB49D1B766B7300CC6AF4 /* SMLog.swift in Sources */,
 				1FF956D51B712C5B007283E5 /* AppDelegate.swift in Sources */,
 			);

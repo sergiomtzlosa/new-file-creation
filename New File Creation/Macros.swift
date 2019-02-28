@@ -21,6 +21,7 @@ let kFinderSyncOption = "findersync-menulet"
 let kTodayExtensionOption = "today-extension-item"
 let kChangeInterfaceNotification = "AppleInterfaceThemeChangedNotification"
 let kUpdateTableFromPreferences = "update-table-from-preferences"
+let kAddFileFromFinder = "add-file-from-finder"
 let kUpdateSettingCloud = "update-settings-icloud"
 let kEventUpdateRowsNow = "update-rows-settings-now"
 

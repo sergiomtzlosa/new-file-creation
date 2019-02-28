@@ -100,3 +100,5 @@
 "semitransient" = "半トランジェント";
 
 "application_defined" = "アプリケーション定義";
+
+"add_as_template" = "テンプレートとして追加...";

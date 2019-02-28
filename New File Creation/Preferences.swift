@@ -447,4 +447,29 @@ class Preferences : NSObject
         
         return Preferences.sharedUserDefaults().integer(forKey: key)
     }
+    
+    class func setSelectedFilesExtension(files: [String]) -> Bool
+    {
+        let key = "array-files-selection-finder"
+        
+        let defaults : UserDefaults = Preferences.sharedUserDefaults()
+        
+        defaults.set(files, forKey: key)
+        
+        return defaults.synchronize()
+    }
+    
+    class func getSelectedFilesExtension() -> [String]
+    {
+        let key = "array-files-selection-finder"
+        
+        if (!isKeyPresentInUserDefaults(key: key))
+        {
+            return []
+        }
+        
+        let loadedArray = Preferences.sharedUserDefaults().object(forKey: key) as? [String] ?? []
+        
+        return loadedArray
+    }
 }

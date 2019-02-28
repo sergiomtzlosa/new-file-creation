@@ -100,3 +100,5 @@
 "semitransient" = "Semitransitorio";
 
 "application_defined" = "Aplicación definida";
+
+"add_as_template" = "Engadir como modelo...";

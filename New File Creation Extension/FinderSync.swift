@@ -204,10 +204,77 @@ class FinderSync: FIFinderSync
             item.image = NSImage(named: NSImage.Name(rawValue: "Icon"))
             return menu
         }
+            
+        if (menuKind == FIMenuKind.contextualMenuForItems)
+        {
+            let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
+            
+            if (paths != nil) {
+                
+                if urlsAreFiles(paths: paths!) {
+                    
+                    let menu = NSMenu(title: "")
+                    menu.addItem(withTitle: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
+                    let item: NSMenuItem = menu.items[0]
+                    item.image = NSImage(named: NSImage.Name(rawValue: "Icon"))
+                    return menu
+                }
+            }
+        }
         
         return nil
     }
 
+    func urlsAreFiles(paths: [URL]) -> Bool {
+        
+        if (paths.count == 0) {
+            
+            return false;
+        }
+        
+        var isFile : Bool = true
+        
+        for url in paths {
+            
+            if url.isDirectory == true {
+                
+                isFile = false
+                break
+            }
+        }
+        
+        return isFile
+    }
+    
+    @IBAction func addAsTemplate(_ sender: AnyObject?) {
+
+        let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
+        
+        if (paths != nil) {
+            if paths!.count > 0 {
+                
+                var finalPaths : [String] = []
+                
+                for url in paths! {
+                    
+                    if url.isDirectory == false {
+                        
+                        finalPaths.append(url.path)
+                    }
+                }
+                
+                if finalPaths.count > 0 {
+                    
+                    _ = Preferences.setSelectedFilesExtension(files: finalPaths)
+                    
+                    // Add as template send notification
+                    SCHEDULE_DISTRIBUTED_NOTIFICATION(name: kAddFileFromFinder)
+                    SMLog("Notification sent to add new file from Finder as template!!!")
+                }
+            }
+        }
+    }
+    
     @IBAction func createNewFile(_ sender: AnyObject?)
     {
         let rows : [String] = self.createRows() as! [String]

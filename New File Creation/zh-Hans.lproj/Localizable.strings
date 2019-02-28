@@ -100,3 +100,5 @@
 "semitransient" = "半瞬时";
 
 "application_defined" = "应用定义";
+
+"add_as_template" = "添加为模板...";

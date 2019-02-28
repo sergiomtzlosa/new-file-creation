@@ -100,3 +100,5 @@
 "semitransient" = "Semitransitorio";
 
 "application_defined" = "Definido por la aplicación";
+
+"add_as_template" = "Añadir como plantilla...";

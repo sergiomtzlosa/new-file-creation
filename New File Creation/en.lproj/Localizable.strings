@@ -100,3 +100,5 @@
 "semitransient" = "Semitransient";
 
 "application_defined" = "Application defined";
+
+"add_as_template" = "Add as Template...";

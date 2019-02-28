@@ -84,6 +84,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 //        super.windowObject = window
         
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventUpdateTableFromPreferences(_:)), name: kUpdateTableFromPreferences)
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventAddFileFromExtensionFinder(_:)), name: kAddFileFromFinder)
 
         if !Preferences.loadFirstBoot()
         {
@@ -1184,6 +1185,21 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     }
     
     //MARK: - NSNotification methods
+    @objc func eventAddFileFromExtensionFinder(_ notification : Notification) {
+        
+        let urls : [String] = Preferences.getSelectedFilesExtension()
+       
+        if urls.count > 0 {
+
+            for urlString in urls {
+                
+                let url : URL = URL(fileURLWithPath: urlString)
+                self.addURLFile(fileURLItem: url)
+            }
+        }
+        
+        SMLog("arrived in eventAddFileFromExtensionFinder")
+    }
     
     @objc func eventUpdateTableFromPreferences(_ notification : Notification)
     {
