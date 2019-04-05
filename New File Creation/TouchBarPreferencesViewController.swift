@@ -88,7 +88,7 @@ class TouchBarPreferencesViewController : NSViewController, MASPreferencesViewCo
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImage.Name.multipleDocuments)!
+        return NSImage(named:NSImage.multipleDocumentsName)!
     }
     
     var toolbarItemLabel: String

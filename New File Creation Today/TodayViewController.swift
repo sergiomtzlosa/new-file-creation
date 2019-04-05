@@ -51,7 +51,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
 
     override var nibName: NSNib.Name? {
 
-        return NSNib.Name("TodayViewController")
+        return "TodayViewController"
     }
     
     override func present(inWidget viewController: NSViewController) {
@@ -262,7 +262,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             textField.backgroundColor = NSColor.clear
             textField.wantsLayer = true
             textField.layer?.backgroundColor = NSColor.clear.cgColor
-            textField.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
+            textField.lineBreakMode = NSLineBreakMode.byWordWrapping
             textField.usesSingleLineMode = true
             
             cellView.addSubview(textField)
@@ -353,7 +353,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
             
             if (Preferences.loadActiveSound())
             {
-                NSSound(named: NSSound.Name(rawValue: "dropped"))?.play()
+                NSSound(named: "dropped")?.play()
             }
         }
         
@@ -459,7 +459,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
                 
                 if (soundEnabled == 1)
                 {
-                    NSSound.init(named: NSSound.Name("dropped"))?.play()
+                    NSSound.init(named: "dropped")?.play()
                 }
                 
                 let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int

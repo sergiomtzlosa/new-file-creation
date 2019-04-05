@@ -201,7 +201,7 @@ class FinderSync: FIFinderSync
             let menu = NSMenu(title: "")
             menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
             let item: NSMenuItem = menu.items[0]
-            item.image = NSImage(named: NSImage.Name(rawValue: "Icon"))
+            item.image = NSImage(named: "Icon")
             return menu
         }
             
@@ -216,7 +216,7 @@ class FinderSync: FIFinderSync
                     let menu = NSMenu(title: "")
                     menu.addItem(withTitle: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
                     let item: NSMenuItem = menu.items[0]
-                    item.image = NSImage(named: NSImage.Name(rawValue: "Icon"))
+                    item.image = NSImage(named: "Icon")
                     return menu
                 }
             }
@@ -405,7 +405,7 @@ class FinderSync: FIFinderSync
                         
                         if (soundEnabled == 1)
                         {
-                            NSSound.init(named: NSSound.Name("dropped"))?.play()
+                            NSSound.init(named: "dropped")?.play()
                         }
                         
                         let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int

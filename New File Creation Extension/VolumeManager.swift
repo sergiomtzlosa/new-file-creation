@@ -26,7 +26,7 @@ class VolumeManager {
         DARegisterDiskDisappearedCallback(session, nil, _volumeManagerDiskArbitrationCallback, nil)
         
         // schedule DiskArbitrator in the run loop so it actually sends the notifications
-        DASessionScheduleWithRunLoop(session, RunLoop.main.getCFRunLoop(), RunLoopMode.defaultRunLoopMode as CFString)
+        DASessionScheduleWithRunLoop(session, RunLoop.main.getCFRunLoop(), RunLoop.Mode.default as CFString)
     }
     
     func updateVolumes() {
@@ -37,7 +37,7 @@ class VolumeManager {
     
     deinit {
         // remove callbacks and remove the session from the run loop
-        DASessionUnscheduleFromRunLoop(session, RunLoop.main.getCFRunLoop(), RunLoopMode.defaultRunLoopMode as CFString)
+        DASessionUnscheduleFromRunLoop(session, RunLoop.main.getCFRunLoop(), RunLoop.Mode.default as CFString)
     }
     
 }

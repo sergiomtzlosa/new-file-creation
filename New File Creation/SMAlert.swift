@@ -41,7 +41,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     
         let titleAttr : NSMutableAttributedString = NSMutableAttributedString(string: title as String)
     
-        titleAttr.addAttribute(NSAttributedStringKey.font, value: NSFont.boldSystemFont(ofSize: 13), range: NSMakeRange(0, titleAttr.length))
+        titleAttr.addAttribute(NSAttributedString.Key.font, value: NSFont.boldSystemFont(ofSize: 13), range: NSMakeRange(0, titleAttr.length))
     
         let titleText : NSTextField = NSTextField(frame: NSMakeRect(141, 77, 211, 26))
         
@@ -65,7 +65,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     
         let msgAttr : NSMutableAttributedString = NSMutableAttributedString(string: message as String)
     
-        msgAttr.addAttribute(NSAttributedStringKey.font, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, msgAttr.length))
+        msgAttr.addAttribute(NSAttributedString.Key.font, value: NSFont.systemFont(ofSize: 11), range: NSMakeRange(0, msgAttr.length))
         
         textAlert.textStorage!.append(msgAttr)
     

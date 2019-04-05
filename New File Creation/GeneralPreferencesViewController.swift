@@ -66,7 +66,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         
         openSystemPreferencesButton.title = SMLocalizedString("openSystemPreferences")
         
-        cautionImage.image = NSImage(named: NSImage.Name.caution)
+        cautionImage.image = NSImage(named: NSImage.cautionName)
         
         playSoundButton.title = SMLocalizedString("playSoundPreference")
         playSoundButton.state = Preferences.loadActiveSound() ? .on : .off
@@ -86,7 +86,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         systemPrefesLabel.font = NSFont(name: "Helvetica", size: 11)
         systemPrefesLabel.textColor = NSColor.black
         systemPrefesLabel.alignment = NSTextAlignment.left
-        systemPrefesLabel.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
+        systemPrefesLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         systemPrefesLabel.usesSingleLineMode = false
     
         systemPrefesLabel.stringValue = SMLocalizedString("enableExtensionTip")
@@ -162,7 +162,7 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImage.Name.preferencesGeneral)!
+        return NSImage(named:NSImage.preferencesGeneralName)!
     }
     
     var toolbarItemLabel: String
@@ -217,8 +217,8 @@ class GeneralPreferencesViewController : NSViewController, MASPreferencesViewCon
         
         let attrTitle = NSMutableAttributedString(string: title)
         
-        attrTitle.addAttribute(NSAttributedStringKey.font, value: NSFont(name: "Helvetica", size: 11.0)!, range: NSMakeRange(0, attrTitle.length))
-        attrTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedString.Key.font, value: NSFont(name: "Helvetica", size: 11.0)!, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
         
         return attrTitle
     }

@@ -150,7 +150,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     @IBAction func downloadFromCloud(_ sender: AnyObject) {
         
-        let modalWindow = SMSheetWindow(windowNibName: NSNib.Name(rawValue: "SMSheetWindow"))
+        let modalWindow = SMSheetWindow(windowNibName: "SMSheetWindow")
         modalWindow.uploading = false
         modalWindow.beginSheet(AppDelegate.preferencesWindow())
         
@@ -198,7 +198,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     @IBAction func uploadToCloud(_ sender: AnyObject) {
         
-        let modalWindow = SMSheetWindow(windowNibName: NSNib.Name(rawValue: "SMSheetWindow"))
+        let modalWindow = SMSheetWindow(windowNibName: "SMSheetWindow")
         modalWindow.uploading = true
         modalWindow.beginSheet(AppDelegate.preferencesWindow())
         
@@ -319,7 +319,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImage.Name.network)!
+        return NSImage(named:NSImage.networkName)!
     }
     
     var toolbarItemLabel: String

@@ -27,7 +27,7 @@ fileprivate extension NSTouchBarItem.Identifier {
 @available(OSX 10.12.2, *)
 fileprivate extension NSTouchBar.CustomizationIdentifier {
     
-    static let mainTouchBarIdentifier = NSTouchBar.CustomizationIdentifier("com.sergiomtzlosa.filecreation.touchbar.main.touchbar")
+    static let mainTouchBarIdentifier = "com.sergiomtzlosa.filecreation.touchbar.main.touchbar"
 }
 
 @NSApplicationMain
@@ -129,7 +129,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         statusItem.target = self
         statusItem.action = #selector(AppDelegate.togglePopover(_:))
         
-        let image : NSImage! = NSImage(named: NSImage.Name(rawValue: "icon-menulet"))
+        let image : NSImage! = NSImage(named: "icon-menulet")
         image.isTemplate = true
         
         statusItem.image = image
@@ -377,7 +377,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                     
                     if (soundEnabled == 1)
                     {
-                        NSSound.init(named: NSSound.Name("dropped"))?.play()
+                        NSSound.init(named: "dropped")?.play()
                     }
                     
                     let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int
@@ -520,34 +520,34 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     {
         if (preferencesWindowController == nil)
         {
-            let generalViewController : NSViewController = GeneralPreferencesViewController(nibName: NSNib.Name(rawValue: "GeneralPreferencesView"), bundle: nil)
+            let generalViewController : NSViewController = GeneralPreferencesViewController(nibName: "GeneralPreferencesView", bundle: nil)
 
 //            generalViewController.resignFirstResponder()
             
-            advancedViewController = FilesPreferencesViewController(nibName: NSNib.Name(rawValue:"FilesPreferencesViewController"), bundle: nil)
+            advancedViewController = FilesPreferencesViewController(nibName: "FilesPreferencesViewController", bundle: nil)
 //            advancedViewController.resignFirstResponder()
             
             REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateSettingsCloud:")), name: kUpdateSettingCloud)
             
             REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateTableRows:")), name: kEventUpdateRowsNow)
             
-            let cloudViewController : NSViewController = CloudSyncViewController(nibName: NSNib.Name(rawValue:"CloudSyncViewController"), bundle: nil)
+            let cloudViewController : NSViewController = CloudSyncViewController(nibName: "CloudSyncViewController", bundle: nil)
             
 //            cloudViewController.resignFirstResponder()
             
-            let helpViewController : NSViewController = HelpPreferencesViewController(nibName: NSNib.Name(rawValue:"HelpPreferencesViewController"), bundle: nil)
+            let helpViewController : NSViewController = HelpPreferencesViewController(nibName: "HelpPreferencesViewController", bundle: nil)
             
 //            helpViewController.resignFirstResponder()
             
-            var controllers : NSArray? = NSArray(objects: generalViewController, advancedViewController, cloudViewController, helpViewController)
+            var controllers : NSArray? = NSArray(objects: generalViewController, advancedViewController as Any, cloudViewController, helpViewController)
             
             if #available(OSX 10.12.2, *) {
                 
-                let touchBarViewController : NSViewController = TouchBarPreferencesViewController(nibName: NSNib.Name(rawValue:"TouchBarPreferencesViewController"), bundle: nil)
+                let touchBarViewController : NSViewController = TouchBarPreferencesViewController(nibName: "TouchBarPreferencesViewController", bundle: nil)
                 
 //                touchBarViewController.resignFirstResponder()
                 
-                controllers = NSArray(objects: generalViewController, advancedViewController, cloudViewController, touchBarViewController, helpViewController)
+                controllers = NSArray(objects: generalViewController, advancedViewController as Any, cloudViewController, touchBarViewController, helpViewController)
             }
          
             preferencesWindowController = MASPreferencesWindowController(viewControllers: controllers! as [AnyObject] , title:SMLocalizedString("settings"))
@@ -740,8 +740,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         let attrTitle = NSMutableAttributedString(string: title)
         
-        attrTitle.addAttribute(NSAttributedStringKey.font, value: NSFont(name: "Helvetica", size: 13.0)!, range: NSMakeRange(0, attrTitle.length))
-        attrTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedString.Key.font, value: NSFont(name: "Helvetica", size: 13.0)!, range: NSMakeRange(0, attrTitle.length))
+        attrTitle.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSMakeRange(0, attrTitle.length))
 
         return attrTitle
     }
@@ -815,7 +815,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             textField.backgroundColor = NSColor.clear
             textField.wantsLayer = true
             textField.layer?.backgroundColor = NSColor.clear.cgColor
-            textField.lineBreakMode = NSParagraphStyle.LineBreakMode.byWordWrapping
+            textField.lineBreakMode = NSLineBreakMode.byWordWrapping
             textField.usesSingleLineMode = true
             
             cellView.addSubview(textField)
@@ -1011,7 +1011,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         if (oldIndexes.count == 0)
         {
-            let pb: NSPasteboard = info.draggingPasteboard()
+            let pb: NSPasteboard = info.draggingPasteboard
             
             let filteringOptions : [NSPasteboard.ReadingOptionKey : Any] = [NSPasteboard.ReadingOptionKey.urlReadingFileURLsOnly : NSNumber.init(booleanLiteral: true)]
             
@@ -1143,7 +1143,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             if (Preferences.loadActiveSound())
             {
-                NSSound(named: NSSound.Name(rawValue: "dropped"))?.play()
+                NSSound(named: "dropped")?.play()
             }
         }
         
@@ -1614,7 +1614,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                     
                     if (soundEnabled == 1)
                     {
-                        NSSound(named: NSSound.Name("dropped"))?.play()
+                        NSSound(named: "dropped")?.play()
                     }
                     
                     let openOncreation : Int = self.appSettings.object(forKey: "openOncreation") as! Int

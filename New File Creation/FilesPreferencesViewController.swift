@@ -58,8 +58,8 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         //NSPasteboard.PasteboardType("public.file-url")
         table.registerForDraggedTypes([NSPasteboard.PasteboardType("public.data"), NSPasteboard.PasteboardType("public.file-url")])
 
-        addTemplateButton.image = NSImage(named: NSImage.Name.addTemplate)
-        removeTemplateButton.image = NSImage(named: NSImage.Name.removeTemplate)
+        addTemplateButton.image = NSImage(named: NSImage.addTemplateName)
+        removeTemplateButton.image = NSImage(named: NSImage.removeTemplateName)
         
 //        self.resignFirstResponder()
         super.awakeFromNib()
@@ -407,7 +407,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
         
         if (oldIndexes.count == 0)
         {
-            let pb: NSPasteboard = info.draggingPasteboard()
+            let pb: NSPasteboard = info.draggingPasteboard
 
             let filteringOptions : [NSPasteboard.ReadingOptionKey : Any] = [NSPasteboard.ReadingOptionKey.urlReadingFileURLsOnly : NSNumber.init(booleanLiteral: true)]
             
@@ -695,7 +695,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     }
     
     var toolbarItemImage: NSImage {
-        return NSImage(named:NSImage.Name.advanced)!
+        return NSImage(named:NSImage.advancedName)!
     }
     
     var toolbarItemLabel: String {

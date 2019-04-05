@@ -71,7 +71,7 @@ class HelpPreferencesViewController : NSViewController, MASPreferencesViewContro
     
     var toolbarItemImage: NSImage
     {
-        return NSImage(named:NSImage.Name.info)!
+        return NSImage(named:NSImage.infoName)!
     }
     
     var toolbarItemLabel: String

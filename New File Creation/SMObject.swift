@@ -119,7 +119,7 @@ class SMObject: NSObject
         let maxWidth : CGFloat  = 200
         let maxHeight : CGFloat = 99999
         let constraint : CGSize  = CGSize(width: maxWidth, height: maxHeight)
-        let attrs : NSDictionary = NSDictionary(object: newFont, forKey: NSAttributedStringKey.font as NSCopying)
+        let attrs : NSDictionary = NSDictionary(object: newFont, forKey: NSAttributedString.Key.font as NSCopying)
         
 //        let options : NSStringDrawingOptions = NSLineBreakMode.ByWordWrapping | NSStringDrawingOptions.UsesLineFragmentOrigin
         
@@ -127,7 +127,7 @@ class SMObject: NSObject
         
 //        var newBounds : NSRect  = text.boundingRectWithSize(constraint, options: options, attributes: attrs as [NSObject : AnyObject])
         
-        let newBounds : NSRect  = text.boundingRect(with: constraint, options: options, attributes: attrs as? [NSAttributedStringKey : AnyObject])
+        let newBounds : NSRect  = text.boundingRect(with: constraint, options: options, attributes: attrs as? [NSAttributedString.Key : AnyObject])
     
         return newBounds
     }
