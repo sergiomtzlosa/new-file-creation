@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Opslaan als...";
+
+"exitApp" = "Afsluiten";
+
+"settings" = "Voorkeuren";
+
+"launchLogin" = "Starten bij aanmelding";
+
+"dragAndDropItems" = "Drag and drop a row from table to your desired destination to create a new file.\nYou can create many files as you want.";
+
+"newFileMask" = "Nieuw .%@ bestand - %@";
+
+"general" = "Algemeen";
+
+"enableExtensionTip" = "Schakel in \"Nieuw bestandssjabloon extensie\" in Systeemvoorkeuren -> Extensies -> Finder-extensies";
+
+"selectFileTemplate" = "Selecteer uw bestandssjabloon";
+
+"warning" = "Bestandssjabloon";
+
+"templateExists" = "Deze sjabloon bestaat al. Kies een andere sjabloon.";
+
+"advanced" = "Geavanceerd";
+
+"openSystemPreferences" = "Open Systeemvoorkeuren";
+
+"help" = "Help";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Speel geluid bij het aanmaken van bestanden";
+
+"openWhenCreate" = "Openen bij nieuw bestand maken";
+
+"revealCreationFile" = "Onthul in Finder bij het maken van bestanden";
+
+"enableDoubleClick" = "Dubbelklik op pop-upmenu om een bestand te maken";
+
+"hidePopUp" = "Verberg pop-up inschakelen bij het maken van bestanden";
+
+"tipCustomTemplates" = "Voeg uw aangepaste sjablonen toe aan Nieuwe bestandscreatie";
+
+"resetDefaultsTemplate" = "Reset naar standaardwaarden";
+
+"titleFilesLabel" = "Uw sjablonen verbergen, tonen, toevoegen of opnieuw ordenen:";
+
+"enable" = "Schakel in";
+
+"icon" = "Icoon";
+
+"template" = "Sjabloon";
+
+"cancel" = "Annuleren";
+
+"showIcloudPreferences" = "Toon iCloud voorkeuren";
+
+"icloudNotFetch" = "Kan iCloud gegevens niet ophalen, aanmelden bij iCloud via systeemvoorkeuren en schakel \"iCloud Drive\" in.";
+
+"syncCloudTip" = "Synchroniseer uw sjablonen met iCloud. Je kunt je aangepaste sjablonen en configuratie uploaden en downloaden en ze gebruiken op al je Macs.";
+
+"tipHelpCloud" = "Als u geen verbinding kunt maken met iCloud, meldt u zich aan in iCloud via Systeemvoorkeuren -> iCloud schakel dan \"iCloud Drive\" in.";
+
+"uploadButtonTitle" = "Upload sjablonen en configuratie naar iCloud";
+
+"downloadButtonTitle" = "Download sjablonen en configuratie van iCloud";
+
+"uploading" = "Uploaden naar iCloud...";
+
+"downloading" = "Downloaden van iCloud...";
+
+"positiveUploaded" = "Geupload naar iCloud!";
+
+"notUploaded" = "Fout bij uploaden naar iCloud";
+
+"positiveDownload" = "Gedownload van iCloud!";
+
+"errorDownload" = "Fout bij downloaden van iCloud!";
+
+"selectFile" = "Kies bestand";
+
+"fadeButtonTitle" = "Schakel het vervaageffect in op Touch Bar";
+
+"textButtonTitle" = "oon bestandsextensie op Touch Bar-knoppen";
+
+"syncButtonTitle" = "Synchroniseer pop-up sjablonen met Touch bar";
+
+"labelDocsToday" = "Aantal documenten in Widget van vandaag:";
+
+"documents" = "documenten";
+
+"minimunTemplatesShow" = "Stel een minimumaantal van 10 sjablonen in voor een betere ervaring";
+
+"popup_behaviour" = "Pop-up gedrag";
+
+"transient" = "Vergankelijk";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Toepassing gedefinieerde";
+
+"add_as_template" = "Voeg toe als sjabloon...";

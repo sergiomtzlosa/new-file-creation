@@ -81,7 +81,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     override func awakeFromNib()
     {
-//        super.windowObject = window
+       // super.windowObject = window
         
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventUpdateTableFromPreferences(_:)), name: kUpdateTableFromPreferences)
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventAddFileFromExtensionFinder(_:)), name: kAddFileFromFinder)
@@ -144,11 +144,16 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.dataFiles = NSMutableArray(array:extractFiles())
         
         let 👿 : Bool = self.launchOnLogin()
+        
         SMLog("is lanch a start: " + (👿 ? "YES" : "NO"))
         
-        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifyDarkModeChanged(_:)), name: kChangeInterfaceNotification)
+        REGISTER_DISTRIBUTED_NOTIFICATION(self,
+                                          selector: #selector(AppDelegate.eventNotifyDarkModeChanged(_:)),
+                                          name: kChangeInterfaceNotification)
         
-        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventNotifySuspend(_:)), name: NSWindow.didResignKeyNotification.rawValue)
+        REGISTER_DISTRIBUTED_NOTIFICATION(self,
+                                          selector: #selector(AppDelegate.eventNotifySuspend(_:)),
+                                          name: NSWindow.didResignKeyNotification.rawValue)
 
         let customViewPopOver : NSView = createCustomView()
         

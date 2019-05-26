@@ -167,7 +167,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
                 
                 DispatchQueue.main.async(execute: {
                     
-                    modalWindow.endSheet()
+                    modalWindow.endSheet(AppDelegate.preferencesWindow())
                     
                     if downloaded
                     {
@@ -189,7 +189,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
             {
                 DispatchQueue.main.async(execute: {
                     
-                    modalWindow.endSheet()
+                    modalWindow.endSheet(AppDelegate.preferencesWindow())
                     self.cloudDialogChoose(SMLocalizedString("warning"), message: SMLocalizedString("icloudNotFetch"))
                 })
             }
@@ -214,7 +214,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
                 
                 DispatchQueue.main.async(execute: {
                     
-                    modalWindow.endSheet()
+                    modalWindow.endSheet(AppDelegate.preferencesWindow())
                     
                     if uploaded
                     {
@@ -234,7 +234,7 @@ class CloudSyncViewController : NSViewController, MASPreferencesViewController
             {
                 DispatchQueue.main.async(execute: {
                     
-                    modalWindow.endSheet()
+                    modalWindow.endSheet(AppDelegate.preferencesWindow())
                     self.cloudDialogChoose(SMLocalizedString("warning"), message: SMLocalizedString("icloudNotFetch"))
                 })
             }

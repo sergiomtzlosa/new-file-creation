@@ -43,12 +43,13 @@ class SMSheetWindow: NSWindowController
 
     func beginSheet(_ mainWindow: NSWindow)
     {
-        NSApp.beginSheet(self.window!, modalFor: mainWindow, modalDelegate: self, didEnd:nil, contextInfo: nil)
+        //NSApp.beginSheet(self.window!, modalFor: mainWindow, modalDelegate: self, didEnd:nil, contextInfo: nil)
         
 //        self.window!.beginSheet(mainWindow) { (NSModalResponse) in
 //            
 //        }
-//        self.window?.beginSheet(mainWindow, completionHandler: nil)
+
+        mainWindow.beginSheet(self.window!, completionHandler: nil)
 
         DispatchQueue.main.async(execute: {
             
@@ -64,16 +65,16 @@ class SMSheetWindow: NSWindowController
         })
     }
     
-    @IBAction func btnClicked(_ sender: AnyObject)
-    {
-        self.endSheet();
-    }
+//    @IBAction func btnClicked(_ sender: AnyObject)
+//    {
+//        self.endSheet();
+//    }
 
-    func endSheet() {
-        
-        NSApp.endSheet(self.window!)
-//        self.window?.endSheet(self.window!)
-        
+    func endSheet(_ mainWindow: NSWindow) {
+
+        //NSApp.endSheet(self.window!)
+        mainWindow.endSheet(self.window!)
+
         self.window!.orderOut(nil)
     }
 }

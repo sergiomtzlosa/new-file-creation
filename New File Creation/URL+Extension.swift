@@ -9,12 +9,17 @@
 import Foundation
 
 extension URL {
+    
     var isDirectory: Bool? {
+    
         do {
+            
             let values = try self.resourceValues(
                 forKeys:Set([URLResourceKey.isDirectoryKey])
             )
+            
             return values.isDirectory
+        
         } catch  { return nil }
     }
 }

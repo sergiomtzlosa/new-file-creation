@@ -223,6 +223,7 @@
 		1F64DEB11B7E6A6B000B00CB /* HelpPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HelpPreferencesViewController.xib; sourceTree = "<group>"; };
 		1F64DEB31B7E6BAD000B00CB /* FilesPreferencesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilesPreferencesViewController.xib; sourceTree = "<group>"; };
 		1F64DEB51B7E6BBF000B00CB /* FilesPreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesPreferencesViewController.swift; sourceTree = "<group>"; };
+		1F6BA83E226F943F00D5D418 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F6CB48F1B763DFE00CC6AF4 /* SMScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMScrollView.swift; sourceTree = "<group>"; };
 		1F6CB4911B76523700CC6AF4 /* dropped.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = dropped.aif; sourceTree = "<group>"; };
 		1F6CB4951B7657AD00CC6AF4 /* icon-menulet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-menulet.png"; sourceTree = "<group>"; };
@@ -855,6 +856,7 @@
 				gl,
 				"eu-ES",
 				"pt-PT",
+				nl,
 			);
 			mainGroup = 1FF9568E1B712B7E007283E5;
 			productRefGroup = 1FF956981B712B7E007283E5 /* Products */;
@@ -1083,6 +1085,7 @@
 				1F8895EE2167D92700078D46 /* gl */,
 				1F8895EF2167DBB100078D46 /* eu-ES */,
 				1F8895F02167DE5E00078D46 /* pt-PT */,
+				1F6BA83E226F943F00D5D418 /* nl */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

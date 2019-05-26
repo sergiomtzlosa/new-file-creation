@@ -98,6 +98,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     class func createViewWithTitle(_ titleText : NSString, messageText: NSString, window:NSWindow) -> SMAlert
     {
         let alert : SMAlert = SMAlert.createViewWithTitle(titleText, message: messageText)
+        
         alert.showModalInWindow(window)
         
         return alert
@@ -106,6 +107,7 @@ class SMAlert: NSWindow, NSWindowDelegate
     class func createAlertViewWithTitle(_ titleText: NSString, messageText: NSString, window: NSWindow) -> NSAlert
     {
         let alert : NSAlert = NSAlert()
+        
         alert.messageText = titleText as String
         alert.informativeText = messageText as String
         alert.addButton(withTitle: "OK")
@@ -116,15 +118,20 @@ class SMAlert: NSWindow, NSWindowDelegate
     
     func showModalInWindow(_ win : NSWindow)
     {
-        NSApp.beginSheet(self, modalFor: win, modalDelegate: delegate, didEnd: nil, contextInfo: nil)
-//        self.beginSheet(win, completionHandler: nil)
+       //NSApp.beginSheet(self, modalFor: win, modalDelegate: delegate, didEnd: nil, contextInfo: nil)
+ //       self.beginSheet(win, completionHandler: nil)
+        
+        win.beginSheet(self, completionHandler: nil)
     }
     
     @objc func dismissModalWindow(_ sender : AnyObject)
     {
-        NSApp.endSheet(self)
-//        self.endSheet(self)
+        let button: NSButton = sender as! NSButton
+        let win: NSWindow = button.target as! NSWindow
         
+        //NSApp.endSheet(self)
+        self.endSheet(win)
+       
         self.orderOut(nil)
     
         if (completionBlock != nil)

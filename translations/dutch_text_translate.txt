@@ -1,0 +1,100 @@
+ "Opslaan als...";
+
+ "Afsluiten";
+
+ "Voorkeuren";
+
+ "Starten bij aanmelding";
+
+ "Drag and drop a row from table to your desired destination to create a new file.\nYou can create many files as you want.";
+
+ "Nieuw .%@ bestand - %@";
+
+ "Algemeen";
+
+ "Schakel in \"Nieuw bestandssjabloon extensie\" in Systeemvoorkeuren -> Extensies -> Finder-extensies";
+
+ "Selecteer uw bestandssjabloon";
+
+ "bestandssjabloon";
+
+ "Deze sjabloon bestaat al. Kies een andere sjabloon.";
+
+ "Geavanceerd";
+
+ "Open Systeemvoorkeuren";
+
+ "Help";
+
+ "iCloud";
+
+ "Touch Bar";
+
+ "Speel geluid bij het aanmaken van bestanden";
+
+ "Openen bij nieuw bestand maken";
+
+ "Onthul in Finder bij het maken van bestanden";
+
+ "Dubbelklik op pop-upmenu om een bestand te maken";
+
+ "Verberg pop-up inschakelen bij het maken van bestanden";
+
+ "Voeg uw aangepaste sjablonen toe aan Nieuwe bestandscreatie";
+
+ "Reset naar standaardwaarden";
+
+ "Uw sjablonen verbergen, tonen, toevoegen of opnieuw ordenen:";
+
+ "Schakel in";
+
+ "Icoon";
+
+ "Sjabloon";
+
+ "Annuleren";
+
+ "Toon iCloud voorkeuren";
+
+ "Kan iCloud gegevens niet ophalen, aanmelden bij iCloud via systeemvoorkeuren en schakel \"iCloud Drive\" in.";
+
+ "Synchroniseer uw sjablonen met iCloud. Je kunt je aangepaste sjablonen en configuratie uploaden en downloaden en ze gebruiken op al je Macs.";
+
+ "Als u geen verbinding kunt maken met iCloud, meldt u zich aan in iCloud via Systeemvoorkeuren -> iCloud schakel dan \"iCloud Drive\" in.";
+
+ "Upload sjablonen en configuratie naar iCloud";
+
+ "Download sjablonen en configuratie van iCloud";
+
+ "Uploaden naar iCloud...";
+
+ "Downloaden van iCloud...";
+
+ "Geupload naar iCloud!";
+
+ "Fout bij uploaden naar iCloud";
+
+ "Gedownload van iCloud!";
+
+ "Fout bij downloaden van iCloud!";
+
+ "Kies bestand";
+
+ "Schakel het vervaageffect in op Touch Bar";
+
+ "oon bestandsextensie op Touch Bar-knoppen";
+
+ "Synchroniseer pop-up sjablonen met Touch bar";
+
+ "Aantal documenten in Widget van vandaag:";
+
+ "documenten";
+
+ "Stel een minimumaantal van 10 sjablonen in voor een betere ervaring";
+
+ "Vergankelijk";
+
+ "Semi transparant";
+
+ "Toepassing gedefinieerde";
+

@@ -97,12 +97,16 @@ class SMObject: NSObject
     func showSheet(_ sheetWindow: SMSheetWindow, win:NSWindow, delegate:AnyObject)
     {
 //        NSApp.beginSheet(sheetWindow, modalForWindow: win, modalDelegate: delegate, didEndSelector: nil, contextInfo: nil)
+        
+        sheetWindow.window?.beginSheet(win, completionHandler: nil)
     }
     
-    func hideSheet(_ sheetWindow: SMSheetWindow)
+    func hideSheet(_ sheetWindow: SMSheetWindow, win:NSWindow)
     {
-//        NSApp.endSheet(sheetWindow)
+ //       NSApp.endSheet(sheetWindow)
 //        sheetWindow.orderOut(nil)
+        
+        sheetWindow.window?.endSheet(win)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(_ theApplication: NSApplication) -> Bool
@@ -114,8 +118,7 @@ class SMObject: NSObject
     {
         // create the new font for the text field
         let newFont : NSFont = NSFont(name: "Helvetica", size: 20)!
-    
-        
+
         let maxWidth : CGFloat  = 200
         let maxHeight : CGFloat = 99999
         let constraint : CGSize  = CGSize(width: maxWidth, height: maxHeight)
