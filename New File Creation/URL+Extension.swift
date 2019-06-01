@@ -20,6 +20,8 @@ extension URL {
             
             return values.isDirectory
         
-        } catch  { return nil }
+        } catch  {
+            return nil
+        }
     }
 }
