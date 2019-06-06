@@ -349,11 +349,9 @@ class FinderSync: FIFinderSync
                 
                 return
             }
-            
-            
+          
 //            self.savePanel.beginSheet(NSWindow, completionHandler: { ((NSApplication.ModalResponse) -> Void)? = nil) in
-            
-         
+
             self.savePanel.begin { ( result :NSApplication.ModalResponse) in
                 
 //                if result == NSFileHandlingPanelCancelButton
