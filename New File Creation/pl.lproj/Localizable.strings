@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Zapisz nowy plik jako...";
+
+"exitApp" = "Zakończ";
+
+"settings" = "Ustawienia";
+
+"launchLogin" = "Uruchom przy logowaniu";
+
+"dragAndDropItems" = "Przeciągnij i upuść wiersz z tabeli do żądanego miejsca docelowego, aby utworzyć nowy plik. Możesz utworzyć wiele plików, jak chcesz.";
+
+"newFileMask" = "Nowy .%@ plik - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Włącz \"Nowe rozszerzenie tworzenia pliku\" w Preferencjach systemowych -> Rozszerzenia -> Finder";
+
+"selectFileTemplate" = "Wybierz szablon pliku";
+
+"warning" = "Warning";
+
+"templateExists" = "Ten szablon już się kończy. Wybierz inny szablon.";
+
+"advanced" = "Advanced";
+
+"openSystemPreferences" = "Preferencje systemu otwartego";
+
+"help" = "Pomoc";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Odtwórz dźwięk podczas tworzenia pliku";
+
+"openWhenCreate" = "Otwórz podczas tworzenia nowego pliku";
+
+"revealCreationFile" = "Ujawnij w Finderze podczas tworzenia pliku";
+
+"enableDoubleClick" = "Włącz dwukrotne kliknięcie menu podręcznego, aby utworzyć plik";
+
+"hidePopUp" = "Włącz ukryj popup przy tworzeniu pliku";
+
+"tipCustomTemplates" = "Dodaj swoje niestandardowe szablony do nowego tworzenia plików";
+
+"resetDefaultsTemplate" = "Przywróć domyślne";
+
+"titleFilesLabel" = "Ukryj, pokaż, dodaj lub zmień kolejność szablonów:";
+
+"enable" = "Enable";
+
+"icon" = "Icon";
+
+"template" = "Szablon";
+
+"cancel" = "Anuluj";
+
+"showIcloudPreferences" = "Pokaż preferencje iCloud";
+
+"icloudNotFetch" = "Nie można pobrać iCloud, zalogować się do iCloud z preferencji systemowych i włączyć \"iCloud Drive\".";
+
+"syncCloudTip" = "Synchronizuj szablony za pomocą iCloud. Możesz załadować / pobrać własne szablony i konfigurację oraz używać ich na wszystkich komputerach Mac.";
+
+"tipHelpCloud" = "Jeśli nie możesz połączyć się z iCloud, zaloguj się w iCloud za pomocą Preferencji systemowych -> iCloud, a następnie włącz \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Prześlij szablony i konfigurację do iCloud";
+
+"downloadButtonTitle" = "Pobierz szablony i konfigurację z iCloud";
+
+"uploading" = "Przesyłanie do iCloud...";
+
+"download" = "Pobieranie z iCloud...";
+
+"positiveUploaded" = "Przesłano do iCloud!";
+
+"notUploaded" = "Błąd podczas przesyłania do iCloud";
+
+"positiveDownload" = "Pobrane z iCloud!";
+
+"errorDownload" = "Błąd pobierania z iCloud!";
+
+"selectFile" = "Wybierz plik";
+
+"fadeButtonTitle" = "Włącz efekt zanikania na pasku dotykowym";
+
+"textButtonTitle" = "Pokaż rozszerzenie pliku na przyciskach paska dotykowego";
+
+"syncButtonTitle" = "Synchronizuj wyskakujące szablony za pomocą paska dotykowego";
+
+"labelDocsToday" = "Liczba dokumentów w Today Widget:";
+
+"documents" = "dokumenty";
+
+"minimunTemplatesShow" = "Ustaw minimalną liczbę 10 szablonów dla lepszego doświadczenia";
+
+"popup_behaviour" = "Zachowanie wyskakujące";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Aplikacja zdefiniowana";
+
+"add_as_template" = "Dodaj jako szablon...";

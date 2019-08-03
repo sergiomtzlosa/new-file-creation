@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Neue Datei speichern unter...";
+
+"exitApp" = "Beenden";
+
+"settings" = "Einstellungen";
+
+"launchLogin" = "Beim Anmelden starten";
+
+"dragAndDropItems" = "Ziehen Sie eine Zeile aus der Tabelle an den gewünschten Ort, um eine neue Datei zu erstellen. \nSie können beliebig viele Dateien erstellen.";
+
+"newFileMask" = "Neu .%@ file - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "\"Neue Dateierstellungserweiterung aktivieren\" in den Systemeinstellungen -> Erweiterungen -> Finder";
+
+"selectFileTemplate" = "Wählen Sie Ihre Dateivorlage aus";
+
+"warning" = "Warnung";
+
+"templateExists" = "Diese Vorlage existiert bereits. Bitte wählen Sie eine andere Vorlage.";
+
+"advanced" = "Erweitert";
+
+"openSystemPreferences" = "Systemeinstellungen öffnen";
+
+"help" = "Hilfe";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touchbar";
+
+"playSoundPreference" = "Sound bei der Dateierstellung abspielen";
+
+"openWhenCreate" = "Beim Erstellen einer neuen Datei öffnen";
+
+"discloseCreationFile" = "Beim Erstellen von Dateien im Finder anzeigen";
+
+"enableDoubleClick" = "Doppelklick auf Popup-Menü aktivieren, um Datei zu erstellen";
+
+"hidePopUp" = "Popup beim Erstellen der Datei ausblenden aktivieren";
+
+"tipCustomTemplates" = "Fügen Sie Ihre benutzerdefinierten Vorlagen zur Erstellung neuer Dateien hinzu";
+
+"resetDefaultsTemplate" = "Auf Standardeinstellungen zurücksetzen";
+
+"titleFilesLabel" = "Vorlagen ausblenden, anzeigen, hinzufügen oder neu anordnen:";
+
+"enable" = "Aktivieren";
+
+"icon" = "Icon";
+
+"template" = "Vorlage";
+
+"cancel" = "Abbrechen";
+
+"showIcloudPreferences" = "iCloud-Einstellungen anzeigen";
+
+"icloudNotFetch" = "iCloud kann nicht abgerufen werden. Melden Sie sich in den Systemeinstellungen bei iCloud an und aktivieren Sie \"iCloud-Laufwerk\".";
+
+"syncCloudTip" = "Synchronisieren Sie Ihre Vorlagen mit iCloud. Sie können Ihre benutzerdefinierten Vorlagen und Konfigurationen hochladen / herunterladen und auf allen Ihren Macs verwenden.";
+
+"tipHelpCloud" = "Wenn Sie keine Verbindung zu iCloud herstellen können, melden Sie sich in iCloud über die Systemeinstellungen -> iCloud an. Aktivieren Sie dann \"iCloud Drive\".";
+
+"uploadButtonTitle" = "Vorlagen und Konfiguration auf iCloud hochladen";
+
+"downloadButtonTitle" = "Vorlagen und Konfiguration von iCloud herunterladen";
+
+"uploading" = "Hochladen auf iCloud...";
+
+"downloading" = "Von iCloud herunterladen...";
+
+"positiveUploaded" = "Auf iCloud hochgeladen!";
+
+"notUploaded" = "Fehler beim Hochladen auf iCloud";
+
+"positiveDownload" = "Von iCloud heruntergeladen!";
+
+"errorDownload" = "Fehler beim Herunterladen von iCloud!";
+
+"selectFile" = "Datei auswählen";
+
+"fadeButtonTitle" = "Fade-Effekt auf der Touch-Leiste aktivieren";
+
+"textButtonTitle" = "Dateierweiterung auf Schaltflächen der Touch-Leiste anzeigen";
+
+"syncButtonTitle" = "Popup-Vorlagen mit der Touch-Leiste synchronisieren";
+
+"labelDocsToday" = "Anzahl der Dokumente im Heute-Widget:";
+
+"documents" = "documents";
+
+"minimunTemplatesShow" = "Legen Sie eine Mindestanzahl von 10 Vorlagen für eine bessere Benutzererfahrung fest";
+
+"popup_behaviour" = "Popup-Verhalten";
+
+"transient" = "transient";
+
+"semitransient" = "semitransient";
+
+"application_defined" = "Anwendung definiert";
+
+"add_as_template" = "Als Vorlage hinzufügen...";

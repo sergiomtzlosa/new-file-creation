@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Tallenna uusi tiedosto nimellä...";
+
+"exitApp" = "Lopeta";
+
+"settings" = "Asetukset";
+
+"launchLogin" = "Käynnistä sisäänkirjautumisen yhteydessä";
+
+"dragAndDropItems" = "Luo uusi tiedosto vetämällä ja pudottamalla rivi taulukosta haluamaasi määränpäähän. \nVoit luoda useita tiedostoja haluamallasi tavalla.";
+
+"newFileMask" = "Uusi .%@ tiedosto - %@";
+
+"yleinen" = "yleinen";
+
+"enableExtensionTip" = "Ota käyttöön \"Uusi tiedostojen luontilaajennus\" Järjestelmäasetuksissa -> Laajennukset -> Finder";
+
+"selectFileTemplate" = "Valitse tiedostomallisi";
+
+"warning" = "Varoitus";
+
+"templateExists" = "Tämä malli on jo poistunut. Valitse toinen malli.";
+
+"advanced" = "Advanced";
+
+"openSystemPreferences" = "Avoimen järjestelmän asetukset";
+
+"help" = "ohje";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Toista ääni tiedostoa luotaessa";
+
+"openWhenCreate" = "Avaa luotaessa uutta tiedostoa";
+
+"reveCreationFile" = "Paljasta Finder tiedostojen luomisessa";
+
+"enableDoubleClick" = "Ota kaksoisnapsauttamalla ponnahdusvalikkoa luodaksesi tiedosto";
+
+"hidePopUp" = "Ota käyttöön piilotuksen ponnahdusikkuna tiedostojen luomisessa";
+
+"tipCustomTemplates" = "Lisää mukautetut mallisi uuteen tiedostojen luomiseen";
+
+"resetDefaultsTemplate" = "Palauta oletuksiin";
+
+"titleFilesLabel" = "Piilota, näytä, lisää tai järjestä mallejasi:";
+
+"enable" = "Ota käyttöön";
+
+"icon" = "kuvake";
+
+"template" = "malli";
+
+"cancel" = "peruuttaa";
+
+"showIcloudPreferences" = "Näytä iCloud-asetukset";
+
+"icloudNotFetch" = "iCloudia ei voi noutaa, kirjaudu iCloudiin järjestelmän asetuksista ja aktivoi \"iCloud Drive\".";
+
+"syncCloudTip" = "Synkronoi mallisi iCloudin kanssa. Voit lähettää / ladata mukautettuja malleja ja kokoonpanoja ja käyttää niitä kaikissa Mac-tietokoneissa.";
+
+"tipHelpCloud" = "Jos et voi muodostaa yhteyttä iCloudiin, kirjaudu sisään iCloudiin Järjestelmäasetusten kautta -> iCloud ja ota sitten \"iCloud-asema\" käyttöön";
+
+"uploadButtonTitle" = "Lataa malleja ja määrityksiä iCloudiin";
+
+"downloadButtonTitle" = "Lataa malleja ja määrityksiä iCloudista";
+
+"uploading" = "Lähetetään iCloudiin...";
+
+"downloading" = "Ladataan iCloudista...";
+
+"positiveUploaded" = "Ladattu iCloudiin!";
+
+"notUploaded" = "Virhe ladattaessa iCloudiin";
+
+"positiveDownload" = "Ladattu iCloudista!";
+
+"errorDownload" = "Virhe ladattaessa iCloudista!";
+
+"selectFile" = "Valitse tiedosto";
+
+"fadeButtonTitle" = "Ota haalistusvaikutus kosketuspalkkiin";
+
+"textButtonTitle" = "Näytä tiedostopääte kosketuspalkin painikkeilla";
+
+"syncButtonTitle" = "Synkronoi ponnahdusikkunat kosketuspalkilla";
+
+"labelDocsToday" = "Asiakirjamäärä Today-widgetissä:";
+
+"asiakirjat" = "asiakirjat";
+
+"minimunTemplatesShow" = "Aseta vähintään 10 mallipohjaa paremman kokemuksen saamiseksi";
+
+"popup_behaviour" = "ponnahdusikkuna";
+
+"transient" = "ohimenevä";
+
+"semitransient" = "puoliväliaikainen";
+
+"application_defined" = "Sovellus määritelty";
+
+"add_as_template" = "Lisää mallina...";

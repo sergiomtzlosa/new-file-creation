@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Simpan file baru sebagai...";
+
+"exitApp" = "Keluar";
+
+"pengaturan" = "Pengaturan";
+
+"launchLogin" = "Luncurkan saat login";
+
+"dragAndDropItems" = "Seret dan lepas baris dari tabel ke tujuan yang Anda inginkan untuk membuat file baru. \nAnda dapat membuat banyak file seperti yang Anda inginkan.";
+
+"newFileMask" = "Baru .%@ file - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Aktifkan \"Ekstensi Pembuatan File Baru\" di System Preferences -> Extensions -> Finder";
+
+"selectFileTemplate" = "Pilih template file Anda";
+
+"warning" = "Warning";
+
+"templateExists" = "Templat ini sudah keluar. Pilih templat lain.";
+
+"advanced" = "Advanced";
+
+"openSystemPreferences" = "Buka preferensi sistem";
+
+"help" = "Help";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Mainkan suara pada pembuatan file";
+
+"openWhenCreate" = "Buka saat membuat file baru";
+
+"reveCreationFile" = "Mengungkapkan di Finder tentang pembuatan file";
+
+"enableDoubleClick" = "Aktifkan klik dua kali pada menu popup untuk membuat file";
+
+"hidePopUp" = "Aktifkan sembunyikan munculan pada pembuatan file";
+
+"tipCustomTemplates" = "Tambahkan templat khusus Anda ke Pembuatan File Baru";
+
+"resetDefaultsTemplate" = "Atur ulang ke default";
+
+"titleFilesLabel" = "Sembunyikan, tampilkan, tambahkan atau susun ulang templat Anda:";
+
+"enable" = "Enable";
+
+"icon" = "Icon";
+
+"template" = "Templat";
+
+"cancel" = "Cancel";
+
+"showIcloudPreferences" = "Tampilkan Preferensi iCloud";
+
+"icloudNotFetch" = "Tidak dapat mengambil iCloud, masuk ke iCloud dari preferensi sistem dan mengaktifkan \"iCloud Drive\".";
+
+"syncCloudTip" = "Sinkronkan templat Anda dengan iCloud. Anda dapat mengunggah / mengunduh templat dan konfigurasi khusus Anda dan menggunakannya di semua Mac Anda.";
+
+"tipHelpCloud" = "Jika Anda tidak dapat terhubung ke iCloud, lakukan login di iCloud melalui System Preferences -> iCloud, lalu aktifkan \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Unggah templat & konfigurasi ke iCloud";
+
+"downloadButtonTitle" = "Unduh templat & konfigurasi dari iCloud";
+
+"uploading" = "Mengunggah ke iCloud...";
+
+"downloading" = "Mengunduh dari iCloud...";
+
+"positiveUploaded" = "Diunggah ke iCloud!";
+
+"notUploaded" = "Kesalahan mengunggah ke iCloud";
+
+"positiveDownload" = "Diunduh dari iCloud!";
+
+"errorDownload" = "Kesalahan mengunduh dari iCloud!";
+
+"selectFile" = "Pilih file";
+
+"fadeButtonTitle" = "Aktifkan efek fade pada Bar Sentuh";
+
+"textButtonTitle" = "Tampilkan ekstensi file di tombol Panel Sentuh";
+
+"syncButtonTitle" = "Sinkronkan template pop-up dengan bilah Sentuh";
+
+"labelDocsToday" = "Jumlah dokumen dalam Widget Hari Ini:";
+
+"documents" = "dokumen";
+
+"minimunTemplatesShow" = "Tetapkan jumlah minimum 10 template untuk pengalaman yang lebih baik";
+
+"popup_behaviour" = "Perilaku sembulan";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Ditentukan aplikasi";
+
+"add_as_template" = "Tambahkan sebagai Templat ...";

@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Lagre ny fil som...";
+
+"exitApp" = "Avslutt";
+
+"settings" = "Innstillinger";
+
+"launchLogin" = "Start ved pålogging";
+
+"dragAndDropItems" = "Dra og slipp en rad fra tabellen til ønsket destinasjon for å opprette en ny fil. \nDu kan opprette mange filer som du vil.";
+
+"newFileMask" = "Ny .%@ fil - %@";
+
+"general" = "Generelt";
+
+"enableExtensionTip" = "Aktiver \"Ny filoppretting utvidelse\" i Systemvalg -> Utvidelser -> Finder";
+
+"selectFileTemplate" = "Velg filmalen din";
+
+"warning" = "Advarsel";
+
+"templateExists" = "Denne malen går allerede ut. Velg en annen mal.";
+
+"advanced" = "Avansert";
+
+"openSystemPreferences" = "Åpne systeminnstillinger";
+
+"help" = "Hjelp";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Spill lyd ved oppretting av filer";
+
+"openWhenCreate" = "Åpne når du oppretter ny fil";
+
+"revealCreationFile" = "Avslør i Finder ved oppretting av filer";
+
+"enableDoubleClick" = "Aktiver dobbeltklikk på popup-menyen for å opprette fil";
+
+"hidePopUp" = "Aktiver skjul popup på filoppretting";
+
+"tipCustomTemplates" = "Legg til dine tilpassede maler i ny filoppretting";
+
+"resetDefaultsTemplate" = "Tilbakestill til standardverdier";
+
+"titleFilesLabel" = "Skjul, vis, legg til eller omordn malene dine:";
+
+"enable" = "Aktiver";
+
+"icon" = "Ikon";
+
+"template" = "Mal";
+
+"cancel" = "Avbryt";
+
+"showIcloudPreferences" = "Vis iCloud-preferanser";
+
+"icloudNotFetch" = "Kan ikke hente iCloud, logge inn i iCloud fra systempreferanser og aktivere \"iCloud Drive\".";
+
+"syncCloudTip" = "Synkroniser malene dine med iCloud. Du kan laste opp / laste ned tilpassede maler og konfigurasjon og bruke dem på alle Macintosh-maskiner.";
+
+"tipHelpCloud" = "Hvis du ikke kan koble til iCloud, logg deg på iCloud via Systemvalg -> iCloud, aktiver deretter \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Last opp maler og konfigurasjon til iCloud";
+
+"downloadButtonTitle" = "Last ned maler og konfigurasjon fra iCloud";
+
+"uploading" = "Last opp til iCloud...";
+
+"downloading" = "Nedlasting fra iCloud...";
+
+"positiveUploaded" = "Lastet opp til iCloud!";
+
+"notUploaded" = "Feil ved opplasting til iCloud";
+
+"positiveDownload" = "Lastet ned fra iCloud!";
+
+"errorDownload" = "Feil ved nedlasting fra iCloud!";
+
+"selectFile" = "Velg fil";
+
+"fadeButtonTitle" = "Aktiver fade-effekt på berøringslinjen";
+
+"textButtonTitle" = "Vis filtypen på knappene på berøringslinjen";
+
+"syncButtonTitle" = "Synkroniser popup-maler med berøringsfeltet";
+
+"labelDocsToday" = "Antall dokumenter i widgeten i dag:";
+
+"document" = "dokumenter";
+
+"minimunTemplatesShow" = "Angi et minimum antall 10 maler for en bedre opplevelse";
+
+"popup_behaviour" = "Pop-up oppførsel";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Program definert";
+
+"add_as_template" = "Legg til som mal...";

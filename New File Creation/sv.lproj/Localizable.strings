@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Spara ny fil som...";
+
+"exitApp" = "Avsluta";
+
+"settings" = "Inställningar";
+
+"launchLogin" = "Starta vid inloggning";
+
+"dragAndDropItems" = "Dra och släpp en rad från tabellen till önskad destination för att skapa en ny fil. \nDu kan skapa många filer som du vill.";
+
+"newFileMask" = "Ny .%@ fil - %@";
+
+"general" = "Allmänt";
+
+"enableExtensionTip" = "Aktivera \"Ny filtilläggstillägg\" i Systeminställningar -> Tillägg -> Finder";
+
+"selectFileTemplate" = "Välj din filmall";
+
+"warning" = "Varning";
+
+"templateExists" = "Den här mallen går redan ut. Välj en annan mall.";
+
+"advanced" = "Avancerad";
+
+"openSystemPreferences" = "Öppna systeminställningar";
+
+"help" = "Hjälp";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Spela ljud vid skapande av filer";
+
+"openWhenCreate" = "Öppna när du skapar en ny fil";
+
+"revealCreationFile" = "Avslöja i Finder vid skapande av filer";
+
+"enableDoubleClick" = "Aktivera dubbelklicka på popup-menyn för att skapa fil";
+
+"hidePopUp" = "Aktivera dölpa popup vid skapande av filer";
+
+"tipCustomTemplates" = "Lägg till dina anpassade mallar i ny filskapning";
+
+"resetDefaultsTemplate" = "Återställ till standardvärden";
+
+"titleFilesLabel" = "Dölj, visa, lägg till eller ordna om dina mallar:";
+
+"enable" = "Aktivera";
+
+"icon" = "Ikon";
+
+"template" = "Mall";
+
+"cancel" = "Avbryt";
+
+"showIcloudPreferences" = "Visa iCloud-inställningar";
+
+"icloudNotFetch" = "Kan inte hämta iCloud, logga in i iCloud från systeminställningar och aktivera \"iCloud Drive\".";
+
+"syncCloudTip" = "Synkronisera dina mallar med iCloud. Du kan ladda upp / ladda ner dina anpassade mallar och konfiguration och använda dem på alla dina Mac-datorer.";
+
+"tipHelpCloud" = "Om du inte kan ansluta till iCloud loggar du in iCloud via Systeminställningar -> iCloud aktiverar du \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Ladda upp mallar och konfiguration till iCloud";
+
+"downloadButtonTitle" = "Ladda ner mallar och konfiguration från iCloud";
+
+"uploading" = "Ladda upp till iCloud...";
+
+"downloading" = "Nedladdning från iCloud...";
+
+"positiveUploaded" = "Uppladdad till iCloud!";
+
+"notUploaded" = "Fel vid uppladdning till iCloud";
+
+"positiveDownload" = "Hämtat från iCloud!";
+
+"errorDownload" = "Fel vid nedladdning från iCloud!";
+
+"selectFile" = "Välj fil";
+
+"fadeButtonTitle" = "Aktivera blekningseffekt på pekfältet";
+
+"textButtonTitle" = "Visa filändelsen på pekfältets knappar";
+
+"syncButtonTitle" = "Synkronisera popup-mallar med pekfältet";
+
+"labelDocsToday" = "Antal dokument i widgeten idag:";
+
+"document" = "dokument";
+
+"minimunTemplatesShow" = "Ställ in ett minimumantal på 10 mallar för en bättre upplevelse";
+
+"popup_behaviour" = "Pop-up beteende";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Applikation definierad";
+
+"add_as_template" = "Lägg till som mall...";

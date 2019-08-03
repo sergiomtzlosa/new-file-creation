@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Yeni dosyayı farklı kaydet...";
+
+"exitApp" = "Çık";
+
+"settings" = "Ayarlar";
+
+"launchLogin" = "Girişde başlat";
+
+"dragAndDropItems" = "Yeni bir dosya oluşturmak için bir satırı tablodan istediğiniz hedefe sürükleyip bırakın. \nİstediğiniz kadar çok dosya oluşturabilirsiniz.";
+
+"newFileMask" = "Yeni .%@ file - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Sistem Tercihleri ​​-> Eklentiler -> Finder'de \"Yeni Dosya Oluşturma uzantısı\" etkinleştirilmelidir";
+
+"selectFileTemplate" = "Dosya şablonunuzu seçin";
+
+"warning" = "Uyarı";
+
+"templateExists" = "Bu şablon zaten çıkıyor. Lütfen farklı bir şablon seçin.";
+
+"advanced" = "Gelişmiş";
+
+"openSystemPreferences" = "Açık sistem tercihleri";
+
+"help" = "Yardım";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Dosya oluştururken ses çal";
+
+"openWhenCreate" = "Yeni dosya oluştururken aç";
+
+"revealCreationFile" = "Dosya oluştururken Finder'da göster";
+
+"enableDoubleClick" = "Dosya oluşturmak için açılır menüyü çift tıklayın";
+
+"hidePopUp" = "Dosya oluştururken açılır pencereyi etkinleştir";
+
+"tipCustomTemplates" = "Özel şablonlarınızı Yeni Dosya Oluşturma'ya ekleyin";
+
+"resetDefaultsTemplate" = "Varsayılanlara sıfırla";
+
+"titleFilesLabel" = "Şablonlarınızı gizleyin, gösterin, ekleyin veya yeniden sıralayın:";
+
+"enable" = "Etkinleştir";
+
+"icon" = "Simge";
+
+"template" = "Şablon";
+
+"cancel" = "İptal";
+
+"showIcloudPreferences" = "iCloud Tercihlerini Göster";
+
+"icloudNotFetch" = "iCloud getirilemiyor, sistem tercihlerinden iCloud'da oturum açın ve \"iCloud Drive\" özelliğini etkinleştirin.";
+
+"syncCloudTip" = "Şablonlarınızı iCloud ile senkronize edin. Özel şablonlarınızı ve yapılandırmanızı yükleyebilir / indirebilir ve bunları tüm Mac'lerde kullanabilirsiniz.";
+
+"tipHelpCloud" = "iCloud'a bağlanamıyorsanız, iCloud'da Sistem Tercihleri ​​-> iCloud üzerinden giriş yapın; \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Şablonları ve konfigürasyonu iCloud'a yükle";
+
+"downloadButtonTitle" = "Şablonları ve konfigürasyonu iCloud'dan indirin";
+
+"uploading" = "iCloud'a yükleniyor...";
+
+"downloads" = "iCloud'dan indiriliyor...";
+
+"positiveUploaded" = "iCloud'a yüklendi!";
+
+"notUploaded" = "iCloud'a yükleme hatası";
+
+"positiveDownload" = "iCloud'dan indirildi!";
+
+"errorDownload" = "iCloud'dan indirme hatası!";
+
+"selectFile" = "Dosya seç";
+
+"fadeButtonTitle" = "Dokunmatik Çubuk üzerinde solmaya efekti etkinleştir";
+
+"textButtonTitle" = "Dokunmatik Çubuk düğmelerinde dosya uzantısını göster";
+
+"syncButtonTitle" = "Açılır şablonları dokunmatik çubukla senkronize et";
+
+"labelDocsToday" = "Bugün Widget'ındaki doküman sayısı:";
+
+"documents" = "belgeler";
+
+"minimunTemplatesShow" = "Daha iyi bir deneyim için en az 10 şablon belirleyin";
+
+"popup_behaviour" = "Pop-up davranışı";
+
+"transient" = "Geçici";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Uygulama tanımlı";
+
+"add_as_template" = "Şablon Olarak Ekle...";

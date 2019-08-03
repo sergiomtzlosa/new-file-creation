@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Vista nýja skrá sem...";
+
+"exitApp" = "Hætta";
+
+"settings" = "Stillingar";
+
+"launchLogin" = "Ræsa við innskráningu";
+
+"dragAndDropItems" = "Dragðu og slepptu röð frá töflu á viðkomandi ákvörðunarstað til að búa til nýja skrá. \nÞú getur búið til margar skrár eins og þú vilt.";
+
+"newFileMask" = "Ný .%@ skrá - %@";
+
+"general" = "Almennt";
+
+"enableExtensionTip" = "Virkja \"Ný skráarviðbætur\" í System Preferences -> Extensions -> Finder";
+
+"selectFileTemplate" = "Veldu skjalasnið þitt";
+
+"warning" = "Viðvörun";
+
+"templateExists" = "Þetta sniðmát er þegar til. Vinsamlegast veldu annað sniðmát.";
+
+"advanced" = "Ítarleg";
+
+"openSystemPreferences" = "Opna kerfisstillingar";
+
+"help" = "Hjálp";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Spilaðu hljóð við skráarsköpun";
+
+"openWhenCreate" = "Opnaðu þegar búið er til nýja skrá";
+
+"revealCreationFile" = "Sýna í Finder við gerð skrár";
+
+"enableDoubleClick" = "Virkja tvísmell á sprettivalmynd til að búa til skrá";
+
+"hidePopUp" = "Virkja fela sprettiglugga við skráarsköpun";
+
+"tipCustomTemplates" = "Bættu sérsniðnu sniðmátum við nýja skráarsköpun";
+
+"resetDefaultsTemplate" = "Núllstilla í vanskil";
+
+"titleFilesLabel" = "Fela, sýna, bæta við eða endurraða sniðmátunum þínum:";
+
+"enable" = "Virkja";
+
+"icon" = "Táknmynd";
+
+"template" = "Sniðmát";
+
+"Cancel" = "Hætta við";
+
+"showIcloudPreferences" = "Sýna iCloud val";
+
+"icloudNotFetch" = "Get ekki sótt iCloud, skráðu þig inn á iCloud frá kerfisstillingum og virkja \"iCloud Drive\".";
+
+"syncCloudTip" = "Samstilltu sniðmátin þín með iCloud. Þú getur hlaðið upp / hlaðið niður sniðmátunum þínum og stillingum og notað þau á öllum Mac-tölvum þínum.";
+
+"tipHelpCloud" = "Ef þú getur ekki tengst iCloud skaltu skrá þig inn í iCloud með System Preferences -> iCloud, virkjaðu þá \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Hlaða upp sniðmátum og stillingum í iCloud";
+
+"downloadButtonTitle" = "Sæktu sniðmát og stillingar frá iCloud";
+
+"uploading" = "Hleður upp til iCloud...";
+
+"downloading" = "Hleður niður af iCloud...";
+
+"positiveUploaded" = "Hlaðið upp á iCloud!";
+
+"notUploaded" = "Villa við að hlaða upp til iCloud";
+
+"positiveDownload" = "Sótt af iCloud!";
+
+"errorDownload" = "Villa við niðurhal frá iCloud!";
+
+"selectFile" = "Veldu skrá";
+
+"fadeButtonTitle" = "Virkja dofnaáhrif á snertistika";
+
+"textButtonTitle" = "Sýna skráarlengingu á snertistikuhnappunum";
+
+"syncButtonTitle" = "Samstilla sprettiglugga með snertistiku";
+
+"labelDocsToday" = "Fjöldi skjala í búnaðinum í dag:";
+
+"document" = "skjöl";
+
+"minimunTemplatesShow" = "Stilla lágmarksfjölda 10 sniðmáta til að fá betri upplifun";
+
+"popup_behaviour" = "Pop-up hegðun";
+
+"transient" = "skammvinn";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Forrit skilgreint";
+
+"add_as_template" = "Bæta við sem sniðmát...";

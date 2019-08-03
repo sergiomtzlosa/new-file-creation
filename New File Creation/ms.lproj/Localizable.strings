@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Save new file as...";
+
+"exitApp" = "Quit";
+
+"settings" = "Settings";
+
+"launchLogin" = "Launch at login";
+
+"dragAndDropItems" = "Drag and drop a row from table to your desired destination to create a new file.\nYou can create many files as you want.";
+
+"newFileMask" = "New .%@ file - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Enable \"New File Creation extension\" in System Preferences -> Extensions -> Finder";
+
+"selectFileTemplate" = "Select your file template";
+
+"warning" = "Warning";
+
+"templateExists" = "This template already exits. Please choose a different template.";
+
+"advanced" = "Advanced";
+
+"openSystemPreferences" = "Open system preferences";
+
+"help" = "Help";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Play sound on file creation";
+
+"openWhenCreate" = "Open when create new file";
+
+"revealCreationFile" = "Reveal in Finder on file creation";
+
+"enableDoubleClick" = "Enable double-click on popup menu to create file";
+
+"hidePopUp" = "Enable hide popup on file creation";
+
+"tipCustomTemplates" = "Add your custom templates to New File Creation";
+
+"resetDefaultsTemplate" = "Reset to defaults";
+
+"titleFilesLabel" = "Hide, show, add or reorder your templates:";
+
+"enable" = "Enable";
+
+"icon" = "Icon";
+
+"template" = "Template";
+
+"cancel" = "Cancel";
+
+"showIcloudPreferences" = "Show iCloud Preferences";
+
+"icloudNotFetch" = "Cannot fetch iCloud, login into iCloud from system preferences and enable \"iCloud Drive\".";
+
+"syncCloudTip" = "Sync your templates with iCloud. You can upload/download your custom templates and configuration and use them in all your Macs.";
+
+"tipHelpCloud" = "If you cannot connect to iCloud do login in iCloud via System Preferences -> iCloud then enable \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Upload templates & configuration to iCloud";
+
+"downloadButtonTitle" = "Download templates & configuration from iCloud";
+
+"uploading" = "Uploading to iCloud...";
+
+"downloading" = "Downloading from iCloud...";
+
+"positiveUploaded" = "Uploaded to iCloud!";
+
+"notUploaded" = "Error uploading to iCloud";
+
+"positiveDownload" = "Downloaded from iCloud!";
+
+"errorDownload" = "Error downloading from iCloud!";
+
+"selectFile" = "Choose file";
+
+"fadeButtonTitle" = "Enable fade effect on Touch Bar";
+
+"textButtonTitle" = "Show file extension on Touch Bar buttons";
+
+"syncButtonTitle" = "Synchronize pop-up templates with Touch bar";
+
+"labelDocsToday" = "Number of documents in Today Widget:";
+
+"documents" = "documents";
+
+"minimunTemplatesShow" = "Set a minimum number of 10 templates for a better experience";
+
+"popup_behaviour" = "Pop-up behaviour";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Application defined";
+
+"add_as_template" = "Add as Template...";

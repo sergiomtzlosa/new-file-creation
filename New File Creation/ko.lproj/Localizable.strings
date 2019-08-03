@@ -1,0 +1,104 @@
+
+"saveNewFileAs"= "새 파일을 다른 이름으로 저장...";
+
+"exitApp"= "종료";
+
+"settings"= "설정";
+
+"launchLogin"= "로그인시 시작";
+
+"dragAndDropItems"= "테이블의 행을 원하는 대상으로 드래그 앤 드롭하여 새 파일을 만듭니다. \n원하는 파일을 많이 만들 수 있습니다.";
+
+"newFileMask"= "새로운 .%@ 파일 - %@";
+
+"general"= "일반";
+
+"enableExtensionTip"= "시스템 환경 설정 -> 확장 -> Finder에서 새 파일 생성 확장자 사용 ";
+
+"selectFileTemplate"= "파일 템플릿 선택";
+
+"warning"= "경고";
+
+"templateExists"= "이 템플릿은 이미 종료되었습니다. 다른 템플릿을 선택하십시오.";
+
+"advanced"= "고급";
+
+"openSystemPreferences"= "시스템 환경 설정 열기";
+
+"help"= "Help";
+
+"icloud"= "iCloud";
+
+"touchbar"= "Touch Bar";
+
+"playSoundPreference"= "파일 생성시 소리 재생";
+
+"openWhenCreate"= "새 파일을 만들 때 열기";
+
+"revealCreationFile"= "파일 생성시 Finder에 표시";
+
+"enableDoubleClick"= "파일을 만들려면 팝업 메뉴를 두 번 클릭하십시오";
+
+"hidePopUp"= "파일 생성시 팝업 숨기기 활성화";
+
+"tipCustomTemplates"= "새 파일 만들기에 사용자 정의 템플릿 추가";
+
+"resetDefaultsTemplate"= "기본값으로 재설정";
+
+"titleFilesLabel"= "템플릿 숨기기, 표시, 추가 또는 순서 변경:";
+
+"enable"= "Enable";
+
+"icon"= "아이콘";
+
+"template"= "템플릿";
+
+"cancel"= "취소";
+
+"showIcloudPreferences"= "iCloud 환경 설정 표시";
+
+"icloudNotFetch"= "iCloud를 가져오고 시스템 기본 설정에서 iCloud에 로그인하여\"iCloud Drive\"를 활성화 할 수 없습니다.";
+
+"syncCloudTip"= "템플릿을 iCloud와 동기화합니다. 사용자 정의 템플릿 및 구성을 업로드 / 다운로드하고 모든 Mac에서 사용할 수 있습니다.";
+
+"tipHelpCloud"= "iCloud에 연결할 수 없다면 시스템 환경 설정 -> iCloud를 통해 iCloud에 로그인 한 다음\"iCloud Drive\"를 활성화하십시오.";
+
+"uploadButtonTitle"= "iCloud에 템플릿 및 구성 업로드";
+
+"downloadButtonTitle"= "iCloud에서 템플릿 및 구성 다운로드";
+
+"uploading"= "iCloud에 업로드 중...";
+
+"downloading"= "iCloud에서 다운로드 중...";
+
+"positiveUploaded"= "iCloud에 업로드되었습니다!";
+
+"notUploaded"= "iCloud에 업로드하는 중에 오류가 발생했습니다.";
+
+"positiveDownload"= "iCloud에서 다운로드되었습니다!";
+
+"errorDownload"= "iCloud에서 다운로드하는 중 오류가 발생했습니다.";
+
+"selectFile"= "파일 선택";
+
+"fadeButtonTitle"= "터치 바에서 페이드 효과 사용";
+
+"textButtonTitle"= "터치 바 버튼에 파일 확장자 표시";
+
+"syncButtonTitle"= "터치 막대와 팝업 템플릿 동기화";
+
+"labelDocsToday"= "오늘 위젯의 문서 수:";
+
+"documents"= "문서";
+
+"minimunTemplatesShow"= "더 나은 경험을 위해 최소 10 개의 템플릿을 설정하십시오.";
+
+"popup_behaviour"= "팝업 동작";
+
+"transient"= "Transient";
+
+"semitransient"= "Semitransient";
+
+"application_defined"= "응용 프로그램 정의";
+
+"add_as_template"= "템플릿으로 추가...";

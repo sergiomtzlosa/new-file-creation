@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Gem ny fil som...";
+
+"exitApp" = "Afslut";
+
+"settings" = "Indstillinger";
+
+"launchLogin" = "Start ved login";
+
+"dragAndDropItems" = "Træk og slip en række fra tabellen til den ønskede destination for at oprette en ny fil. \nDu kan oprette mange filer, som du vil.";
+
+"newFileMask" = "Ny .%@ fil - %@";
+
+"general" = "Generelt";
+
+"enableExtensionTip" = "Aktivér \"Ny filoprettelsesudvidelse\" i Systemindstillinger -> Udvidelser -> Finder";
+
+"selectFileTemplate" = "Vælg din filskabelon";
+
+"warning" = "Advarsel";
+
+"templateExists" = "Denne skabelon afsluttes allerede. Vælg en anden skabelon.";
+
+"advanced" = "Avanceret";
+
+"openSystemPreferences" = "Åbn systemindstillinger";
+
+"help" = "Hjælp";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Afspil lyd ved filoprettelse";
+
+"openWhenCreate" = "Åbn, når du opretter ny fil";
+
+"revealCreationFile" = "Vis i Finder ved oprettelse af filer";
+
+"enableDoubleClick" = "Aktivér dobbeltklik på popup-menuen for at oprette fil";
+
+"hidePopUp" = "Aktivér skjul popup ved filoprettelse";
+
+"tipCustomTemplates" = "Føj dine tilpassede skabeloner til ny filoprettelse";
+
+"resetDefaultsTemplate" = "Nulstil til standardindstillinger";
+
+"titleFilesLabel" = "Skjul, vis, tilføj eller omorganiser dine skabeloner:";
+
+"enable" = "Aktivér";
+
+"icon" = "Ikon";
+
+"template" = "Skabelon";
+
+"cancel" = "Annuller";
+
+"showIcloudPreferences" = "Vis iCloud-præferencer";
+
+"icloudNotFetch" = "Kan ikke hente iCloud, logge ind i iCloud fra systemindstillinger og aktivere \"iCloud Drive\".";
+
+"syncCloudTip" = "Synkroniser dine skabeloner med iCloud. Du kan uploade / downloade dine tilpassede skabeloner og konfiguration og bruge dem på alle dine Mac-computere.";
+
+"tipHelpCloud" = "Hvis du ikke kan oprette forbindelse til iCloud, skal du logge ind i iCloud via Systemindstillinger -> iCloud, aktiver derefter \"iCloud Drive\"";
+
+"uploadButtonTitle" = "Upload skabeloner og konfiguration til iCloud";
+
+"downloadButtonTitle" = "Download skabeloner og konfiguration fra iCloud";
+
+"uploading" = "Upload til iCloud...";
+
+"downloading" = "Download fra iCloud...";
+
+"positiveUploaded" = "Uploadet til iCloud!";
+
+"notUploaded" = "Fejl ved uploadning til iCloud";
+
+"positiveDownload" = "Downloadet fra iCloud!";
+
+"errorDownload" = "Fejl ved download fra iCloud!";
+
+"selectFile" = "Vælg fil";
+
+"fadeButtonTitle" = "Aktivér fade-effekt på berøringslinjen";
+
+"textButtonTitle" = "Vis filtypenavn på berøringslinjeknapperne";
+
+"syncButtonTitle" = "Synkroniser pop-up-skabeloner med berøringslinjen";
+
+"labelDocsToday" = "Antal dokumenter i widgeten i dag:";
+
+"documents" = "dokumenter";
+
+"minimunTemplatesShow" = "Indstil et mindsteantal på 10 skabeloner for en bedre oplevelse";
+
+"popup_behaviour" = "Pop-up-opførsel";
+
+"transient" = "Transient";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Program defineret";
+
+"add_as_template" = "Tilføj som skabelon...";

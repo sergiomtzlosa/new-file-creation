@@ -1,0 +1,104 @@
+
+"saveNewFileAs" = "Salvați noul fișier ca...";
+
+"exitApp" = "Încetare";
+
+"settings" = "Setări";
+
+"launLogin" = "Lansare la conectare";
+
+"dragAndDropItems" = "Glisați și plasați un rând de la tabel la destinația dorită pentru a crea un nou fișier. \nPuteți crea multe fișiere după cum doriți.";
+
+"newFileMask" = "Nou. %@ fișier - %@";
+
+"general" = "General";
+
+"enableExtensionTip" = "Activare \"Extensie creare fișier nou\" în Preferințe de sistem -> Extensii -> Căutător";
+
+"selectFileTemplate" = "Selectați șablonul de fișier";
+
+"warning" = "Avertisment";
+
+"templateExists" = "Acest șablon deja expiră. Vă rugăm să alegeți un alt șablon.";
+
+"advanced" = "Advanced";
+
+"openSystemPreferences" = "Preferințe de sistem deschise";
+
+"help" = "Ajutor";
+
+"icloud" = "iCloud";
+
+"touchbar" = "Touch Bar";
+
+"playSoundPreference" = "Redare sunet la crearea fișierelor";
+
+"openWhenCreate" = "Deschideți când se creează un nou fișier";
+
+"revelCreationFile" = "Revelați în Finder la crearea fișierelor";
+
+"enableDoubleClick" = "Activați dublu clic pe meniul pop-up pentru a crea fișier";
+
+"hidePopUp" = "Activare pop-up ascund la crearea fișierelor";
+
+"tipCustomTemplates" = "Adăugați șabloanele personalizate la crearea de fișiere noi";
+
+"resetDefaultsTemplate" = "Resetare la valorile prestabilite";
+
+"titleFilesLabel" = "Ascundeți, arătați, adăugați sau reordonați șabloanele:";
+
+"enable" = "Enable";
+
+"icon" = "Icoana";
+
+"template" = "Șablon";
+
+"cancel" = "Anulează";
+
+"showIcloudPreferences" = "Afișare preferințe iCloud";
+
+"icloudNotFetch" = "Nu puteți prelua iCloud, conectați-vă la iCloud din preferințele sistemului și activați \"Drive iCloud\".";
+
+"syncCloudTip" = "Sincronizați șabloanele cu iCloud. Puteți încărca / descărca șabloanele și configurația personalizate și le puteți folosi în toate Mac-urile dvs.";
+
+"tipHelpCloud" = "Dacă nu vă puteți conecta la iCloud faceți login în iCloud prin Preferințe de sistem -> iCloud, atunci activați \"Drive iCloud\"";
+
+"uploadButtonTitle" = "Încărcați șabloane și configurare pe iCloud";
+
+"downloadButtonTitle" = "Descărcați șabloane și configurare de pe iCloud";
+
+"uploading" = "Încărcarea pe iCloud...";
+
+"downloading" = "Descărcarea de pe iCloud...";
+
+"positiveUploaded" = "Încărcat pe iCloud!";
+
+"notUploaded" = "Eroare la încărcarea pe iCloud";
+
+"positiveDownload" = "Descărcat de pe iCloud!";
+
+"errorDownload" = "Eroare la descărcarea de pe iCloud!";
+
+"selectFile" = "Alegeți fișierul";
+
+"fadeButtonTitle" = "Activați efectul de estompare a barei tactile";
+
+"textButtonTitle" = "Afișează extensia fișierului pe butoanele Touch Bar";
+
+"syncButtonTitle" = "Sincronizați șabloane pop-up cu bara Touch";
+
+"labelDocsToday" = "Numărul de documente din Today Widget:";
+
+"documents" = "documente";
+
+"minimunTemplatesShow" = "Setați un număr minim de 10 șabloane pentru o experiență mai bună";
+
+"popup_behaviour" = "Comportament pop-up";
+
+"transient" = "Tranzitor";
+
+"semitransient" = "Semitransient";
+
+"application_defined" = "Aplicație definită";
+
+"add_as_template" = "Adăugați ca șablon...";
