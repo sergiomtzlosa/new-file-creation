@@ -534,7 +534,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
     
     func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any?
     {
-        let object = dataArray[row] as! NSMutableDictionary
+        let object = dataArray[row] as! NSDictionary
         
         if ((tableColumn!.identifier).rawValue == "enableColumn")
         {
@@ -551,7 +551,7 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
             let dict : NSDictionary = dataArray.object(at: row) as! NSDictionary
             
             let value : String = dict.object(forKey: "templateColumn") as! String
-            var components : [String] = value.components(separatedBy: ".") as [String]
+            let components : [String] = value.components(separatedBy: ".") as [String]
             
             var image : NSImage = NSWorkspace.shared.icon(forFileType:"sh")
             

@@ -52,7 +52,7 @@ class SMObject: NSObject
     
     class func applicationName() -> String
     {
-        var dict : Dictionary? = (Bundle.main.infoDictionary as Dictionary?)
+        let dict : Dictionary? = (Bundle.main.infoDictionary as Dictionary?)
         return (dict!["CFBundleExecutable"] as? String)!
     }
     

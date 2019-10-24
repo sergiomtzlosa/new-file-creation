@@ -59,8 +59,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
         
         set {
-
-            UserDefaults.standard.set(focusedAdvancedControlIndex, forKey:kFocusedAdvancedControlIndex)
+            //UserDefaults.standard.set(focusedAdvancedControlIndex, forKey:kFocusedAdvancedControlIndex)
+            UserDefaults.standard.set(newValue, forKey:kFocusedAdvancedControlIndex)
         }
     }
     
@@ -200,7 +200,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             let templateFile : String = self.templates[pub.indexOfSelectedItem] as! String
             
-            var split : [String] = templateFile.components(separatedBy: ".")
+            let split : [String] = templateFile.components(separatedBy: ".")
             let extensionString : String = split[1]
             
             SMLog("templateFile " + templateFile)
@@ -295,7 +295,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.savePanel = NSSavePanel()
         
         let templateFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
-        var split : [String] = templateFile.components(separatedBy: ".")
+        let split : [String] = templateFile.components(separatedBy: ".")
         let extensionString : String = split[1]
         
         self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
@@ -785,7 +785,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 cellView.layer?.backgroundColor = NSColor.white.cgColor
             }
 
-            var components : [String]? = value.components(separatedBy: ".") as [String]?
+            let components : [String]? = value.components(separatedBy: ".") as [String]?
             
             var image : NSImage = NSWorkspace.shared.icon(forFileType:"sh")
             
@@ -853,7 +853,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
  
         for file in selectedObjects as! [String]
         {
-            var components : [String] = file.components(separatedBy: ".")
+            let components : [String] = file.components(separatedBy: ".")
             
             var extensionFile : String = "sh"
             
@@ -1421,7 +1421,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         for item in files {
             
-            var components : [String] = (item as AnyObject).components(separatedBy: ".") as [String]
+            let components : [String] = (item as AnyObject).components(separatedBy: ".") as [String]
             
             var extensionItem : String = "sh"
             
@@ -1541,7 +1541,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         self.savePanel = NSSavePanel()
         
         let templateFile : String = self.templates[index] as! String
-        var split : [String] = templateFile.components(separatedBy: ".")
+        let split : [String] = templateFile.components(separatedBy: ".")
         let extensionString : String = split[1]
         
         self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
@@ -1797,7 +1797,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         for file in self.templates
         {
-            var components : [String] = (file as AnyObject).components(separatedBy: ".")
+            let components : [String] = (file as AnyObject).components(separatedBy: ".")
             
             var extensionFile : String = "sh"
             

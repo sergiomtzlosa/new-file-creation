@@ -134,7 +134,7 @@ class FileManager: NSObject {
         
         if fileName.containsString("-")
         {
-            var split : [String] = fileName.components(separatedBy: "-") as [String]
+            let split : [String] = fileName.components(separatedBy: "-") as [String]
             
             let baseName : String = split[0]
             var number : Int = Int(split[1])!

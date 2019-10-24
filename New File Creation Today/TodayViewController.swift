@@ -213,7 +213,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
                 cellView.layer?.backgroundColor = NSColor.white.cgColor
             }
             
-            var components : [String] = value.components(separatedBy: ".") as [String]
+            let components : [String] = value.components(separatedBy: ".") as [String]
             
             var image : NSImage = NSWorkspace.shared.icon(forFileType: "sh")
             
@@ -294,7 +294,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         
         for file in selectedObjects as! [String]
         {
-            var components : [String] = file.components(separatedBy: ".")
+            let components : [String] = file.components(separatedBy: ".")
             
             var extensionFile : String = "sh"
             
@@ -380,7 +380,7 @@ class TodayViewController: NSViewController, NCWidgetProviding, NSTableViewDataS
         self.savePanel = NSSavePanel()
         
         let templateFile : String = URL(fileURLWithPath: sourceFile).lastPathComponent
-        var split : [String] = templateFile.components(separatedBy: ".")
+        let split : [String] = templateFile.components(separatedBy: ".")
         let extensionString : String = split[1]
         
         self.savePanel.nameFieldStringValue = kFileName + "." + extensionString

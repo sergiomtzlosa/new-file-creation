@@ -302,7 +302,7 @@ class FinderSync: FIFinderSync
             self.savePanel = NSSavePanel()
             
             let templateFile : String = self.templates[0] as! String
-            var split : [String] = templateFile.components(separatedBy: ".")
+            let split : [String] = templateFile.components(separatedBy: ".")
             let extensionString : String = split[1]
             
             self.savePanel.nameFieldStringValue = kFileName + "." + extensionString
@@ -482,7 +482,7 @@ class FinderSync: FIFinderSync
         
         for file in self.templates
         {
-            var components : [String] = (file as AnyObject).components(separatedBy: ".") 
+            let components : [String] = (file as AnyObject).components(separatedBy: ".")
             
             var extensionFile : String = "sh"
             
@@ -505,7 +505,7 @@ class FinderSync: FIFinderSync
         
         for file in self.templates
         {
-            var components : [String] = (file as AnyObject).components(separatedBy: ".") 
+            let components : [String] = (file as AnyObject).components(separatedBy: ".")
             
             var extensionFile : String = "sh"
             
@@ -540,7 +540,7 @@ class FinderSync: FIFinderSync
   
             let templateFile : String = self.templates[pub.indexOfSelectedItem] as! String
             
-            var split : [String] = templateFile.components(separatedBy: ".")
+            let split : [String] = templateFile.components(separatedBy: ".")
             let extensionString : String = split[1]
             
             SMLog("templateFile \(templateFile) as AnyObject?")
