@@ -447,12 +447,17 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
                     
                     SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
                     
-                    let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
+                    let object : NSMutableDictionary = NSMutableDictionary(dictionary: dataArray[finalOldIndex] as! NSDictionary)
                     
                     let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
                     
-                    let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
-                    let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
+                    let tempFinalNewIndex : NSMutableDictionary = NSMutableDictionary(dictionary: dataArray[finalNewIndex] as! NSDictionary)
+                    
+                    let originalNewIndex : Int = tempArray.index(of: tempFinalNewIndex)
+                    
+                    let tempFinalOldIndex : NSMutableDictionary = NSMutableDictionary(dictionary: dataArray[finalOldIndex] as! NSDictionary)
+                    
+                    let originalOldIndex : Int = tempArray.index(of: tempFinalOldIndex)
                     
                     tempArray.removeObject(at: originalOldIndex)
                     tempArray.insert(object, at: originalNewIndex)
@@ -471,12 +476,12 @@ class FilesPreferencesViewController : NSViewController, MASPreferencesViewContr
                     newIndexOffset += 1
                     SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
                     
-                    let object : NSMutableDictionary = dataArray[finalOldIndex] as! NSMutableDictionary
+                    let object : NSMutableDictionary = NSMutableDictionary(dictionary: dataArray[finalOldIndex] as! NSDictionary)
                     
                     let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
                     
-                    let originalNewIndex : Int = tempArray.index(of: dataArray[finalNewIndex] as! NSMutableDictionary)
-                    let originalOldIndex : Int = tempArray.index(of: dataArray[finalOldIndex] as! NSMutableDictionary)
+                    let originalNewIndex : Int = tempArray.index(of: NSMutableDictionary(dictionary: dataArray[finalNewIndex] as! NSDictionary))
+                    let originalOldIndex : Int = tempArray.index(of: NSMutableDictionary(dictionary: dataArray[finalOldIndex] as! NSDictionary))
                     
                     tempArray.removeObject(at: originalOldIndex)
                     tempArray.insert(object, at: originalNewIndex)
