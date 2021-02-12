@@ -795,7 +795,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 1110;
+				LastUpgradeCheck = 1170;
 				ORGANIZATIONNAME = com.sergiomtzlosa.filecreation;
 				TargetAttributes = {
 					1F2DF0021FA386EB003154DC = {
