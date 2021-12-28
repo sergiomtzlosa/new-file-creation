@@ -665,6 +665,13 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         self.table = NSTableView(frame: NSMakeRect(0, 0, overlayScrollView.frame.size.width, overlayScrollView.frame.height))
         
+        // Set style to plain to prevent any inset
+        if #available(OSX 11.0, *) {
+            self.table.style = .plain
+        }
+
+        table.enclosingScrollView?.borderType = .noBorder
+        
         table.target = self
         table.doubleAction = #selector(AppDelegate.doubleClick(_:))
 
@@ -689,17 +696,27 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
        
         let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
         
-        column1.width = customView.frame.size.width - 2
+        if #available(OSX 11.0, *) {
+            column1.width = customView.frame.size.width
+        } else {
+            column1.width = customView.frame.size.width - 2
+        }
+        
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         
         table.addTableColumn(column1)
    
         overlayScrollView.documentView = table
         customView.addSubview(overlayScrollView)
-        
+       
         table.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
         column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         table.sizeLastColumnToFit()
+
+        if #available(OSX 11.0, *) {
+            table.enclosingScrollView?.contentView.automaticallyAdjustsContentInsets = false
+            table.enclosingScrollView?.contentView.contentInsets = .init(top: 20, left: -10, bottom: 0, right: -10)
+        }
         
         table.reloadData()
         
