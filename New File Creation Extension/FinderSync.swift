@@ -11,10 +11,12 @@ import FinderSync
 
 let kFileName = "NewFile"
 
+let kTagAdjust = 100
+
 class FinderSync: FIFinderSync
 {
     let finderController = FIFinderSyncController.default()
-    
+
     var isShowing : Bool?
     var templates : NSArray!
     var popupButton : NSPopUpButton!
@@ -23,13 +25,15 @@ class FinderSync: FIFinderSync
     var appSettings : NSDictionary!
     var arrayPaths : Set<NSObject>! = []
     var usernamePath : String!
-    
+
     override init()
     {
+        print("enter extension")
         super.init()
   
         self.isShowing = false
         self.templates = self.obtainRows()
+ 
         customView = newAccessoryView()
 
         self.arrayPaths = Set()
@@ -191,33 +195,111 @@ class FinderSync: FIFinderSync
 //    override var toolbarItemImage: NSImage {
 //        return nil
 //    }
+    
+    func createSubMenus() -> NSMenu {
+        
+        let menu = NSMenu(title: "")
+        
+        let item = NSMenuItem(title: "New File Creation...", action: nil, keyEquivalent: "")
+        item.image = NSImage(named: "Icon")
+        
+//        menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
+//
+//        let item: NSMenuItem = menu.items[0]
+//        item.image = NSImage(named: "Icon")
+        
+        let submenu = NSMenu(title: "")
 
-    override func menu(for menuKind: FIMenuKind) -> NSMenu?
-    {
+        menu.addItem(item)
+        menu.setSubmenu(submenu, for: item)
+
+        var indexTag : Int = 0
+        var subMenuItem : NSMenuItem
+        self.templates = self.obtainRows()
+        
+        for file in self.templates {
+
+            let components : [String] = (file as AnyObject).components(separatedBy: ".")
+
+            var extensionFile : String = "sh"
+
+            if (components.count > 1) {
+                extensionFile = components[1].uppercased() as String
+            }
+
+            let strTitle : NSString = NSString(format: "New %@", file as! NSString)
+
+            subMenuItem = NSMenuItem(title: strTitle as String, action: #selector(FinderSync.subMenuAction(_:)), keyEquivalent: "")
+            subMenuItem.tag = indexTag + kTagAdjust
+            subMenuItem.indentationLevel = 0
+
+            var imageIcon : NSImage = NSWorkspace.shared.icon(forFileType: extensionFile)
+            imageIcon = Utils.resize(image: imageIcon, w: 20, h: 20)
+ 
+            subMenuItem.image = imageIcon
+
+            submenu.addItem(subMenuItem)
+
+            indexTag += 1
+        }
+
+        return menu
+    }
+    
+    @IBAction func subMenuAction(_ sender: AnyObject?) {
+
+        let item = sender as! NSMenuItem
+
+        let tag : Int = item.tag - kTagAdjust
+
+        let rows : [String] = self.createRows() as! [String]
+        
+        self.popupButton.removeAllItems()
+        self.popupButton.addItems(withTitles: rows)
+        self.popupButton.selectItem(at: tag)
+        
+        launchSavePanel(indexTemplate: tag)
+    }
+    
+    override func menu(for menuKind: FIMenuKind) -> NSMenu? {
+        
         // Produce a menu for the extension.
         
-        if (menuKind == FIMenuKind.contextualMenuForContainer)
-        {
-            let menu = NSMenu(title: "")
-            menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
-            let item: NSMenuItem = menu.items[0]
-            item.image = NSImage(named: "Icon")
-            return menu
-        }
+        if #available(OSX 11.0, *) {
             
-        if (menuKind == FIMenuKind.contextualMenuForItems)
-        {
-            let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
+            if (menuKind == FIMenuKind.contextualMenuForContainer)
+            {
+                return createSubMenus()
+            }
             
-            if (paths != nil) {
+        } else {
+            
+            if (menuKind == FIMenuKind.contextualMenuForContainer)
+            {
+                let menu = NSMenu(title: "")
+                menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
                 
-                if urlsAreFiles(paths: paths!) {
+                let item: NSMenuItem = menu.items[0]
+                item.image = NSImage(named: "Icon")
+                
+                return menu
+            }
+                
+            if (menuKind == FIMenuKind.contextualMenuForItems)
+            {
+                let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
+                
+                if (paths != nil) {
                     
-                    let menu = NSMenu(title: "")
-                    menu.addItem(withTitle: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
-                    let item: NSMenuItem = menu.items[0]
-                    item.image = NSImage(named: "Icon")
-                    return menu
+                    if urlsAreFiles(paths: paths!) {
+                        
+                        let menu = NSMenu(title: "")
+                        menu.addItem(withTitle: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
+                        let item: NSMenuItem = menu.items[0]
+                        item.image = NSImage(named: "Icon")
+                        
+                        return menu
+                    }
                 }
             }
         }
@@ -286,7 +368,7 @@ class FinderSync: FIFinderSync
         launchSavePanel()
     }
     
-    func launchSavePanel()
+    func launchSavePanel(indexTemplate : Int = 0)
     {
         if isShowing == true
         {
@@ -301,7 +383,7 @@ class FinderSync: FIFinderSync
             
             self.savePanel = NSSavePanel()
             
-            let templateFile : String = self.templates[0] as! String
+            let templateFile : String = self.templates[indexTemplate] as! String
             let split : [String] = templateFile.components(separatedBy: ".")
             let extensionString : String = split[1]
             

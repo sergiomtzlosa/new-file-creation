@@ -82,7 +82,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     override func awakeFromNib()
     {
        // super.windowObject = window
-        
+                    
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventUpdateTableFromPreferences(_:)), name: kUpdateTableFromPreferences)
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventAddFileFromExtensionFinder(_:)), name: kAddFileFromFinder)
 
@@ -1222,7 +1222,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         SMLog("arrived in eventAddFileFromExtensionFinder")
     }
-    
+                          
     @objc func eventUpdateTableFromPreferences(_ notification : Notification)
     {
         DispatchQueue.main.async(execute: {
