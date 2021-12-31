@@ -25,7 +25,7 @@ class FinderSync: FIFinderSync
     var appSettings : NSDictionary!
     var arrayPaths : Set<NSObject>! = []
     var usernamePath : String!
-    var menuItems : NSMenu!
+    var subMenu : NSMenu!
     
     override init()
     {
@@ -49,12 +49,7 @@ class FinderSync: FIFinderSync
        
         self.finderController.directoryURLs = self.getExtensionURLFinder()
         SMLog("%@", self.getExtensionURLFinder())
-        
-        if #available(OSX 11.0, *) {
-        
-            self.menuItems = createSubMenus()
-        }
-        
+
         NotificationCenter.default.addObserver(forName:VolumeManager.VolumesDidChangeNotification, object:nil, queue:OperationQueue.current!) { (notification) in
 
 //            var urls = Set(notification.object as! [URL])
@@ -202,25 +197,8 @@ class FinderSync: FIFinderSync
 //        return nil
 //    }
     
-    func createSubMenus() -> NSMenu {
-        
-        let menu = NSMenu(title: "")
-        
-        let item = NSMenuItem(title: "New File Creation...", action: nil, keyEquivalent: "")
-        item.image = NSImage(named: "Icon")
-        
-//        menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
-//
-//        let item: NSMenuItem = menu.items[0]
-//        item.image = NSImage(named: "Icon")
-        
-        let itemHUD = NSMenuItem(title: "Fast New File Creation...", action: #selector(FinderSync.showHUDPanel(_:)), keyEquivalent: "")
-        itemHUD.image = NSImage(named: "Icon")
-        
-        menu.addItem(itemHUD)
-//        menu.addItem(NSMenuItem.separator())
-        menu.addItem(item)
-        
+    func createSubMenus(menu: NSMenu, item: NSMenuItem) -> NSMenu {
+
         let submenu = NSMenu(title: "")
         menu.setSubmenu(submenu, for: item)
 
@@ -280,45 +258,67 @@ class FinderSync: FIFinderSync
         launchSavePanel(indexTemplate: tag)
     }
     
+    func baseMenu() -> NSMenu {
+        
+        let menu = NSMenu(title: "")
+        
+        let itemHUD = NSMenuItem(title: "Fast New File Creation...", action: #selector(FinderSync.showHUDPanel(_:)), keyEquivalent: "")
+        itemHUD.image = NSImage(named: "Icon")
+        
+        menu.addItem(itemHUD)
+        
+        return menu
+    }
+    
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         
         // Produce a menu for the extension.
+        
+        let menu: NSMenu = baseMenu()
+    
+        let item: NSMenuItem
         
         if #available(OSX 11.0, *) {
             
             if (menuKind == FIMenuKind.contextualMenuForContainer)
             {
-                return self.menuItems
+                item = NSMenuItem(title: "New File Creation...", action: nil, keyEquivalent: "")
+                item.image = NSImage(named: "Icon")
+                menu.addItem(item)
+                
+                let subMenu: NSMenu = createSubMenus(menu: menu, item: item)
+                
+                return subMenu
             }
             
         } else {
             
             if (menuKind == FIMenuKind.contextualMenuForContainer)
             {
-                let menu = NSMenu(title: "")
-                menu.addItem(withTitle: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
-                
-                let item: NSMenuItem = menu.items[0]
+                item = NSMenuItem(title: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
                 item.image = NSImage(named: "Icon")
-                
+                menu.addItem(item)
+       
                 return menu
             }
+        }
+        
+        if (menuKind == FIMenuKind.contextualMenuForItems)
+        {
+            let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
+            
+            if (paths != nil) {
                 
-            if (menuKind == FIMenuKind.contextualMenuForItems)
-            {
-                let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
-                
-                if (paths != nil) {
+                if urlsAreFiles(paths: paths!) {
                     
-                    if urlsAreFiles(paths: paths!) {
-                        
-                        let menu = NSMenu(title: "")
-                        menu.addItem(withTitle: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
-                        let item: NSMenuItem = menu.items[0]
-                        item.image = NSImage(named: "Icon")
-                        
-                        return menu
-                    }
+                    let menu = NSMenu(title: "")
+                    
+                    item = NSMenuItem(title: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
+                    item.image = NSImage(named: "Icon")
+                    
+                    menu.addItem(item)
+                 
+                    return menu
                 }
             }
         }
