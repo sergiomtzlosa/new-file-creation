@@ -25,7 +25,8 @@ class FinderSync: FIFinderSync
     var appSettings : NSDictionary!
     var arrayPaths : Set<NSObject>! = []
     var usernamePath : String!
-
+    var menuItems : NSMenu!
+    
     override init()
     {
         print("enter extension")
@@ -48,6 +49,11 @@ class FinderSync: FIFinderSync
        
         self.finderController.directoryURLs = self.getExtensionURLFinder()
         SMLog("%@", self.getExtensionURLFinder())
+        
+        if #available(OSX 11.0, *) {
+        
+            self.menuItems = createSubMenus()
+        }
         
         NotificationCenter.default.addObserver(forName:VolumeManager.VolumesDidChangeNotification, object:nil, queue:OperationQueue.current!) { (notification) in
 
@@ -208,9 +214,14 @@ class FinderSync: FIFinderSync
 //        let item: NSMenuItem = menu.items[0]
 //        item.image = NSImage(named: "Icon")
         
-        let submenu = NSMenu(title: "")
-
+        let itemHUD = NSMenuItem(title: "Fast New File Creation...", action: #selector(FinderSync.showHUDPanel(_:)), keyEquivalent: "")
+        itemHUD.image = NSImage(named: "Icon")
+        
+        menu.addItem(itemHUD)
+//        menu.addItem(NSMenuItem.separator())
         menu.addItem(item)
+        
+        let submenu = NSMenu(title: "")
         menu.setSubmenu(submenu, for: item)
 
         var indexTag : Int = 0
@@ -246,6 +257,10 @@ class FinderSync: FIFinderSync
         return menu
     }
     
+    @IBAction func showHUDPanel(_ sender: AnyObject?) {
+        
+    }
+    
     @IBAction func subMenuAction(_ sender: AnyObject?) {
 
         let item = sender as! NSMenuItem
@@ -255,7 +270,11 @@ class FinderSync: FIFinderSync
         let rows : [String] = self.createRows() as! [String]
         
         self.popupButton.removeAllItems()
-        self.popupButton.addItems(withTitles: rows)
+//        self.popupButton.addItems(withTitles: rows)
+        
+        popupButton.imagePosition = .imageLeft
+        popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+        
         self.popupButton.selectItem(at: tag)
         
         launchSavePanel(indexTemplate: tag)
@@ -269,7 +288,7 @@ class FinderSync: FIFinderSync
             
             if (menuKind == FIMenuKind.contextualMenuForContainer)
             {
-                return createSubMenus()
+                return self.menuItems
             }
             
         } else {
@@ -362,7 +381,11 @@ class FinderSync: FIFinderSync
         let rows : [String] = self.createRows() as! [String]
         
         self.popupButton.removeAllItems()
-        self.popupButton.addItems(withTitles: rows)
+//        self.popupButton.addItems(withTitles: rows)
+        
+        self.popupButton.imagePosition = .imageLeft
+        self.popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+        
         self.popupButton.selectItem(at: 0)
         
         launchSavePanel()
@@ -396,7 +419,7 @@ class FinderSync: FIFinderSync
             self.savePanel.canCreateDirectories = true
             self.savePanel.accessoryView = self.customView
             self.savePanel.becomeMain()
-            self.savePanel.level = NSWindow.Level(rawValue: 0)//CGWindowLevelKey.ModalPanelWindowLevelKey
+            self.savePanel.level = .modalPanel//NSWindow.Level(rawValue: 0)//CGWindowLevelKey.ModalPanelWindowLevelKey
             self.savePanel.showsResizeIndicator = false
             self.savePanel.disableSnapshotRestoration()
             self.savePanel.isExtensionHidden = false
@@ -404,6 +427,7 @@ class FinderSync: FIFinderSync
             self.savePanel.center()
          
             NSApp.mainWindow?.makeKeyAndOrderFront(self.savePanel)
+            self.savePanel.makeKeyAndOrderFront(nil)
             
             let destination : URL = target!
             
@@ -424,7 +448,11 @@ class FinderSync: FIFinderSync
                 let rows : [String] = self.createRows() as! [String]
                 
                 self.popupButton.removeAllItems()
-                self.popupButton.addItems(withTitles: rows)
+//                self.popupButton.addItems(withTitles: rows)
+                
+                self.popupButton.imagePosition = .imageLeft
+                self.popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+                
                 self.popupButton.selectItem(at: 0)
                 
                 self.isShowing = false
@@ -442,7 +470,11 @@ class FinderSync: FIFinderSync
                     let rows : [String] = self.createRows() as! [String]
                     
                     self.popupButton.removeAllItems()
-                    self.popupButton.addItems(withTitles: rows)
+//                    self.popupButton.addItems(withTitles: rows)
+                    
+                    self.popupButton.imagePosition = .imageLeft
+                    self.popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+                    
                     self.popupButton.selectItem(at: 0)
                     
                     self.isShowing = false
@@ -511,13 +543,44 @@ class FinderSync: FIFinderSync
                     let rows : [String] = self.createRows() as! [String]
                     
                     self.popupButton.removeAllItems()
-                    self.popupButton.addItems(withTitles: rows)
+//                    self.popupButton.addItems(withTitles: rows)
+                    
+                    self.popupButton.imagePosition = .imageLeft
+                    self.popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+                    
                     self.popupButton.selectItem(at: 0)
                     
                     self.isShowing = false
                 }
             }
         })
+    }
+    
+    func recreatePopUpMenu(rowsItem : [String]) -> NSMenu {
+        
+        let mainMenu: NSMenu = NSMenu(title: "")
+        
+        for rowString in rowsItem {
+
+            let tempStr : [String] = (rowString as String).components(separatedBy: "-")
+            let components : [String] = (tempStr[1] as String).trimmingCharacters(in: .whitespaces).components(separatedBy: ".")
+
+            var extensionFile : String = "sh"
+
+            if (components.count > 1) {
+                extensionFile = components[1].trimmingCharacters(in: .whitespaces).uppercased() as String
+            }
+       
+            var imageIcon : NSImage = NSWorkspace.shared.icon(forFileType: extensionFile)
+            imageIcon = Utils.resize(image: imageIcon, w: 12, h: 12)
+     
+            let menuItemRow: NSMenuItem = NSMenuItem(title: rowString, action: nil, keyEquivalent: "")
+            menuItemRow.image = imageIcon
+            
+            mainMenu.addItem(menuItemRow)
+        }
+        
+        return mainMenu
     }
     
     func newAccessoryView() -> NSView?
@@ -542,17 +605,19 @@ class FinderSync: FIFinderSync
         accesoryView.addSubview(labelField)
         
         popupButton = NSPopUpButton(frame: NSMakeRect(172, 12, 250, 25))
-        
+   
         let rows : [String] = self.createRows() as! [String]
         
-        popupButton.addItems(withTitles: rows)
-        popupButton.selectItem(at: 0)
+//        popupButton.addItems(withTitles: rows)
 
+        popupButton.imagePosition = .imageLeft
+        popupButton.menu = self.recreatePopUpMenu(rowsItem: rows)
+        popupButton.selectItem(at: 0)
         popupButton.action = #selector(FinderSync.changeValuePopUpButton(_:))
         popupButton.target = self
         
         accesoryView.addSubview(popupButton)
-
+        
         return accesoryView
     }
     
