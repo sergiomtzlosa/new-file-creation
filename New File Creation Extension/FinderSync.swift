@@ -13,6 +13,8 @@ let kFileName = "NewFile"
 
 let kTagAdjust = 100
 
+let kFinderExtensionUpdate = "FinderSynxNotificationNewFile"
+
 class FinderSync: FIFinderSync
 {
     let finderController = FIFinderSyncController.default()
@@ -237,6 +239,7 @@ class FinderSync: FIFinderSync
     
     @IBAction func showHUDPanel(_ sender: AnyObject?) {
         
+        SCHEDULE_DISTRIBUTED_NOTIFICATION(name: kFinderExtensionUpdate)
     }
     
     @IBAction func subMenuAction(_ sender: AnyObject?) {
@@ -258,9 +261,9 @@ class FinderSync: FIFinderSync
         launchSavePanel(indexTemplate: tag)
     }
     
-    func baseMenu() -> NSMenu {
+    func baseMenu() -> SMMenu {
         
-        let menu = NSMenu(title: "")
+        let menu = SMMenu(title: "")
         
         let itemHUD = NSMenuItem(title: "Fast New File Creation...", action: #selector(FinderSync.showHUDPanel(_:)), keyEquivalent: "")
         itemHUD.image = NSImage(named: "Icon")
@@ -270,12 +273,22 @@ class FinderSync: FIFinderSync
         return menu
     }
     
+    func addSeparatorTo(menu: NSMenu) -> NSMenu {
+        
+//        _ =  menu.addItem(withTitle: "---", action: nil, keyEquivalent: "")
+        
+        
+        return menu
+    }
+    
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         
         // Produce a menu for the extension.
         
-        let menu: NSMenu = baseMenu()
+        let menu: SMMenu = baseMenu()
     
+//        menu = addSeparatorTo(menu: menu)
+        
         let item: NSMenuItem
         
         if #available(OSX 11.0, *) {
@@ -287,7 +300,7 @@ class FinderSync: FIFinderSync
                 menu.addItem(item)
                 
                 let subMenu: NSMenu = createSubMenus(menu: menu, item: item)
-                
+            
                 return subMenu
             }
             
@@ -299,6 +312,8 @@ class FinderSync: FIFinderSync
                 item.image = NSImage(named: "Icon")
                 menu.addItem(item)
        
+                _ = menu.insertItem(withTitle: "---", action: nil, keyEquivalent: "", at: 1)
+                
                 return menu
             }
         }
@@ -322,7 +337,7 @@ class FinderSync: FIFinderSync
                 }
             }
         }
-        
+
         return nil
     }
 

@@ -75,7 +75,7 @@ func REGISTER_NOTIFICATION(_ className: AnyObject, selector: Selector, name: Str
     }
 }
 
-func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String?)
+func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String?, object: String? = nil)
 {
     if (className.responds(to: selector))
     {
@@ -83,7 +83,7 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
         
         SMLog("registra a la notificacion")
 //        print("Notification \(name) registered")
-        DistributedNotificationCenter.default().addObserver(className, selector: selector, name: name.map { NSNotification.Name(rawValue: $0) }, object: nil)
+        DistributedNotificationCenter.default().addObserver(className, selector: selector, name: name.map { NSNotification.Name(rawValue: $0) }, object: object)
     }
     else
     {

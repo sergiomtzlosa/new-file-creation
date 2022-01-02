@@ -18,6 +18,8 @@ let kLoginHelperDekstopBundleIdentifier = "com.sergiomtzlosa.filecreationhelper"
 
 let kFocusedAdvancedControlIndex = "FocusedAdvancedControlIndex"
 
+let kFinderExtensionUpdate = "FinderSynxNotificationNewFile"
+
 @available(OSX 10.12.2, *)
 fileprivate extension NSTouchBarItem.Identifier {
     
@@ -82,7 +84,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     override func awakeFromNib()
     {
        // super.windowObject = window
-                    
+              
+        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventFinderExtensionNotification(_:)), name: kFinderExtensionUpdate)
         REGISTER_NOTIFICATION(self, selector: #selector(AppDelegate.eventUpdateTableFromPreferences(_:)), name: kUpdateTableFromPreferences)
         REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventAddFileFromExtensionFinder(_:)), name: kAddFileFromFinder)
 
@@ -1207,6 +1210,12 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     }
     
     //MARK: - NSNotification methods
+    
+    
+    @objc func eventFinderExtensionNotification(_ notification : Notification) {
+        SMLog("arrived in finderExtensionNotification")
+    }
+    
     @objc func eventAddFileFromExtensionFinder(_ notification : Notification) {
         
         let urls : [String] = Preferences.getSelectedFilesExtension()
