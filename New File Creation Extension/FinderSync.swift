@@ -8,6 +8,9 @@
 
 import Cocoa
 import FinderSync
+//import New_File_Creation_Helper
+
+let CELL_HEIGHT : CGFloat = 50
 
 let kFileName = "NewFile"
 
@@ -15,12 +18,15 @@ let kTagAdjust = 100
 
 let kFinderExtensionUpdate = "FinderSynxNotificationNewFile"
 
-class FinderSync: FIFinderSync
+class FinderSync: FIFinderSync//, NSTableViewDataSource, NSTableViewDelegate
 {
     let finderController = FIFinderSyncController.default()
 
+//    var tableContext: NSTableView!
+//    var tableScrollView: SMScrollView!
+    
     var isShowing : Bool?
-    var templates : NSArray!
+    var templates : NSMutableArray!
     var popupButton : NSPopUpButton!
     var savePanel : NSSavePanel!
     var customView : NSView!
@@ -36,7 +42,9 @@ class FinderSync: FIFinderSync
   
         self.isShowing = false
         self.templates = self.obtainRows()
- 
+//        self.tableScrollView = createContextTableView()
+//        tableContext.reloadData()
+        
         customView = newAccessoryView()
 
         self.arrayPaths = Set()
@@ -126,7 +134,7 @@ class FinderSync: FIFinderSync
         return arrayPaths as! Set<URL>
     }
     
-    func obtainRows() -> NSArray
+    func obtainRows() -> NSMutableArray
     {
         appSettings = Preferences.readPlistApplicationPreferences()
         let tempArray : NSMutableArray = NSMutableArray()
@@ -159,7 +167,7 @@ class FinderSync: FIFinderSync
             }
         }
         
-        let finalArray : NSArray = NSArray(array: tempArray)
+        let finalArray : NSMutableArray = NSMutableArray(array: tempArray)
         return finalArray
     }
     
@@ -183,25 +191,10 @@ class FinderSync: FIFinderSync
 //        SMLog("requestBadgeIdentifierForURL: %@", url.filePathURL!)
     }
 
-    // MARK: - Menu and toolbar item support
-
-    override var toolbarItemName: String
-    {
-        return ""
-    }
-
-    override var toolbarItemToolTip: String
-    {
-        return ""
-    }
-
-//    override var toolbarItemImage: NSImage {
-//        return nil
-//    }
-    
     func createSubMenus(menu: NSMenu, item: NSMenuItem) -> NSMenu {
 
         let submenu = NSMenu(title: "")
+        
         menu.setSubmenu(submenu, for: item)
 
         var indexTag : Int = 0
@@ -293,34 +286,108 @@ class FinderSync: FIFinderSync
 //        return menu
 //    }
     
+    // MARK: - Menu and toolbar item support
+    override var toolbarItemName: String {
+    
+        return "New File Creation..."
+    }
+
+    override var toolbarItemImage: NSImage {
+    
+        return NSImage(named: "Icon")!
+    }
+    
+//    func createContextTableView() -> SMScrollView {
+//
+//        let sizeView: NSSize = NSSize(width: 364, height:450)
+//
+//        let overlayScrollView : SMScrollView = SMScrollView(frame: NSMakeRect(-10, 0, sizeView.width + 50, sizeView.height - 30))
+//
+//        overlayScrollView.verticalLineScroll = 1.0
+//        overlayScrollView.verticalPageScroll = 1.0
+//        overlayScrollView.hasVerticalScroller = true
+//        overlayScrollView.backgroundColor = NSColor.clear
+//        overlayScrollView.scrollerStyle = NSScroller.Style.overlay
+//        overlayScrollView.hasHorizontalScroller = false
+//        overlayScrollView.drawsBackground = false
+//        overlayScrollView.pageScroll = overlayScrollView.contentSize.height
+//        overlayScrollView.scrollerKnobStyle = NSScroller.KnobStyle.dark
+//        overlayScrollView.wantsLayer = true
+//
+//        self.tableContext = NSTableView(frame: NSMakeRect(0, 0, sizeView.width, sizeView.height))
+//
+//        // Set style to plain to prevent any inset
+//        if #available(OSX 11.0, *) {
+//            self.tableContext.style = .plain
+//        }
+//
+//        tableContext.enclosingScrollView?.borderType = .noBorder
+//
+//        tableContext.target = self
+////        tableContext.doubleAction = #selector(AppDelegate.doubleClick(_:))
+//
+//        tableContext.selectionHighlightStyle = NSTableView.SelectionHighlightStyle.none
+//        tableContext.layer?.cornerRadius = 0
+//        tableContext.layer?.borderColor = NSColor.clear.cgColor
+//        tableContext.headerView = nil
+//        tableContext.layer?.backgroundColor = NSColor.clear.cgColor
+//        tableContext.delegate = self
+//        tableContext.dataSource = self
+//        tableContext.backgroundColor = NSColor.clear
+//
+//        // Registering dragged Types
+//
+//        let NSFilenamesPboardTypeTemp = NSPasteboard.PasteboardType("NSFilenamesPboardType")
+//
+//        // NSFilenamesPboardType
+//        tableContext.registerForDraggedTypes([NSFilenamesPboardTypeTemp])
+//
+//        //To support across application passing NO
+//        tableContext.setDraggingSourceOperationMask(NSDragOperation.copy, forLocal: false)
+//
+//        let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "columnWindow1"))
+//
+//        column1.width = sizeView.width
+//
+//        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
+//
+//        tableContext.addTableColumn(column1)
+//
+//        tableContext.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
+//        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
+//        tableContext.sizeLastColumnToFit()
+//
+//        overlayScrollView.documentView = self.tableContext
+//
+//        tableContext.setNeedsDisplay()
+//        tableContext.reloadData()
+//
+//        return overlayScrollView
+//    }
+    
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         
         // Produce a menu for the extension.
-        
-        let menu: NSMenu = baseMenu()
+
+        if (menuKind == .contextualMenuForContainer)
+        {
+            let menu: NSMenu = baseMenu()
     
-//        menu = addSeparatorTo(menu: menu)
-        
-        let item: NSMenuItem
-        
-        if #available(OSX 11.0, *) {
-            
-            if (menuKind == FIMenuKind.contextualMenuForContainer)
-            {
-                item = NSMenuItem(title: "New File Creation...", action: nil, keyEquivalent: "")
+//          menu = addSeparatorTo(menu: menu)
+
+            if #available(OSX 11.0, *) {
+                
+                let item: NSMenuItem = NSMenuItem(title: "New File Creation...", action: nil, keyEquivalent: "")
                 item.image = NSImage(named: "Icon")
                 menu.addItem(item)
                 
                 let subMenu: NSMenu = createSubMenus(menu: menu, item: item)
             
                 return subMenu
-            }
+                
+            } else {
             
-        } else {
-            
-            if (menuKind == FIMenuKind.contextualMenuForContainer)
-            {
-                item = NSMenuItem(title: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
+                let item: NSMenuItem = NSMenuItem(title: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
                 item.image = NSImage(named: "Icon")
                 menu.addItem(item)
 
@@ -328,7 +395,16 @@ class FinderSync: FIFinderSync
             }
         }
         
-        if (menuKind == FIMenuKind.contextualMenuForItems)
+        if (menuKind == .toolbarItemMenu)
+        {
+            let rows : [String] = self.createRows() as! [String]
+
+            let menu = self.recreatePopUpMenu(rowsItem: rows, action: #selector(FinderSync.createNewFile(_:)))
+            
+            return menu
+        }
+        
+        if (menuKind == .contextualMenuForItems)
         {
             let paths : [URL]? = FIFinderSyncController.default().selectedItemURLs()
             
@@ -338,7 +414,7 @@ class FinderSync: FIFinderSync
                     
                     let menu = NSMenu(title: "")
                     
-                    item = NSMenuItem(title: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
+                    let item: NSMenuItem = NSMenuItem(title: SMLocalizedString("add_as_template"), action: #selector(FinderSync.addAsTemplate(_:)), keyEquivalent: "")
                     item.image = NSImage(named: "Icon")
                     
                     menu.addItem(item)
@@ -581,7 +657,7 @@ class FinderSync: FIFinderSync
         })
     }
     
-    func recreatePopUpMenu(rowsItem : [String]) -> NSMenu {
+    func recreatePopUpMenu(rowsItem : [String], action: Selector? = nil) -> NSMenu {
         
         let mainMenu: NSMenu = NSMenu(title: "")
         
@@ -599,7 +675,7 @@ class FinderSync: FIFinderSync
             var imageIcon : NSImage = NSWorkspace.shared.icon(forFileType: extensionFile)
             imageIcon = Utils.resize(image: imageIcon, w: 12, h: 12)
      
-            let menuItemRow: NSMenuItem = NSMenuItem(title: rowString, action: nil, keyEquivalent: "")
+            let menuItemRow: NSMenuItem = NSMenuItem(title: rowString, action: action, keyEquivalent: "")
             menuItemRow.image = imageIcon
             
             mainMenu.addItem(menuItemRow)
@@ -727,4 +803,409 @@ class FinderSync: FIFinderSync
     {
         customView = newAccessoryView()
     }
+    
+    // MARK: - NSTableViewDatasource & NSTableViewDelegate methods
+    
+//    func numberOfRows(in tableView: NSTableView) -> Int
+//    {
+//        return self.templates.count
+//    }
+//
+//    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat
+//    {
+//        return CELL_HEIGHT
+//    }
+//
+//    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
+//    {
+//        if tableColumn!.identifier.rawValue == "columnWindow1"
+//        {
+//            let cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
+//            cellView.identifier = NSUserInterfaceItemIdentifier(rawValue: "row" + String(row))
+//
+//            let value : String = self.templates.object(at: row) as! String
+//            SMLog("value " + value)
+//
+//            cellView.wantsLayer = true
+//
+//            if (row % 2 == 0)
+//            {
+//                cellView.layer?.backgroundColor = NSColor(calibratedRed: 224/255, green: 224/255, blue: 224/255, alpha: 1.0).cgColor
+//            }
+//            else
+//            {
+//                cellView.layer?.backgroundColor = NSColor.white.cgColor
+//            }
+//
+//            let components : [String]? = value.components(separatedBy: ".") as [String]?
+//
+//            var image : NSImage = NSWorkspace.shared.icon(forFileType:"sh")
+//
+//            if (components != nil)
+//            {
+//                image = (components!.count > 1) ? NSWorkspace.shared.icon(forFileType: components![1]) : NSWorkspace.shared.icon(forFileType:"svg")
+//            }
+//
+//            let imageView : NSImageView = NSImageView(frame: NSMakeRect(10, 0, 50, 50))
+//            imageView.image = image
+//
+//            cellView.addSubview(imageView)
+//
+//            let textField : NSTextField = NSTextField(frame: NSMakeRect(80, 12, 270, 20))
+//
+//            textField.textColor = NSColor.black
+//
+//            var extensionFile : String = "sh"
+//
+//            if (components != nil)
+//            {
+//                extensionFile  = (components!.count > 1) ? components![1].uppercased() : extensionFile
+//            }
+//
+//            textField.stringValue = NSString(format: SMLocalizedString("newFileMask") as NSString, extensionFile, value) as String
+//            textField.alignment = NSTextAlignment.left
+//            textField.font = NSFont.systemFont(ofSize: 12)
+//            textField.isBezeled = false
+//            textField.drawsBackground = false
+//            textField.isEditable = false
+//            textField.isSelectable = false
+//            textField.backgroundColor = NSColor.clear
+//            textField.wantsLayer = true
+//            textField.layer?.backgroundColor = NSColor.clear.cgColor
+//            textField.lineBreakMode = NSLineBreakMode.byWordWrapping
+//            textField.usesSingleLineMode = true
+//
+//            cellView.addSubview(textField)
+//
+//            cellView.wantsLayer = true
+//
+//            return cellView
+//        }
+//
+//        return nil
+//    }
+//
+//
+//    func tableViewSelectionDidChange(_ notification: Notification)
+//    {
+////        self.table.deselectRow(self.table.selectedRow)
+//    }
+//
+//    func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool
+//    {
+//        // set the pasteboard for HFS promises only
+//        pboard.declareTypes([NSPasteboard.PasteboardType.filePromise], owner:self)
+//
+//        // the pasteboard must know the type of files being promised
+//        let filenameExtensions : NSMutableArray = NSMutableArray()
+//
+//        // iterate the selected files in your NSArrayController and get the extension from each file,
+//        // we're assuming that you store the file's filename in Core Data as an attribute
+//        let selectedObjects : NSArray = self.templates.objects(at: rowIndexes) as NSArray
+//
+//        for file in selectedObjects as! [String]
+//        {
+//            let components : [String] = file.components(separatedBy: ".")
+//
+//            var extensionFile : String = "sh"
+//
+//            if (components.count > 1)
+//            {
+//                extensionFile = components[1] as String
+//            }
+//
+//            if (extensionFile != "")
+//            {
+//                filenameExtensions.add(extensionFile)
+//            }
+//        }
+//
+//        // give the pasteboard the file extensions
+//        pboard.setPropertyList(filenameExtensions, forType: NSPasteboard.PasteboardType.filePromise)
+//
+//        return true
+//    }
+//
+//    func tableView(_ tableView: NSTableView, validateDrop info: NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation) -> NSDragOperation
+//    {
+//        if dropOperation == .above
+//        {
+//            return .move
+//        }
+//
+//        return NSDragOperation()
+//    }
+//
+//    func isDirectory(pathURL: NSURL) -> Bool {
+//
+//        var isDirectory : ObjCBool = false
+//        let fileExistsAtPath : Bool  = Foundation.FileManager.default.fileExists(atPath: pathURL.path!, isDirectory: &isDirectory)
+//
+//        if (fileExistsAtPath)
+//        {
+//            if (pathURL.pathExtension?.lowercased() == "rtfd")
+//            {
+//                // rtfd is a file
+//                return false
+//            }
+//
+//            if isDirectory.boolValue
+//            {
+//                // It's a Directory.
+//                return true
+//            }
+//        }
+//
+//        return false
+//    }
+//
+//    func addURLFile(fileURLItem: URL) {
+//
+//        let choosenFile : URL! = (fileURLItem as NSURL).filePathURL!
+//
+//        let pathString : String = choosenFile.resolvingSymlinksInPath().path
+//
+//        //                    let fileManager : NSFileManager = NSFileManager()
+//        let finalPath : String = FileManager.applicationDirectory().appendingPathComponent(choosenFile.lastPathComponent)
+//
+//        var exists : Bool = false
+//
+//        for item in FileManager.listTemplates()
+//        {
+//            let itemStr : String = item as! String
+//
+//            if (NSURL(fileURLWithPath: itemStr).lastPathComponent!.lowercased() == NSURL(fileURLWithPath: finalPath).lastPathComponent!.lowercased())
+//            {
+//                exists = true
+//                break
+//            }
+//        }
+//
+//        if exists
+//        {
+//            SMLog("plantilla ya existe")
+//
+////            SMObject.showModalAlert(SMLocalizedString("warning"), message: SMLocalizedString("templateExists"))
+//        }
+//        else
+//        {
+//            _ = FileManager.copyNewTemplateFileToApplicationSupport(pathString)
+//
+//            SMLog("path: " + pathString)
+//
+//            let dict : NSMutableDictionary = NSMutableDictionary()
+//
+//            dict.setObject(1, forKey: "enableColumn" as NSCopying)
+//            dict.setObject(1, forKey: "active" as NSCopying)
+//
+//            let tempURL : URL = URL(fileURLWithPath: pathString)
+//            dict.setObject(tempURL.lastPathComponent, forKey: "templateColumn" as NSCopying)
+//
+//            let templatesArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+//
+//            templatesArray.add(dict)
+//
+//            _ = Preferences.setTemplatesTablePreferences(templatesArray)
+//
+//            self.templates = NSMutableArray(array: self.obtainRows())
+//
+//            self.tableContext.reloadData()
+//
+//            if (self.templates.count > 0)
+//            {
+//                self.tableContext.scrollRowToVisible(self.templates.count - 1)
+//            }
+//
+//            SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
+//        }
+//    }
+//
+//    func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool
+//    {
+//        var oldIndexes = [Int]()
+//
+//        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) { ( draggingItem: NSDraggingItem, idx: Int, stop: UnsafeMutablePointer<ObjCBool>) in
+//
+//            let pasteItem : NSPasteboardItem = (draggingItem.item as! NSPasteboardItem)
+//            let strIndex: String? = pasteItem.string(forType: NSPasteboard.PasteboardType(rawValue: "public.data"))
+//
+//            if (strIndex != nil)
+//            {
+//                if let index = Int(strIndex!)
+//                {
+//                    oldIndexes.append(index)
+//                }
+//            }
+//            //            else
+//            //            {
+//            //                let path = pasteItem.string(forType: NSPasteboard.PasteboardType(rawValue: "public.file-url"))
+//            //            let url : NSURL = NSURL(fileURLWithPath: path!)
+//            //            print("\(url.absoluteString!)")
+//
+//            //                let pb: NSPasteboard = info.draggingPasteboard()
+//
+//            //list the file type UTIs we want to accept
+//            //                NSArray* acceptedTypes = [NSArray arrayWithObject:"public.file-url"];
+//
+//            //                let filteringOptions = [NSPasteboard.ReadingOptionKey.urlReadingContentsConformToTypes:"public.file-url"]
+//            //
+//            //                let arrayURLs: NSArray = pb.readObjects(forClasses: [NSURL.self], options: filteringOptions)! as NSArray
+//            //                print("cocunt urls: \(arrayURLs.count)")
+//            //                NSArray* urls = [pb readObjectsForClasses:[NSArray arrayWithObject:[NSURL class]]
+//            //                    options:[NSDictionary dictionaryWithObjectsAndKeys:
+//            //                    [NSNumber numberWithBool:YES],NSPasteboardURLReadingFileURLsOnlyKey,
+//            //                    acceptedTypes, NSPasteboardURLReadingContentsConformToTypesKey,
+//            //                    nil]];
+//            //            }
+//        }
+//        //        info.enumerateDraggingItems(options: [], for: tableView, classes: [NSPasteboardItem.self], searchOptions: [:]) {
+//        //
+//        //            if let index = Int((($0.0.item as! NSPasteboardItem).string(forType: "public.data"))!)
+//        //            {
+//        //                oldIndexes.append(index)
+//        //            }
+//        //        }
+//
+//        if (oldIndexes.count == 0)
+//        {
+//            let pb: NSPasteboard = info.draggingPasteboard
+//
+//            let filteringOptions : [NSPasteboard.ReadingOptionKey : Any] = [NSPasteboard.ReadingOptionKey.urlReadingFileURLsOnly : NSNumber.init(booleanLiteral: true)]
+//
+//            let arrayURLs: NSArray = pb.readObjects(forClasses: [NSURL.self as AnyClass], options: filteringOptions)! as NSArray
+//            SMLog("count urls: \(arrayURLs.count)")
+//
+//            for itemURL in arrayURLs {
+//
+//                let url: NSURL = itemURL as! NSURL
+//
+//                if (!self.isDirectory(pathURL: url)) {
+//
+//                    self.addURLFile(fileURLItem: URL(fileURLWithPath: url.path!))
+//                }
+//
+//                SMLog("url path: \(String(describing: url.path))")
+//            }
+//        }
+//        else
+//        {
+//            var oldIndexOffset = 0
+//            var newIndexOffset = 0
+//
+//            // For simplicity, the code below uses `tableView.moveRowAtIndex` to move rows around directly.
+//            // You may want to move rows in your content array and then call `tableView.reloadData()` instead.
+//            tableView.beginUpdates()
+//
+//            for oldIndex in oldIndexes
+//            {
+//                if oldIndex < row
+//                {
+//                    let finalOldIndex : Int = oldIndex + oldIndexOffset
+//                    let finalNewIndex : Int = row - 1
+//
+//                    tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
+//                    oldIndexOffset -= 1
+//
+//                    SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
+//
+//                    let object : NSMutableDictionary = templates[finalOldIndex] as! NSMutableDictionary
+//
+//                    let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+//
+//                    let originalNewIndex : Int = tempArray.index(of: templates[finalNewIndex] as! NSMutableDictionary)
+//                    let originalOldIndex : Int = tempArray.index(of: templates[finalOldIndex] as! NSMutableDictionary)
+//
+//                    tempArray.removeObject(at: originalOldIndex)
+//                    tempArray.insert(object, at: originalNewIndex)
+//
+//                    _ = Preferences.setTemplatesTablePreferences(tempArray)
+//
+//                    templates.removeObject(at: finalOldIndex)
+//                    templates.insert(object, at: finalNewIndex)
+//                }
+//                else
+//                {
+//                    let finalOldIndex : Int = oldIndex
+//                    let finalNewIndex : Int = row + newIndexOffset
+//
+//                    tableView.moveRow(at: finalOldIndex, to: finalNewIndex)
+//                    newIndexOffset += 1
+//                    SMLog("old index: \(finalOldIndex) new index: \(finalNewIndex)")
+//
+//                    let object : NSMutableDictionary = templates[finalOldIndex] as! NSMutableDictionary
+//
+//                    let tempArray : NSMutableArray = NSMutableArray(array: Preferences.loadTemplatesTablePreferences())
+//
+//                    let originalNewIndex : Int = tempArray.index(of: templates[finalNewIndex] as! NSMutableDictionary)
+//                    let originalOldIndex : Int = tempArray.index(of: templates[finalOldIndex] as! NSMutableDictionary)
+//
+//                    tempArray.removeObject(at: originalOldIndex)
+//                    tempArray.insert(object, at: originalNewIndex)
+//
+//                    _ = Preferences.setTemplatesTablePreferences(tempArray)
+//
+//                    templates.removeObject(at: finalOldIndex)
+//                    templates.insert(object, at: finalNewIndex)
+//                }
+//            }
+//
+//            tableView.endUpdates()
+//        }
+//
+//        tableView.reloadData()
+//
+//        SCHEDULE_POSTNOTIFICATION(kUpdateTableFromPreferences, object: nil)
+//
+//        return true
+//    }
+//
+//    func tableView(_ tableView: NSTableView, namesOfPromisedFilesDroppedAtDestination dropDestination: URL, forDraggedRowsWith indexSet: IndexSet) -> [String]
+//    {
+//        // return of the array of file names
+//        let draggedFilenames : NSMutableArray = NSMutableArray()
+//
+//        // iterate the selected files
+//        let selectedObjects : NSArray = self.templates.objects(at: indexSet) as NSArray
+//
+//        for file in selectedObjects as! [String]
+//        {
+//            draggedFilenames.add(file)
+//
+//            let source : String = FileManager.resolvePathForFile(file)
+//
+//            var destination : String = dropDestination.appendingPathComponent(file, isDirectory: false).path
+////            var destination : String = dropDestination.path!.stringByAppendingPathComponent(file)
+//
+//            SMLog("destPath " + destination)
+//
+//            if FileManager.copyFile(from: source, destination: &destination, file: file)
+//            {
+//                SMLog("copied")
+//
+//                if (Preferences.loadOpenFileOnCreation())
+//                {
+//                    Utils.openFile(destination)
+//                }
+//
+//                if (Preferences.loadRevealInFinder())
+//                {
+//                    Utils.revealInFinder(destination)
+//                }
+//            }
+//
+////            if (Preferences.loadHidePopup())
+////            {
+////                closePopUpController()
+////            }
+//
+//            if (Preferences.loadActiveSound())
+//            {
+//                NSSound(named: "dropped")?.play()
+//            }
+//        }
+//
+////        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventFinderExtensionNotification(_:)), name: kFinderExtensionUpdate)
+//
+//        return draggedFilenames as NSArray as! [String]
+//    }
 }
