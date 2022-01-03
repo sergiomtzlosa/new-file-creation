@@ -261,9 +261,9 @@ class FinderSync: FIFinderSync
         launchSavePanel(indexTemplate: tag)
     }
     
-    func baseMenu() -> SMMenu {
+    func baseMenu() -> NSMenu {
         
-        let menu = SMMenu(title: "")
+        let menu = NSMenu(title: "")
         
         let itemHUD = NSMenuItem(title: "Fast New File Creation...", action: #selector(FinderSync.showHUDPanel(_:)), keyEquivalent: "")
         itemHUD.image = NSImage(named: "Icon")
@@ -273,19 +273,31 @@ class FinderSync: FIFinderSync
         return menu
     }
     
-    func addSeparatorTo(menu: NSMenu) -> NSMenu {
-        
-//        _ =  menu.addItem(withTitle: "---", action: nil, keyEquivalent: "")
-        
-        
-        return menu
-    }
+//    func addSeparatorTo(menu: NSMenu) -> NSMenu {
+//
+//        let separator : NSMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+//
+//        let sepView: NSView = NSView(frame: NSRect(x: 0, y: 0, width: 30, height: 1))
+//        separator.view?.wantsLayer = true
+//
+//        sepView.layer?.backgroundColor = NSColor.lightGray.cgColor
+//
+//        separator.view = sepView
+//
+//        menu.addItem(separator)
+//
+////        [menu cancelTracking];
+////        menu performActionForItemAtIndex:[menu indexOfItem:separator]];
+//        menu.performActionForItem(at: menu.index(of: separator))
+//           menu.removeItem(separator)
+//        return menu
+//    }
     
     override func menu(for menuKind: FIMenuKind) -> NSMenu? {
         
         // Produce a menu for the extension.
         
-        let menu: SMMenu = baseMenu()
+        let menu: NSMenu = baseMenu()
     
 //        menu = addSeparatorTo(menu: menu)
         
@@ -311,9 +323,7 @@ class FinderSync: FIFinderSync
                 item = NSMenuItem(title: "New File Creation...", action: #selector(FinderSync.createNewFile(_:)), keyEquivalent: "")
                 item.image = NSImage(named: "Icon")
                 menu.addItem(item)
-       
-                _ = menu.insertItem(withTitle: "---", action: nil, keyEquivalent: "", at: 1)
-                
+
                 return menu
             }
         }

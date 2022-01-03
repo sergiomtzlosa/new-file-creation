@@ -44,4 +44,13 @@ class Utils
         
         return NSImage(data: newImage.tiffRepresentation!)!
     }
+    
+    static func positionWindowAtCenter(sender: NSWindow?){
+            if let window = sender {
+                let xPos = NSWidth((window.screen?.frame)!)/2 - NSWidth(window.frame)/2
+                let yPos = NSHeight((window.screen?.frame)!)/2 - NSHeight(window.frame)/2
+                let frame = NSMakeRect(xPos, yPos, NSWidth(window.frame), NSHeight(window.frame))
+                window.setFrame(frame, display: true)
+            }
+    }
 }
