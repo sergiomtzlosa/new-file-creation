@@ -91,9 +91,9 @@ func REGISTER_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selecto
     }
 }
 
-func SCHEDULE_DISTRIBUTED_NOTIFICATION(name : String)
+func SCHEDULE_DISTRIBUTED_NOTIFICATION(name : String, object: String? = "")
 {
-    DistributedNotificationCenter.default().post(name: NSNotification.Name(rawValue: name), object: name)
+    DistributedNotificationCenter.default().postNotificationName(NSNotification.Name(rawValue: name), object: object, deliverImmediately: true)
 }
 
 func REMOVE_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String?)
@@ -106,9 +106,21 @@ func REMOVE_NOTIFICATION(_ className: AnyObject)
     NotificationCenter.default.removeObserver(className)
 }
 
-func REMOVE_NOTIFICATION_FLAG(_ className: AnyObject, name: String?, object: AnyObject?)
+func REMOVE_NOTIFICATION_FLAG(_ className: AnyObject, name: String, object: Any? = nil)
 {
-    NotificationCenter.default.removeObserver(className, name: name.map { NSNotification.Name(rawValue: $0) }, object: object)
+    NotificationCenter.default.removeObserver(className, name: NSNotification.Name(rawValue: name), object: object)
+}
+
+func RECREATE_DISTRIBUTED_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String?) {
+    
+    REMOVE_DISTRIBUTED_NOTIFICATION(className, selector: selector, name: name)
+    REGISTER_DISTRIBUTED_NOTIFICATION(className, selector: selector, name: name)
+}
+
+func RECREATE_NOTIFICATION(_ className: AnyObject, selector: Selector, name: String, object: AnyObject? = nil) {
+    
+    REMOVE_NOTIFICATION_FLAG(className, name: name, object: object)
+    REGISTER_NOTIFICATION(className, selector: selector, name: name)
 }
 
 func isDarkModeEnabled() -> Bool

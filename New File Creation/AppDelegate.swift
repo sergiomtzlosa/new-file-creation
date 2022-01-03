@@ -183,12 +183,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         winFast.title = "Fast New File Creation..."
         
         var frame = winFast.frame
-        frame.size = NSSize(width: 350, height:450)
+        frame.size = NSSize(width: 364, height:450)
         winFast.setFrame(frame, display: true)
-        
-        winFast.titlebarAppearsTransparent = false
-        winFast.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        winFast.standardWindowButton(.zoomButton)?.isHidden = true
         
         winFast.isReleasedWhenClosed = false
         winFast.hidesOnDeactivate = false
@@ -196,6 +192,10 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         winFast.styleMask = NSWindow.StyleMask([.titled, .closable, .hudWindow, .nonactivatingPanel, .borderless])
         winFast.collectionBehavior = NSWindow.CollectionBehavior([.canJoinAllSpaces, .fullScreenAuxiliary])
 
+        winFast.titlebarAppearsTransparent = false
+        winFast.standardWindowButton(.miniaturizeButton)?.isHidden = true
+        winFast.standardWindowButton(.zoomButton)?.isHidden = true
+        
         let overlayScrollViewMiniHUD : SMScrollView = SMScrollView(frame: NSMakeRect(-10, 0, frame.width + 50, frame.height - 30))
 
         overlayScrollViewMiniHUD.verticalLineScroll = 1.0
@@ -209,7 +209,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         overlayScrollViewMiniHUD.scrollerKnobStyle = NSScroller.KnobStyle.dark
         overlayScrollViewMiniHUD.wantsLayer = true
         
-        self.tableHUD = NSTableView(frame: NSMakeRect(0, 0, winFast.frame.size.width, winFast.frame.height))
+        self.tableHUD = NSTableView(frame: NSMakeRect(0, 0, frame.width, frame.height))
         
         // Set style to plain to prevent any inset
         if #available(OSX 11.0, *) {
@@ -239,25 +239,24 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         //To support across application passing NO
         tableHUD.setDraggingSourceOperationMask(NSDragOperation.copy, forLocal: false)
-       
-        let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "column1"))
      
-//        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
+        let column1 : NSTableColumn = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "columnHUD1"))
+     
+        column1.width = frame.width
+        
+        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
         
         tableHUD.addTableColumn(column1)
 
-//        tableHUD.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
-//        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
-//        tableHUD.sizeLastColumnToFit()
+        tableHUD.columnAutoresizingStyle = NSTableView.ColumnAutoresizingStyle.uniformColumnAutoresizingStyle
+        column1.resizingMask = NSTableColumn.ResizingOptions.autoresizingMask
+        tableHUD.sizeLastColumnToFit()
 
-//        if #available(OSX 11.0, *) {
-//            tableHUD.enclosingScrollView?.contentView.automaticallyAdjustsContentInsets = false
-//            tableHUD.enclosingScrollView?.contentView.contentInsets = .init(top: 20, left: -10, bottom: 0, right: -10)
-//        }
-        
-        overlayScrollViewMiniHUD.documentView = tableHUD
-    
+        overlayScrollViewMiniHUD.documentView = self.tableHUD
+
+//        winFast.contentView = overlayScrollViewMiniHUD
         winFast.contentView?.addSubview(overlayScrollViewMiniHUD)
+    
         winFast.center()
         
         Utils.positionWindowAtCenter(sender: winFast)
@@ -266,12 +265,6 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         tableHUD.reloadData()
         
         return winFast
-    }
-    
-    func reloadMiniHUDTable() {
-        
-        tableHUD.reloadData()
-//        overlayScrollViewMiniHUD.documentView = self.tableHUD
     }
     
     @objc func togglePopover(_ sender: AnyObject) {
@@ -887,10 +880,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        if tableColumn!.identifier.rawValue == "column1"
+        if (tableColumn!.identifier.rawValue == "column1" || tableColumn!.identifier.rawValue == "columnHUD1")
         {
-            let
-            cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
+            let cellView = NSView(frame: NSMakeRect(0, 0, tableView.frame.size.width, CELL_HEIGHT))
             cellView.identifier = NSUserInterfaceItemIdentifier(rawValue: "row" + String(row))
             
             let value : String = self.dataFiles.object(at: row) as! String
@@ -1274,6 +1266,8 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             }
         }
         
+//        REGISTER_DISTRIBUTED_NOTIFICATION(self, selector: #selector(AppDelegate.eventFinderExtensionNotification(_:)), name: kFinderExtensionUpdate)
+   
         return draggedFilenames as NSArray as! [String]
     }
     
@@ -1312,14 +1306,23 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     }
     
     //MARK: - NSNotification methods
-    
-    
+
     @objc func eventFinderExtensionNotification(_ notification : Notification) {
         
         SMLog("arrived in finderExtensionNotification")
-        
-        self.fastWindow.level = .modalPanel
-        self.fastWindow.orderFront(nil)
+
+        DispatchQueue.main.async(execute: { [self] in
+            
+            self.isShowing = true
+            
+            if (self.fastWindow == nil) {
+                self.fastWindow = self.createFastWindow()
+            }
+            
+//            self.fastWindow.makeKeyAndOrderFront(nil)
+            self.fastWindow.level = .modalPanel
+            self.fastWindow.orderFront(nil)
+        })
     }
     
     @objc func eventAddFileFromExtensionFinder(_ notification : Notification) {
@@ -1361,7 +1364,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             self.advancedViewController?.reloadTableFunction()
             
-            self.reloadMiniHUDTable()
+            if (tableHUD != nil) {
+                tableHUD.reloadData()
+            }
             
             if #available(OSX 10.12.2, *) {
 
@@ -1782,6 +1787,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 self.popupButton.addItems(withTitles: rows)
                 self.popupButton.selectItem(at: index)
                 
+              
                 self.isShowing = false
             }
         }
