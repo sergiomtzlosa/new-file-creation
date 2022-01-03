@@ -39,7 +39,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
     @IBOutlet var helpWindowExtension: NSWindow!
     
-    var fastWindow: NSPanel!
+    var fastWindow: NSWindow!
     
     var advancedViewController : FilesPreferencesViewController!
 
@@ -177,9 +177,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         super.awakeFromNib()
     }
     
-    func createFastWindow() -> NSPanel {
+    func createFastWindow() -> NSWindow {
         
-        let winFast: NSPanel = NSPanel()
+        let winFast: NSWindow = NSWindow()
         winFast.title = "Fast New File Creation..."
         
         var frame = winFast.frame
@@ -188,7 +188,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         
         winFast.isReleasedWhenClosed = false
         winFast.hidesOnDeactivate = false
-        winFast.isFloatingPanel = true
+//        winFast.isFloatingPanel = true // NSPanel only
         winFast.styleMask = NSWindow.StyleMask([.titled, .closable, .hudWindow, .nonactivatingPanel, .borderless])
         winFast.collectionBehavior = NSWindow.CollectionBehavior([.canJoinAllSpaces, .fullScreenAuxiliary])
 
@@ -1319,7 +1319,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 self.fastWindow = self.createFastWindow()
             }
             
-//            self.fastWindow.makeKeyAndOrderFront(nil)
+            self.fastWindow.makeKeyAndOrderFront(nil)
             self.fastWindow.level = .modalPanel
             self.fastWindow.orderFront(nil)
         })
@@ -1418,6 +1418,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             {
 //                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
                 controller.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
+                tableHUD.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
             }
         }
         else
@@ -1426,6 +1427,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             {
 //                controller.viewController.popover.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
                 controller.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
+                tableHUD.appearance = NSAppearance(named: NSAppearance.Name.vibrantLight)
             }
         }
 
