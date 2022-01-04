@@ -659,6 +659,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             let button = preferencesWindowController.window!.standardWindowButton(NSWindow.ButtonType.zoomButton)
             button?.isEnabled = false
+            
+            preferencesWindowController.window!.standardWindowButton(.miniaturizeButton)?.isHidden = true
+            preferencesWindowController.window!.standardWindowButton(.zoomButton)?.isHidden = true
         }
     }
     
