@@ -813,9 +813,9 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         if #available(OSX 11.0, *) {
             table.enclosingScrollView?.contentView.automaticallyAdjustsContentInsets = false
-            table.enclosingScrollView?.contentView.contentInsets = .init(top: 20, left: -10, bottom: 0, right: -10)
+            table.enclosingScrollView?.contentView.contentInsets = .init(top: 0, left: -10, bottom: 0, right: -10)
         }
-        
+ 
         table.reloadData()
         
         return customView

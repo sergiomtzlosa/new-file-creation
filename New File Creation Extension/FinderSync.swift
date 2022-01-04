@@ -399,7 +399,7 @@ class FinderSync: FIFinderSync//, NSTableViewDataSource, NSTableViewDelegate
         {
             let rows : [String] = self.createRows() as! [String]
 
-            let menu = self.recreatePopUpMenu(rowsItem: rows, action: #selector(FinderSync.createNewFile(_:)))
+            let menu = self.recreatePopUpMenu(rowsItem: rows, action: #selector(FinderSync.subMenuAction(_:)))
             
             return menu
         }
@@ -491,7 +491,7 @@ class FinderSync: FIFinderSync//, NSTableViewDataSource, NSTableViewDelegate
         
         launchSavePanel()
     }
-    
+
     func launchSavePanel(indexTemplate : Int = 0)
     {
         if isShowing == true
@@ -661,6 +661,7 @@ class FinderSync: FIFinderSync//, NSTableViewDataSource, NSTableViewDelegate
         
         let mainMenu: NSMenu = NSMenu(title: "")
         
+        var rLoop: Int = 0
         for rowString in rowsItem {
 
             let tempStr : [String] = (rowString as String).components(separatedBy: "-")
@@ -677,8 +678,10 @@ class FinderSync: FIFinderSync//, NSTableViewDataSource, NSTableViewDelegate
      
             let menuItemRow: NSMenuItem = NSMenuItem(title: rowString, action: action, keyEquivalent: "")
             menuItemRow.image = imageIcon
-            
+            menuItemRow.tag = rLoop + kTagAdjust
             mainMenu.addItem(menuItemRow)
+            
+            rLoop += 1
         }
         
         return mainMenu
