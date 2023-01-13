@@ -632,7 +632,7 @@ class AppDelegate: SMObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             
             REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateSettingsCloud:")), name: kUpdateSettingCloud)
             
-            REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateTableRows:")), name: kEventUpdateRowsNow)
+            3REGISTER_NOTIFICATION(advancedViewController, selector: Selector(("eventUpdateTableRows:")), name: kEventUpdateRowsNow)
             
             let cloudViewController : NSViewController = CloudSyncViewController(nibName: "CloudSyncViewController", bundle: nil)
             
