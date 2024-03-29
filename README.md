@@ -1,8 +1,8 @@
 ## New File Creation
 
-![](Icon.png)
+<img src="Icon.png" width="425"/>
 
-The missing utility for macOS
+The missing utility for macOS.
 
 How many times have you ever wondered how to get all your templates for your documents together in one application? So it would be easy to create quickly a document and start working. Or just a new document in the location that you want.
 
@@ -15,8 +15,8 @@ New File Creation eliminates tedious tasks like opening the application, create 
 New feature: Brand new Touch bar support!!! Get your templates at glance in your touch bar, swipe right or left and touch you template to create a new one, touch bar is available on Mac OS 10.12.2 and above. 
 
 <p float="left">
-  <img src="images/new-file-creation_01.png" width="100" />
-  <img src="images/new-file-creation_02.png" width="100" /> 
-  <img src="images/new-file-creation_03.png" width="100" />
+  <img src="./images/new-file-creation_01.png" width="300" />
+  <img src="./images/new-file-creation_02.png" width="300" /> 
+  <img src="./images/new-file-creation_03.png" width="300" />
 </p>
 
