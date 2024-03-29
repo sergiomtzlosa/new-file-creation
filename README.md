@@ -4,6 +4,11 @@
 <img src="Icon.png" width="300"/>
 </p>
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/promo1.jpg" width="25>
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/promo2.jpg" width="25>
+</p>
+
 The missing utility for macOS.
 
 How many times have you ever wondered how to get all your templates for your documents together in one application? So it would be easy to create quickly a document and start working. Or just a new document in the location that you want.
