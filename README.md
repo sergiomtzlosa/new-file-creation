@@ -23,4 +23,4 @@ New feature: Brand new Touch bar support!!! Get your templates at glance in your
 </p>
 
 
-[<p align="center"><img src="https://img.youtube.com/vi/APOPm01BVrk/hqdefault.jpg" width="600" height="300"/></p>](https://www.youtube.com/embed/9vCiACckYyw)
+[<p align="center"><img src="https://img.youtube.com/vi/9vCiACckYyw/hqdefault.jpg" width="600" height="300"/></p>](https://www.youtube.com/embed/9vCiACckYyw)
