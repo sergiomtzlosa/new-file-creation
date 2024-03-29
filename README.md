@@ -16,9 +16,9 @@ New File Creation eliminates tedious tasks like opening the application, create 
 
 New feature: Brand new Touch bar support!!! Get your templates at glance in your touch bar, swipe right or left and touch you template to create a new one, touch bar is available on Mac OS 10.12.2 and above. 
 
-<p float="left">
-  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_01.jpg" width="200" />
-  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_01.jpg" width="200" /> 
-  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_01.jpg" width="200" />
+<p float="center">
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_01.jpg" width="250" />
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_02.jpg" width="250" /> 
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/new-file-creation_03.jpg" width="250" />
 </p>
 
