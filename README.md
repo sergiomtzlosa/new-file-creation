@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/promo1.jpg" width="25 />
-  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/bc1847008bc1368f5ba8cdc69e26d1ada62de732/images/promo2.jpg" width="25 />
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/master/images/promo1.jpg?raw=true" width="25 />
+  <img src="https://raw.githubusercontent.com/sergiomtzlosa/new-file-creation/master/images/promo2.jpg?raw=tru" width="25 />
 </p>
 
 The missing utility for macOS.
